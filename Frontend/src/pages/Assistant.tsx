@@ -13,7 +13,7 @@ import {
   CheckCircle2,
   Trash2
 } from 'lucide-react';
-import { ChatMessage as ChatMessageType } from '../types/ai';
+import { ChatMessage as ChatMessageType, AIStructuredResponse } from '../types/ai';
 import { ChatMessage } from '../components/ai/ChatMessage';
 import { SuggestedQueries } from '../components/ai/SuggestedQueries';
 import { DisclaimerBanner } from '../components/common/DisclaimerBanner';
@@ -91,11 +91,24 @@ export const Assistant: React.FC = () => {
     try {
       const response = await aiService.queryAssistant(prompt, evidenceMode);
       setMessages((prev) =>
-        prev.map((msg) =>
-          msg.id === streamingMessage.id
-            ? { ...msg, isStreaming: false, structuredResponse: response }
-            : msg
-        )
+        prev.map((msg) => {
+          if (msg.id !== streamingMessage.id) return msg;
+
+          if ('answer' in response && typeof response.answer === 'string') {
+            return {
+              ...msg,
+              isStreaming: false,
+              text: response.answer,
+              structuredResponse: undefined,
+            };
+          }
+
+          return {
+            ...msg,
+            isStreaming: false,
+            structuredResponse: response as AIStructuredResponse,
+          };
+        })
       );
     } catch {
       setMessages((prev) =>
