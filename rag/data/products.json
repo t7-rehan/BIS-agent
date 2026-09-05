@@ -1,0 +1,480 @@
+[
+  {
+    "id": "PROD-EMERGENCY-LUMINAIRE",
+    "product_name": "LED Emergency Light / Luminaire",
+    "aliases": [
+      "Emergency light",
+      "Emergency exit luminaire",
+      "Standby lighting unit",
+      "Self-contained emergency light"
+    ],
+    "category": "Lighting Equipment & Drivers",
+    "applicable_is_numbers": [
+      "IS 10322 (Part 5/Sec 8) : 2013"
+    ],
+    "qco_ids": [
+      "QCO-ELECTRICAL-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-LUMINAIRES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=10322-5-8"
+  },
+  {
+    "id": "PROD-LED-LAMP",
+    "product_name": "Self-Ballasted LED Lamp",
+    "aliases": [
+      "LED bulb",
+      "LED retrofit lamp",
+      "B22 LED bulb",
+      "E27 LED lamp"
+    ],
+    "category": "Consumer Electronics & Lighting",
+    "applicable_is_numbers": [
+      "IS 16102 (Part 1) : 2012"
+    ],
+    "qco_ids": [
+      "QCO-ELECTRONICS-CRS-2012"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-LED"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "PROD-LED-DRIVER",
+    "product_name": "Electronic Controlgear for LED Modules (LED Driver)",
+    "aliases": [
+      "LED driver",
+      "Constant current LED power supply",
+      "Ballast for LED",
+      "LED SMPS"
+    ],
+    "category": "Electrical & Electronics",
+    "applicable_is_numbers": [
+      "IS 15885 (Part 2/Sec 13) : 2012"
+    ],
+    "qco_ids": [
+      "QCO-ELECTRICAL-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CONTROLGEAR"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=15885-2-13"
+  },
+  {
+    "id": "PROD-ELECTRIC-MIXER",
+    "product_name": "Electric Food Mixer and Kitchen Grinder",
+    "aliases": [
+      "Mixer grinder",
+      "Mixie",
+      "Food processor",
+      "Kitchen machine",
+      "Juicer mixer grinder (JMG)"
+    ],
+    "category": "Domestic Electrical Appliances",
+    "applicable_is_numbers": [
+      "IS 302 (Part 1) : 2024",
+      "IS 302 (Part 2/Sec 14) : 2009"
+    ],
+    "qco_ids": [
+      "QCO-APPLIANCES-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-KITCHEN-MACHINES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=302-2-14"
+  },
+  {
+    "id": "PROD-PLUG-SOCKET",
+    "product_name": "Domestic Plugs and Socket-Outlets (up to 250V)",
+    "aliases": [
+      "3-pin plug",
+      "6A socket",
+      "16A power socket",
+      "Electrical wall plug"
+    ],
+    "category": "Electrical Accessories",
+    "applicable_is_numbers": [
+      "IS 1293 : 2019"
+    ],
+    "qco_ids": [
+      "QCO-PLUGS-SOCKETS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-PLUGS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1293"
+  },
+  {
+    "id": "PROD-PRESSURE-COOKER",
+    "product_name": "Domestic Pressure Cooker",
+    "aliases": [
+      "Pressure cooker",
+      "Inner lid pressure cooker",
+      "Outer lid cooker",
+      "Induction base pressure cooker"
+    ],
+    "category": "Cookware & Domestic Appliances",
+    "applicable_is_numbers": [
+      "IS 2347 : 2017"
+    ],
+    "qco_ids": [
+      "QCO-PRESSURE-COOKER-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-COOKERS"
+    ],
+    "source_url": "https://consumeraffairs.nic.in/acts-and-rules/quality-control-orders/domestic-pressure-cooker-order"
+  },
+  {
+    "id": "PROD-TMT-REBAR",
+    "product_name": "High Strength Deformed Steel Bar (TMT Rebar)",
+    "aliases": [
+      "TMT bar",
+      "Fe 500D rebar",
+      "Reinforcement steel rod",
+      "Thermo-mechanically treated bar"
+    ],
+    "category": "Structural Steel & Construction",
+    "applicable_is_numbers": [
+      "IS 1786 : 2008"
+    ],
+    "qco_ids": [
+      "QCO-STEEL-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-TMT"
+    ],
+    "source_url": "https://steel.gov.in/quality-control-orders"
+  },
+  {
+    "id": "PROD-STRUCTURAL-STEEL",
+    "product_name": "Hot Rolled Medium and High Tensile Structural Steel",
+    "aliases": [
+      "Structural steel section",
+      "MS angle",
+      "ISMB beam",
+      "Steel channel plate"
+    ],
+    "category": "Structural Steel & Construction",
+    "applicable_is_numbers": [
+      "IS 2062 : 2011"
+    ],
+    "qco_ids": [
+      "QCO-STEEL-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-STRUCTURAL-STEEL"
+    ],
+    "source_url": "https://steel.gov.in/quality-control-orders"
+  },
+  {
+    "id": "PROD-TWO-WHEELER-HELMET",
+    "product_name": "Protective Helmet for Two-Wheeler Riders",
+    "aliases": [
+      "Motorcycle helmet",
+      "Rider helmet",
+      "Full face helmet",
+      "Open face helmet"
+    ],
+    "category": "Automotive Safety & PPE",
+    "applicable_is_numbers": [
+      "IS 4151 : 2020"
+    ],
+    "qco_ids": [
+      "QCO-HELMETS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-HELMETS"
+    ],
+    "source_url": "https://morth.nic.in/notifications/two-wheeler-helmets-quality-control-order"
+  },
+  {
+    "id": "PROD-EV-TRACTION-BATTERY",
+    "product_name": "Electric Vehicle Traction Battery Pack",
+    "aliases": [
+      "EV battery pack",
+      "Lithium-ion traction battery",
+      "Electric car battery system",
+      "E-bike battery pack"
+    ],
+    "category": "Electric Mobility & Clean Tech",
+    "applicable_is_numbers": [
+      "IS 14144 : 2023"
+    ],
+    "qco_ids": [
+      "QCO-EV-BATTERY-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-EV-BATTERY"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=14144"
+  },
+  {
+    "id": "PROD-EV-CHARGER",
+    "product_name": "Electric Vehicle Conductive AC Charging Station",
+    "aliases": [
+      "EV AC charger",
+      "Type 2 EV charger",
+      "Wallbox EV charger",
+      "EVSE charging post"
+    ],
+    "category": "Electric Mobility & Clean Tech",
+    "applicable_is_numbers": [
+      "IS 17017 (Part 1) : 2018"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=17017-1"
+  },
+  {
+    "id": "PROD-CEMENT-OPC",
+    "product_name": "Ordinary Portland Cement (33, 43, 53 Grades)",
+    "aliases": [
+      "OPC cement",
+      "OPC 53 grade",
+      "OPC 43 grade",
+      "Standard grey cement"
+    ],
+    "category": "Civil & Construction Materials",
+    "applicable_is_numbers": [
+      "IS 269 : 2015"
+    ],
+    "qco_ids": [
+      "QCO-CEMENT-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CEMENT-OPC"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=269"
+  },
+  {
+    "id": "PROD-CEMENT-PPC",
+    "product_name": "Portland Pozzolana Cement (Fly Ash Based)",
+    "aliases": [
+      "PPC cement",
+      "Pozzolana cement",
+      "Flyash cement"
+    ],
+    "category": "Civil & Construction Materials",
+    "applicable_is_numbers": [
+      "IS 1489 (Part 1) : 2015"
+    ],
+    "qco_ids": [
+      "QCO-CEMENT-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CEMENT-PPC"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1489-1"
+  },
+  {
+    "id": "PROD-PACKAGED-WATER",
+    "product_name": "Packaged Drinking Water",
+    "aliases": [
+      "Bottled drinking water",
+      "20-litre water jar",
+      "Packaged mineralized water"
+    ],
+    "category": "Food & Beverage",
+    "applicable_is_numbers": [
+      "IS 14543 : 2024"
+    ],
+    "qco_ids": [
+      "QCO-PACKAGED-WATER-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-PACKAGED-WATER"
+    ],
+    "source_url": "https://fssai.gov.in/"
+  },
+  {
+    "id": "PROD-MINERAL-WATER",
+    "product_name": "Packaged Natural Mineral Water",
+    "aliases": [
+      "Natural mineral water",
+      "Spring water",
+      "Himalayan natural water"
+    ],
+    "category": "Food & Beverage",
+    "applicable_is_numbers": [
+      "IS 13428 : 2005"
+    ],
+    "qco_ids": [
+      "QCO-PACKAGED-WATER-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-PACKAGED-WATER"
+    ],
+    "source_url": "https://fssai.gov.in/"
+  },
+  {
+    "id": "PROD-TOYS-MECHANICAL",
+    "product_name": "Children's Mechanical and Physical Toys",
+    "aliases": [
+      "Plastic toy",
+      "Ride-on toy",
+      "Educational building blocks",
+      "Stuffed plush toy"
+    ],
+    "category": "Children's Products & Toys",
+    "applicable_is_numbers": [
+      "IS 9873 (Part 1) : 2019",
+      "IS 9873 (Part 2) : 2017",
+      "IS 9873 (Part 3) : 2020"
+    ],
+    "qco_ids": [
+      "QCO-TOYS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-TOYS"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders/toys-quality-control-order"
+  },
+  {
+    "id": "PROD-LAPTOP-NOTEBOOK",
+    "product_name": "Laptop and Notebook Computer",
+    "aliases": [
+      "Notebook PC",
+      "Ultrabook",
+      "Laptop computer",
+      "Portable microcomputer"
+    ],
+    "category": "IT & Electronics Hardware",
+    "applicable_is_numbers": [
+      "IS 13252 (Part 1) : 2010"
+    ],
+    "qco_ids": [
+      "QCO-ELECTRONICS-CRS-2012"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-IT-LAPTOPS"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "PROD-LITHIUM-CELL",
+    "product_name": "Portable Sealed Secondary Lithium Cell and Powerbank",
+    "aliases": [
+      "18650 lithium battery",
+      "Mobile phone battery",
+      "Power bank",
+      "Lithium polymer cell"
+    ],
+    "category": "Batteries & Energy Storage",
+    "applicable_is_numbers": [
+      "IS 16046 (Part 2) : 2018"
+    ],
+    "qco_ids": [
+      "QCO-ELECTRONICS-CRS-2012"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-LITHIUM-CELLS"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "PROD-SOLAR-PV-MODULE",
+    "product_name": "Crystalline Silicon Terrestrial Photovoltaic (PV) Module",
+    "aliases": [
+      "Solar panel",
+      "PV module",
+      "Solar cell panel",
+      "Monocrystalline PV panel"
+    ],
+    "category": "Renewable Energy & Solar",
+    "applicable_is_numbers": [
+      "IS 14286 : 2010"
+    ],
+    "qco_ids": [
+      "QCO-SOLAR-PV-2017"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-SOLAR-PV"
+    ],
+    "source_url": "https://mnre.gov.in/"
+  },
+  {
+    "id": "PROD-GOLD-JEWELLERY",
+    "product_name": "Gold Jewellery and Artefacts (Hallmarked)",
+    "aliases": [
+      "Gold necklace",
+      "22K gold ring",
+      "Gold bangle",
+      "HUID gold ornament"
+    ],
+    "category": "Precious Metals & Hallmarking",
+    "applicable_is_numbers": [
+      "IS 1417 : 2016"
+    ],
+    "qco_ids": [
+      "QCO-GOLD-HALLMARKING-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-HALLMARKING-GOLD"
+    ],
+    "source_url": "https://www.bis.gov.in/hallmarking-overview/"
+  },
+  {
+    "id": "PROD-SILVER-JEWELLERY",
+    "product_name": "Silver Jewellery and Artefacts",
+    "aliases": [
+      "Silver payal",
+      "925 sterling silver",
+      "Silver coin",
+      "Silver utensil"
+    ],
+    "category": "Precious Metals & Hallmarking",
+    "applicable_is_numbers": [
+      "IS 2112 : 2014"
+    ],
+    "qco_ids": [
+      "QCO-SILVER-HALLMARKING-2022"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-HALLMARKING-SILVER"
+    ],
+    "source_url": "https://www.bis.gov.in/hallmarking-overview/"
+  },
+  {
+    "id": "PROD-FOOD-POLYETHYLENE",
+    "product_name": "Food Contact Polyethylene Material & Packaging Film",
+    "aliases": [
+      "Food grade plastic wrap",
+      "LDPE food bag",
+      "HDPE milk bottle resin",
+      "Polyethylene packaging sheet"
+    ],
+    "category": "Chemicals & Plastics",
+    "applicable_is_numbers": [
+      "IS 10146 : 1982"
+    ],
+    "qco_ids": [
+      "QCO-POLYETHYLENE-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-FOOD-POLYETHYLENE"
+    ],
+    "source_url": "https://chemicals.gov.in/"
+  },
+  {
+    "id": "PROD-STAINLESS-SINK",
+    "product_name": "Domestic Stainless Steel Sink",
+    "aliases": [
+      "Kitchen sink",
+      "SS washbasin",
+      "Single bowl kitchen sink",
+      "Drainboard SS sink"
+    ],
+    "category": "Cookware & Domestic Appliances",
+    "applicable_is_numbers": [
+      "IS 14625 : 1999"
+    ],
+    "qco_ids": [
+      "QCO-SINKS-2024"
+    ],
+    "certification_scheme_ids": [],
+    "source_url": "https://dpiit.gov.in/quality-control-orders"
+  }
+]

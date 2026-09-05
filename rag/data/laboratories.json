@@ -1,0 +1,406 @@
+[
+  {
+    "id": "LAB-BIS-CENTRAL",
+    "laboratory_name": "BIS Central Laboratory (CLD)",
+    "lab_code": "CLD-GZB-01",
+    "location": "Plot No. 20/9, Site IV, Sahibabad Industrial Area, Ghaziabad",
+    "state": "Uttar Pradesh",
+    "applicable_is_numbers": [
+      "IS 10322 (Part 5/Sec 8) : 2013",
+      "IS 16102 (Part 1) : 2012",
+      "IS 302 (Part 1) : 2024",
+      "IS 302 (Part 2/Sec 14) : 2009",
+      "IS 1293 : 2019",
+      "IS 2347 : 2017",
+      "IS 14543 : 2024",
+      "IS 9873 (Part 1) : 2019"
+    ],
+    "testing_scope": [
+      "Domestic electrical appliances endurance & high voltage dielectric test",
+      "Hydrostatic proof and burst pressure for domestic pressure cookers",
+      "Microbiological and pesticide residue testing for packaged drinking water",
+      "Photometry and safety testing of self-ballasted LED lamps",
+      "Mechanical small-parts choking hazard evaluation for toys"
+    ],
+    "validity": "Apex Central Laboratory (Permanent Statutory Facility)",
+    "source_url": "https://www.lims.bis.gov.in/"
+  },
+  {
+    "id": "LAB-BIS-WROL",
+    "laboratory_name": "BIS Western Regional Office Laboratory (WROL)",
+    "lab_code": "WROL-MUM-02",
+    "location": "Manakalaya, E9, MIDC, Andheri (East), Mumbai",
+    "state": "Maharashtra",
+    "applicable_is_numbers": [
+      "IS 2347 : 2017",
+      "IS 1786 : 2008",
+      "IS 2062 : 2011",
+      "IS 4151 : 2020",
+      "IS 14625 : 1999"
+    ],
+    "testing_scope": [
+      "Universal tensile, proof stress, and bend-rebend testing of reinforcing steel",
+      "Impact absorption drop tower and retention tests for two-wheeler helmets",
+      "Chemical composition verification (Spectrometry) for structural steel and alloys",
+      "Pressure cooker safety vent valve release pressure calibration"
+    ],
+    "validity": "Apex Regional BIS Laboratory",
+    "source_url": "https://www.lims.bis.gov.in/"
+  },
+  {
+    "id": "LAB-BIS-EROL",
+    "laboratory_name": "BIS Eastern Regional Office Laboratory (EROL)",
+    "lab_code": "EROL-KOL-03",
+    "location": "1/14, C.I.T. Scheme VII M, V.I.P. Road, Kankurgachi, Kolkata",
+    "state": "West Bengal",
+    "applicable_is_numbers": [
+      "IS 1786 : 2008",
+      "IS 2062 : 2011",
+      "IS 269 : 2015",
+      "IS 1489 (Part 1) : 2015",
+      "IS 14543 : 2024"
+    ],
+    "testing_scope": [
+      "Cement compressive strength, setting time, and chemical loss on ignition",
+      "TMT steel rebar yield point and elongation across seismic grades",
+      "Complete physical and chemical water quality parameters"
+    ],
+    "validity": "Apex Regional BIS Laboratory",
+    "source_url": "https://www.lims.bis.gov.in/"
+  },
+  {
+    "id": "LAB-BIS-SROL",
+    "laboratory_name": "BIS Southern Regional Office Laboratory (SROL)",
+    "lab_code": "SROL-CHN-04",
+    "location": "CIT Campus, IV Cross Road, Taramani, Chennai",
+    "state": "Tamil Nadu",
+    "applicable_is_numbers": [
+      "IS 10322 (Part 5/Sec 8) : 2013",
+      "IS 16102 (Part 1) : 2012",
+      "IS 302 (Part 2/Sec 14) : 2009",
+      "IS 14543 : 2024",
+      "IS 1417 : 2016"
+    ],
+    "testing_scope": [
+      "Emergency luminaires battery duration discharge cycles and high-pot flash test",
+      "Food mixer and grinder temperature rise and mechanical safety under overload",
+      "Water microbiology testing (Coliforms, E. Coli, Yeast & Moulds)",
+      "Gold assaying by Fire Assay method conforming to IS 1418"
+    ],
+    "validity": "Apex Regional BIS Laboratory",
+    "source_url": "https://www.lims.bis.gov.in/"
+  },
+  {
+    "id": "LAB-BIS-NROL",
+    "laboratory_name": "BIS Northern Regional Office Laboratory (NROL)",
+    "lab_code": "NROL-MHL-05",
+    "location": "Plot No. 4-A, Sector 27-B, Madhya Marg, Chandigarh / Mohali",
+    "state": "Punjab",
+    "applicable_is_numbers": [
+      "IS 1293 : 2019",
+      "IS 302 (Part 1) : 2024",
+      "IS 2347 : 2017",
+      "IS 269 : 2015",
+      "IS 14543 : 2024"
+    ],
+    "testing_scope": [
+      "Plugs and socket temperature rise and breaking capacity tests",
+      "Pressure cooker hydrostatic proof testing and thermal relief",
+      "Cement fineness and sound soundness Le-Chatelier verification"
+    ],
+    "validity": "Apex Regional BIS Laboratory",
+    "source_url": "https://www.lims.bis.gov.in/"
+  },
+  {
+    "id": "LAB-NTH-GZB",
+    "laboratory_name": "National Test House (Northern Region)",
+    "lab_code": "NTH-NR-06",
+    "location": "Kamla Nehru Nagar, Post Box No. 112, Ghaziabad",
+    "state": "Uttar Pradesh",
+    "applicable_is_numbers": [
+      "IS 10322 (Part 5/Sec 8) : 2013",
+      "IS 16102 (Part 1) : 2012",
+      "IS 15885 (Part 2/Sec 13) : 2012",
+      "IS 2347 : 2017",
+      "IS 1293 : 2019"
+    ],
+    "testing_scope": [
+      "Luminaires & emergency lighting optical and electrical safety",
+      "LED driver power factor, total harmonic distortion (THD), and endurance",
+      "High temperature glow-wire flammability up to 960°C",
+      "Insulation resistance and high voltage breakdown up to 10 kV"
+    ],
+    "validity": "Valid till 2027-11-30",
+    "source_url": "https://www.nth.gov.in/"
+  },
+  {
+    "id": "LAB-NTH-KOL",
+    "laboratory_name": "National Test House (Eastern Region)",
+    "lab_code": "NTH-ER-07",
+    "location": "11/1 Judges Court Road, Alipore, Kolkata",
+    "state": "West Bengal",
+    "applicable_is_numbers": [
+      "IS 1786 : 2008",
+      "IS 2062 : 2011",
+      "IS 269 : 2015",
+      "IS 10146 : 1982"
+    ],
+    "testing_scope": [
+      "Heavy metallurgical tensile test (up to 1000 kN capacity)",
+      "Polyethylene overall migration test into food stimulants",
+      "Cement chemical analysis by X-ray fluorescence (XRF)"
+    ],
+    "validity": "Valid till 2028-05-31",
+    "source_url": "https://www.nth.gov.in/"
+  },
+  {
+    "id": "LAB-NTH-CHN",
+    "laboratory_name": "National Test House (Southern Region)",
+    "lab_code": "NTH-SR-08",
+    "location": "Tharamani, Chennai",
+    "state": "Tamil Nadu",
+    "applicable_is_numbers": [
+      "IS 302 (Part 2/Sec 14) : 2009",
+      "IS 14543 : 2024",
+      "IS 14625 : 1999"
+    ],
+    "testing_scope": [
+      "Domestic food preparation machine abnormal operation testing",
+      "Toxic heavy metal leaching tests on stainless steel kitchen sinks",
+      "Complete physico-chemical bottled water profile analysis"
+    ],
+    "validity": "Valid till 2027-09-30",
+    "source_url": "https://www.nth.gov.in/"
+  },
+  {
+    "id": "LAB-CPRI-BLR",
+    "laboratory_name": "Central Power Research Institute (CPRI)",
+    "lab_code": "CPRI-BLR-09",
+    "location": "Prof. Sir C.V. Raman Road, Sadashivanagar, Bengaluru",
+    "state": "Karnataka",
+    "applicable_is_numbers": [
+      "IS 10322 (Part 5/Sec 8) : 2013",
+      "IS 16102 (Part 1) : 2012",
+      "IS 14144 : 2023",
+      "IS 17017 (Part 1) : 2018"
+    ],
+    "testing_scope": [
+      "Integrating sphere spectral flux and goniophotometric distribution",
+      "EV conductive AC charger surge immunity and fault protection",
+      "High voltage dielectric impulse tests up to 100 kV",
+      "Battery pack thermal endurance chamber (-40°C to +85°C)"
+    ],
+    "validity": "Valid till 2028-03-31",
+    "source_url": "https://cpri.res.in/"
+  },
+  {
+    "id": "LAB-CPRI-BPL",
+    "laboratory_name": "Central Power Research Institute (CPRI Bhopal Unit)",
+    "lab_code": "CPRI-BPL-10",
+    "location": "Govindpura, Bhopal",
+    "state": "Madhya Pradesh",
+    "applicable_is_numbers": [
+      "IS 1293 : 2019",
+      "IS 15885 (Part 2/Sec 13) : 2012",
+      "IS 17017 (Part 1) : 2018"
+    ],
+    "testing_scope": [
+      "Short circuit breaking capacity of plugs and industrial connectors",
+      "High current temperature rise on busbars and terminals",
+      "Ingress Protection (IP Code) testing from IP20 up to IP68"
+    ],
+    "validity": "Valid till 2027-12-31",
+    "source_url": "https://cpri.res.in/"
+  },
+  {
+    "id": "LAB-ARAI-PUNE",
+    "laboratory_name": "Automotive Research Association of India (ARAI)",
+    "lab_code": "ARAI-PUN-11",
+    "location": "Survey No. 102, Vetal Hill, Off Paud Road, Kothrud, Pune",
+    "state": "Maharashtra",
+    "applicable_is_numbers": [
+      "IS 4151 : 2020",
+      "IS 14144 : 2023",
+      "IS 17017 (Part 1) : 2018"
+    ],
+    "testing_scope": [
+      "Full drop tower impact attenuation on ISO head-forms for helmets",
+      "Electric vehicle traction battery thermal runaway nail-penetration trigger",
+      "Crush resistance and mechanical shock vibration testing of battery modules",
+      "Helmet chin-strap dynamic displacement and roll-off stability"
+    ],
+    "validity": "Valid till 2029-06-30",
+    "source_url": "https://www.araiindia.com/"
+  },
+  {
+    "id": "LAB-ICAT-MANESAR",
+    "laboratory_name": "International Centre for Automotive Technology (ICAT)",
+    "lab_code": "ICAT-MAN-12",
+    "location": "Plot 26, Sector 3, HSIIDC, IMT Manesar, Gurugram",
+    "state": "Haryana",
+    "applicable_is_numbers": [
+      "IS 4151 : 2020",
+      "IS 14144 : 2023",
+      "IS 17017 (Part 1) : 2018"
+    ],
+    "testing_scope": [
+      "Helmet optical visor luminous transmittance and shatter resistance",
+      "Lithium-ion EV pack submersion water ingress testing (IPX7)",
+      "Battery management system (BMS) overcharge and short-circuit response speed"
+    ],
+    "validity": "Valid till 2028-10-31",
+    "source_url": "https://www.icat.in/"
+  },
+  {
+    "id": "LAB-CIPET-CHN",
+    "laboratory_name": "Central Institute of Petrochemicals Engineering & Technology (CIPET Chennai)",
+    "lab_code": "CIPET-CHN-13",
+    "location": "TVK Industrial Estate, Guindy, Chennai",
+    "state": "Tamil Nadu",
+    "applicable_is_numbers": [
+      "IS 9873 (Part 1) : 2019",
+      "IS 9873 (Part 3) : 2020",
+      "IS 10146 : 1982",
+      "IS 4151 : 2020"
+    ],
+    "testing_scope": [
+      "ICP-MS heavy metal migration analysis (Pb, Cd, Hg, Cr) for toys",
+      "Polyethylene raw material density, melt flow index (MFI), and food contact purity",
+      "Thermoplastic helmet shell Izod impact and tensile modulus characterization"
+    ],
+    "validity": "Valid till 2027-08-31",
+    "source_url": "https://www.cipet.gov.in/"
+  },
+  {
+    "id": "LAB-CIPET-AHM",
+    "laboratory_name": "Central Institute of Petrochemicals Engineering & Technology (CIPET Ahmedabad)",
+    "lab_code": "CIPET-AHM-14",
+    "location": "Plot No. 630, Phase-IV, GIDC, Vatva, Ahmedabad",
+    "state": "Gujarat",
+    "applicable_is_numbers": [
+      "IS 10146 : 1982",
+      "IS 9873 (Part 1) : 2019",
+      "IS 9873 (Part 2) : 2017"
+    ],
+    "testing_scope": [
+      "Food contact migration testing in water, ethanol, and n-heptane simulants",
+      "Flammability burn rate evaluation for children's plastic and plush toys",
+      "Thermal stability and ash content testing for packaging resins"
+    ],
+    "validity": "Valid till 2028-01-31",
+    "source_url": "https://www.cipet.gov.in/"
+  },
+  {
+    "id": "LAB-ERTL-KOL",
+    "laboratory_name": "Electronics Regional Test Laboratory (East) - STQC",
+    "lab_code": "ERTL-E-15",
+    "location": "DN Block, Sector V, Bidhannagar, Salt Lake City, Kolkata",
+    "state": "West Bengal",
+    "applicable_is_numbers": [
+      "IS 13252 (Part 1) : 2010",
+      "IS 16046 (Part 2) : 2018",
+      "IS 16102 (Part 1) : 2012"
+    ],
+    "testing_scope": [
+      "Information Technology equipment safety assessment under BIS CRS",
+      "Secondary lithium cell overcharge, continuous charging, and forced discharge",
+      "Creepage and clearance verification for switch-mode power supplies (SMPS)"
+    ],
+    "validity": "Valid till 2028-04-30",
+    "source_url": "https://www.stqc.gov.in/"
+  },
+  {
+    "id": "LAB-ERTL-DEL",
+    "laboratory_name": "Electronics Regional Test Laboratory (North) - STQC",
+    "lab_code": "ERTL-N-16",
+    "location": "S-Block, Okhla Industrial Area, Phase-II, New Delhi",
+    "state": "Delhi",
+    "applicable_is_numbers": [
+      "IS 13252 (Part 1) : 2010",
+      "IS 16046 (Part 2) : 2018",
+      "IS 14286 : 2010"
+    ],
+    "testing_scope": [
+      "Laptop and mobile device electrical safety, heating, and electric shock protection",
+      "Portable power bank external short circuit and thermal abuse validation",
+      "Solar PV module insulation resistance and wet leakage current measurement"
+    ],
+    "validity": "Valid till 2027-10-31",
+    "source_url": "https://www.stqc.gov.in/"
+  },
+  {
+    "id": "LAB-SHRIRAM-DEL",
+    "laboratory_name": "Shriram Institute for Industrial Research (SIIR)",
+    "lab_code": "SIIR-DEL-17",
+    "location": "19, University Road, Delhi",
+    "state": "Delhi",
+    "applicable_is_numbers": [
+      "IS 9873 (Part 3) : 2020",
+      "IS 10146 : 1982",
+      "IS 14543 : 2024",
+      "IS 2347 : 2017"
+    ],
+    "testing_scope": [
+      "Trace element heavy metal extraction by Atomic Absorption Spectrometry (AAS)",
+      "Rubber gasket food migration and tensile elongation aging for pressure cookers",
+      "Drinking water pesticide residue chromatography (GC-MS / LC-MS)"
+    ],
+    "validity": "Valid till 2028-02-28",
+    "source_url": "https://www.shriraminstitute.org/"
+  },
+  {
+    "id": "LAB-NPL-DELHI",
+    "laboratory_name": "CSIR - National Physical Laboratory (NPL)",
+    "lab_code": "NPL-DEL-18",
+    "location": "Dr. K.S. Krishnan Marg, Pusa, New Delhi",
+    "state": "Delhi",
+    "applicable_is_numbers": [
+      "IS 14286 : 2010",
+      "IS 1417 : 2016",
+      "IS 2112 : 2014"
+    ],
+    "testing_scope": [
+      "Solar PV reference cell calibration and Maximum Power Point (Pmax) determination",
+      "Primary reference gold and silver assaying standards calibration",
+      "High precision dimensional metrology and thermometer calibration"
+    ],
+    "validity": "National Metrology Institute (Permanent Apex Scientific Facility)",
+    "source_url": "https://www.nplindia.org/"
+  },
+  {
+    "id": "LAB-NCB-BALLABGARH",
+    "laboratory_name": "National Council for Cement and Building Materials (NCB)",
+    "lab_code": "NCB-BLB-19",
+    "location": "34 Km Stone, Delhi-Mathura Road (NH-2), Ballabgarh, Faridabad",
+    "state": "Haryana",
+    "applicable_is_numbers": [
+      "IS 269 : 2015",
+      "IS 1489 (Part 1) : 2015",
+      "IS 1786 : 2008"
+    ],
+    "testing_scope": [
+      "Standard mortar prism compressive strength testing at 3, 7, and 28 days",
+      "Autoclave expansion and Le-Chatelier unsoundness for cements",
+      "Fly ash reactive silica content and pozzolanic activity index"
+    ],
+    "validity": "Valid till 2028-12-31",
+    "source_url": "https://www.ncbindia.com/"
+  },
+  {
+    "id": "LAB-NISE-GURUGRAM",
+    "laboratory_name": "National Institute of Solar Energy (NISE)",
+    "lab_code": "NISE-GGN-20",
+    "location": "Gwal Pahari, Faridabad-Gurgaon Road, Gurugram",
+    "state": "Haryana",
+    "applicable_is_numbers": [
+      "IS 14286 : 2010"
+    ],
+    "testing_scope": [
+      "Large-area pulsed solar simulator PV module IV characteristics",
+      "UV preconditioning and thermal cycling (-40°C to +85°C at 85% RH)",
+      "Mechanical load testing up to 5400 Pa (wind and snow load simulation)"
+    ],
+    "validity": "Valid till 2029-03-31",
+    "source_url": "https://nise.res.in/"
+  }
+]

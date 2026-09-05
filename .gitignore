@@ -54,3 +54,10 @@ yarn-error.log*
 .idea/
 .DS_Store
 Thumbs.db
+
+# RAG raw scrape & intermediate caches
+rag/raw/*
+!rag/raw/.gitkeep
+rag/processed/*
+!rag/processed/.gitkeep
+

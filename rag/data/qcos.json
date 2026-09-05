@@ -1,0 +1,271 @@
+[
+  {
+    "id": "QCO-ELECTRICAL-2020",
+    "qco_name": "Electrical Equipment (Quality Control) Order, 2020",
+    "product": "Luminaires and Controlgear for LED Modules",
+    "is_numbers": [
+      "IS 10322 (Part 5/Sec 8) : 2013",
+      "IS 15885 (Part 2/Sec 13) : 2012"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2021-03-01",
+    "amendments": [
+      "S.O. 4568(E) dated 2020-11-18 - First Gazette notification",
+      "S.O. 876(E) dated 2021-02-24 - Extension of enforcement for small enterprises"
+    ],
+    "source_url": "https://dpiit.gov.in/sites/default/files/Electrical_Equipment_QCO_2020.pdf",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-APPLIANCES-2024",
+    "qco_name": "Electrical Appliances for Domestic and Similar Purposes (Quality Control) Order, 2024",
+    "product": "Household Kitchen Machines, Food Mixers, and General Electrical Appliances",
+    "is_numbers": [
+      "IS 302 (Part 1) : 2024",
+      "IS 302 (Part 2/Sec 14) : 2009"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2025-03-05",
+    "amendments": [
+      "S.O. 1120(E) dated 2024-03-05 - Notification with 12-month general transition window",
+      "Concession: Micro enterprises granted additional 6-month buffer till 2025-09-05"
+    ],
+    "source_url": "https://www.bis.gov.in/product-certification/products-under-compulsory-certification/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-ELECTRONICS-CRS-2012",
+    "qco_name": "Electronics and Information Technology Goods (Compulsory Registration) Order, 2012",
+    "product": "Self-Ballasted LED Lamps, IT Laptops/Mobiles, and Portable Lithium Batteries",
+    "is_numbers": [
+      "IS 16102 (Part 1) : 2012",
+      "IS 13252 (Part 1) : 2010",
+      "IS 16046 (Part 2) : 2018"
+    ],
+    "issuing_ministry": "Ministry of Electronics and Information Technology (MeitY)",
+    "mandatory": true,
+    "enforcement_date": "2014-05-01",
+    "amendments": [
+      "Phase I: Gazette notification S.O. 2357(E) dated 2012-10-03",
+      "Phase II & Phase III expansion adding LED products and secondary cells"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-PLUGS-SOCKETS-2020",
+    "qco_name": "Plugs and Socket-Outlets (Quality Control) Order, 2020",
+    "product": "Domestic Plugs and Socket-Outlets up to 250V",
+    "is_numbers": [
+      "IS 1293 : 2019"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2021-06-01",
+    "amendments": [
+      "S.O. 4333(E) dated 2020-12-04 - Enacted mandatory Scheme-I ISI Mark certification"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-PRESSURE-COOKER-2020",
+    "qco_name": "Domestic Pressure Cooker (Quality Control) Order, 2020",
+    "product": "Domestic Pressure Cookers (Aluminium, Stainless Steel, and Composite)",
+    "is_numbers": [
+      "IS 2347 : 2017"
+    ],
+    "issuing_ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "mandatory": true,
+    "enforcement_date": "2021-02-01",
+    "amendments": [
+      "S.O. 293(E) dated 2020-01-21 - Enforced strict prohibition of non-ISI pressure cookers in retail & e-commerce"
+    ],
+    "source_url": "https://consumeraffairs.nic.in/acts-and-rules/quality-control-orders/domestic-pressure-cooker-order",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-STEEL-2020",
+    "qco_name": "Steel and Steel Products (Quality Control) Order, 2020",
+    "product": "TMT High Strength Deformed Steel Bars and Hot Rolled Structural Steel",
+    "is_numbers": [
+      "IS 1786 : 2008",
+      "IS 2062 : 2011"
+    ],
+    "issuing_ministry": "Ministry of Steel",
+    "mandatory": true,
+    "enforcement_date": "2020-08-01",
+    "amendments": [
+      "S.O. 1678(E) dated 2020-05-27 - Consolidated mandatory compliance for reinforcing and structural steel"
+    ],
+    "source_url": "https://steel.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-HELMETS-2020",
+    "qco_name": "Two Wheeler Helmets (Quality Control) Order, 2020",
+    "product": "Protective Helmets for Two-Wheeled Motor Vehicle Riders",
+    "is_numbers": [
+      "IS 4151 : 2020"
+    ],
+    "issuing_ministry": "Ministry of Road Transport and Highways (MoRTH)",
+    "mandatory": true,
+    "enforcement_date": "2021-06-01",
+    "amendments": [
+      "S.O. 4252(E) dated 2020-11-26 - Mandating max helmet weight limit of 1.2 kg and universal ISI Mark"
+    ],
+    "source_url": "https://morth.nic.in/notifications/two-wheeler-helmets-quality-control-order",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-EV-BATTERY-2023",
+    "qco_name": "Automotive Vehicles (Traction Battery Safety) Mandatory Certification Order",
+    "product": "Electric Power Driven Vehicles Lithium-Ion Traction Batteries",
+    "is_numbers": [
+      "IS 14144 : 2023"
+    ],
+    "issuing_ministry": "Ministry of Road Transport and Highways (MoRTH)",
+    "mandatory": true,
+    "enforcement_date": "2023-04-01",
+    "amendments": [
+      "MoRTH Notification under AIS-156 & AIS-038 Phase II aligned with IS 14144 for thermal runaway containment"
+    ],
+    "source_url": "https://morth.nic.in/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-CEMENT-2024",
+    "qco_name": "Cement (Quality Control) Order, 2024",
+    "product": "Ordinary Portland Cement and Portland Pozzolana Cement",
+    "is_numbers": [
+      "IS 269 : 2015",
+      "IS 1489 (Part 1) : 2015"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-06-01",
+    "amendments": [
+      "Superseded earlier 2003 Cement QCO to include revised micro-analytical tests and digital traceability"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-PACKAGED-WATER-2021",
+    "qco_name": "Packaged Drinking Water and Mineral Water Compulsory Certification Order",
+    "product": "Packaged Drinking Water and Packaged Natural Mineral Water",
+    "is_numbers": [
+      "IS 14543 : 2024",
+      "IS 13428 : 2005"
+    ],
+    "issuing_ministry": "Food Safety and Standards Authority of India (FSSAI) & Ministry of Consumer Affairs",
+    "mandatory": true,
+    "enforcement_date": "2021-04-01",
+    "amendments": [
+      "FSSAI direction F.No. 1(70)MAG/FSSAI/2019 - Mandatory BIS licence precondition for FSSAI food business licence"
+    ],
+    "source_url": "https://fssai.gov.in/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-TOYS-2020",
+    "qco_name": "Toys (Quality Control) Order, 2020",
+    "product": "Children's Toys (Mechanical, Physical, and Chemical Safety)",
+    "is_numbers": [
+      "IS 9873 (Part 1) : 2019",
+      "IS 9873 (Part 2) : 2017",
+      "IS 9873 (Part 3) : 2020"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2021-01-01",
+    "amendments": [
+      "S.O. 853(E) dated 2020-02-25 - All imported and domestically manufactured toys require Scheme-I ISI mark"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders/toys-quality-control-order",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-SOLAR-PV-2017",
+    "qco_name": "Solar Photovoltaics, Systems, Devices and Components Goods (Compulsory Registration) Order, 2017",
+    "product": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules",
+    "is_numbers": [
+      "IS 14286 : 2010"
+    ],
+    "issuing_ministry": "Ministry of New and Renewable Energy (MNRE)",
+    "mandatory": true,
+    "enforcement_date": "2018-04-16",
+    "amendments": [
+      "MNRE notification S.O. 2920(E) dated 2017-09-05 enforcing mandatory registration under BIS CRS"
+    ],
+    "source_url": "https://mnre.gov.in/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-GOLD-HALLMARKING-2020",
+    "qco_name": "Hallmarking of Gold Jewellery and Gold Artefacts Order, 2020",
+    "product": "Gold Jewellery and Gold Artefacts",
+    "is_numbers": [
+      "IS 1417 : 2016"
+    ],
+    "issuing_ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "mandatory": true,
+    "enforcement_date": "2021-06-16",
+    "amendments": [
+      "Phase I implemented in 256 notified districts on 2021-06-16",
+      "Phase IV expansion covering over 343 districts with mandatory 6-digit HUID laser stamping"
+    ],
+    "source_url": "https://www.bis.gov.in/hallmarking-overview/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-SILVER-HALLMARKING-2022",
+    "qco_name": "Silver Jewellery and Artefacts Hallmarking Regulatory Scheme",
+    "product": "Silver Jewellery and Silver Artefacts",
+    "is_numbers": [
+      "IS 2112 : 2014"
+    ],
+    "issuing_ministry": "Ministry of Consumer Affairs, Food and Public Distribution",
+    "mandatory": false,
+    "enforcement_date": "2022-01-01",
+    "amendments": [
+      "Currently operating under voluntary consumer protection scheme with phased mandatory transition planned"
+    ],
+    "source_url": "https://www.bis.gov.in/hallmarking-overview/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-POLYETHYLENE-2021",
+    "qco_name": "Polyethylene Materials for Safe Use in Contact with Foodstuffs (Quality Control) Order, 2021",
+    "product": "Polyethylene Materials for Food & Beverage Packaging",
+    "is_numbers": [
+      "IS 10146 : 1982"
+    ],
+    "issuing_ministry": "Department of Chemicals and Petrochemicals (DCPC)",
+    "mandatory": true,
+    "enforcement_date": "2022-04-03",
+    "amendments": [
+      "DCPC Gazette S.O. 1475(E) - Requires mandatory ISI standard mark for all raw resin and packaging film"
+    ],
+    "source_url": "https://chemicals.gov.in/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-SINKS-2024",
+    "qco_name": "Domestic Stainless Steel Sinks (Quality Control) Order, 2024",
+    "product": "Domestic Stainless Steel Sinks",
+    "is_numbers": [
+      "IS 14625 : 1999"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2025-01-01",
+    "amendments": [
+      "DPIIT Gazette notification S.O. 2489(E) dated 2024-06-12"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  }
+]

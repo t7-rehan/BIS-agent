@@ -1,0 +1,146 @@
+[
+  {
+    "source_id": "SRC-BIS-MAIN",
+    "title": "Bureau of Indian Standards Official Portal",
+    "url": "https://www.bis.gov.in/",
+    "source_type": "BIS_GENERAL",
+    "authority": "Bureau of Indian Standards, Ministry of Consumer Affairs, Food and Public Distribution, Government of India",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-BIS-KYS",
+    "title": "Know Your Standard (KYS) Directory",
+    "url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails",
+    "source_type": "BIS_STANDARD",
+    "authority": "Bureau of Indian Standards (BIS)",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-BIS-MANAK",
+    "title": "Manakonline e-BIS Conformity Assessment Portal",
+    "url": "https://www.manakonline.in/",
+    "source_type": "BIS_CERTIFICATION",
+    "authority": "Bureau of Indian Standards (BIS)",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-BIS-QCO-DIR",
+    "title": "Products Under Compulsory Certification / Quality Control Orders Directory",
+    "url": "https://www.bis.gov.in/product-certification/products-under-compulsory-certification/",
+    "source_type": "BIS_QCO",
+    "authority": "Bureau of Indian Standards & Ministry Gazette Notifications",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-BIS-CRS",
+    "title": "Compulsory Registration Scheme (CRS) Portal for Electronics & IT Goods",
+    "url": "https://www.crsbis.in/BIS/",
+    "source_type": "BIS_CERTIFICATION",
+    "authority": "Ministry of Electronics and Information Technology (MeitY) & BIS",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-BIS-LIMS",
+    "title": "BIS Laboratory Information Management System (LIMS) & Directory",
+    "url": "https://www.lims.bis.gov.in/",
+    "source_type": "BIS_LABORATORY",
+    "authority": "Central Laboratory Division, Bureau of Indian Standards",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-BIS-HALLMARKING",
+    "title": "BIS Hallmarking & Hallmark Unique Identification (HUID) Guidelines",
+    "url": "https://www.bis.gov.in/hallmarking-overview/",
+    "source_type": "BIS_CERTIFICATION",
+    "authority": "Hallmarking Department, Bureau of Indian Standards",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-DPIIT-ELECTRICAL-QCO",
+    "title": "Electrical Equipment (Quality Control) Order, 2020",
+    "url": "https://dpiit.gov.in/sites/default/files/Electrical_Equipment_QCO_2020.pdf",
+    "source_type": "BIS_QCO",
+    "authority": "Department for Promotion of Industry and Internal Trade (DPIIT), Ministry of Commerce and Industry",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-MCA-COOKER-QCO",
+    "title": "Domestic Pressure Cooker (Quality Control) Order, 2020",
+    "url": "https://consumeraffairs.nic.in/acts-and-rules/quality-control-orders/domestic-pressure-cooker-order",
+    "source_type": "BIS_QCO",
+    "authority": "Department of Consumer Affairs, Ministry of Consumer Affairs, Food and Public Distribution",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-STEEL-QCO",
+    "title": "Steel and Steel Products (Quality Control) Order, 2020",
+    "url": "https://steel.gov.in/quality-control-orders",
+    "source_type": "BIS_QCO",
+    "authority": "Ministry of Steel, Government of India",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-MORTH-HELMET-QCO",
+    "title": "Two Wheeler Helmets (Quality Control) Order, 2020",
+    "url": "https://morth.nic.in/notifications/two-wheeler-helmets-quality-control-order",
+    "source_type": "BIS_QCO",
+    "authority": "Ministry of Road Transport and Highways (MoRTH)",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-DPIIT-TOYS-QCO",
+    "title": "Toys (Quality Control) Order, 2020",
+    "url": "https://dpiit.gov.in/quality-control-orders/toys-quality-control-order",
+    "source_type": "BIS_QCO",
+    "authority": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-FSSAI-WATER",
+    "title": "Food Safety and Standards (Prohibition and Restrictions on Sales) Regulations - Packaged Water",
+    "url": "https://fssai.gov.in/upload/uploadfiles/files/Packaged_Drinking_Water_Regulations.pdf",
+    "source_type": "BIS_QCO",
+    "authority": "Food Safety and Standards Authority of India (FSSAI) & BIS",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-MNRE-SOLAR-QCO",
+    "title": "Solar Photovoltaics, Systems, Devices and Components Goods (Compulsory Registration) Order",
+    "url": "https://mnre.gov.in/solar-photovoltaics-quality-control-order/",
+    "source_type": "BIS_QCO",
+    "authority": "Ministry of New and Renewable Energy (MNRE)",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-BIS-CARE-APP",
+    "title": "BIS Care Mobile App Consumer Portal & Verification Guide",
+    "url": "https://www.bis.gov.in/consumer-affairs/bis-care-mobile-app/",
+    "source_type": "BIS_GENERAL",
+    "authority": "Consumer Affairs Department, Bureau of Indian Standards",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  },
+  {
+    "source_id": "SRC-BIS-LRS",
+    "title": "BIS Laboratory Recognition Scheme (LRS) Regulations and Guidelines",
+    "url": "https://www.bis.gov.in/laboratory-services/laboratory-recognition-scheme/",
+    "source_type": "BIS_LABORATORY",
+    "authority": "Laboratory Recognition Cell, Bureau of Indian Standards",
+    "retrieved_at": "2026-09-06T00:00:00Z",
+    "status": "ACTIVE"
+  }
+]

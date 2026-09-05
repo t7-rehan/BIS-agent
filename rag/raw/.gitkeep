@@ -1,0 +1,7 @@
+# Raw scraped/downloaded cache files
+rag/raw/*
+!rag/raw/.gitkeep
+
+# Processed intermediate data files
+rag/processed/*
+!rag/processed/.gitkeep

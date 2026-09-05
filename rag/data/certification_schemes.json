@@ -1,0 +1,226 @@
+[
+  {
+    "id": "SCHEME-ISI-LUMINAIRES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Luminaires - Particular Requirements - Emergency Lighting",
+    "is_numbers": [
+      "IS 10322 (Part 5/Sec 8) : 2013"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-CRS-LED",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Self-Ballasted LED Lamps for General Lighting Services",
+    "is_numbers": [
+      "IS 16102 (Part 1) : 2012"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-ISI-CONTROLGEAR",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Electronic Controlgear for LED Modules",
+    "is_numbers": [
+      "IS 15885 (Part 2/Sec 13) : 2012"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-KITCHEN-MACHINES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Household Electric Food Mixers, Blenders, and Kitchen Machines",
+    "is_numbers": [
+      "IS 302 (Part 1) : 2024",
+      "IS 302 (Part 2/Sec 14) : 2009"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-PLUGS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Plugs and Socket-Outlets up to 250V",
+    "is_numbers": [
+      "IS 1293 : 2019"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-COOKERS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Domestic Pressure Cookers",
+    "is_numbers": [
+      "IS 2347 : 2017"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-TMT",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "High Strength Deformed Steel Bars and Wires (TMT)",
+    "is_numbers": [
+      "IS 1786 : 2008"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-STRUCTURAL-STEEL",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Hot Rolled Medium and High Tensile Structural Steel",
+    "is_numbers": [
+      "IS 2062 : 2011"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-HELMETS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Protective Helmets for Two-Wheeled Motor Vehicle Riders",
+    "is_numbers": [
+      "IS 4151 : 2020"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-EV-BATTERY",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Electric Vehicle Traction Battery Systems",
+    "is_numbers": [
+      "IS 14144 : 2023"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CEMENT-OPC",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Ordinary Portland Cement (33, 43, 53 Grades)",
+    "is_numbers": [
+      "IS 269 : 2015"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CEMENT-PPC",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Portland Pozzolana Cement (Fly Ash Based)",
+    "is_numbers": [
+      "IS 1489 (Part 1) : 2015"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-PACKAGED-WATER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Packaged Drinking Water & Natural Mineral Water",
+    "is_numbers": [
+      "IS 14543 : 2024",
+      "IS 13428 : 2005"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-TOYS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Children's Mechanical, Physical, and Chemical Toys",
+    "is_numbers": [
+      "IS 9873 (Part 1) : 2019",
+      "IS 9873 (Part 2) : 2017",
+      "IS 9873 (Part 3) : 2020"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-CRS-IT-LAPTOPS",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Information Technology Equipment (Laptops, Tablets, Notebooks)",
+    "is_numbers": [
+      "IS 13252 (Part 1) : 2010"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-CRS-LITHIUM-CELLS",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Portable Secondary Sealed Lithium Cells and Powerbanks",
+    "is_numbers": [
+      "IS 16046 (Part 2) : 2018"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-CRS-SOLAR-PV",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules",
+    "is_numbers": [
+      "IS 14286 : 2010"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-HALLMARKING-GOLD",
+    "scheme_name": "BIS Hallmarking Scheme for Gold Jewellery",
+    "product": "Gold Jewellery and Gold Artefacts",
+    "is_numbers": [
+      "IS 1417 : 2016"
+    ],
+    "certification_type": "Hallmarking Scheme (HUID)",
+    "mandatory": true,
+    "source_url": "https://www.bis.gov.in/hallmarking-overview/"
+  },
+  {
+    "id": "SCHEME-HALLMARKING-SILVER",
+    "scheme_name": "BIS Hallmarking Scheme for Silver Artefacts",
+    "product": "Silver Jewellery and Silver Artefacts",
+    "is_numbers": [
+      "IS 2112 : 2014"
+    ],
+    "certification_type": "Hallmarking Scheme",
+    "mandatory": false,
+    "source_url": "https://www.bis.gov.in/hallmarking-overview/"
+  },
+  {
+    "id": "SCHEME-ISI-FOOD-POLYETHYLENE",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Polyethylene for Contact with Foodstuffs, Pharma, and Water",
+    "is_numbers": [
+      "IS 10146 : 1982"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  }
+]

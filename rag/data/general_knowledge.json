@@ -1,0 +1,110 @@
+[
+  {
+    "id": "GK-QCO-MANDATORY-VS-VOLUNTARY",
+    "topic": "Regulatory Framework",
+    "title": "Understanding Quality Control Orders: Mandatory vs Voluntary Standards",
+    "text": "Indian Standards formulated by the Bureau of Indian Standards (BIS) are fundamentally voluntary in nature to encourage continuous quality improvement and technological standardization. However, under Section 16 of the Bureau of Indian Standards Act, 2016, the Central Government (through line ministries such as DPIIT, Ministry of Steel, MeitY, MoRTH, and Ministry of Consumer Affairs) has the statutory power to issue Quality Control Orders (QCOs) in the Official Gazette. A QCO makes compliance with specific Indian Standards legally compulsory for the protection of human, animal, or plant health, environmental safety, national security, or prevention of deceptive practices. Once a QCO takes effect, no enterprise may manufacture, import, store, sell, or distribute non-certified goods. Non-compliance is a punishable offense under the BIS Act, carrying severe financial penalties, seizure of consignments, and imprisonment up to two years.",
+    "source_url": "https://www.bis.gov.in/product-certification/products-under-compulsory-certification/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-SCHEME1-VS-SCHEME2",
+    "topic": "Certification Schemes",
+    "title": "Scheme-I (ISI Mark) vs Scheme-II (CRS): Key Operational Differences",
+    "text": "BIS operates multiple conformity assessment pathways tailored to industry characteristics. Scheme-I (Product Certification Scheme) is the traditional ISI Mark scheme. It requires the manufacturer to maintain complete in-house testing equipment, execute a formal Scheme of Inspection and Testing (SIT), and undergo a mandatory physical factory audit by BIS officers who inspect manufacturing lines and draw verification samples. Once granted, products bear the iconic ISI monogram with a Certification Marks Licence (CML) number. In contrast, Scheme-II (Compulsory Registration Scheme - CRS) was established in collaboration with MeitY for fast-moving electronics and IT hardware. Scheme-II does not require a pre-grant factory inspection; instead, manufacturers submit type-test reports from BIS-recognized NABL laboratories along with a formal self-declaration of conformity. Products certified under CRS carry the standard BIS CRS border logo with an assigned R-number.",
+    "source_url": "https://www.manakonline.in/",
+    "source_type": "BIS_CERTIFICATION",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-MANAKONLINE-PROCESS",
+    "topic": "Application Workflow",
+    "title": "Step-by-Step BIS Manakonline Application Process for Domestic Manufacturers",
+    "text": "Domestic manufacturers applying for a BIS licence under Scheme-I utilize the centralized Manakonline portal (manakonline.in). The procedure comprises eight structured stages: (1) Profile registration and digital signature verification on the portal. (2) Selection of the relevant Indian Standard and product sub-type. (3) Preparation of technical documentation including factory machinery layout, list of in-house testing equipment with calibration certificates, manufacturing process flow charts, and raw material test certificates. (4) Formulation of the in-house Scheme of Inspection and Testing (SIT). (5) Submission of Form V online alongside statutory application fees. (6) Deputation of a BIS Technical Officer for a physical factory inspection, verifying production capability and testing sealed factory samples. (7) Independent testing of sealed samples at a BIS or BIS-recognized laboratory. (8) Scrutiny of audit reports and grant of the CML licence upon payment of marking fees.",
+    "source_url": "https://www.manakonline.in/",
+    "source_type": "BIS_CERTIFICATION",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-FMCS-OVERVIEW",
+    "topic": "Foreign Certification",
+    "title": "Foreign Manufacturers Certification Scheme (FMCS) Requirements and Process",
+    "text": "Foreign manufacturers exporting goods covered under mandatory QCOs to India must obtain a BIS licence under the Foreign Manufacturers Certification Scheme (FMCS). The foreign entity must establish an Authorized Indian Representative (AIR) who is a resident citizen of India, legally responsible for ensuring compliance and handling regulatory correspondence. The application process requires submission of comprehensive manufacturing plant details, factory quality manuals, and payment of statutory audit and inspection fees. BIS technical officers travel to the foreign manufacturing facility to conduct an on-site audit, inspect quality controls, and seal production samples for testing in designated BIS laboratories in India. Licences under FMCS are granted initially for one to two years and require a performance bank guarantee.",
+    "source_url": "https://www.bis.gov.in/product-certification/foreign-manufacturers-certification-scheme-fmcs/",
+    "source_type": "BIS_CERTIFICATION",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-LAB-RECOGNITION-LRS",
+    "topic": "Laboratory & Testing",
+    "title": "The BIS Laboratory Recognition Scheme (LRS) and NABL Interoperability",
+    "text": "Under the BIS Laboratory Recognition Scheme (LRS), 2020, BIS grants recognition to external commercial, academic, and government testing laboratories to evaluate samples drawn during licence processing and post-market surveillance. A prerequisite for BIS recognition is valid accreditation by the National Accreditation Board for Testing and Calibration Laboratories (NABL) in accordance with ISO/IEC 17025 for the specific Indian Standards involved. Laboratories are audited by BIS assessment teams to verify equipment accuracy, environmental conditioning chambers, proficiency testing participation, and competence of testing personnel. Test reports issued by recognized laboratories via the digital BIS Laboratory Information Management System (LIMS) are legally binding evidence for conformity assessments.",
+    "source_url": "https://www.bis.gov.in/laboratory-services/laboratory-recognition-scheme/",
+    "source_type": "BIS_LABORATORY",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-SCHEME-INSPECTION-TESTING",
+    "topic": "Quality Assurance",
+    "title": "Understanding the Scheme of Inspection and Testing (SIT) for Factory QA",
+    "text": "Every licence under Scheme-I operates under a product-specific document known as the Scheme of Inspection and Testing (SIT). The SIT defines the minimum level of quality control that a manufacturer must maintain continuously on the shop floor. It categorizes testing into three distinct tiers: (1) Raw Material Tests: Verification of incoming inputs against approved supplier certificates or incoming inspection logs. (2) Routine Tests: 100% inspections performed on every manufactured unit to ensure immediate consumer safety (e.g. electrical flash insulation test on mixers, hydrostatic pressure test on pressure cookers). (3) Acceptance Tests: Lot-wise sampling tests carried out on batches before dispatch to verify statistical conformity (e.g. tensile pull of steel rebars, optical transmittance of visors). The manufacturer must record all test results in indelible registers and retain records for at least three years.",
+    "source_url": "https://www.manakonline.in/",
+    "source_type": "BIS_STANDARD",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-HUID-GOLD-GUIDE",
+    "topic": "Hallmarking",
+    "title": "Consumer Guide to Gold Hallmarking and 6-Digit HUID Verification",
+    "text": "Gold Hallmarking in India is governed under the Bureau of Indian Standards (Hallmarking) Regulations, 2018. Since June 2021, mandatory hallmarking has been enforced in over 343 notified districts across India. Genuine hallmarked gold jewellery bears three mandatory laser-engraved symbols: (1) The official triangular BIS Logo. (2) Purity in Karat and Fineness (e.g., 24K995 for 99.5% pure, 22K916 for 91.6% pure, 18K750 for 75.0% pure, 14K585 for 58.5% pure). (3) The 6-digit alphanumeric Hallmark Unique Identification (HUID) code. The HUID is unique to each piece of jewellery and is assigned by BIS-recognized Assaying and Hallmarking Centres (AHCs). Consumers can verify the legitimacy of any gold ornament instantaneously using the 'Verify HUID' feature in the BIS Care mobile app, which reveals the registered jeweller name, AHC registration, date of hallmarking, and exact tested fineness.",
+    "source_url": "https://www.bis.gov.in/hallmarking-overview/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-KNOW-YOUR-STANDARD",
+    "topic": "Standards Discovery",
+    "title": "Using 'Know Your Standard' (KYS) to Identify Applicable Indian Standards",
+    "text": "The BIS 'Know Your Standard' (KYS) portal is an open digital repository designed to help industry professionals, MSMEs, and researchers locate relevant standards. Users can search by standard number, product keyword, technical committee, or Harmonized System (ITC-HS) tariff classification code. For each standard, the KYS directory provides the active status, year of publication, technical division, scope narrative, price group, active amendments, and whether the standard is covered under an active or upcoming Quality Control Order. KYS also provides links to draft standards open for public comments during the consensus development stage, allowing manufacturers to participate in standards formulation.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails",
+    "source_type": "BIS_STANDARD",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-MSME-CONCESSIONS",
+    "topic": "MSME Support",
+    "title": "MSME Concessions, Fee Discounts, and Extended QCO Compliance Timelines",
+    "text": "Recognizing the vital role of Micro, Small, and Medium Enterprises (MSMEs) in the Indian economy, the Ministry of Consumer Affairs and line ministries offer substantial concessions for BIS compliance. Under the revised fee schedule, Micro enterprises receive up to an 80% concession on application and annual minimum marking fees, while Small enterprises receive a 50% concession, provided they possess a valid Udyam Registration Certificate. Furthermore, modern Quality Control Orders issued by DPIIT and Ministry of Steel feature staggered enforcement timelines: large manufacturers must comply upon the initial date, while Small enterprises receive an additional 6 months, and Micro enterprises receive an additional 12 months buffer to establish in-house test infrastructure without business disruption.",
+    "source_url": "https://www.bis.gov.in/product-certification/concessions-for-msme/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-BIS-CARE-APP",
+    "topic": "Consumer Protection",
+    "title": "BIS Care App: How Consumers Can Verify ISI Marks, CML Licences, and Report Violations",
+    "text": "The BIS Care mobile application, available on Android and iOS in bilingual Hindi and English, empowers consumers to verify the authenticity of certified products before purchasing. Through the 'Verify Licence (CML)' module, users input the 7-to-10 digit licence number displayed beneath the ISI mark to confirm the registered manufacturer's name, brand name, validity status, and certified product scope. The 'Verify R-Number' module provides similar verification for electronic goods certified under Scheme-II (CRS), while 'Verify HUID' verifies hallmarked gold jewellery. The application also provides an encrypted grievance registration system enabling consumers to lodge official complaints regarding substandard goods, unauthorized misuse of the ISI mark, or misleading claims, triggering inspection by BIS enforcement officers.",
+    "source_url": "https://www.bis.gov.in/consumer-affairs/bis-care-mobile-app/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-STANDARD-MARK-LABELING",
+    "topic": "Product Labeling",
+    "title": "Guidelines for Standard Mark (ISI Monogram) Embossing and CML Labeling",
+    "text": "The Bureau of Indian Standards (Conformity Assessment) Regulations, 2018 govern the visual representation and placement of the Standard Mark. The iconic ISI monogram must maintain exact geometric proportions as prescribed in the First Schedule. The Certification Marks Licence number (CML XXXXXXX) and the applicable Indian Standard number (e.g. IS 2347) must be indelibly printed, engraved, or embossed adjacent to the mark. For durable goods such as pressure cookers, steel bars, and vehicle helmets, the mark must be stamped or molded onto the product body so that it remains visible throughout the product's design life. False application or imitation of the Standard Mark is a criminal offense subject to statutory enforcement action.",
+    "source_url": "https://www.manakonline.in/",
+    "source_type": "BIS_STANDARD",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-MARKET-SURVEILLANCE",
+    "topic": "Enforcement & Penalties",
+    "title": "BIS Market Surveillance, Sample Seizure, and Penal Provisions under BIS Act 2016",
+    "text": "To protect consumer welfare and uphold fair competition, the Enforcement Directorate of BIS conducts systematic market surveillance across factory premises, wholesale hubs, and retail outlets. BIS enforcement officers possess search and seizure powers under Section 28 of the BIS Act, 2016. When counterfeit ISI marks or non-compliant mandatory QCO goods are discovered, enforcement squads execute search and seizure raids, impounding stock and initiating prosecution in the Court of Chief Judicial Magistrate. Under Section 29, manufacturing or selling goods in contravention of a mandatory QCO is punishable by imprisonment up to two years or a fine of up to ten times the value of the non-compliant goods or both.",
+    "source_url": "https://www.bis.gov.in/enforcement-activities/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  }
+]
