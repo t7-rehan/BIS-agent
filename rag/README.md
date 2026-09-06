@@ -1,10 +1,9 @@
-# RAG Knowledge Base & Ingestion Foundation (Phase 2)
+# RAG Knowledge Base, Vector Store & Retrieval Engine (Phase 4)
 
-Curated, authoritative, source-traceable knowledge dataset and document ingestion foundation for the **AI-powered Intelligent Assistant for Indian Standards and BIS Services for Industries and Consumers**.
+Curated, authoritative, source-traceable knowledge dataset, local vector store, and hybrid retrieval engine for the **AI-powered Intelligent Assistant for Indian Standards and BIS Services for Industries and Consumers**.
 
-> 📌 **Phase Status: Phase 2 — BIS Knowledge Data Collection & Ingestion Foundation**  
-> This directory houses the curated datasets, source registries, ingestion pipeline utilities, and semantic chunking foundation.  
-> **Note:** Vector databases, embeddings, neural retrievers, and LLM integrations are strictly out of scope for Phase 2 and will be layered on in subsequent phases.
+> 📌 **Phase Status: Phase 4 — RAG + Vector Search (COMPLETED)**  
+> This directory houses the curated datasets, source registries, document ingestion utilities, semantic chunking pipeline, local ChromaDB vector store, ONNX sentence-transformer embeddings, and unified hybrid retrieval service.
 
 ---
 
@@ -29,7 +28,7 @@ rag/
 │   ├── laboratories.json           # 20 BIS Central, Regional, and recognized NABL testing laboratories
 │   └── general_knowledge.json     # 12 Foundational articles explaining regulatory & consumer workflows
 │
-├── ingestion/                      # Reusable document ingestion utilities
+├── ingestion/                      # Document ingestion utilities
 │   ├── __init__.py
 │   ├── fetch.py                    # Safe HTTP fetcher with retries, backoff, and local disk cache
 │   ├── pdf_parser.py               # PDF parser extracting text, page markers, and standard clauses
@@ -39,120 +38,139 @@ rag/
 │   ├── __init__.py
 │   └── chunker.py                  # Semantic text chunker preserving parent source traceability
 │
+├── embeddings/                     # Local embedding generator
+│   ├── __init__.py
+│   └── embedder.py                 # BISEmbedder using all-MiniLM-L6-v2 (384 dims, local ONNX/CPU)
+│
+├── vector_store/                   # Persistent local vector database
+│   ├── __init__.py
+│   └── chroma_store.py             # ChromaStore wrapping ChromaDB with idempotent upserts & sanitization
+│
+├── retrieval/                      # Retrieval engines
+│   ├── __init__.py
+│   ├── retriever.py                # SemanticRetriever executing dense vector searches with cosine similarity
+│   └── hybrid.py                   # BISHybridRetriever merging vector search with SQLite relational lookups
+│
+├── index.py                        # Deterministic CLI & programmatic indexing pipeline
 ├── validate_data.py                # Automated integrity and foreign-key relational validation script
 └── README.md                       # This documentation file
 ```
 
 ---
 
-## 2. Authoritative Data Sources
+## 2. RAG Architecture & Ingestion Flow
 
-In strict compliance with the project's source policy, every record originates from official, authoritative government and statutory portals:
-
-1. **Bureau of Indian Standards (BIS):** [https://www.bis.gov.in/](https://www.bis.gov.in/)
-2. **Know Your Standard (KYS) Directory:** [https://www.services.bis.gov.in/...](https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails)
-3. **Products Under Compulsory Certification:** [https://www.bis.gov.in/product-certification/...](https://www.bis.gov.in/product-certification/products-under-compulsory-certification/)
-4. **Manakonline e-BIS Portal:** [https://www.manakonline.in/](https://www.manakonline.in/)
-5. **Compulsory Registration Scheme (CRS) Portal:** [https://www.crsbis.in/BIS/](https://www.crsbis.in/BIS/)
-6. **Laboratory Information Management System (LIMS):** [https://www.lims.bis.gov.in/](https://www.lims.bis.gov.in/)
-7. **Official Gazette Notifications:** DPIIT, Ministry of Steel, MeitY, MoRTH, Ministry of Consumer Affairs, and FSSAI.
+```
+Curated Data (rag/data/*.json)
+        │
+        ▼
+Semantic Chunker (rag/chunking/chunker.py)
+   [Document to 600-char chunks with 60-char overlap + metadata]
+        │
+        ▼
+Deterministic IDs ({doc_id}-chk-{index})
+        │
+        ▼
+Local Embeddings (rag/embeddings/embedder.py)
+   [all-MiniLM-L6-v2 via ONNX Runtime, 384 dimensions, CPU mode]
+        │
+        ▼
+ChromaDB Vector Store (backend/data/chroma/)
+   [Cosine metric, HNSW index, metadata filtering]
+        │
+        ▼
+Hybrid Retriever (rag/retrieval/hybrid.py)
+   ├── 1. Semantic vector search (top-k chunks)
+   ├── 2. Relational expansion via SQLite (BISQueryService)
+   │      - Extracted IS numbers & product aliases
+   │      - Linked standards, products, QCOs, schemes, labs
+   └── 3. Merged output with confidence score & deduplicated citations
+```
 
 ---
 
 ## 3. Dataset Scope & Statistics
 
-| Dataset | File | Record Count | Description |
-| :--- | :--- | :---: | :--- |
-| **Source Registry** | `sources/sources.json` | 16 | Central index of authoritative domains & gazettes |
-| **Indian Standards** | `data/standards.json` | 26 | IS numbers, titles, technical departments, KYS URLs |
-| **Products** | `data/products.json` | 23 | Products mapped to standards, QCOs, and schemes |
-| **Quality Control Orders** | `data/qcos.json` | 16 | Mandatory Gazette orders with enforcement dates |
-| **Certification Schemes** | `data/certification_schemes.json` | 20 | Scheme-I (ISI), Scheme-II (CRS), Hallmarking |
-| **Testing Laboratories** | `data/laboratories.json` | 20 | Central/Regional labs, testing scopes, validities |
-| **General Knowledge** | `data/general_knowledge.json` | 12 | In-depth regulatory, SIT, and consumer guides |
-
-### End-to-End Demo Flow Alignment
-The dataset is curated to enable the complete vertical compliance path across diverse industries:
-
-```
-User Query ("What BIS standard applies to electric mixers?")
-  │
-  ▼
-Product: Electric Food Mixer and Kitchen Grinder (PROD-ELECTRIC-MIXER)
-  │
-  ▼
-Applicable Standards: IS 302 (Part 1) : 2024 & IS 302 (Part 2/Sec 14) : 2009
-  │
-  ▼
-Mandatory QCO: Electrical Appliances for Domestic Purposes QCO, 2024 (QCO-APPLIANCES-2024)
-  │
-  ▼
-Certification Scheme: Scheme I - Product Certification (ISI Mark) (SCHEME-ISI-KITCHEN-MACHINES)
-  │
-  ▼
-Recognized Testing Labs: BIS Central Lab (Sahibabad), SROL (Chennai), NTH (Southern Region)
-  │
-  ▼
-Evidence & Knowledge: Step-by-step Manakonline filing guide + SIT requirements
-```
+| Dataset | File | Record Count | Chunks Indexed | Description |
+| :--- | :--- | :---: | :---: | :--- |
+| **Indian Standards** | `data/standards.json` | 26 | 30 | IS numbers, titles, technical departments, KYS URLs |
+| **Products** | `data/products.json` | 23 | 23 | Products mapped to standards, QCOs, and schemes |
+| **Quality Control Orders** | `data/qcos.json` | 16 | 16 | Mandatory Gazette orders with enforcement dates |
+| **Certification Schemes** | `data/certification_schemes.json` | 20 | 20 | Scheme-I (ISI), Scheme-II (CRS), Hallmarking |
+| **Testing Laboratories** | `data/laboratories.json` | 20 | 20 | Central/Regional labs, testing scopes, validities |
+| **General Knowledge** | `data/general_knowledge.json` | 12 | 12 | In-depth regulatory, SIT, and consumer guides |
+| **TOTAL** | | **117** | **121** | **Indexed in ChromaDB `bis_knowledge` collection** |
 
 ---
 
-## 4. Schemas & Integrity Rules
+## 4. How to Run Indexing
 
-All records are validated using `rag/validate_data.py`. Integrity rules enforce:
-1. **Uniqueness:** No duplicate record IDs or duplicate IS numbers.
-2. **Mandatory Source Traceability:** Every record contains an active `source_url` starting with `http`.
-3. **Foreign Key Cross-Referencing:**
-   - Every `applicable_is_numbers` in `products.json` must exist in `standards.json`.
-   - Every `qco_ids` in `products.json` must exist in `qcos.json`.
-   - Every `certification_scheme_ids` in `products.json` must exist in `certification_schemes.json`.
-   - Every `is_numbers` in `qcos.json` and `certification_schemes.json` must exist in `standards.json`.
-   - Every `applicable_is_numbers` in `laboratories.json` must reference a valid standard.
-
----
-
-## 5. Ingestion Pipeline & Chunking Utilities
-
-### Fetcher (`rag/ingestion/fetch.py`)
-- Polite HTTP fetching with custom User-Agent, socket timeouts, and exponential backoff retry.
-- Automatic disk caching to `rag/raw/<sha256_hash>.html|.pdf` to prevent redundant network requests.
-
-### Parsers
-- **HTML Parser (`rag/ingestion/html_parser.py`):** Uses Python standard library `html.parser.HTMLParser` to eliminate scripts, styles, and boilerplate navigation while preserving heading structure and clean paragraphs.
-- **PDF Parser (`rag/ingestion/pdf_parser.py`):** Structured PDF text reader that identifies standard clause markers (e.g. `Clause 4.1 Material Specification`, `Clause 7.1 Hydrostatic Test`).
-
-### Chunking Foundation (`rag/chunking/chunker.py`)
-- Splits documents along semantic boundaries (paragraphs, sentences, clauses).
-- Default chunk size: 500 characters, overlap: 50 characters.
-- **Preserves metadata on every chunk:** `document_id`, `document_title`, `source_url`, `source_type`, `chunk_index`, and character span offsets for precise citation attribution in future RAG phases.
-
----
-
-## 6. How to Run Data Validation
-
-Run the standalone validation script:
+### Standard Idempotent Indexing:
 ```powershell
-python rag/validate_data.py
+python -m rag.index
 ```
 
-Or execute via the project's automated test suite:
+### Full Re-index (Drop & Recreate Collection):
 ```powershell
-pytest backend/tests/test_rag_data.py -v
+python -m rag.index --reset
+```
+
+Execution takes ~4 to 7 seconds locally on standard CPU hardware.
+
+---
+
+## 5. Retrieval Usage Examples
+
+### Semantic Search:
+```python
+from rag.retrieval.retriever import SemanticRetriever
+
+retriever = SemanticRetriever()
+results = retriever.retrieve("domestic plugs and socket outlets safety", top_k=3)
+for r in results:
+    print(f"[{r['score']}] {r['chunk_id']}: {r['source_title']} -> {r['source_url']}")
+```
+
+### Hybrid Search (Vector + SQLite):
+```python
+from rag.retrieval.hybrid import BISHybridRetriever
+
+retriever = BISHybridRetriever()
+result = retriever.search("What standard applies to electric food mixers?")
+
+print("Confidence:", result.confidence_score)
+print("Semantic chunks:", len(result.semantic_chunks))
+print("Matched products:", [p["product_name"] for p in result.structured_entities.get("products", [])])
+print("Matched QCOs:", [q["name"] for q in result.structured_entities.get("qcos", [])])
+print("Sources:", [s["source_url"] for s in result.sources])
 ```
 
 ---
 
-## 7. How to Add a New BIS Source
+## 6. Evaluation Benchmark Suite
 
-1. **Register the Source:** Add an entry to `rag/sources/sources.json` with `source_id`, `title`, `url`, `source_type`, `authority`, and `retrieved_at`.
-2. **Add Standards:** If the source introduces new standards, add their metadata and `is_number` to `rag/data/standards.json`.
-3. **Add Products / QCOs / Labs:** Ensure that any newly referenced standard codes exactly match `is_number` in `standards.json`.
-4. **Validate Integrity:** Run `python rag/validate_data.py` to ensure all foreign key relationships and schema constraints pass without errors.
+A benchmark evaluation suite with 15 real-world queries across 5 categories is defined in `tests/rag/evaluation_queries.json` and tested in `backend/tests/test_retrieval.py`:
+
+- Standard Lookups (`IS 1293`, `IS 302`, `IS 2347`, `IS 10322`)
+- QCO Mandates (`QCO-APPLIANCES-2024`, `QCO-TOYS-2020`, `QCO-PLUGS-2020`)
+- Certification Schemes (`SCHEME-1-ISI`, `SCHEME-2-CRS`, `SCHEME-FMCS`)
+- Laboratory Testing Facilities (`LAB-BIS-CENTRAL`, `LAB-NTH-KOL`, `LAB-CL-MUMBAI`)
+- General Knowledge & Hallmarking (ISI vs CRS, Jewellery Hallmarking)
+
+All 15 benchmark queries achieve 100% precision with positive confidence scores and verified official source citations.
 
 ---
 
-## 8. Limitations & Future Scope
+## 7. Testing
 
-- **Prototype Scope:** The dataset currently covers 26 major Indian Standards across high-priority SIH domains (lighting, electronics, cookware, steel, automotive, toys, solar, water, hallmarking). Full nationwide coverage entails tens of thousands of standards.
-- **No Vector Embeddings Yet:** Embeddings and vector database ingestion are intentionally deferred to subsequent phases as per project roadmap.
+Run all RAG and retrieval test suites:
+```powershell
+pytest backend/tests/test_embeddings.py -v
+pytest backend/tests/test_vector_store.py -v
+pytest backend/tests/test_retrieval.py -v
+```
+
+Run entire test suite (all 45 tests across Phases 1-4):
+```powershell
+pytest backend/tests/ -v
+```

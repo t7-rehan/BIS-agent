@@ -8,34 +8,34 @@ interface SuggestedQueriesProps {
 
 export const SUGGESTED_QUERIES = [
   {
-    title: 'LED Emergency Light Requirements',
-    query: 'I manufacture LED emergency lights. What BIS requirements apply to me?',
-    category: 'Electrical'
+    title: 'Product → Standard Lookup',
+    query: 'Which Indian Standard applies to pressure cookers?',
+    category: 'Standard Search'
   },
   {
-    title: 'Pressure Cooker Certification',
-    query: 'Is BIS certification mandatory for domestic pressure cookers under IS 2347?',
-    category: 'Consumer Goods'
+    title: 'Mandatory QCO Compliance',
+    query: 'Is BIS certification mandatory for pressure cookers under QCO?',
+    category: 'Statutory Order'
   },
   {
-    title: 'Structural Steel Rebar Specs',
-    query: 'What standard applies to Fe 500D TMT reinforcement steel bars and what are the testing protocols?',
-    category: 'Metallurgy'
+    title: 'Recognized Testing Labs',
+    query: 'Which recognized laboratory can test cement under IS 1489?',
+    category: 'Laboratories'
   },
   {
-    title: 'Two-Wheeler Protective Helmet',
-    query: 'What are the safety testing rules for motorcycle helmets under IS 4151?',
-    category: 'Automotive'
+    title: 'Standard Details & Scope',
+    query: 'Tell me about IS 2347.',
+    category: 'Standard Spec'
   },
   {
-    title: 'ISI Mark vs CRS Scheme',
-    query: 'What is the difference between Scheme-I (ISI Mark) and Scheme-II (CRS)?',
-    category: 'Certification'
+    title: 'Clarification on Ambiguity',
+    query: 'Which standard applies to my product?',
+    category: 'Interactive Flow'
   },
   {
-    title: 'Testing Laboratories Finder',
-    query: 'Find BIS-recognized and NABL-accredited test laboratories for electrical safety.',
-    category: 'Testing'
+    title: 'National Standards Body',
+    query: 'What is the role of the Bureau of Indian Standards in India?',
+    category: 'General BIS'
   }
 ];
 

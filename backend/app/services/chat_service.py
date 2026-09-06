@@ -17,10 +17,10 @@ logger = logging.getLogger(__name__)
 
 
 class ChatService:
-    """Service to process user chat queries."""
+    """Service to process user chat queries via the AI Orchestrator."""
 
     async def process_chat(self, request: ChatRequest) -> ChatResponse:
-        """Process a chat query and return a structured response.
+        """Process a chat query through the evidence-grounded AI pipeline.
 
         Args:
             request: The validated user query.
@@ -29,14 +29,8 @@ class ChatService:
             ChatResponse: Structured response with answer, intent, sources, and confidence.
         """
         logger.info("Processing chat query: %s", request.message[:80])
-
-        # Phase 1: Clean placeholder response validating backend foundation
-        return ChatResponse(
-            answer="Backend connection is working. AI and BIS knowledge retrieval will be added in later phases.",
-            intent="GENERAL_QUERY",
-            sources=[],
-            confidence=None,
-        )
+        from app.services.orchestrator import orchestrator
+        return orchestrator.orchestrate(request.message)
 
 
 chat_service = ChatService()

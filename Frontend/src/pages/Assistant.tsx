@@ -5,58 +5,57 @@ import {
   Plus,
   Send,
   ShieldCheck,
-  RotateCcw,
-  BookOpen,
-  ArrowRight,
   History,
   Bookmark,
+  Trash2,
   CheckCircle2,
-  Trash2
+  AlertCircle
 } from 'lucide-react';
-import { ChatMessage as ChatMessageType, AIStructuredResponse } from '../types/ai';
+import { ChatMessage as ChatMessageType, ChatResponse } from '../types/ai';
 import { ChatMessage } from '../components/ai/ChatMessage';
 import { SuggestedQueries } from '../components/ai/SuggestedQueries';
 import { DisclaimerBanner } from '../components/common/DisclaimerBanner';
-import { aiService } from '../services/aiService';
-import { getMockAIResponse } from '../data/mockAIResponses';
+import { aiService, AssistantApiError } from '../services/aiService';
 import { useApp } from '../context/AppContext';
 
 export const Assistant: React.FC = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { evidenceMode, setEvidenceMode, savedStandards } = useApp();
+  const { savedStandards } = useApp();
 
   const [inputPrompt, setInputPrompt] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [backendOnline, setBackendOnline] = useState<boolean | null>(null);
+  const [messages, setMessages] = useState<ChatMessageType[]>([]);
   const chatBottomRef = useRef<HTMLDivElement>(null);
-
-  // Initial Demo conversation pre-loaded
-  const [messages, setMessages] = useState<ChatMessageType[]>([
-    {
-      id: 'msg-demo-user',
-      sender: 'user',
-      timestamp: '10:14 AM',
-      text: 'I manufacture LED emergency lights. What BIS requirements apply to my product?'
-    },
-    {
-      id: 'msg-demo-assistant',
-      sender: 'assistant',
-      timestamp: '10:14 AM',
-      structuredResponse: getMockAIResponse('I manufacture LED emergency lights')
-    }
-  ]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const recentChats = [
-    { title: 'LED certification requirements', query: 'I manufacture LED emergency lights. What BIS requirements apply to my product?' },
-    { title: 'Pressure cooker standard', query: 'Is BIS certification mandatory for domestic pressure cookers under IS 2347?' },
-    { title: 'BIS licence verification', query: 'How to verify BIS CML licence number and Gold Hallmark HUID?' },
-    { title: 'Steel product requirements', query: 'What standard applies to Fe 500D TMT reinforcement steel bars and what are the testing protocols?' }
+    { title: 'Pressure cooker standard & QCO', query: 'Which Indian Standard applies to pressure cookers and is ISI mandatory?' },
+    { title: 'Testing laboratories for cement', query: 'Which recognized laboratory can test cement under IS 1489?' },
+    { title: 'Standard details for IS 2347', query: 'Tell me about IS 2347.' },
+    { title: 'Clarification flow (vague query)', query: 'Which standard applies to my product?' },
+    { title: 'Gold Hallmarking HUID check', query: 'What are the rules for 6-digit HUID gold jewellery hallmarking?' },
+    { title: 'Scheme-I vs Scheme-II (CRS)', query: 'What is the difference between Scheme-I (ISI Mark) and Scheme-II (CRS)?' }
   ];
+
+  // Check backend health on initial mount
+  useEffect(() => {
+    let isMounted = true;
+    aiService.checkHealth().then((res) => {
+      if (isMounted) {
+        setBackendOnline(Boolean(res && res.status === 'ok'));
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Handle URL query parameter `?q=...`
   useEffect(() => {
     const q = searchParams.get('q');
-    if (q) {
+    if (q && q.trim()) {
       handleSendMessage(q);
     }
   }, [searchParams]);
@@ -67,7 +66,9 @@ export const Assistant: React.FC = () => {
   }, [messages, isTyping]);
 
   const handleSendMessage = async (textToSend?: string) => {
-    const prompt = (textToSend || inputPrompt).trim();
+    if (isTyping) return; // Prevent duplicate submissions
+
+    const prompt = (textToSend || inputRef.current?.value || inputPrompt).trim();
     if (!prompt) return;
 
     const userMessage: ChatMessageType = {
@@ -89,42 +90,45 @@ export const Assistant: React.FC = () => {
     setIsTyping(true);
 
     try {
-      const response = await aiService.queryAssistant(prompt, evidenceMode);
+      const response: ChatResponse = await aiService.queryAssistant(prompt);
+
       setMessages((prev) =>
         prev.map((msg) => {
           if (msg.id !== streamingMessage.id) return msg;
 
-          if ('answer' in response && typeof response.answer === 'string') {
-            return {
-              ...msg,
-              isStreaming: false,
-              text: response.answer,
-              structuredResponse: undefined,
-            };
-          }
-
           return {
             ...msg,
             isStreaming: false,
-            structuredResponse: response as AIStructuredResponse,
+            chatResponse: response,
           };
         })
       );
-    } catch {
+      setBackendOnline(true);
+    } catch (err: unknown) {
+      let errorMessage = 'Unable to connect to the BIS assistant right now. Please check that the backend is running and try again.';
+      if (err instanceof AssistantApiError) {
+        errorMessage = err.message;
+      } else if (err instanceof Error) {
+        errorMessage = err.message;
+      }
+
       setMessages((prev) =>
         prev.map((msg) =>
           msg.id === streamingMessage.id
-            ? { ...msg, isStreaming: false, text: 'Unable to process query. Please try again.' }
+            ? { ...msg, isStreaming: false, error: true, text: errorMessage }
             : msg
         )
       );
     } finally {
       setIsTyping(false);
+      inputRef.current?.focus();
     }
   };
 
   const handleNewConversation = () => {
     setMessages([]);
+    setInputPrompt('');
+    inputRef.current?.focus();
   };
 
   return (
@@ -134,18 +138,18 @@ export const Assistant: React.FC = () => {
         {/* + New Conversation Button */}
         <button
           onClick={handleNewConversation}
-          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-300 hover:border-blue-500 bg-white hover:bg-blue-50/50 text-xs font-bold text-slate-800 transition-all shadow-2xs"
+          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-300 hover:border-blue-500 bg-white hover:bg-blue-50/50 text-xs font-bold text-slate-800 transition-all shadow-2xs cursor-pointer"
         >
           <Plus className="w-4 h-4 text-blue-600" />
           <span>New Conversation</span>
         </button>
 
-        {/* Recent Conversations */}
+        {/* Recent Queries */}
         <div className="flex-1 overflow-y-auto space-y-1 text-left">
           <div className="flex items-center justify-between px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
             <span className="flex items-center gap-1">
               <History className="w-3 h-3" />
-              <span>Recent Queries</span>
+              <span>Suggested BIS Queries</span>
             </span>
           </div>
 
@@ -153,7 +157,8 @@ export const Assistant: React.FC = () => {
             <button
               key={idx}
               onClick={() => handleSendMessage(item.query)}
-              className="w-full p-2 text-left text-xs font-medium text-slate-700 hover:bg-slate-100 hover:text-blue-700 rounded-lg transition-colors truncate block"
+              disabled={isTyping}
+              className="w-full p-2 text-left text-xs font-medium text-slate-700 hover:bg-slate-100 hover:text-blue-700 rounded-lg transition-colors truncate block disabled:opacity-50 cursor-pointer"
               title={item.query}
             >
               {item.title}
@@ -168,12 +173,12 @@ export const Assistant: React.FC = () => {
                 <span>Saved Standards</span>
               </span>
             </div>
-            {savedStandards.length > 0 ? (
+            {savedStandards && savedStandards.length > 0 ? (
               savedStandards.map((stdId) => (
                 <button
                   key={stdId}
                   onClick={() => navigate(`/standards/${stdId}`)}
-                  className="w-full p-2 text-left text-xs font-mono font-semibold text-blue-800 hover:bg-blue-50 rounded-lg transition-colors truncate block"
+                  className="w-full p-2 text-left text-xs font-mono font-semibold text-blue-800 hover:bg-blue-50 rounded-lg transition-colors truncate block cursor-pointer"
                 >
                   {stdId.replace(/-/g, ' ')}
                 </button>
@@ -186,27 +191,17 @@ export const Assistant: React.FC = () => {
           </div>
         </div>
 
-        {/* Evidence Status Pill */}
+        {/* Backend & Evidence Status Card */}
         <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-left space-y-1.5">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-800">Evidence Mode</span>
-            <button
-              onClick={() => setEvidenceMode(!evidenceMode)}
-              className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                evidenceMode ? 'bg-blue-600' : 'bg-slate-300'
-              }`}
-            >
-              <span
-                className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                  evidenceMode ? 'translate-x-4' : 'translate-x-0'
-                }`}
-              />
-            </button>
+            <span className="text-xs font-bold text-slate-800">Statutory Grounding</span>
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              <ShieldCheck className="w-3 h-3 text-emerald-600" />
+              <span>ACTIVE</span>
+            </span>
           </div>
           <p className="text-[10px] text-slate-500 leading-snug">
-            {evidenceMode
-              ? '● Grounded citations & step reasoning enabled'
-              : '○ Basic simulated responses'}
+            All answers are synthesized from Indian Standards, DPIIT/MeitY gazettes, and official BIS registries.
           </p>
         </div>
       </aside>
@@ -221,33 +216,36 @@ export const Assistant: React.FC = () => {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-sm font-bold text-slate-900">BIS AI Assistant</h1>
+                <h1 className="text-sm font-bold text-slate-900">BIS Intelligent Assistant</h1>
                 <span className="text-[10px] font-mono px-1.5 py-0.2 bg-blue-50 text-blue-700 rounded border border-blue-200">
-                  BIS-Intelligence-v1.4
+                  Phases 1–6 Live
                 </span>
               </div>
               <p className="text-[11px] text-slate-500 hidden sm:block">
-                Trained on Indian Standards, QCO Gazette Orders & Testing Specifications
+                Powered by FastAPI, ChromaDB Hybrid Retrieval & Google Gemini
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            <div
-              className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-full border ${
-                evidenceMode
-                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                  : 'bg-slate-100 text-slate-600 border-slate-200'
-              }`}
-            >
-              <span className={`w-2 h-2 rounded-full ${evidenceMode ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'}`}></span>
-              <span>Evidence Mode {evidenceMode ? 'ON' : 'OFF'}</span>
-            </div>
+            {backendOnline !== null && (
+              <div
+                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-full border ${
+                  backendOnline
+                    ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                    : 'bg-amber-50 text-amber-700 border-amber-200'
+                }`}
+                title={backendOnline ? 'FastAPI Backend Online' : 'Checking Backend Connection'}
+              >
+                <span className={`w-2 h-2 rounded-full ${backendOnline ? 'bg-emerald-500' : 'bg-amber-500 animate-pulse'}`}></span>
+                <span>{backendOnline ? 'Backend Online' : 'Connecting...'}</span>
+              </div>
+            )}
 
             {messages.length > 0 && (
               <button
                 onClick={handleNewConversation}
-                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
                 title="Clear conversation"
               >
                 <Trash2 className="w-4 h-4" />
@@ -261,16 +259,16 @@ export const Assistant: React.FC = () => {
           <DisclaimerBanner variant="subtle" />
 
           {messages.length === 0 ? (
-            <div className="max-w-3xl mx-auto py-12 text-center space-y-6">
+            <div className="max-w-3xl mx-auto py-10 text-center space-y-6">
               <div className="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center mx-auto shadow-subtle">
                 <Sparkles className="w-8 h-8" />
               </div>
               <div className="space-y-2">
                 <h2 className="text-xl font-bold text-slate-900">
-                  How can BIS Sahayak assist your compliance journey today?
+                  How can the BIS Assistant guide your compliance journey today?
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto">
-                  Ask about your product, applicable IS standards, mandatory QCO notifications, testing protocols, or accredited laboratories.
+                  Ask about specific products, applicable Indian Standards, mandatory QCO gazette orders, certification schemes, or accredited laboratories.
                 </p>
               </div>
 
@@ -303,17 +301,27 @@ export const Assistant: React.FC = () => {
           >
             <div className="flex-1 relative">
               <input
+                ref={inputRef}
                 type="text"
                 value={inputPrompt}
                 onChange={(e) => setInputPrompt(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSendMessage();
+                  }
+                }}
                 placeholder="Ask about a product, standard, testing laboratory or BIS service…"
                 disabled={isTyping}
+                maxLength={2000}
+                aria-label="Ask about a product or standard"
                 className="w-full py-3 pl-4 pr-10 text-sm text-slate-900 bg-slate-50 hover:bg-slate-100 focus:bg-white border border-slate-200 focus:border-blue-500 rounded-xl focus:outline-none shadow-2xs transition-all disabled:opacity-50"
               />
             </div>
             <button
               type="submit"
               disabled={isTyping || !inputPrompt.trim()}
+              aria-label="Send message"
               className="px-4 py-3 bg-[#0B192C] hover:bg-[#1E3E62] disabled:bg-slate-300 text-white rounded-xl font-semibold text-xs flex items-center gap-1.5 shadow-sm transition-all shrink-0 cursor-pointer disabled:cursor-not-allowed active:scale-[0.98]"
             >
               <span>Send</span>
@@ -322,7 +330,7 @@ export const Assistant: React.FC = () => {
           </form>
 
           <div className="max-w-4xl mx-auto mt-2 text-[11px] text-slate-400 text-center flex items-center justify-center gap-1">
-            <span>AI-generated guidance • Verify important regulatory dates against official BIS sources</span>
+            <span>Evidence-grounded assistant • Official gazette verification recommended for statutory deadlines</span>
           </div>
         </div>
       </div>

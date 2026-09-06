@@ -84,18 +84,22 @@ BIS-agent/
 │   │
 │   ├── data/
 │   │   ├── .gitkeep
-│   │   └── bis.db                  # Local SQLite database (git-ignored)
+│   │   ├── bis.db                  # Local SQLite database (git-ignored)
+│   │   └── chroma/                 # Persistent local ChromaDB vector store
 │   │
 │   ├── tests/
 │   │   ├── __init__.py
 │   │   ├── test_health.py          # API health check tests
 │   │   ├── test_chat.py            # API chat validation tests
 │   │   ├── test_rag_data.py        # Dataset validation & parser unit tests
-│   │   └── test_database.py        # Database models, relations, seed, and query tests
+│   │   ├── test_database.py        # Database models, relations, seed, and query tests
+│   │   ├── test_embeddings.py      # Local embeddings (all-MiniLM-L6-v2) tests
+│   │   ├── test_vector_store.py    # ChromaDB upsert, query, and reset tests
+│   │   └── test_retrieval.py       # Semantic & hybrid retrieval and benchmark evaluation tests
 │   │
 │   ├── .env.example                # Backend environment variable template
 │   ├── pytest.ini                  # Pytest configuration with pythonpath = . ..
-│   ├── requirements.txt            # Backend Python dependencies
+│   ├── requirements.txt            # Backend Python dependencies (includes chromadb)
 │   └── README.md                   # Backend documentation
 │
 ├── Frontend/                       # React / Vite frontend shell (from previous phases)
@@ -146,30 +150,51 @@ BIS-agent/
   - Mandatory cross-referencing between products, standards, QCOs, certification schemes, and laboratories.
 - **Results:** All datasets passed validation; 12 tests passed.
 
-### Phase 3 — Database Foundation + Project Memory (CURRENT)
+### Phase 3 — Database Foundation + Project Memory
 - **Objective:** Build persistent structured database layer using SQLite and SQLAlchemy 2.0, implement idempotent seeding pipeline, structured query service, and project memory handoff.
 - **Implemented:**
   - Configuration: `DATABASE_URL` in `backend/app/core/config.py` and `backend/.env.example`.
   - Database engine & session management in `backend/app/db/database.py` with automatic SQLite foreign key enforcement (`PRAGMA foreign_keys=ON;`).
-  - SQLAlchemy 2.0 ORM models in `backend/app/db/models.py`:
-    - `Standard` (`standards`)
-    - `Product` (`products`)
-    - `ProductAlias` (`product_aliases`)
-    - `QCO` (`qcos`)
-    - `CertificationScheme` (`certification_schemes`)
-    - `Laboratory` (`laboratories`)
-    - `GeneralKnowledge` (`general_knowledge`)
-    - 6 Many-to-Many Association Tables: `product_standards`, `product_qcos`, `product_certification_schemes`, `qco_standards`, `scheme_standards`, `laboratory_standards`.
-  - Idempotent seed pipeline in `backend/app/db/seed.py` executable via CLI (`python -m app.db.seed`).
+  - SQLAlchemy 2.0 ORM models in `backend/app/db/models.py`: `Standard`, `Product`, `ProductAlias`, `QCO`, `CertificationScheme`, `Laboratory`, `GeneralKnowledge`, and 6 many-to-many association tables.
+  - Idempotent seed pipeline in `backend/app/db/seed.py` executable via CLI (`python -m backend.app.db.seed`).
   - Independent query service in `backend/app/services/query_service.py` (`BISQueryService`).
   - Automated test suite in `backend/tests/test_database.py` covering table creation, seeding, idempotency, foreign key enforcement, relationships, searches, and edge cases.
-  - Root persistent memory document `Memory.md`.
 - **Key Decisions:**
-  - SQLite used for MVP: zero external server dependency, exceptional read speed, file-based simplicity.
-  - Relational mapping rather than comma-separated strings: Enables bidirectional queries (`product -> standards` and `standard -> products`, `standard -> laboratories`).
-  - Strict foreign key enforcement via SQLite PRAGMA hook.
-  - Idempotent upsert behavior: Re-running seed updates records without duplicate associations or primary key errors.
+  - SQLite used for local MVP simplicity and rapid queries.
+  - Relational mapping rather than comma-separated strings for bidirectional queries.
 - **Results:** 27 pytest tests passed (100% pass rate).
+
+### Phase 4 — RAG + Vector Search (COMPLETED)
+- **Objective:** Convert curated BIS knowledge into searchable chunks, embed locally using sentence-transformers, store embeddings and metadata in local ChromaDB, implement idempotent indexing CLI, and build unified hybrid retrieval combining vector similarity with SQLite relational lookups.
+- **Implemented:**
+  - **Local Embedding Pipeline (`rag/embeddings/embedder.py`):** `BISEmbedder` wrapping `all-MiniLM-L6-v2` via ONNX Runtime / ChromaDB embedding function. Generates 384-dimensional dense vectors locally on CPU with zero external API calls or cost.
+  - **ChromaDB Vector Store (`rag/vector_store/chroma_store.py`):** `ChromaStore` managing persistent collection `bis_knowledge` in `backend/data/chroma/`. Implements cosine similarity space, deterministic chunk IDs (`{doc_id}-chk-{index}`), metadata sanitization, and batch upserts.
+  - **Indexing Pipeline CLI (`rag/index.py`):** Transforms all 6 curated datasets into 121 structured TextChunks using `rag/chunking/chunker.py`. Executable via `python -m rag.index` and `python -m rag.index --reset`. Re-indexing is 100% idempotent with zero duplicates.
+  - **Semantic Retriever (`rag/retrieval/retriever.py`):** `SemanticRetriever` executing vector similarity searches, top-k retrieval, and metadata filtering by `document_type`.
+  - **Hybrid Retriever (`rag/retrieval/hybrid.py`):** `BISHybridRetriever` merging semantic vector hits with SQLite relational queries (`BISQueryService`), extracting IS numbers and product entities, attaching applicable QCOs, schemes, and laboratories, and deduplicating source citations.
+  - **Evaluation Benchmark Suite (`tests/rag/evaluation_queries.json`):** 15 benchmark queries across standard lookups, QCO mandates, schemes, labs, and general knowledge.
+  - **Automated Tests:** `test_embeddings.py` (5 tests), `test_vector_store.py` (6 tests), `test_retrieval.py` (7 tests).
+- **Key Decisions:**
+  - Local CPU embeddings (`all-MiniLM-L6-v2`) via ONNX Runtime to ensure deterministic reproducibility, zero latency dependencies, and no API keys.
+  - Embedded ChromaDB in `backend/data/chroma/` requiring no external server process or Docker daemon.
+  - Provenance on every chunk (`document_id`, `source_url`, `source_title`, `source_type`, `document_type`, `is_number`, `product_id`, `qco_id`).
+- **Results:** All 45 automated tests passed (100% pass rate in ~8.9 seconds). 121 total chunks indexed.
+
+### Phase 5 — LLM Integration + AI Orchestration
+- **Objective:** Integrate Google Gemini (`google-genai` SDK, `gemini-2.5-flash`), implement deterministic intent classification and entity extraction, build an AI Orchestrator combining structured DB lookups, vector chunks, and conservative LLM synthesis, and implement strict anti-hallucination validation with offline fallback.
+- **Implemented:**
+  - **Modern GenAI SDK Integration (`backend/app/services/llm_service.py`):** `GeminiLLMService` using official `google-genai==2.22.0` with conservative parameters (`temperature=0.1`, `max_output_tokens=1024`, `timeout=30.0`). Implemented graceful offline fallback when `GEMINI_API_KEY` is not set or when network/quota errors occur, returning a structured factual synthesis directly from retrieved evidence.
+  - **Deterministic Intent Classification (`backend/app/services/intent_service.py`):** Rule-based regex and alias matcher categorizing queries into 9 distinct intents: `PRODUCT_STANDARD_QUERY`, `QCO_COMPLIANCE_QUERY`, `CERTIFICATION_QUERY`, `LABORATORY_QUERY`, `HALLMARKING_QUERY`, `CONSUMER_SERVICE_QUERY`, `STANDARD_LOOKUP`, `GENERAL_BIS_QUERY`, and `UNKNOWN_QUERY`. Extracts `product_name`, `is_number`, `state`, `huid`, and handles underspecified queries with structured clarification prompts.
+  - **Evidence Packaging & Central Orchestrator (`backend/app/services/orchestrator.py`):** Central `BISOrchestrator` coordinating intent analysis, structured DB queries (`BISQueryService`), hybrid retrieval (`BISHybridRetriever`), context prompt assembly (`EvidencePackage`), LLM synthesis, anti-hallucination validation, and confidence scoring.
+  - **Anti-Hallucination Validation (`backend/app/services/response_validator.py`):** Verification filters checking cited standard numbers against database standards, flagging unverified IS numbers, checking mandatory QCO claims against verified QCO evidence, and appending statutory warnings or fallbacks if claims are unsupported.
+  - **Chat Routing Integration (`backend/app/api/chat.py` & `backend/app/services/chat_service.py`):** Updated `POST /api/chat` to route all queries through `BISOrchestrator` while maintaining Pydantic schema validation and backward compatibility.
+  - **Automated Tests:** 24 new tests across `test_intent.py` (10 tests), `test_llm.py` (4 tests), `test_orchestrator.py` (5 tests), `test_response_validation.py` (4 tests), plus updated `test_chat.py` (7 tests). 100% mocked offline execution requiring no real API key.
+- **Key Decisions:**
+  - Use `google-genai>=2.20.0,<3.0.0` (installed 2.22.0) rather than deprecated `google-generativeai`.
+  - Intent classification is strictly deterministic (zero latency, zero hallucination) with alias matching against all 70+ product aliases.
+  - Set hybrid vector score threshold (`score >= 0.45`) and regex word boundaries (`\b`) to prevent false-positive chunk expansion on irrelevant/extraterrestrial queries.
+  - Complete zero-API-key testability via mocking fixtures.
+- **Results:** 69 total automated tests passing (100% pass rate in ~10.7 seconds).
 
 ---
 
@@ -370,15 +395,14 @@ Or from project root:
 ## 9. Testing Status
 
 ### Test Summary
-- **Total Automated Tests Executed:** 27 pytest tests + 7 standalone dataset validation checks.
-- **Pass Rate:** 100% (27 passed, 0 failed, 0 errors).
-- **Execution Time:** ~1.7 seconds.
+- **Total Automated Tests Executed:** 69 pytest tests + 7 standalone dataset validation checks + 15 benchmark evaluation queries.
+- **Pass Rate:** 100% (69 passed, 0 failed, 0 errors).
+- **Execution Time:** ~10.7 seconds.
 
 ### Test Breakdown
-- **Phase 1 API Tests (8):**
+- **Phase 1 API Tests (6):**
   - Root endpoint discovery (`test_root_endpoint`)
   - Health check endpoint (`test_health_endpoint`)
-  - Chat valid query payload (`test_chat_valid_message`)
   - Chat input validations: empty, whitespace, missing field, non-string, length > 2000 (`test_chat_*`)
 - **Phase 2 Data & Ingestion Tests (4):**
   - Dataset relational integrity & schema check (`test_rag_datasets_relational_integrity`)
@@ -401,6 +425,144 @@ Or from project root:
   - General knowledge query by topic/keyword (`test_general_knowledge_lookup`)
   - Safe handling of non-existent entities (`test_nonexistent_references_handled_safely`)
   - Foreign key constraint enforcement (`test_foreign_key_enforcement`)
+- **Phase 4 Embeddings Tests (5):**
+  - `test_embedder_initialization`: 384 dimensions, local ONNX model
+  - `test_embed_single_text`: Dense float vector generation
+  - `test_embed_batch_documents`: Batch embedding shape consistency
+  - `test_embed_empty_and_whitespace_text`: Safe zero-vector fallbacks
+  - `test_semantic_similarity_distance`: Cosine similarity ordering
+- **Phase 4 Vector Store Tests (6):**
+  - `test_sanitize_metadata`: Metadata type sanitization for Chroma
+  - `test_vector_store_initialization`: Clean collection initialization
+  - `test_add_chunks_and_count`: TextChunk upsertion and count tracking
+  - `test_idempotent_upsert`: Zero duplication on repeated upserts
+  - `test_query_semantic_search`: Semantic search relevance ranking
+  - `test_get_by_id_and_reset`: ID lookup and collection reset
+- **Phase 4 Retrieval & Benchmark Tests (7):**
+  - `test_semantic_retriever_basic_query`: Top-k vector retrieval with citations
+  - `test_semantic_retriever_empty_query`: Graceful handling of empty input
+  - `test_semantic_retriever_document_type_filter`: Document type filtering
+  - `test_hybrid_retriever_empty_query`: Empty hybrid search handling
+  - `test_hybrid_retriever_standard_lookup`: IS number extraction, standard, and lab lookup
+  - `test_hybrid_retriever_product_and_qco_lookup`: Product, QCO, and scheme attachment
+  - `test_benchmark_evaluation_suite`: 15 evaluation queries verified with 100% precision
+- **Phase 5 Intent Classification Tests (10):**
+  - `test_intent_standard_lookup`: IS number pattern matching
+  - `test_intent_product_standard_query`: Product name and alias classification
+  - `test_intent_qco_compliance`: Mandatory QCO queries
+  - `test_intent_certification_scheme`: ISI / CRS / Scheme detection
+  - `test_intent_laboratory_query`: Lab and testing scope extraction
+  - `test_intent_hallmarking_query`: Gold, silver, and HUID queries
+  - `test_intent_consumer_service`: Grievance, BIS CARE, fake ISI marks
+  - `test_intent_general_bis`: Overview, history, organizational queries
+  - `test_intent_unknown_query`: Out-of-scope / irrelevant questions
+  - `test_underspecified_query_requires_clarification`: Single-word / vague questions triggering clarification
+- **Phase 5 LLM Service Tests (4):**
+  - `test_llm_offline_fallback`: Offline fallback generation when API key is missing
+  - `test_llm_mock_successful_generation`: Gemini JSON schema generation and structured parsing
+  - `test_llm_api_failure_raises_llm_error`: Exception handling on API error
+  - `test_llm_empty_response_raises_llm_error`: Handling empty candidate responses
+- **Phase 5 Response Validation Tests (4):**
+  - `test_validation_valid_response`: Accurate pass-through of verified standards and QCOs
+  - `test_validation_detects_unsupported_is_number`: Hallucination detection for unverified IS numbers
+  - `test_validation_flags_unsupported_mandatory_claim`: Stripping unsupported mandatory compliance claims
+  - `test_validation_empty_answer_replaced_with_fallback`: Safe fallback on empty LLM text
+- **Phase 5 Orchestrator & Chat Flow Tests (8):**
+  - `test_orchestrator_clarification_flow`: Underspecified query branching
+  - `test_orchestrator_insufficient_evidence_flow`: Low evidence / unknown intent handling
+  - `test_orchestrator_successful_product_query`: End-to-end product query synthesis with citations
+  - `test_orchestrator_standard_lookup_flow`: Direct IS number query synthesis with labs and standards
+  - `test_orchestrator_handles_llm_exception_gracefully`: Fallback synthesis on LLM error
+  - `test_chat_valid_message`: Integration test via HTTP Client
+  - `test_chat_underspecified_message_triggers_clarification`: HTTP test for interactive clarification
+
+---
+
+### Phase 6 — Frontend Integration + Conversational UI
+- **Objective:** Connect the React 19 + TypeScript + Vite frontend application to the FastAPI backend (`POST /api/chat`), strictly eliminating mock AI data and implementing an authoritative, user-friendly conversational interface.
+- **Implemented:**
+  - **Zero-Mock API Client (`Frontend/src/services/aiService.ts`):** Direct communication with backend `POST /api/chat` using configurable `VITE_API_URL`, 35s timeout abort controller, and structured error propagation.
+  - **Authoritative Conversational UI (`Frontend/src/pages/Assistant.tsx`):**
+    - Duplicate submission lock while requests are in-flight.
+    - Loading / typing indicator with animated bouncing dots.
+    - Real SIH BIS starter prompts ("Domestic Pressure Cooker", "Packaged Drinking Water", "Gold Jewellery Hallmarking", "Cement Testing Laboratories", "Toys Safety QCO").
+    - Network / backend error banners with "Try Again" action.
+    - Session reset / clear conversation feature.
+    - Real-time backend connectivity badge (`Operational` vs `Backend Offline`).
+  - **Rich Response Presentation Components:**
+    - `ChatMessage.tsx`: Central component orchestrating all structured metadata rendering.
+    - `ConfidenceBadge.tsx`: Qualitative confidence rating (`Confidence: High / Medium / Low`) with accessible color coding.
+    - `EntityBadges.tsx`: Interactive chips for identified Products, Standards (IS codes), QCO orders, States, and HUIDs.
+    - `SourceList.tsx`: Verified citations with external links (`[View Source ↗]`) with secure `rel="noopener noreferrer"`.
+    - `ClarificationCard.tsx`: Dedicated alert card rendering clarifying questions with suggested prompt options for ambiguous queries.
+    - `WarningBanner.tsx`: Warning notices highlighting regulatory caveats or unverified claims.
+  - **Automated Frontend Test Suite (`Frontend/src/__tests__/Assistant.test.tsx`):**
+    - 11 comprehensive Vitest + React Testing Library tests verifying all Phase 6 scenarios:
+      1. Initial empty state with suggestion starters.
+      2. Handling underspecified query triggering clarification card.
+      3. Dispatches correct API request with trimmed prompt.
+      4. Renders successful response with markdown answer and confidence badge.
+      5. Renders extracted entity badges.
+      6. Renders evidence summary points.
+      7. Renders verified source citations with valid external links.
+      8. Renders regulatory warning banners.
+      9. Handles network/backend errors with error message and retry button.
+      10. Prevents submission of empty or whitespace-only messages.
+      11. Resets conversation history when Clear is clicked.
+  - **Production Build:** Excluded test files from production `tsconfig.app.json`, verified zero-warning `tsc -b && vite build` bundle creation.
+- **Results:** 11/11 Vitest tests passed (100%), full production bundle built in 1.08s, live end-to-end communication with FastAPI verified.
+
+---
+
+### Phase 7 — Testing, SIH Demo & Final Polish
+- **Objective:** Perform end-to-end hardening, anti-hallucination verification, fallback validation, evaluation benchmarking, and demo preparation for the Smart India Hackathon.
+- **Implemented:**
+  - **Structured SIH Benchmark Dataset (`backend/tests/evaluation_queries.json`):** 20 comprehensive test cases covering Product -> Standard, Mandatory QCOs, Certification Schemes, Laboratories, Standard Lookups, Vague Queries, Insufficient Product Info, Out-of-scope Low Evidence, General BIS, and Edge Cases.
+  - **Automated SIH Evaluation Suite (`backend/tests/test_sih_evaluation.py`):** 21 automated pytest tests verifying intent classification, standard grounding, anti-hallucination guarantees, source domain legitimacy, and live `/api/chat` contract adherence.
+  - **Clarification Hardening (`intent_service.py`):** Single-word / vague product queries (e.g. `"cooker"`, `"toys"`) now trigger clarifying questions instead of speculative guessing.
+  - **Anti-Hallucination Gate (`orchestrator.py`):** Step 5 insufficient evidence check verifies direct entity presence and semantic cosine similarity (>= 0.58), reliably flagging out-of-scope queries (e.g. quantum spaceships) as `INSUFFICIENT_EVIDENCE` with 0.0 confidence and 0 invented standards.
+  - **Frontend Demo Polish (`Assistant.tsx`, `SuggestedQueries.tsx`):** Aligned starter suggestion cards and sidebar shortcuts with the 6 core SIH demo scenarios.
+  - **SIH Demo Playbook (`docs/SIH_DEMO_CHECKLIST.md`):** Complete startup commands, health checks, 6-step demo sequence showcasing trust and evidence, talking points, and quick recovery steps.
+  - **Phase 7 Completion Report (`docs/PHASE_7_COMPLETION_REPORT.md`):** Detailed report containing all 19 mandated sections.
+- **Results:** 102 / 102 automated tests passing (90 backend pytest + 12 frontend Vitest). 100% pass rate.
+
+---
+
+## 9. Testing Status
+
+### Test Summary
+- **Total Automated Tests Executed:** 102 tests (90 backend pytest tests + 12 frontend Vitest tests) + 7 standalone dataset validation checks + 20 benchmark evaluation queries.
+- **Pass Rate:** 100% (102 passed, 0 failed, 0 errors).
+- **Backend Execution Time:** ~11.8 seconds.
+- **Frontend Execution Time:** ~1.9 seconds.
+
+### Test Breakdown
+- **Phase 1 API Tests (6):** `test_root_endpoint`, `test_health_endpoint`, `test_chat_*`.
+- **Phase 2 Data & Ingestion Tests (4):** `test_rag_datasets_relational_integrity`, `test_html_parser`, `test_pdf_parser_fallback`, `test_chunker`.
+- **Phase 3 Database & Query Tests (15):** `test_database_initialization`, `test_model_creation_and_repr`, `test_seeding_counts`, `test_seed_idempotency`, `test_standard_retrieval`, `test_product_retrieval_and_aliases`, `test_product_to_standard_relationship`, `test_product_to_qco_relationship`, `test_product_to_certification_scheme_relationship`, `test_laboratory_to_standard_relationship`, `test_products_for_standard_reverse_lookup`, `test_qco_and_scheme_direct_lookups`, `test_general_knowledge_lookup`, `test_nonexistent_references_handled_safely`, `test_foreign_key_enforcement`.
+- **Phase 4 Embeddings Tests (5):** `test_embedder_initialization`, `test_embed_single_text`, `test_embed_batch_documents`, `test_embed_empty_and_whitespace_text`, `test_semantic_similarity_distance`.
+- **Phase 4 Vector Store Tests (6):** `test_sanitize_metadata`, `test_vector_store_initialization`, `test_add_chunks_and_count`, `test_idempotent_upsert`, `test_query_semantic_search`, `test_get_by_id_and_reset`.
+- **Phase 4 Retrieval & Benchmark Tests (7):** `test_semantic_retriever_basic_query`, `test_semantic_retriever_empty_query`, `test_semantic_retriever_document_type_filter`, `test_hybrid_retriever_empty_query`, `test_hybrid_retriever_standard_lookup`, `test_hybrid_retriever_product_and_qco_lookup`, `test_benchmark_evaluation_suite`.
+- **Phase 5 Intent Classification Tests (10):** `test_intent_standard_lookup`, `test_intent_product_standard_query`, `test_intent_qco_compliance`, `test_intent_certification_scheme`, `test_intent_laboratory_query`, `test_intent_hallmarking_query`, `test_intent_consumer_service`, `test_intent_general_bis`, `test_intent_unknown_query`, `test_underspecified_query_requires_clarification`.
+- **Phase 5 LLM Service Tests (4):** `test_llm_offline_fallback`, `test_llm_mock_successful_generation`, `test_llm_api_failure_raises_llm_error`, `test_llm_empty_response_raises_llm_error`.
+- **Phase 5 Response Validation Tests (4):** `test_validation_valid_response`, `test_validation_detects_unsupported_is_number`, `test_validation_flags_unsupported_mandatory_claim`, `test_validation_empty_answer_replaced_with_fallback`.
+- **Phase 5 Orchestrator & Chat Flow Tests (8):** `test_orchestrator_clarification_flow`, `test_orchestrator_insufficient_evidence_flow`, `test_orchestrator_successful_product_query`, `test_orchestrator_standard_lookup_flow`, `test_orchestrator_handles_llm_exception_gracefully`, `test_chat_valid_message`, `test_chat_underspecified_message_triggers_clarification`.
+- **Phase 6 & 7 Frontend Conversational UI Tests (12):**
+  - Initial state with starter suggestions
+  - Clarification card rendering for ambiguous queries
+  - API request dispatch with trimmed prompt
+  - Markdown answer text & confidence badge rendering
+  - Extracted entity chips display
+  - Key evidence points summary
+  - Clickable external source citations (`[View Source ↗]`)
+  - Regulatory warning and caveat banners
+  - Network/backend error recovery with retry
+  - Prevention of empty/whitespace submissions
+  - Conversational history clearing and state reset
+  - SIH demo query starter click dispatch
+- **Phase 7 SIH Evaluation Benchmark Tests (21):**
+  - 20 structured benchmark cases in `tests/test_sih_evaluation.py`
+  - 1 live `/api/chat` contract adherence test
 
 ---
 
@@ -408,34 +570,22 @@ Or from project root:
 
 1. **Curated MVP Dataset Size:** The database currently contains 26 standards and 23 products covering high-priority SIH domains (appliances, electronics, lighting, cookware, steel, automotive, toys, solar, packaged water, cement, gold hallmarking). While sufficient for the hackathon demo, full national coverage requires scaling to thousands of standards.
 2. **SQLite Write Concurrency:** SQLite is optimal for local development, fast read access, and demo evaluations. In high-concurrency production deployments with simultaneous multi-user writes, migration to PostgreSQL will be recommended.
-3. **No Embeddings or Vector Index Yet:** Semantic similarity and vector search are intentionally deferred to Phase 4. Currently, text search in the database relies on indexed SQL `LIKE` queries.
-4. **Chat Endpoint Is A Foundation Placeholder:** `/api/chat` currently returns a structured placeholder response confirming backend connectivity; real AI answers backed by RAG and database lookups will be connected in Phase 5.
+3. **Gemini API Key Required For Real-Time LLM Synthesis:** Without `GEMINI_API_KEY`, the orchestrator defaults to high-precision offline factual synthesis. When an API key is provided, full Gemini generation is active.
 
 ---
 
-## 11. How the Next AI Should Continue
+## 11. Final MVP State & Handoff
 
-### What to Read First
-1. Read `Memory.md` (this file) completely.
-2. Inspect `Phases.md` for Phase 4 deliverables.
-3. Check `backend/app/db/models.py` and `backend/app/services/query_service.py` to understand how structured data is retrieved.
-4. Inspect `rag/chunking/chunker.py` and `rag/data/*.json` to understand how documents are chunked and attributed.
+### Project Completion Status
+- **ALL PHASES (1 THROUGH 7) ARE COMPLETE AND 100% VERIFIED.**
+- **102 automated tests pass** (90 backend pytest + 12 frontend Vitest) with zero failures.
+- **Frontend production build passes** cleanly with zero TypeScript errors (`npm run build`).
+- **Security Audit:** 0 API keys or secrets committed; `.env` is strictly git-ignored.
+- **SIH Demo Checklist:** Ready in `docs/SIH_DEMO_CHECKLIST.md`.
+- **Phase 7 Completion Report:** Available in `docs/PHASE_7_COMPLETION_REPORT.md`.
 
-### Current Project State
-- Backend, Database, Ingestion, and Curated Data layers are complete and 100% verified.
-- 27 automated tests are passing.
-- Database can be seeded at any time using `python -m app.db.seed`.
-
-### Current Phase: Phase 4 — RAG + Vector Search
-The next AI agent must implement Phase 4:
-- Choose/confirm a lightweight local vector store (e.g. ChromaDB).
-- Select an appropriate embedding model (e.g., SentenceTransformers / `all-MiniLM-L6-v2` or Gemini embeddings via API).
-- Create a vector indexing pipeline that reads `rag/data/*.json`, applies `rag/chunking/chunker.py`, computes embeddings, and stores vectors with rich metadata (`standard_id`, `is_number`, `source_url`, `doc_type`).
-- Implement vector search queries with top-k retrieval and metadata filtering.
-- Add automated tests for vector ingestion and retrieval.
-
-### What Should NOT Be Changed Unnecessarily
-- Do NOT rewrite or break existing SQLAlchemy models in `backend/app/db/models.py`.
-- Do NOT alter `rag/data/*.json` schema or delete existing records.
-- Do NOT break the existing `POST /api/chat` or `GET /api/health` endpoints.
-- Do NOT start Phase 5 (LLM Orchestration) before completing Phase 4.
+### Recommended Post-MVP Scope (Phase 8+)
+- Multilingual regional language translation (Hindi, Tamil, Telugu, etc.).
+- Web Speech API voice input / output for consumer accessibility.
+- Stamped compliance dossier / PDF export with official BIS logos.
+- Daily automated Gazette web-scraping pipeline.

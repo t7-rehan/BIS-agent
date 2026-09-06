@@ -61,11 +61,13 @@ rag/raw/*
 rag/processed/*
 !rag/processed/.gitkeep
 
-# Database
+# Database & Vector Store
 *.db
 *.db-journal
 *.sqlite
 *.sqlite3
 backend/data/*.db
+backend/data/chroma/
+data/chroma/
 !backend/data/.gitkeep
 

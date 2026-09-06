@@ -1,10 +1,33 @@
-export type ConfidenceLevel = 'HIGH' | 'MEDIUM' | 'INSUFFICIENT';
+export type ConfidenceLevel = 'HIGH' | 'MEDIUM' | 'LOW' | 'INSUFFICIENT' | 'INSUFFICIENT_EVIDENCE';
+
+/** Authoritative BIS/Government reference source from backend */
+export interface SourceItem {
+  title: string;
+  url?: string | null;
+  source_type: string;
+  section?: string | null;
+  is_number?: string | null;
+}
+
+/** Comprehensive chat response schema returned by FastAPI /api/chat */
+export interface ChatResponse {
+  answer: string;
+  intent?: string;
+  confidence?: number | string | null;
+  confidence_level?: ConfidenceLevel | string | null;
+  needs_clarification: boolean;
+  clarifying_question?: string | null;
+  sources: SourceItem[];
+  evidence_used: string[];
+  warnings: string[];
+  entities?: Record<string, any>;
+}
 
 export interface SourceCitation {
   id: string;
   sourceType: 'Indian Standard' | 'QCO Gazette Notification' | 'BIS Scheme Manual' | 'Laboratory Guideline';
   title: string;
-  reference: string; // e.g. "Clause 5.2.1"
+  reference: string;
   excerpt: string;
   dateOrVersion: string;
   url?: string;
@@ -21,7 +44,7 @@ export interface ReasoningStep {
 export interface AIStructuredResponse {
   productIdentified: string;
   confidence: ConfidenceLevel;
-  confidenceScore: number; // e.g. 94
+  confidenceScore: number;
   summary: string;
   applicableStandards: {
     code: string;
@@ -58,6 +81,9 @@ export interface ChatMessage {
   sender: 'user' | 'assistant';
   timestamp: string;
   text?: string;
+  chatResponse?: ChatResponse;
   structuredResponse?: AIStructuredResponse;
   isStreaming?: boolean;
+  error?: boolean;
 }
+

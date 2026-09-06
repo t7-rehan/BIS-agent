@@ -1,0 +1,235 @@
+[
+  {
+    "id": "TC-01-PROD-STD-COOKER",
+    "query": "What Indian Standard applies to pressure cookers?",
+    "category": "PRODUCT_STANDARD",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Identifies IS 2347, matches domestic pressure cooker, returns official citations with high/medium confidence.",
+    "expected_entities": {
+      "product_id": "PROD-PRESSURE-COOKER"
+    },
+    "expected_standards": ["IS 2347"],
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Must cite IS 2347 and never invent alternative standard codes."
+  },
+  {
+    "id": "TC-02-PROD-STD-WATER",
+    "query": "Which Indian Standard is applicable for packaged drinking water?",
+    "category": "PRODUCT_STANDARD",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Identifies IS 14543, links to packaged drinking water, cites BIS statutory data.",
+    "expected_entities": {
+      "product_id": "PROD-PACKAGED-WATER"
+    },
+    "expected_standards": ["IS 14543"],
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Must distinguish packaged drinking water (IS 14543) from mineral water (IS 13428)."
+  },
+  {
+    "id": "TC-03-QCO-COOKER-MANDATORY",
+    "query": "Is BIS certification mandatory for pressure cookers under Quality Control Order?",
+    "category": "QCO_COMPLIANCE",
+    "expected_intent": "QCO_COMPLIANCE_QUERY",
+    "expected_behavior": "Confirms mandatory certification status under Domestic Pressure Cooker QCO, references DPIIT gazette notification.",
+    "expected_entities": {
+      "product_id": "PROD-PRESSURE-COOKER"
+    },
+    "expected_standards": ["IS 2347"],
+    "requires_clarification": false,
+    "risk_level": "CRITICAL",
+    "notes": "Must cite mandatory compliance grounded in gazette order without false claims."
+  },
+  {
+    "id": "TC-04-QCO-TOYS-MANDATORY",
+    "query": "Is ISI mark compulsory for children toys sold in India?",
+    "category": "QCO_COMPLIANCE",
+    "expected_intent": "QCO_COMPLIANCE_QUERY",
+    "expected_behavior": "Confirms mandatory certification under Toys (Quality Control) Order, Scheme I ISI mark required.",
+    "expected_entities": {
+      "product_id": "PROD-TOYS-MECHANICAL"
+    },
+    "requires_clarification": false,
+    "risk_level": "CRITICAL",
+    "notes": "Must mention mandatory safety standards for toys (IS 9873 series)."
+  },
+  {
+    "id": "TC-05-CERT-SCHEME-ISI",
+    "query": "How can I apply for an ISI mark certification under Scheme 1?",
+    "category": "CERTIFICATION",
+    "expected_intent": "CERTIFICATION_QUERY",
+    "expected_behavior": "Explains Scheme I (Conformity Assessment) procedure: application on Manakonline, factory audit, sample testing.",
+    "expected_entities": {
+      "certification_scheme": "Scheme I (ISI Mark)"
+    },
+    "requires_clarification": false,
+    "risk_level": "MEDIUM",
+    "notes": "Must provide authentic BIS licensing process without fabricating non-existent portal workflows."
+  },
+  {
+    "id": "TC-06-CERT-SCHEME-CRS",
+    "query": "What is the procedure for Compulsory Registration Scheme CRS for electronics?",
+    "category": "CERTIFICATION",
+    "expected_intent": "CERTIFICATION_QUERY",
+    "expected_behavior": "Explains Scheme II (CRS) managed by MeitY/BIS: self-declaration, lab test report from recognized lab.",
+    "expected_entities": {
+      "certification_scheme": "Scheme II (Compulsory Registration Scheme - CRS)"
+    },
+    "requires_clarification": false,
+    "risk_level": "MEDIUM",
+    "notes": "Must distinguish Scheme II (CRS - no factory audit) from Scheme I (ISI - requires factory audit)."
+  },
+  {
+    "id": "TC-07-LAB-CEMENT",
+    "query": "Which BIS recognized laboratory can test cement under IS 1489?",
+    "category": "LABORATORY",
+    "expected_intent": "LABORATORY_QUERY",
+    "expected_behavior": "Identifies BIS-recognized testing facilities (e.g. National Test House, Regional Laboratories) with test scope.",
+    "expected_entities": {
+      "is_number": "IS 1489"
+    },
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Must only cite recognized laboratories from official records."
+  },
+  {
+    "id": "TC-08-LAB-PLASTICS",
+    "query": "Where can I test plastic materials at a recognized laboratory?",
+    "category": "LABORATORY",
+    "expected_intent": "LABORATORY_QUERY",
+    "expected_behavior": "Retrieves recognized laboratory details such as CIPET and National Test House for polymer testing.",
+    "requires_clarification": false,
+    "risk_level": "MEDIUM",
+    "notes": "Provides official testing facility references."
+  },
+  {
+    "id": "TC-09-STD-LOOKUP-IS2347",
+    "query": "Tell me about Indian Standard IS 2347.",
+    "category": "STANDARD_LOOKUP",
+    "expected_intent": "STANDARD_LOOKUP",
+    "expected_behavior": "Retrieves specification for Domestic Pressure Cookers, scope, safety requirements, and test clauses.",
+    "expected_entities": {
+      "is_number": "IS 2347"
+    },
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Must correctly identify IS 2347 title and scope."
+  },
+  {
+    "id": "TC-10-STD-LOOKUP-IS14543",
+    "query": "What is IS 14543?",
+    "category": "STANDARD_LOOKUP",
+    "expected_intent": "STANDARD_LOOKUP",
+    "expected_behavior": "Identifies Packaged Drinking Water (other than packaged natural mineral water) specification.",
+    "expected_entities": {
+      "is_number": "IS 14543"
+    },
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Accurate title and standard description without hallucinated clause numbers."
+  },
+  {
+    "id": "TC-11-VAGUE-COOKER",
+    "query": "cooker",
+    "category": "CLARIFICATION_VAGUE",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Detects ambiguous/vague single-product query and requests clarification instead of guessing user intent.",
+    "requires_clarification": true,
+    "risk_level": "CRITICAL",
+    "notes": "MUST NOT guess. Must return needs_clarification=True."
+  },
+  {
+    "id": "TC-12-VAGUE-TOYS",
+    "query": "toys",
+    "category": "CLARIFICATION_VAGUE",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Prompts user to specify whether they need applicable standards, QCO compliance, or testing labs.",
+    "requires_clarification": true,
+    "risk_level": "CRITICAL",
+    "notes": "MUST NOT guess. Must return needs_clarification=True."
+  },
+  {
+    "id": "TC-13-UNDERSPECIFIED-PRODUCT",
+    "query": "Which standard applies to my product?",
+    "category": "CLARIFICATION_UNDERSPECIFIED",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Triggers interactive clarification card asking for product name, category, or intended use.",
+    "requires_clarification": true,
+    "risk_level": "CRITICAL",
+    "notes": "Must return needs_clarification=True with a helpful clarifying question."
+  },
+  {
+    "id": "TC-14-UNDERSPECIFIED-MANDATORY",
+    "query": "Is certification mandatory?",
+    "category": "CLARIFICATION_UNDERSPECIFIED",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Requests the product name or standard number to determine whether a statutory QCO applies.",
+    "requires_clarification": true,
+    "risk_level": "CRITICAL",
+    "notes": "Must not claim yes or no without knowing the product."
+  },
+  {
+    "id": "TC-15-LOW-EVIDENCE-SPACESHIP",
+    "query": "What Indian Standard applies to commercial interstellar quantum spaceships?",
+    "category": "LOW_EVIDENCE",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Transparently reports insufficient official evidence, does NOT invent an IS number, sets confidence to 0.0 or LOW.",
+    "requires_clarification": false,
+    "risk_level": "CRITICAL",
+    "notes": "Anti-hallucination test: Must NEVER invent a fake Indian Standard."
+  },
+  {
+    "id": "TC-16-LOW-EVIDENCE-JET-ENGINE",
+    "query": "What are the BIS import licensing rules for experimental military supersonic jet turbines?",
+    "category": "LOW_EVIDENCE",
+    "expected_intent": "UNKNOWN_QUERY",
+    "expected_behavior": "Communicates lack of evidence in curated database, suggests verifying directly on bis.gov.in.",
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Must not fabricate Ministry or BIS guidelines."
+  },
+  {
+    "id": "TC-17-GENERAL-WHAT-IS-BIS",
+    "query": "What is BIS?",
+    "category": "GENERAL_BIS",
+    "expected_intent": "GENERAL_BIS_QUERY",
+    "expected_behavior": "Explains Bureau of Indian Standards as the National Standards Body of India established under the BIS Act 2016.",
+    "requires_clarification": false,
+    "risk_level": "LOW",
+    "notes": "Concise factual summary with official BIS portal source."
+  },
+  {
+    "id": "TC-18-GENERAL-ROLE",
+    "query": "What is the role of the Bureau of Indian Standards in India?",
+    "category": "GENERAL_BIS",
+    "expected_intent": "GENERAL_BIS_QUERY",
+    "expected_behavior": "Summarizes standards formulation, product certification, hallmarking, and consumer awareness.",
+    "requires_clarification": false,
+    "risk_level": "LOW",
+    "notes": "Authoritative overview linking to official mandate."
+  },
+  {
+    "id": "TC-19-HALLMARKING-HUID",
+    "query": "What are the rules for 6-digit HUID gold jewellery hallmarking?",
+    "category": "HALLMARKING",
+    "expected_intent": "HALLMARKING_QUERY",
+    "expected_behavior": "Explains mandatory 6-digit alphanumeric HUID (Hallmark Unique Identification), purity marks (22K916, 18K750, 14K585), and BIS CARE app verification.",
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Accurate consumer protection advice on mandatory hallmarking."
+  },
+  {
+    "id": "TC-20-EDGE-MALFORMED",
+    "query": "   IS 2347   ???   ",
+    "category": "EDGE_CASE",
+    "expected_intent": "STANDARD_LOOKUP",
+    "expected_behavior": "Trims whitespace and punctuation, correctly extracts IS 2347, and delivers standard details safely.",
+    "expected_entities": {
+      "is_number": "IS 2347"
+    },
+    "requires_clarification": false,
+    "risk_level": "MEDIUM",
+    "notes": "Tests robust sanitization of leading/trailing whitespace and punctuation."
+  }
+]

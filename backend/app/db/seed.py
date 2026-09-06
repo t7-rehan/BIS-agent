@@ -4,6 +4,12 @@ import json
 import logging
 import sys
 from pathlib import Path
+
+# Ensure backend directory is in sys.path
+backend_dir = Path(__file__).resolve().parent.parent.parent
+if str(backend_dir) not in sys.path:
+    sys.path.insert(0, str(backend_dir))
+
 from typing import Any, Dict, List, Optional
 from sqlalchemy.orm import Session
 

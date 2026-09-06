@@ -16,6 +16,20 @@ class Settings(BaseSettings):
     # Database Settings
     DATABASE_URL: str = "sqlite:///./data/bis.db"
 
+    # Chroma Vector DB & RAG Settings
+    CHROMA_PERSIST_DIRECTORY: str = "./data/chroma"
+    CHROMA_COLLECTION_NAME: str = "bis_knowledge"
+    EMBEDDING_MODEL_NAME: str = "all-MiniLM-L6-v2"
+    RETRIEVAL_TOP_K: int = 5
+
+    # LLM & Gemini Orchestration Settings
+    GEMINI_API_KEY: Union[str, None] = None
+    GEMINI_MODEL: str = "gemini-2.5-flash"
+    LLM_TEMPERATURE: float = 0.1
+    LLM_MAX_OUTPUT_TOKENS: int = 1024
+    LLM_TIMEOUT_SECONDS: int = 30
+    MOCK_LLM: bool = False
+
     # CORS Settings
     FRONTEND_URL: str = "http://localhost:5173"
     ALLOWED_ORIGINS: Union[str, List[str]] = [

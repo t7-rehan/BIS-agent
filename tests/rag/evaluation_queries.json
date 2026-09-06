@@ -1,0 +1,107 @@
+[
+  {
+    "id": "eval-01",
+    "category": "standard_lookup",
+    "query": "What Indian Standard applies to electric food mixers and grinders?",
+    "expected_entities": ["IS 302 (Part 2/Sec 14) : 2009", "IS 302 (Part 1) : 2024"],
+    "expected_document_types": ["standard", "product"]
+  },
+  {
+    "id": "eval-02",
+    "category": "standard_lookup",
+    "query": "What is the standard for Plugs and Socket-Outlets rated up to 250 Volts?",
+    "expected_entities": ["IS 1293 : 2019"],
+    "expected_document_types": ["standard", "product"]
+  },
+  {
+    "id": "eval-03",
+    "category": "standard_lookup",
+    "query": "Which standard specifies requirements for Domestic Pressure Cookers?",
+    "expected_entities": ["IS 2347 : 2017", "PROD-PRESSURE-COOKER"],
+    "expected_document_types": ["standard", "product"]
+  },
+  {
+    "id": "eval-04",
+    "category": "standard_lookup",
+    "query": "What standard covers emergency lighting for LED luminaires?",
+    "expected_entities": ["IS 10322 (Part 5/Sec 8) : 2013", "PROD-EMERGENCY-LUMINAIRE"],
+    "expected_document_types": ["standard", "product"]
+  },
+  {
+    "id": "eval-05",
+    "category": "qco_mandate",
+    "query": "Is BIS certification mandatory for electric food mixers?",
+    "expected_entities": ["QCO-APPLIANCES-2024"],
+    "expected_document_types": ["qco", "product", "standard"]
+  },
+  {
+    "id": "eval-06",
+    "category": "qco_mandate",
+    "query": "What are the exemptions under the Toys Quality Control Order?",
+    "expected_entities": ["QCO-TOYS-2020"],
+    "expected_document_types": ["qco"]
+  },
+  {
+    "id": "eval-07",
+    "category": "qco_mandate",
+    "query": "When did the Plugs and Socket-Outlets QCO come into force?",
+    "expected_entities": ["QCO-PLUGS-2020"],
+    "expected_document_types": ["qco", "standard"]
+  },
+  {
+    "id": "eval-08",
+    "category": "scheme_information",
+    "query": "What is Scheme I under BIS Conformity Assessment?",
+    "expected_entities": ["SCHEME-1-ISI"],
+    "expected_document_types": ["certification_scheme"]
+  },
+  {
+    "id": "eval-09",
+    "category": "scheme_information",
+    "query": "How does the Compulsory Registration Scheme CRS work for electronics?",
+    "expected_entities": ["SCHEME-2-CRS"],
+    "expected_document_types": ["certification_scheme", "general_knowledge"]
+  },
+  {
+    "id": "eval-10",
+    "category": "scheme_information",
+    "query": "What is the procedure for foreign manufacturers under FMCS?",
+    "expected_entities": ["SCHEME-FMCS"],
+    "expected_document_types": ["certification_scheme", "general_knowledge"]
+  },
+  {
+    "id": "eval-11",
+    "category": "laboratory_testing",
+    "query": "Which laboratory tests domestic pressure cookers under IS 2347?",
+    "expected_entities": ["LAB-BIS-CENTRAL", "LAB-NTH-KOL"],
+    "expected_document_types": ["laboratory"]
+  },
+  {
+    "id": "eval-12",
+    "category": "laboratory_testing",
+    "query": "Where can I test electrical appliances and mixers in Mumbai or Western region?",
+    "expected_entities": ["LAB-CL-MUMBAI", "National Test House"],
+    "expected_document_types": ["laboratory"]
+  },
+  {
+    "id": "eval-13",
+    "category": "general_knowledge",
+    "query": "What is the difference between ISI mark and CRS registration?",
+    "expected_entities": ["ISI mark", "Compulsory Registration Scheme"],
+    "expected_document_types": ["general_knowledge", "certification_scheme"]
+  },
+  {
+    "id": "eval-14",
+    "category": "general_knowledge",
+    "query": "What is the BIS Hallmarking scheme for gold and silver jewelry?",
+    "expected_entities": ["Hallmarking", "Caratage"],
+    "expected_document_types": ["general_knowledge"]
+  },
+  {
+    "id": "eval-15",
+    "category": "product_lookup",
+    "query": "What are the BIS requirements for food contact polyethylene packaging?",
+    "expected_entities": ["IS 10146 : 1982", "PROD-FOOD-POLYETHYLENE"],
+    "expected_document_types": ["product", "standard"]
+  }
+]
