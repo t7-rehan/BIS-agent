@@ -13,7 +13,7 @@ from app.models.schemas import (
     SourceItem,
 )
 from app.services.intent_service import intent_service
-from app.services.llm_service import llm_service
+from app.services.llm_service import LLMError, LLMTimeoutError, llm_service
 from app.services.response_validator import response_validator
 from rag.retrieval.hybrid import BISHybridRetriever
 
@@ -63,7 +63,55 @@ class BISOrchestrator:
         intent_result = intent_service.detect_intent(clean_query)
         logger.info(f"Detected intent '{intent_result.intent}' (confidence {intent_result.confidence})")
 
-        # Step 2: Check for Underspecified Query Triggering Clarification
+        # Step 2a: Handle greetings directly — no retrieval needed
+        if intent_result.intent == "GREETING":
+            return ChatResponse(
+                answer=(
+                    "Hello! I'm the BIS Sahayak Intelligent Assistant. I can help you with:\n\n"
+                    "• **Indian Standards (IS numbers)** — find the applicable standard for any product\n"
+                    "• **Mandatory certification** — check if a product needs BIS/ISI certification under a QCO\n"
+                    "• **Quality Control Orders** — enforcement dates, ministry notifications\n"
+                    "• **Testing laboratories** — recognized labs for BIS certification testing\n"
+                    "• **Certification schemes** — ISI Mark (Scheme I), CRS (Scheme II), FMCS\n\n"
+                    "Try asking: *\"Which Indian Standard applies to pressure cookers?\"* or "
+                    "*\"Is BIS certification mandatory for LED lamps?\"*"
+                ),
+                intent="GREETING",
+                confidence=1.0,
+                confidence_level="HIGH",
+                needs_clarification=False,
+                clarifying_question=None,
+                sources=[],
+                evidence_used=[],
+                warnings=[],
+                entities={},
+            )
+
+        # Step 2b: Handle completely unknown queries with a helpful redirect
+        if intent_result.intent == "UNKNOWN_QUERY":
+            return ChatResponse(
+                answer=(
+                    "I'm specialised in Indian Standards, BIS certification, and Quality Control Orders. "
+                    "I couldn't find a clear BIS-related intent in your query.\n\n"
+                    "You can ask me things like:\n"
+                    "• \"Which standard applies to pressure cookers?\"\n"
+                    "• \"Is ISI mark mandatory for helmets?\"\n"
+                    "• \"Tell me about IS 2347\"\n"
+                    "• \"Which labs can test cement under IS 1489?\"\n\n"
+                    "Please rephrase your question with a product name, IS number, or BIS topic."
+                ),
+                intent="UNKNOWN_QUERY",
+                confidence=0.0,
+                confidence_level="INSUFFICIENT_EVIDENCE",
+                needs_clarification=False,
+                clarifying_question=None,
+                sources=[],
+                evidence_used=[],
+                warnings=[],
+                entities=intent_result.entities,
+            )
+
+        # Step 2c: Check for Underspecified Query Triggering Clarification
         if intent_result.clarification_required:
             return ChatResponse(
                 answer=intent_result.clarifying_question or "Please provide additional product details.",
@@ -127,7 +175,7 @@ class BISOrchestrator:
         user_prompt = self._construct_prompt(evidence_package)
 
         # Step 7: Call Gemini LLM Service
-        raw_llm_output = self._call_llm(user_prompt)
+        raw_llm_output, llm_failed = self._call_llm(user_prompt)
 
         # Step 8: Validate Response against Evidence
         validated_output, validated_sources, warnings = response_validator.validate(
@@ -136,8 +184,12 @@ class BISOrchestrator:
         )
 
         # Step 9: Determine Confidence Level
+        # If LLM generation failed, cap confidence at LOW regardless of retrieval score.
         conf_score = search_result.confidence_score
-        if conf_score >= 0.70:
+        if llm_failed:
+            conf_level = "LOW"
+            conf_score = min(conf_score, 0.35)
+        elif conf_score >= 0.70:
             conf_level = "HIGH"
         elif conf_score >= 0.40:
             conf_level = "MEDIUM"
@@ -193,8 +245,13 @@ class BISOrchestrator:
 
         return "\n".join(sections)
 
-    def _call_llm(self, prompt: str) -> LLMStructuredAnswer:
-        """Invoke LLM and parse response into LLMStructuredAnswer."""
+    def _call_llm(self, prompt: str) -> tuple[LLMStructuredAnswer, bool]:
+        """Invoke LLM and parse response into LLMStructuredAnswer.
+        
+        Returns:
+            Tuple of (LLMStructuredAnswer, llm_failed: bool). llm_failed is True
+            when generation did not produce a valid answer (timeout, API error, etc.).
+        """
         try:
             output_str = llm_service.generate(
                 prompt=prompt,
@@ -205,9 +262,9 @@ class BISOrchestrator:
             # Try parsing JSON
             try:
                 data = json.loads(output_str)
-                return LLMStructuredAnswer(**data)
+                return LLMStructuredAnswer(**data), False
             except Exception:
-                # If model returned pure text
+                # Model returned pure text (non-JSON)
                 return LLMStructuredAnswer(
                     answer=output_str.strip(),
                     summary=None,
@@ -217,9 +274,27 @@ class BISOrchestrator:
                     testing_laboratories=[],
                     cited_sources=[],
                     warnings=[],
-                )
-        except Exception as e:
-            logger.warning(f"Error during LLM generation: {e}")
+                ), False
+
+        except LLMTimeoutError as e:
+            logger.warning(f"LLM generation timed out: {e}")
+            return LLMStructuredAnswer(
+                answer=(
+                    "An error occurred while communicating with the AI generation model. "
+                    "However, official BIS records were retrieved successfully. "
+                    "Please review the verified source citations listed below."
+                ),
+                summary=None,
+                applicable_standards=[],
+                mandatory_status=None,
+                qco_details=None,
+                testing_laboratories=[],
+                cited_sources=[],
+                warnings=[f"LLM generation warning: Request timed out — {str(e)}"],
+            ), True
+
+        except LLMError as e:
+            logger.warning(f"LLM generation error: {e}")
             return LLMStructuredAnswer(
                 answer=(
                     "An error occurred while communicating with the AI generation model. "
@@ -233,7 +308,24 @@ class BISOrchestrator:
                 testing_laboratories=[],
                 cited_sources=[],
                 warnings=[f"LLM generation warning: {str(e)}"],
-            )
+            ), True
+
+        except Exception as e:
+            logger.warning(f"Unexpected error during LLM generation: {e}")
+            return LLMStructuredAnswer(
+                answer=(
+                    "An error occurred while communicating with the AI generation model. "
+                    "However, official BIS records were retrieved successfully. "
+                    "Please review the verified source citations listed below."
+                ),
+                summary=None,
+                applicable_standards=[],
+                mandatory_status=None,
+                qco_details=None,
+                testing_laboratories=[],
+                cited_sources=[],
+                warnings=[f"LLM generation warning: {str(e)}"],
+            ), True
 
 
 orchestrator = BISOrchestrator()

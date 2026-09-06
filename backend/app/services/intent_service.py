@@ -75,10 +75,26 @@ class BISIntentService:
         "PROD-STAINLESS-SINK": ["stainless steel sink", "kitchen sink", "steel sink"],
     }
 
+    # Greeting / conversational opener patterns
+    GREETING_PATTERNS = re.compile(
+        r"^(hi|hello|hey|hii|hiii|namaste|good\s*(morning|afternoon|evening|day)|"
+        r"howdy|greetings|sup|what'?s\s*up|yo|hola)[\s!?.]*$",
+        re.IGNORECASE,
+    )
+
     def detect_intent(self, query: str) -> IntentResult:
         """Analyze query, extract entities, detect intent and check for underspecification."""
         clean_query = query.strip()
         query_lower = clean_query.lower()
+
+        # 0. Greeting / conversational opener — respond warmly, skip retrieval
+        if self.GREETING_PATTERNS.match(clean_query):
+            return IntentResult(
+                intent="GREETING",
+                confidence=0.99,
+                entities={},
+                clarification_required=False,
+            )
 
         # 1. Check for underspecified query triggering clarification
         for pattern in self.UNDERSPECIFIED_PATTERNS:

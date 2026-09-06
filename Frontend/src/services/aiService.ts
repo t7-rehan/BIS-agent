@@ -106,7 +106,9 @@ export const aiService = {
         answer: data.answer,
         intent: data.intent || 'GENERAL_QUERY',
         confidence: data.confidence ?? null,
-        confidence_level: data.confidence_level || (data.confidence !== null ? 'HIGH' : null),
+        // Use the backend's confidence_level directly — never infer HIGH from a numeric score
+        // because the score reflects retrieval quality, which can be high even when LLM fails.
+        confidence_level: data.confidence_level || null,
         needs_clarification: Boolean(data.needs_clarification),
         clarifying_question: data.clarifying_question || null,
         sources: Array.isArray(data.sources) ? data.sources : [],

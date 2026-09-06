@@ -1,4 +1,4 @@
-"""Hybrid Retrieval Service combining ChromaDB Vector Search and SQLite Structured Lookups."""
+﻿"""Hybrid Retrieval Service combining ChromaDB Vector Search and SQLite Structured Lookups."""
 
 from dataclasses import asdict, dataclass, field
 import logging
@@ -113,20 +113,23 @@ class BISHybridRetriever:
                     "source_type": source_type,
                 })
 
-        # Add sources from semantic chunks
+        # Add sources from semantic chunks — only include chunks above the relevance threshold
+        # to prevent unrelated documents from polluting the source list.
+        _SOURCE_MIN_SCORE = 0.55
         for chunk in semantic_chunks:
-            add_source(
-                title=chunk.get("source_title") or chunk.get("chunk_id", ""),
-                url=chunk.get("source_url", ""),
-                source_type=chunk.get("source_type", "GENERAL"),
-            )
+            if chunk.get("score", 0.0) >= _SOURCE_MIN_SCORE:
+                add_source(
+                    title=chunk.get("source_title") or chunk.get("chunk_id", ""),
+                    url=chunk.get("source_url", ""),
+                    source_type=chunk.get("source_type", "GENERAL"),
+                )
 
         db = db_session or self._get_db()
         owns_db = db_session is None and self._db_session is None
         try:
-            # 2a. Relational expansion from top semantic chunks (only if relevant score >= 0.45)
+            # 2a. Relational expansion from top semantic chunks (only if relevant score >= 0.55)
             for chunk in semantic_chunks:
-                if chunk.get("score", 0.0) < 0.45:
+                if chunk.get("score", 0.0) < 0.55:
                     continue
 
                 meta = chunk.get("metadata", {})
@@ -136,7 +139,6 @@ class BISHybridRetriever:
                 prod_id = meta.get("product_id", "")
                 qco_id = meta.get("qco_id", "")
                 scheme_id = meta.get("certification_scheme_id", "")
-                lab_id = meta.get("laboratory_id", "")
 
                 if doc_type == "standard" or is_no:
                     target_std_id = doc_id or is_no
@@ -144,14 +146,8 @@ class BISHybridRetriever:
                     if std and not any(s["id"] == std.id for s in structured["standards"]):
                         structured["standards"].append(std.to_dict())
                         add_source(f"{std.is_number} - {std.title}", std.source_url or "", "BIS_STANDARD")
-                        for p in BISQueryService.get_products_for_standard(db, std.id):
-                            if not any(x["id"] == p.id for x in structured["products"]):
-                                structured["products"].append(p.to_dict())
-                                add_source(p.product_name, p.source_url or "", "BIS_PRODUCT")
-                                qinfo = BISQueryService.is_product_qco_mandatory(db, p.id)
-                                for q in qinfo.get("qcos", []):
-                                    if not any(x["id"] == q["id"] for x in structured["qcos"]):
-                                        structured["qcos"].append(q)
+                        # NOTE: We do NOT cascade from standard → all products here to avoid
+                        # pulling unrelated standards through shared DB relations.
                         for l in BISQueryService.get_labs_for_standard(db, std.id):
                             if not any(x["id"] == l.id for x in structured["laboratories"]):
                                 structured["laboratories"].append(l.to_dict())
@@ -164,6 +160,7 @@ class BISHybridRetriever:
                     if prod and not any(p["id"] == prod.id for p in structured["products"]):
                         structured["products"].append(prod.to_dict())
                         add_source(prod.product_name, prod.source_url or "", "BIS_PRODUCT")
+                        # Expand QCO and schemes from product, but NOT standards of standards
                         qinfo = BISQueryService.is_product_qco_mandatory(db, prod.id)
                         for q in qinfo.get("qcos", []):
                             if not any(x["id"] == q["id"] for x in structured["qcos"]):
@@ -172,6 +169,11 @@ class BISHybridRetriever:
                             if not any(x["id"] == sc.id for x in structured["schemes"]):
                                 structured["schemes"].append(sc.to_dict())
                                 add_source(sc.scheme_name, sc.source_url or "", "BIS_SCHEME")
+                        # Add standards directly linked to this product only
+                        for std in BISQueryService.get_product_standards(db, prod.id):
+                            if not any(s["id"] == std.id for s in structured["standards"]):
+                                structured["standards"].append(std.to_dict())
+                                add_source(f"{std.is_number} - {std.title}", std.source_url or "", "BIS_STANDARD")
 
                 if doc_type == "qco" or qco_id:
                     target_qco_id = qco_id or doc_id
@@ -231,7 +233,23 @@ class BISHybridRetriever:
                     ):
                         all_prods.append(c)
 
-            for prod in all_prods:
+            # Limit product expansion to products that are explicitly named in the query
+            # to prevent cascading unrelated standards from loosely matched products.
+            # A product is considered "explicitly matched" if an alias appears literally in the query.
+            def _product_is_explicit_match(prod, query_lower: str) -> bool:
+                """Return True only if product name or an alias is literally present in the query."""
+                if re.search(rf"\b{re.escape(prod.product_name.lower())}s?\b", query_lower):
+                    return True
+                return any(
+                    re.search(rf"\b{re.escape(alias.alias.lower())}s?\b", query_lower)
+                    for alias in prod.aliases
+                )
+
+            explicit_prods = [p for p in all_prods if _product_is_explicit_match(p, query_lower)]
+            # Fall back to all matched products only if none are explicitly matched
+            matched_prods = explicit_prods if explicit_prods else all_prods
+
+            for prod in matched_prods:
                 if not any(x["id"] == prod.id for x in structured["products"]):
                     structured["products"].append(prod.to_dict())
                     add_source(prod.product_name, prod.source_url or "", "BIS_PRODUCT")

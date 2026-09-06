@@ -1,7 +1,9 @@
-"""Google Gemini LLM Service utilizing the official google-genai SDK."""
+﻿"""Google Gemini LLM Service utilizing the official google-genai SDK."""
 
 import json
 import logging
+import threading
+import time
 from typing import Any, Dict, Optional, Type
 from pydantic import BaseModel
 
@@ -26,8 +28,27 @@ class LLMTimeoutError(LLMError):
     pass
 
 
+# HTTP status codes that indicate a transient server-side problem worth retrying.
+_RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
+
+
+def _is_retryable(exc: Exception) -> bool:
+    """Return True if the exception represents a transient API error."""
+    msg = str(exc).lower()
+    # google-genai raises ServerError / ClientError with the HTTP status in the message
+    retryable_phrases = ("503", "502", "500", "504", "429",
+                         "unavailable", "overloaded", "high demand",
+                         "rate limit", "quota", "resource exhausted",
+                         "temporarily", "try again")
+    return any(p in msg for p in retryable_phrases)
+
+
 class GeminiLLMService:
     """Service encapsulating Google Gemini API calls via the modern google-genai SDK."""
+
+    # Retry configuration for transient 5xx / 429 errors
+    _MAX_RETRIES = 3
+    _RETRY_BACKOFF_SECONDS = (2.0, 5.0, 10.0)  # wait before attempt 2, 3, 4
 
     def __init__(
         self,
@@ -45,14 +66,22 @@ class GeminiLLMService:
         if not self.mock_mode and self.api_key and self.api_key.strip():
             try:
                 from google import genai
-                self._client = genai.Client(api_key=self.api_key)
-                logger.info(f"Gemini client initialized with model '{self.model}'.")
+                from google.genai import types as _types
+                _timeout_ms = int(settings.LLM_TIMEOUT_SECONDS * 1000)
+                self._client = genai.Client(
+                    api_key=self.api_key,
+                    http_options=_types.HttpOptions(timeout=_timeout_ms),
+                )
+                logger.info(
+                    "[LLM] Gemini client initialized: model='%s' sdk_timeout=%dms",
+                    self.model, _timeout_ms,
+                )
             except Exception as e:
-                logger.warning(f"Failed to initialize Gemini client: {e}")
+                logger.warning("[LLM] Failed to initialize Gemini client: %s", e)
                 self._client = None
         else:
             if not self.mock_mode:
-                logger.info("GEMINI_API_KEY not configured. Running in offline/mock mode.")
+                logger.info("[LLM] GEMINI_API_KEY not configured. Running in offline/mock mode.")
 
     @property
     def is_configured(self) -> bool:
@@ -66,48 +95,110 @@ class GeminiLLMService:
         response_schema: Optional[Type[BaseModel]] = None,
     ) -> str:
         """Call Gemini model to generate content.
-        
+
+        Retries up to _MAX_RETRIES times on transient 5xx / 429 errors before
+        raising LLMError.  A thread-based wall-clock timeout (LLM_TIMEOUT_SECONDS)
+        is enforced as a hard outer limit.
+
         Args:
             prompt: Formatted user and evidence prompt.
             system_instruction: System prompt enforcing anti-hallucination rules.
             response_schema: Optional Pydantic schema for structured output.
-            
+
         Returns:
             Generated response string (JSON string if schema is requested).
         """
         if not self.is_configured:
-            # Offline or mocked fallback response
             return self._generate_mock_fallback(prompt, response_schema)
 
-        try:
-            from google.genai import types
+        timeout_seconds = settings.LLM_TIMEOUT_SECONDS
+        result_container: Dict[str, Any] = {"result": None, "error": None}
 
-            config_args: Dict[str, Any] = {
-                "temperature": self.temperature,
-                "max_output_tokens": settings.LLM_MAX_OUTPUT_TOKENS,
-                "system_instruction": system_instruction,
-            }
+        def _do_generate() -> None:
+            last_exc: Optional[Exception] = None
+            for attempt in range(1, self._MAX_RETRIES + 1):
+                try:
+                    from google.genai import types
 
-            if response_schema:
-                config_args["response_mime_type"] = "application/json"
-                config_args["response_schema"] = response_schema
+                    config_args: Dict[str, Any] = {
+                        "temperature": self.temperature,
+                        "max_output_tokens": settings.LLM_MAX_OUTPUT_TOKENS,
+                        "system_instruction": system_instruction,
+                    }
 
-            config = types.GenerateContentConfig(**config_args)
+                    if response_schema:
+                        config_args["response_mime_type"] = "application/json"
+                        config_args["response_schema"] = response_schema
 
-            response = self._client.models.generate_content(
-                model=self.model,
-                contents=prompt,
-                config=config,
+                    config = types.GenerateContentConfig(**config_args)
+
+                    logger.info(
+                        "[LLM] Request attempt %d/%d: model='%s'",
+                        attempt, self._MAX_RETRIES, self.model,
+                    )
+
+                    response = self._client.models.generate_content(
+                        model=self.model,
+                        contents=prompt,
+                        config=config,
+                    )
+
+                    if not response or not response.text:
+                        last_exc = LLMError("Gemini returned an empty response.")
+                        logger.warning(
+                            "[LLM] Attempt %d/%d: empty response from model",
+                            attempt, self._MAX_RETRIES,
+                        )
+                        # Empty response is not retryable — break immediately
+                        break
+
+                    logger.info("[LLM] Request succeeded on attempt %d/%d", attempt, self._MAX_RETRIES)
+                    result_container["result"] = response.text
+                    return  # success
+
+                except Exception as exc:
+                    last_exc = exc
+                    exc_type = type(exc).__name__
+
+                    if _is_retryable(exc) and attempt < self._MAX_RETRIES:
+                        backoff = self._RETRY_BACKOFF_SECONDS[attempt - 1]
+                        logger.warning(
+                            "[LLM] Attempt %d/%d failed (%s: transient). "
+                            "Retrying in %.1fs...",
+                            attempt, self._MAX_RETRIES, exc_type, backoff,
+                        )
+                        time.sleep(backoff)
+                        continue
+
+                    # Non-retryable error or final attempt — log and stop
+                    logger.error(
+                        "[LLM] Attempt %d/%d failed (%s). Not retrying.",
+                        attempt, self._MAX_RETRIES, exc_type,
+                    )
+                    break
+
+            result_container["error"] = last_exc
+
+        thread = threading.Thread(target=_do_generate, daemon=True)
+        thread.start()
+        thread.join(timeout=timeout_seconds)
+
+        if thread.is_alive():
+            logger.error(
+                "[LLM] API call timed out after %ds for model '%s'.",
+                timeout_seconds, self.model,
+            )
+            raise LLMTimeoutError(
+                f"Gemini API call timed out after {timeout_seconds} seconds. "
+                "The model may be unavailable or the prompt was too long."
             )
 
-            if not response or not response.text:
-                raise LLMError("Gemini returned an empty response.")
+        if result_container["error"] is not None:
+            exc = result_container["error"]
+            logger.error("[LLM] Request failed: %s: %s", type(exc).__name__, exc)
+            raise LLMError(f"Gemini API failure: {str(exc)}")
 
-            return response.text
-
-        except Exception as e:
-            logger.error(f"Error calling Gemini API: {e}")
-            raise LLMError(f"Gemini API failure: {str(e)}")
+        return result_container["result"]  # type: ignore[return-value]
 
     def _generate_mock_fallback(
         self,
@@ -115,7 +206,6 @@ class GeminiLLMService:
         response_schema: Optional[Type[BaseModel]] = None,
     ) -> str:
         """Synthesize a safe, deterministic mock answer grounded strictly in prompt evidence."""
-        # Check if prompt has standard or QCO references
         answer_text = (
             "According to official BIS records, certification requirements and applicable standards "
             "are established by the Bureau of Indian Standards and governing ministry notifications. "
