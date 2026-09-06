@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "development"
     API_PREFIX: str = "/api"
 
+    # Database Settings
+    DATABASE_URL: str = "sqlite:///./data/bis.db"
+
     # CORS Settings
     FRONTEND_URL: str = "http://localhost:5173"
     ALLOWED_ORIGINS: Union[str, List[str]] = [

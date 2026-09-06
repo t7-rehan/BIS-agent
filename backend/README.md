@@ -1,9 +1,9 @@
-# BIS Intelligent Assistant — Backend Foundation (Phase 1)
+# BIS Intelligent Assistant — Backend Foundation (Phase 1–3)
 
-Production-ready backend API foundation for the **AI-powered Intelligent Assistant for Indian Standards and BIS Services for Industries and Consumers**.
+Production-ready backend API foundation and structured database layer for the **AI-powered Intelligent Assistant for Indian Standards and BIS Services for Industries and Consumers**.
 
-> 📌 **Phase Status: Phase 1 — Backend Foundation**  
-> This phase establishes the initial API skeleton, configuration, validation schemas, chat service placeholder, error handling, CORS policies, and automated test suite. Advanced features (AI Orchestration, Hybrid RAG, Vector Search, BIS Document Ingestion) will be added in subsequent phases.
+> 📌 **Current Status: Phase 3 — Database Foundation + Project Memory Completed**  
+> This backend houses the FastAPI service layer, Pydantic validation schemas, and the persistent SQLite relational database powered by SQLAlchemy 2.0. Curated datasets from Phase 2 are seeded with full relational integrity.
 
 ---
 
@@ -12,6 +12,7 @@ Production-ready backend API foundation for the **AI-powered Intelligent Assista
 - **Language:** Python 3.10+ (Tested on Python 3.11)
 - **Web Framework:** [FastAPI](https://fastapi.tiangolo.com/)
 - **ASGI Server:** [Uvicorn](https://www.uvicorn.org/)
+- **Database & ORM:** SQLite 3 & [SQLAlchemy 2.0](https://www.sqlalchemy.org/)
 - **Data Validation:** [Pydantic v2](https://docs.pydantic.dev/) & [pydantic-settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/)
 - **Environment Management:** [python-dotenv](https://github.com/theskumar/python-dotenv)
 - **Testing:** [pytest](https://docs.pytest.org/) & [httpx](https://www.python-httpx.org/)
@@ -33,22 +34,36 @@ backend/
 │   │
 │   ├── core/
 │   │   ├── __init__.py      # Core module initialization
-│   │   └── config.py        # Application settings and environment configuration
+│   │   └── config.py        # Application settings (DATABASE_URL, CORS, API prefix)
+│   │
+│   ├── db/                  # Phase 3: Database layer
+│   │   ├── __init__.py      # Database exports
+│   │   ├── database.py      # SQLite engine, session maker, get_db dependency
+│   │   ├── models.py        # SQLAlchemy 2.0 models & M2M association tables
+│   │   └── seed.py          # Idempotent seed script reading rag/data/*.json
 │   │
 │   ├── models/
 │   │   ├── __init__.py      # Schemas export
-│   │   └── schemas.py       # Pydantic models: ChatRequest, ChatResponse, SourceItem, HealthResponse
+│   │   └── schemas.py       # Pydantic models: ChatRequest, ChatResponse, HealthResponse
 │   │
 │   └── services/
 │       ├── __init__.py      # Services export
-│       └── chat_service.py  # ChatService processing queries with placeholder response
+│       ├── chat_service.py  # ChatService processing queries with foundation response
+│       └── query_service.py # BISQueryService structured database query methods
+│
+├── data/
+│   ├── .gitkeep
+│   └── bis.db               # SQLite database file (git-ignored, seeded on demand)
 │
 ├── tests/
 │   ├── __init__.py          # Test suite package
 │   ├── test_health.py       # Health and root endpoint tests
-│   └── test_chat.py         # Chat endpoint validation and structure tests
+│   ├── test_chat.py         # Chat endpoint validation and structure tests
+│   ├── test_rag_data.py     # Dataset validation and ingestion parser tests
+│   └── test_database.py     # Models, seeding, relations, and query service tests
 │
-├── requirements.txt         # Minimal Phase 1 Python dependencies
+├── requirements.txt         # Python dependencies
+├── pytest.ini               # Pytest configuration (pythonpath = . ..)
 ├── .env.example             # Safe environment variables template
 └── README.md                # Backend documentation
 ```
@@ -91,12 +106,6 @@ pip install -r requirements.txt
 
 Copy `.env.example` to create your local `.env` file:
 
-**Windows (PowerShell):**
-```powershell
-Copy-Item .env.example .env
-```
-
-**Linux / macOS:**
 ```bash
 cp .env.example .env
 ```
@@ -107,9 +116,31 @@ APP_NAME=BIS Intelligent Assistant Backend
 APP_VERSION=0.1.0
 ENVIRONMENT=development
 API_PREFIX=/api
+DATABASE_URL=sqlite:///./data/bis.db
 FRONTEND_URL=http://localhost:5173
 ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000
 ```
+
+---
+
+## Database Seeding
+
+Populate the local SQLite database from the curated Phase 2 datasets:
+
+```powershell
+# From backend directory
+python -m app.db.seed
+```
+
+This imports:
+- **26 Indian Standards**
+- **23 Products** (with 70+ aliases)
+- **16 Quality Control Orders (QCOs)**
+- **20 Certification Schemes**
+- **20 Testing Laboratories**
+- **12 General Knowledge Articles**
+
+The seeding process is completely **idempotent** and safe to run multiple times.
 
 ---
 
@@ -145,12 +176,6 @@ The server will be available at:
 ### 2. Chat Query
 - **Route:** `POST /api/chat`
 - **Description:** Accepts a user query and returns a structured response.
-- **Request Body (JSON):**
-  ```json
-  {
-    "message": "What BIS standard applies to electric mixers?"
-  }
-  ```
 - **Sample Response (HTTP 200):**
   ```json
   {
@@ -160,32 +185,23 @@ The server will be available at:
     "confidence": null
   }
   ```
-- **Validation Rules:**
-  - `message` must be a non-empty string with non-whitespace characters (1 to 2000 characters).
-  - Invalid requests return HTTP 422 with a structured error payload.
 
 ---
 
 ## Running Automated Tests
 
-Run the test suite using `pytest` from the `backend` directory:
+Run the full automated test suite from the `backend` directory:
 
 ```bash
 pytest -v
 ```
 
-Tests verify:
-- Root and health check availability (`GET /` and `GET /api/health`)
-- Valid chat request processing (`POST /api/chat`)
-- Input validation failures (empty string, whitespace-only, missing body, oversized queries)
-
----
-
-## Phase 1 Limitations & Roadmap
-
-As this is **Phase 1: Backend Foundation**, the following capabilities are intentionally deferred to future phases:
-- ❌ **No Vector Databases or Embeddings:** (Deferred to Phase 5 & 6)
-- ❌ **No Document Ingestion / Crawlers:** (Deferred to Phase 4 & 5)
-- ❌ **No Live LLM / RAG Pipelines:** (Deferred to Phase 6 & 8)
-- ❌ **No Product / QCO Classification Engines:** (Deferred to Phase 9 & 10)
-- ❌ **No Authentication / User Accounts:** (Deferred to Phase 14)
+All 27 automated tests verify:
+- API endpoint availability and input validation
+- Database initialization and table creation
+- Seed execution and idempotency
+- Standard and product retrieval by ID, IS number, and keyword/alias search
+- Many-to-many relationships (Product <-> Standard, Product <-> QCO, Laboratory <-> Standard)
+- Reverse lookups (find products by standard, find labs by standard)
+- Foreign key constraints enforcement
+- Ingestion parsers and dataset relational integrity
