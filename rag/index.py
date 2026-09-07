@@ -56,7 +56,16 @@ def load_json(filepath: Path) -> List[Dict[str, Any]]:
 
 def prepare_chunks(data_dir: Path) -> Tuple[List[TextChunk], Dict[str, int]]:
     """Transform all curated BIS JSON documents into structured TextChunks.
-    
+
+    Field names in the JSON files:
+    - general_knowledge: id, topic, title, text, source_url, source_type, retrieved_at
+    - standards: id, is_number, title, product_category, description, technical_department, status, source_url, source_title, retrieved_at
+    - qcos: id, qco_name, product, is_numbers[], issuing_ministry, mandatory, enforcement_date, amendments[], source_url, retrieved_at
+    - certification_schemes: id, scheme_name, product, is_numbers[], certification_type, mandatory, source_url
+    - laboratories: id, laboratory_name, lab_code, location, state, applicable_is_numbers[], testing_scope[], validity, source_url
+    - products: id, product_name, aliases[], category, applicable_is_numbers[], qco_ids[], certification_scheme_ids[], source_url
+    - bis_services (optional): id, service_name, purpose, who_uses, process_summary, source_url, retrieved_at
+
     Returns:
         Tuple of (all_chunks, counts_by_type)
     """
@@ -68,17 +77,17 @@ def prepare_chunks(data_dir: Path) -> Tuple[List[TextChunk], Dict[str, int]]:
         "certification_scheme": 0,
         "laboratory": 0,
         "product": 0,
+        "bis_service": 0,
     }
 
     # 1. General Knowledge
     gk_items = load_json(data_dir / "general_knowledge.json")
     for item in gk_items:
-        key_points_str = "\n- ".join(item.get("key_points", []))
+        # Actual field name is "text", not "content"; no "key_points" field exists
         text = (
             f"Topic: {item.get('topic', '')}\n"
             f"Title: {item.get('title', '')}\n"
-            f"Overview:\n{item.get('content', '')}\n"
-            f"Key Points:\n- {key_points_str}\n"
+            f"Overview:\n{item.get('text', '')}\n"
             f"Official Source: {item.get('source_url', '')}"
         )
         extra_meta = {
@@ -94,8 +103,8 @@ def prepare_chunks(data_dir: Path) -> Tuple[List[TextChunk], Dict[str, int]]:
             document_title=item.get("title", ""),
             source_url=item.get("source_url", ""),
             source_type="GENERAL_KNOWLEDGE",
-            chunk_size=600,
-            chunk_overlap=60,
+            chunk_size=700,
+            chunk_overlap=80,
             extra_metadata=extra_meta,
         )
         all_chunks.extend(chunks)
@@ -118,7 +127,7 @@ def prepare_chunks(data_dir: Path) -> Tuple[List[TextChunk], Dict[str, int]]:
             "document_type": "standard",
             "is_number": item.get("is_number", ""),
             "source_url": item.get("source_url", ""),
-            "source_title": item.get("title", ""),
+            "source_title": item.get("source_title") or item.get("title", ""),
             "retrieved_at": item.get("retrieved_at", ""),
         }
         chunks = chunk_text(
@@ -127,95 +136,99 @@ def prepare_chunks(data_dir: Path) -> Tuple[List[TextChunk], Dict[str, int]]:
             document_title=f"{item.get('is_number', '')} - {item.get('title', '')}",
             source_url=item.get("source_url", ""),
             source_type="BIS_STANDARD",
-            chunk_size=600,
-            chunk_overlap=60,
+            chunk_size=700,
+            chunk_overlap=80,
             extra_metadata=extra_meta,
         )
         all_chunks.extend(chunks)
         counts_by_type["standard"] += len(chunks)
 
-    # 3. QCOs
+    # 3. QCOs — actual fields: qco_name, product, is_numbers, issuing_ministry,
+    #            mandatory, enforcement_date, amendments
     qco_items = load_json(data_dir / "qcos.json")
     for item in qco_items:
-        covered = ", ".join(item.get("standards_covered", []))
+        covered = ", ".join(item.get("is_numbers", []))
+        amendments_str = "; ".join(item.get("amendments", []))
+        mandatory_str = "Mandatory" if item.get("mandatory", True) else "Voluntary"
         text = (
-            f"Quality Control Order (QCO): {item.get('title', '')}\n"
-            f"Order / Gazette Number: {item.get('order_number', '')}\n"
-            f"Line Ministry: {item.get('ministry', '')}\n"
-            f"Status: {item.get('status', '')}\n"
-            f"Date Notified: {item.get('date_notified', '')}\n"
-            f"Effective Implementation Date: {item.get('effective_date', '')}\n"
+            f"Quality Control Order (QCO): {item.get('qco_name', '')}\n"
+            f"Covered Product: {item.get('product', '')}\n"
+            f"Issuing Ministry: {item.get('issuing_ministry', '')}\n"
+            f"Mandatory Status: {mandatory_str}\n"
+            f"Enforcement Date: {item.get('enforcement_date', '')}\n"
             f"Indian Standards Mandated: {covered}\n"
-            f"Exemptions and Special Provisions: {item.get('exemptions', '')}\n"
+            f"Gazette / Amendment History: {amendments_str}\n"
             f"Official Source: {item.get('source_url', '')}"
         )
         extra_meta = {
             "source_type": "BIS_QCO",
             "document_type": "qco",
             "qco_id": item["id"],
-            "order_number": item.get("order_number", ""),
             "source_url": item.get("source_url", ""),
-            "source_title": item.get("title", ""),
+            "source_title": item.get("qco_name", ""),
             "retrieved_at": item.get("retrieved_at", ""),
         }
         chunks = chunk_text(
             text=text,
             document_id=item["id"],
-            document_title=item.get("title", ""),
+            document_title=item.get("qco_name", ""),
             source_url=item.get("source_url", ""),
             source_type="BIS_QCO",
-            chunk_size=600,
-            chunk_overlap=60,
+            chunk_size=700,
+            chunk_overlap=80,
             extra_metadata=extra_meta,
         )
         all_chunks.extend(chunks)
         counts_by_type["qco"] += len(chunks)
 
-    # 4. Certification Schemes
+    # 4. Certification Schemes — actual fields: scheme_name, product, is_numbers,
+    #    certification_type, mandatory
     scheme_items = load_json(data_dir / "certification_schemes.json")
     for item in scheme_items:
+        is_numbers_str = ", ".join(item.get("is_numbers", []))
+        mandatory_str = "Mandatory" if item.get("mandatory", True) else "Voluntary"
         text = (
-            f"BIS Certification Scheme: {item.get('name', '')} (Scheme {item.get('scheme_code', '')})\n"
-            f"Applicable To: {item.get('applicable_to', '')}\n"
-            f"Certification Procedure:\n{item.get('procedure_summary', '')}\n"
-            f"Fee Structure Overview: {item.get('fee_structure_summary', '')}\n"
-            f"License Validity: {item.get('validity_years', '')} years\n"
-            f"Surveillance Frequency: {item.get('surveillance_frequency', '')}\n"
+            f"BIS Certification Scheme: {item.get('scheme_name', '')}\n"
+            f"Certification Type: {item.get('certification_type', '')}\n"
+            f"Applicable To: {item.get('product', '')}\n"
+            f"Mandatory Status: {mandatory_str}\n"
+            f"Indian Standards Covered: {is_numbers_str}\n"
             f"Official Source: {item.get('source_url', '')}"
         )
         extra_meta = {
             "source_type": "BIS_SCHEME",
             "document_type": "certification_scheme",
             "certification_scheme_id": item["id"],
-            "scheme_code": str(item.get("scheme_code", "")),
             "source_url": item.get("source_url", ""),
-            "source_title": item.get("name", ""),
+            "source_title": item.get("scheme_name", ""),
             "retrieved_at": item.get("retrieved_at", ""),
         }
         chunks = chunk_text(
             text=text,
             document_id=item["id"],
-            document_title=item.get("name", ""),
+            document_title=item.get("scheme_name", ""),
             source_url=item.get("source_url", ""),
             source_type="BIS_SCHEME",
-            chunk_size=600,
-            chunk_overlap=60,
+            chunk_size=700,
+            chunk_overlap=80,
             extra_metadata=extra_meta,
         )
         all_chunks.extend(chunks)
         counts_by_type["certification_scheme"] += len(chunks)
 
-    # 5. Laboratories
+    # 5. Laboratories — actual fields: laboratory_name, lab_code, location, state,
+    #    applicable_is_numbers, testing_scope, validity
     lab_items = load_json(data_dir / "laboratories.json")
     for item in lab_items:
-        stds = ", ".join(item.get("recognized_standards", []))
+        stds = ", ".join(item.get("applicable_is_numbers", []))
+        scope = "; ".join(item.get("testing_scope", []))
         text = (
-            f"BIS Recognized Laboratory: {item.get('name', '')}\n"
-            f"Facility Type: {item.get('lab_type', '')}\n"
-            f"Location: {item.get('city', '')}, {item.get('state', '')}\n"
-            f"Recognized Testing Standards: {stds}\n"
-            f"Accreditation Details: {item.get('accreditation_details', '')}\n"
-            f"Contact Details: {item.get('contact_info', '')}\n"
+            f"BIS Recognized Laboratory: {item.get('laboratory_name', '')}\n"
+            f"Lab Code: {item.get('lab_code', '')}\n"
+            f"Location: {item.get('location', '')}, {item.get('state', '')}\n"
+            f"Recognised for Testing Standards: {stds}\n"
+            f"Testing Capabilities: {scope}\n"
+            f"Validity / Status: {item.get('validity', '')}\n"
             f"Official Source: {item.get('source_url', '')}"
         )
         extra_meta = {
@@ -223,62 +236,94 @@ def prepare_chunks(data_dir: Path) -> Tuple[List[TextChunk], Dict[str, int]]:
             "document_type": "laboratory",
             "laboratory_id": item["id"],
             "source_url": item.get("source_url", ""),
-            "source_title": item.get("name", ""),
+            "source_title": item.get("laboratory_name", ""),
             "retrieved_at": item.get("retrieved_at", ""),
         }
         chunks = chunk_text(
             text=text,
             document_id=item["id"],
-            document_title=item.get("name", ""),
+            document_title=item.get("laboratory_name", ""),
             source_url=item.get("source_url", ""),
             source_type="BIS_LABORATORY",
-            chunk_size=600,
-            chunk_overlap=60,
+            chunk_size=700,
+            chunk_overlap=80,
             extra_metadata=extra_meta,
         )
         all_chunks.extend(chunks)
         counts_by_type["laboratory"] += len(chunks)
 
-    # 6. Products
+    # 6. Products — actual fields: product_name, aliases[], category,
+    #    applicable_is_numbers[], qco_ids[], certification_scheme_ids[]
     prod_items = load_json(data_dir / "products.json")
     for item in prod_items:
-        aliases = ", ".join(item.get("common_aliases", []))
-        schemes = ", ".join(item.get("applicable_schemes", []))
-        mandatory = "Mandatory" if item.get("mandatory_certification") else "Voluntary"
+        aliases = ", ".join(item.get("aliases", []))
+        is_numbers_str = ", ".join(item.get("applicable_is_numbers", []))
+        qco_ids_str = ", ".join(item.get("qco_ids", []))
+        scheme_ids_str = ", ".join(item.get("certification_scheme_ids", []))
         text = (
-            f"Product: {item.get('name', '')}\n"
-            f"Common Trade Names / Aliases: {aliases}\n"
+            f"Product: {item.get('product_name', '')}\n"
+            f"Common Names / Aliases: {aliases}\n"
             f"Category: {item.get('category', '')}\n"
-            f"Certification Mandate: {mandatory}\n"
-            f"Applicable Indian Standard: {item.get('is_number', '')}\n"
-            f"QCO Notification: {item.get('qco_id', '') or 'None'}\n"
-            f"Applicable Certification Schemes: {schemes}\n"
-            f"Product Scope & Description:\n{item.get('description', '')}\n"
+            f"Applicable Indian Standards: {is_numbers_str}\n"
+            f"Governing Quality Control Orders: {qco_ids_str or 'None'}\n"
+            f"Certification Schemes: {scheme_ids_str}\n"
             f"Official Source: {item.get('source_url', '')}"
         )
         extra_meta = {
             "source_type": "BIS_PRODUCT",
             "document_type": "product",
             "product_id": item["id"],
-            "product_name": item.get("name", ""),
-            "is_number": item.get("is_number", ""),
-            "qco_id": item.get("qco_id", "") or "",
+            "product_name": item.get("product_name", ""),
+            "is_number": (item.get("applicable_is_numbers") or [""])[0],
             "source_url": item.get("source_url", ""),
-            "source_title": item.get("name", ""),
+            "source_title": item.get("product_name", ""),
             "retrieved_at": item.get("retrieved_at", ""),
         }
         chunks = chunk_text(
             text=text,
             document_id=item["id"],
-            document_title=item.get("name", ""),
+            document_title=item.get("product_name", ""),
             source_url=item.get("source_url", ""),
             source_type="BIS_PRODUCT",
-            chunk_size=600,
-            chunk_overlap=60,
+            chunk_size=700,
+            chunk_overlap=80,
             extra_metadata=extra_meta,
         )
         all_chunks.extend(chunks)
         counts_by_type["product"] += len(chunks)
+
+    # 7. BIS Services (optional — file may not exist yet)
+    services_path = data_dir / "bis_services.json"
+    if services_path.exists():
+        svc_items = load_json(services_path)
+        for item in svc_items:
+            text = (
+                f"BIS Service: {item.get('service_name', '')}\n"
+                f"Purpose: {item.get('purpose', '')}\n"
+                f"Who Uses This: {item.get('who_uses', '')}\n"
+                f"Process Summary:\n{item.get('process_summary', '')}\n"
+                f"Official URL: {item.get('source_url', '')}"
+            )
+            extra_meta = {
+                "source_type": "BIS_SERVICE",
+                "document_type": "bis_service",
+                "service_id": item["id"],
+                "source_url": item.get("source_url", ""),
+                "source_title": item.get("service_name", ""),
+                "retrieved_at": item.get("retrieved_at", ""),
+            }
+            chunks = chunk_text(
+                text=text,
+                document_id=item["id"],
+                document_title=item.get("service_name", ""),
+                source_url=item.get("source_url", ""),
+                source_type="BIS_SERVICE",
+                chunk_size=700,
+                chunk_overlap=80,
+                extra_metadata=extra_meta,
+            )
+            all_chunks.extend(chunks)
+            counts_by_type["bis_service"] += len(chunks)
 
     return all_chunks, counts_by_type
 

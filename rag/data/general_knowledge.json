@@ -106,5 +106,95 @@
     "source_url": "https://www.bis.gov.in/enforcement-activities/",
     "source_type": "BIS_GENERAL",
     "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-WHAT-IS-BIS",
+    "topic": "BIS Organisation",
+    "title": "What is BIS? The Bureau of Indian Standards — Mandate, History and Functions",
+    "text": "The Bureau of Indian Standards (BIS) is India's national standards body, established as a statutory body under the Bureau of Indian Standards Act, 2016 (replacing the earlier BIS Act, 1986). BIS operates under the administrative control of the Ministry of Consumer Affairs, Food and Public Distribution. Its primary mandate is to formulate and promote Indian Standards, operate product certification and conformity assessment schemes, provide hallmarking services for precious metals, run laboratory testing facilities, and protect consumer interests. BIS has its headquarters in Manak Bhavan, New Delhi, and maintains five regional offices (Northern, Eastern, Western, Southern, and Central) and branch offices across major industrial and commercial centres. BIS also represents India in international standardisation bodies such as ISO (International Organization for Standardization) and IEC (International Electrotechnical Commission). Standards formulated by BIS are published as Indian Standards (IS) and are numbered sequentially. BIS is funded through government grants, licence fees from certified manufacturers, and revenue from selling standards documents.",
+    "source_url": "https://www.bis.gov.in/about-bis/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-BIS-ACT-2016",
+    "topic": "Regulatory Framework",
+    "title": "Overview of the Bureau of Indian Standards Act, 2016",
+    "text": "The Bureau of Indian Standards Act, 2016 is the primary legislation governing BIS operations. It replaced the BIS Act, 1986 and significantly expanded BIS powers. Key provisions include: Section 14 — grants BIS authority to operate product certification and conformity assessment schemes; Section 16 — empowers the Central Government to issue Quality Control Orders (QCOs) making compliance with Indian Standards mandatory for specified products; Section 17 — governs hallmarking of articles made of precious metals; Section 28 — grants enforcement powers including search, seizure, and inspection; Section 29 — prescribes penalties for contravening mandatory orders. The 2016 Act introduced compulsory hallmarking (not present in the 1986 Act), expanded the scope to include services and systems standards, and enabled electronic certification. The Conformity Assessment Regulations, 2018 and Hallmarking Regulations, 2018 were notified under this Act.",
+    "source_url": "https://www.bis.gov.in/about-bis/the-act/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-ISI-MARK-EXPLAINED",
+    "topic": "Certification Schemes",
+    "title": "What is the ISI Mark? Meaning, History, and How to Recognise a Genuine Certificate",
+    "text": "The ISI Mark (Indian Standards Institution mark) is India's most widely recognised product quality certification mark, awarded by BIS under Scheme I (Product Certification). The name traces back to the Indian Standards Institution, BIS's predecessor body. The ISI mark consists of a stylised hexagonal monogram. Products bearing this mark have been independently verified to conform to the relevant Indian Standard. The mark is accompanied by a Certification Marks Licence (CML) number unique to the manufacturer and product type, and the IS number of the applicable standard. Consumers should verify the CML number using the BIS Care app. Common products that must carry the ISI mark include pressure cookers, electrical appliances, steel bars, helmets, packaged drinking water bottles, and LPG cylinders. Approximately 33,000 ISI mark licences are active in India at any given time across over 900 product categories.",
+    "source_url": "https://www.bis.gov.in/product-certification/isi-mark/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-CRS-SCHEME-EXPLAINED",
+    "topic": "Certification Schemes",
+    "title": "Compulsory Registration Scheme (CRS): Electronic Products and IT Hardware",
+    "text": "The Compulsory Registration Scheme (CRS), known as Scheme II, was launched in 2012 in collaboration with the Ministry of Electronics and Information Technology (MeitY) to regulate the safety and quality of electronic and IT hardware products sold in India. Unlike Scheme I (ISI Mark), CRS does not require a pre-grant physical factory inspection. Instead, manufacturers — both domestic and foreign — must submit type-test reports from BIS-recognised NABL-accredited test laboratories and execute a self-declaration of conformity. Upon approval, an R-number is assigned to the product model and manufacturer. The product must display the BIS CRS registration mark (a circle with 'R' and the registration number). Products covered include self-ballasted LED lamps, LED luminaires, laptops, tablets, mobile phone adapters, set-top boxes, power banks, and over 60 other electronic product categories. Foreign manufacturers must either set up a test facility in India or use a BIS-recognised lab. CRS registrations are valid for two years and must be renewed before expiry.",
+    "source_url": "https://www.crsbis.in/BIS/",
+    "source_type": "BIS_CERTIFICATION",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-HALLMARKING-AHC",
+    "topic": "Hallmarking",
+    "title": "Assaying and Hallmarking Centres (AHCs): Role, Recognition, and HUID Process",
+    "text": "Assaying and Hallmarking Centres (AHCs) are BIS-recognised facilities authorised to assay the purity of gold and silver articles and engrave the Hallmark Unique Identification (HUID) code on each piece. AHCs are assessed and recognised by BIS under the Hallmarking Regulations, 2018. To be recognised, an AHC must have a fire assay or XRF spectrometry facility meeting ISO/IEC 17025 calibration standards. Every AHC is assigned a unique four-digit AHC code by BIS. The hallmarking process involves: (a) Jeweller submits articles to AHC. (b) AHC assays purity using fire assay or XRF. (c) AHC engraves the BIS Hallmark consisting of the BIS logo, purity in karat/fineness, and a six-character alphanumeric HUID. (d) Hallmarking record is uploaded to the BIS HUID portal in real time. As of 2024, there are over 1,400 BIS-recognised AHCs across India. Hallmarked jewellery can be verified by consumers using the 'Verify HUID' feature in the BIS Care app.",
+    "source_url": "https://www.bis.gov.in/hallmarking-overview/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-STANDARDS-DEVELOPMENT",
+    "topic": "Standards Development",
+    "title": "How Indian Standards Are Developed: Technical Committees and Public Participation",
+    "text": "Indian Standards are developed through a consensus-based process managed by BIS Technical Committees (TCs) and Subcommittees. Committees are organised by technical domains into Division Councils, such as the Electrotechnical Division Council (ETDC), Chemical Division Council (CDC), Civil Engineering Division Council (CEDC), and Mechanical Engineering Division Council (MEDC). Each committee includes representation from industry, consumer organisations, academic institutions, research bodies, and government departments. The standards development cycle includes: (a) Identification of need and project approval. (b) Formation or assignment to a technical committee. (c) Preparation of draft standard by working groups. (d) Wide circulation for public comment (Draft for Comments, DC phase) — open to any stakeholder. (e) Balloting and consensus resolution. (f) Final publication as an IS. The typical cycle takes 18–36 months. Stakeholders can participate in public comments through the BIS website during the DC phase. Standards are periodically reviewed every five years (quinquennial review) and may be reaffirmed, revised, or withdrawn.",
+    "source_url": "https://www.bis.gov.in/standards/formulation-of-standards/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-CERTIFICATION-RENEWAL",
+    "topic": "Application Workflow",
+    "title": "Renewal, Suspension, and Cancellation of BIS Certification Marks Licences",
+    "text": "A BIS Certification Marks Licence (CML) under Scheme I is granted with an annual renewal requirement. Renewal involves: (a) Payment of the Annual Minimum Marking Fee (AMMF), calculated based on the quantum of production marked during the year. (b) Submission of updated in-house test records and calibration certificates for testing equipment. (c) Satisfactory outcome of the latest BIS surveillance inspection report. BIS conducts surprise surveillance visits (typically one to four times per year depending on risk category) to verify ongoing compliance with the Scheme of Inspection and Testing (SIT). If violations are found — such as non-maintenance of test records, use of out-of-calibration equipment, or substandard samples — BIS may issue a Notice of Suspension. Continued violations result in CML Cancellation. Cancelled licences are published on the BIS portal and affected manufacturers must cease using the ISI mark immediately. Reinstatement after suspension requires compliance verification by BIS officers and payment of reinstatement fees.",
+    "source_url": "https://www.manakonline.in/",
+    "source_type": "BIS_CERTIFICATION",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-IMPORT-MANDATORY-QCO",
+    "topic": "Regulatory Framework",
+    "title": "Import Restrictions for Products Under Mandatory Quality Control Orders",
+    "text": "When a Quality Control Order (QCO) is issued for a product category, the restrictions apply equally to domestic manufacturing and imports. Imported products covered by a mandatory QCO must carry a valid BIS certification mark (ISI mark for Scheme I products, or CRS R-number for Scheme II electronics) before they can be customs-cleared. Foreign manufacturers must obtain BIS certification under either the Compulsory Registration Scheme (CRS) or the Foreign Manufacturers Certification Scheme (FMCS) depending on the applicable scheme. Customs officers at ports of entry verify BIS certification status through the BIS LIMS and Manakonline portals. Non-compliant imports may be detained, recalled, or destroyed at the importer's expense. The DPIIT QCO portal maintains a consolidated list of all active QCOs including their coverage of imports. Certain categories may qualify for conditional test import provisions (for type-testing purposes only) under DPIIT notifications.",
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-BIS-REGIONAL-OFFICES",
+    "topic": "BIS Organisation",
+    "title": "BIS Regional and Branch Offices Across India",
+    "text": "BIS maintains five Regional Offices to extend certification, testing, and consumer protection services across India: (1) Northern Regional Office (NROL) — Chandigarh, covering Punjab, Haryana, Himachal Pradesh, Jammu & Kashmir, Uttarakhand, Delhi, and Rajasthan. (2) Eastern Regional Office (EROL) — Kolkata, covering West Bengal, Bihar, Odisha, Jharkhand, Assam, and North-East states. (3) Western Regional Office (WROL) — Mumbai, covering Maharashtra, Gujarat, Goa, and Madhya Pradesh. (4) Southern Regional Office (SROL) — Chennai, covering Tamil Nadu, Kerala, Karnataka, Andhra Pradesh, and Telangana. (5) Central Regional Office (CROL) — Delhi, handling central administration, appeals, and national-level coordination. In addition, BIS operates over 35 Branch Offices in industrial cities for processing licence applications, conducting factory inspections, and handling consumer complaints. The BIS Central Laboratory is co-located with the Northern Regional Office in Ghaziabad.",
+    "source_url": "https://www.bis.gov.in/about-bis/organisation/regional-offices/",
+    "source_type": "BIS_GENERAL",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "GK-SCHEME-X-MANAGEMENT",
+    "topic": "Certification Schemes",
+    "title": "Scheme X: BIS Management System Certification (ISO 9001, ISO 14001, ISO 22000)",
+    "text": "BIS offers Management System Certification under Scheme X, providing third-party certification to organisations wishing to demonstrate compliance with internationally recognised management system standards. BIS is one of India's leading certification bodies for ISO 9001 (Quality Management System), ISO 14001 (Environmental Management System), ISO 22000 (Food Safety Management System), ISO 45001 (Occupational Health and Safety), and ISO/IEC 27001 (Information Security Management). BIS management system audits are conducted by accredited lead auditors and assessed by the National Accreditation Board for Certification Bodies (NABCB). Certificates are valid for three years, with annual surveillance audits. BIS Scheme X certification is widely recognised in government procurement and is a prerequisite for participation in several GeM (Government e-Marketplace) tenders. Applications are submitted through the BIS portal and processed by the BIS headquarters Management System Certification section.",
+    "source_url": "https://www.bis.gov.in/management-systems/",
+    "source_type": "BIS_CERTIFICATION",
+    "retrieved_at": "2026-09-06T00:00:00Z"
   }
 ]

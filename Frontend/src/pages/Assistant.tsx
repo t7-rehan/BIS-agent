@@ -90,7 +90,7 @@ export const Assistant: React.FC = () => {
     setIsTyping(true);
 
     try {
-      const response: ChatResponse = await aiService.queryAssistant(prompt);
+      const response: ChatResponse = await aiService.queryAssistant(prompt, messages);
 
       setMessages((prev) =>
         prev.map((msg) => {

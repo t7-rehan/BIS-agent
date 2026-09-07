@@ -9,6 +9,12 @@ export interface SourceItem {
   is_number?: string | null;
 }
 
+/** A single turn in a conversation for follow-up context */
+export interface ConversationTurn {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
 /** Comprehensive chat response schema returned by FastAPI /api/chat */
 export interface ChatResponse {
   answer: string;
@@ -21,6 +27,13 @@ export interface ChatResponse {
   evidence_used: string[];
   warnings: string[];
   entities?: Record<string, any>;
+  /**
+   * How this response was generated:
+   * - 'bis_rag'        — full hybrid retrieval + Gemini (BIS domain queries)
+   * - 'conversational' — Gemini-only, no BIS retrieval (casual, general info)
+   * - 'static'         — rule-based, no LLM (greetings, unknown redirects)
+   */
+  generation_mode?: 'bis_rag' | 'conversational' | 'static' | string;
 }
 
 export interface SourceCitation {

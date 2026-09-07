@@ -476,5 +476,310 @@
     ],
     "certification_scheme_ids": [],
     "source_url": "https://dpiit.gov.in/quality-control-orders"
+  },
+  {
+    "id": "PROD-UPVC-PIPES",
+    "product_name": "Unplasticized PVC (uPVC) Water Supply Pipes",
+    "aliases": [
+      "uPVC pipe",
+      "PVC pressure pipe",
+      "rigid PVC pipe",
+      "CPVC pipe",
+      "water pipe"
+    ],
+    "category": "Pipes & Plumbing",
+    "applicable_is_numbers": [
+      "IS 4985 : 2000"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=4985"
+  },
+  {
+    "id": "PROD-CEILING-FAN",
+    "product_name": "Domestic Ceiling Fan",
+    "aliases": [
+      "ceiling fan",
+      "pedestal fan",
+      "table fan",
+      "wall fan",
+      "exhaust fan"
+    ],
+    "category": "Domestic Electrical Appliances",
+    "applicable_is_numbers": [
+      "IS 1058 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-APPLIANCES-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-FANS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1058"
+  },
+  {
+    "id": "PROD-PVC-CABLE",
+    "product_name": "PVC Insulated Electric Cable",
+    "aliases": [
+      "house wiring cable",
+      "electrical wire",
+      "PVC cable",
+      "building wire",
+      "wiring cable"
+    ],
+    "category": "Electrical Cables & Wiring",
+    "applicable_is_numbers": [
+      "IS 694 : 2010"
+    ],
+    "qco_ids": [
+      "QCO-CABLES-2019"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-PVC-CABLE"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=694"
+  },
+  {
+    "id": "PROD-MCB",
+    "product_name": "Miniature Circuit Breaker (MCB)",
+    "aliases": [
+      "MCB",
+      "miniature circuit breaker",
+      "circuit breaker",
+      "trip switch",
+      "DB switch"
+    ],
+    "category": "Electrical Accessories",
+    "applicable_is_numbers": [
+      "IS 8828 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-MCB-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-MCB"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=8828"
+  },
+  {
+    "id": "PROD-RCCB",
+    "product_name": "Residual Current Circuit Breaker (RCCB)",
+    "aliases": [
+      "RCCB",
+      "earth leakage circuit breaker",
+      "ELCB",
+      "residual current device",
+      "RCD"
+    ],
+    "category": "Electrical Accessories",
+    "applicable_is_numbers": [
+      "IS 13032 (Part 1) : 2019"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=13032-1"
+  },
+  {
+    "id": "PROD-EXTENSION-CORD",
+    "product_name": "Domestic Extension Cord / Multi-Plug",
+    "aliases": [
+      "extension cord",
+      "extension board",
+      "multi-plug",
+      "power strip",
+      "extension socket"
+    ],
+    "category": "Electrical Accessories",
+    "applicable_is_numbers": [
+      "IS 13369 : 2023"
+    ],
+    "qco_ids": [
+      "QCO-EXTENSION-CORD-2024"
+    ],
+    "certification_scheme_ids": [],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=13369"
+  },
+  {
+    "id": "PROD-WATER-HEATER",
+    "product_name": "Domestic Electric Water Heater (Geyser)",
+    "aliases": [
+      "geyser",
+      "water heater",
+      "electric geyser",
+      "instant water heater",
+      "hot water heater",
+      "storage water heater"
+    ],
+    "category": "Domestic Electrical Appliances",
+    "applicable_is_numbers": [
+      "IS 9667 : 2022"
+    ],
+    "qco_ids": [
+      "QCO-WATER-HEATER-2022"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-WATER-HEATER"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=9667"
+  },
+  {
+    "id": "PROD-LPG-CYLINDER",
+    "product_name": "Domestic LPG Cylinder",
+    "aliases": [
+      "LPG cylinder",
+      "gas cylinder",
+      "cooking gas cylinder",
+      "liquefied petroleum gas cylinder"
+    ],
+    "category": "Gas Cylinders & Pressure Vessels",
+    "applicable_is_numbers": [
+      "IS 3601 : 2023"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-LPG-CYLINDER"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=3601"
+  },
+  {
+    "id": "PROD-GAS-STOVE",
+    "product_name": "Domestic LPG Gas Stove / Cooking Range",
+    "aliases": [
+      "gas stove",
+      "gas burner",
+      "LPG stove",
+      "cooking range",
+      "gas hob",
+      "gas chulha"
+    ],
+    "category": "Gas Appliances & Fittings",
+    "applicable_is_numbers": [
+      "IS 3274 : 2019"
+    ],
+    "qco_ids": [
+      "QCO-GAS-STOVE-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-GAS-STOVE"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=3274"
+  },
+  {
+    "id": "PROD-LPG-REGULATOR",
+    "product_name": "LPG Pressure Regulator",
+    "aliases": [
+      "LPG regulator",
+      "gas pressure regulator",
+      "gas regulator",
+      "cylinder regulator"
+    ],
+    "category": "Gas Appliances & Fittings",
+    "applicable_is_numbers": [
+      "IS 8749 : 2012"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-LPG-REGULATOR"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=8749"
+  },
+  {
+    "id": "PROD-DRY-POWDER-EXTINGUISHER",
+    "product_name": "Portable Dry Powder Fire Extinguisher",
+    "aliases": [
+      "fire extinguisher",
+      "ABC fire extinguisher",
+      "dry powder extinguisher",
+      "DCP extinguisher"
+    ],
+    "category": "Fire Safety Equipment",
+    "applicable_is_numbers": [
+      "IS 2953 : 1993"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=2953"
+  },
+  {
+    "id": "PROD-PACKAGED-WATER-PET",
+    "product_name": "Packaged Drinking Water (PET Bottle)",
+    "aliases": [
+      "packaged water",
+      "bottled water",
+      "mineral water bottle",
+      "drinking water bottle",
+      "sealed water"
+    ],
+    "category": "Food & Beverage",
+    "applicable_is_numbers": [
+      "IS 14543 : 2024"
+    ],
+    "qco_ids": [
+      "QCO-PACKAGED-WATER-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-WATER"
+    ],
+    "source_url": "https://consumeraffairs.nic.in/quality-control-orders"
+  },
+  {
+    "id": "PROD-NATURAL-MINERAL-WATER",
+    "product_name": "Packaged Natural Mineral Water",
+    "aliases": [
+      "mineral water",
+      "natural mineral water",
+      "spring water"
+    ],
+    "category": "Food & Beverage",
+    "applicable_is_numbers": [
+      "IS 13428 : 2023"
+    ],
+    "qco_ids": [
+      "QCO-PACKAGED-WATER-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-MINERAL-WATER"
+    ],
+    "source_url": "https://consumeraffairs.nic.in/quality-control-orders"
+  },
+  {
+    "id": "PROD-MS-TUBE",
+    "product_name": "Mild Steel Tube",
+    "aliases": [
+      "MS pipe",
+      "mild steel pipe",
+      "GI pipe",
+      "galvanised pipe",
+      "ERW pipe",
+      "black steel pipe"
+    ],
+    "category": "Structural Steel & Construction",
+    "applicable_is_numbers": [
+      "IS 1239 (Part 1) : 2004"
+    ],
+    "qco_ids": [
+      "QCO-STEEL-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-MS-TUBE"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1239-1"
+  },
+  {
+    "id": "PROD-SOLAR-WATER-HEATER",
+    "product_name": "Solar Flat Plate Collector / Solar Water Heater",
+    "aliases": [
+      "solar water heater",
+      "solar geyser",
+      "solar flat plate collector",
+      "SWH"
+    ],
+    "category": "Renewable Energy & Solar",
+    "applicable_is_numbers": [
+      "IS 15644 : 2006"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=15644"
   }
 ]

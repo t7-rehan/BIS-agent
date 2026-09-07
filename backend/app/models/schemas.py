@@ -14,6 +14,13 @@ class SourceItem(BaseModel):
     is_number: Optional[str] = Field(None, description="Applicable Indian Standard number if known")
 
 
+class ConversationTurn(BaseModel):
+    """A single turn in a conversation, used to provide context for follow-up questions."""
+
+    role: str = Field(..., description="'user' or 'assistant'")
+    content: str = Field(..., description="Message text for that turn")
+
+
 class ChatRequest(BaseModel):
     """User query request schema."""
 
@@ -22,6 +29,11 @@ class ChatRequest(BaseModel):
         description="The user's query or prompt regarding BIS standards or compliance.",
         min_length=1,
         max_length=2000,
+    )
+    context: Optional[List[ConversationTurn]] = Field(
+        default=None,
+        description="Recent conversation turns (up to 6) for follow-up resolution.",
+        max_length=6,
     )
 
     @field_validator("message")
@@ -82,6 +94,15 @@ class ChatResponse(BaseModel):
     evidence_used: List[str] = Field(default_factory=list, description="Key evidence points utilized")
     warnings: List[str] = Field(default_factory=list, description="Validation warnings or disclaimers")
     entities: Dict[str, Any] = Field(default_factory=dict, description="Extracted domain entities")
+    generation_mode: str = Field(
+        "bis_rag",
+        description=(
+            "How the answer was generated: "
+            "'bis_rag' = full hybrid retrieval + Gemini; "
+            "'conversational' = Gemini-only conversational response (no BIS retrieval); "
+            "'static' = deterministic rule-based response (greetings, redirects)"
+        ),
+    )
 
 
 class HealthResponse(BaseModel):

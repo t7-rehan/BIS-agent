@@ -158,7 +158,7 @@
     "product": "Packaged Drinking Water and Packaged Natural Mineral Water",
     "is_numbers": [
       "IS 14543 : 2024",
-      "IS 13428 : 2005"
+      "IS 13428 : 2023"
     ],
     "issuing_ministry": "Food Safety and Standards Authority of India (FSSAI) & Ministry of Consumer Affairs",
     "mandatory": true,
@@ -266,6 +266,135 @@
       "DPIIT Gazette notification S.O. 2489(E) dated 2024-06-12"
     ],
     "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-FANS-2023",
+    "qco_name": "Ceiling and Pedestal Fans (Quality Control) Order, 2023",
+    "product": "Domestic Ceiling Fans, Pedestal Fans, Table Fans, and Wall Fans",
+    "is_numbers": [
+      "IS 1058 : 2018"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-01-01",
+    "amendments": [
+      "DPIIT S.O. 3210(E) dated 2023-07-20 - Mandatory ISI mark for all domestic fans"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-CABLES-2019",
+    "qco_name": "Wires and Cables (Quality Control) Order, 2019",
+    "product": "PVC Insulated Cables and House Wiring Cables up to 1100V",
+    "is_numbers": [
+      "IS 694 : 2010"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2020-01-01",
+    "amendments": [
+      "DPIIT S.O. 4345(E) dated 2019-11-27 - First notification",
+      "Extension granted for micro manufacturers till 2020-07-01"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-MCB-2021",
+    "qco_name": "Miniature Circuit Breakers (Quality Control) Order, 2021",
+    "product": "Miniature Circuit Breakers for Household and Similar Installations",
+    "is_numbers": [
+      "IS 8828 : 2018"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2022-03-01",
+    "amendments": [
+      "DPIIT S.O. 2187(E) dated 2021-05-28 - Mandatory ISI Mark for MCBs up to 125A"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-WATER-HEATER-2022",
+    "qco_name": "Domestic Electric Water Heaters (Quality Control) Order, 2022",
+    "product": "Domestic Electric Instantaneous and Storage Water Heaters (Geysers)",
+    "is_numbers": [
+      "IS 9667 : 2022"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2023-01-01",
+    "amendments": [
+      "DPIIT Gazette notification S.O. 1956(E) dated 2022-05-09 - Mandatory safety certification for all domestic geysers"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-GAS-STOVE-2021",
+    "qco_name": "Domestic Gas Cooking Ranges (Quality Control) Order, 2021",
+    "product": "Domestic LPG Gas Stoves and Cooking Ranges",
+    "is_numbers": [
+      "IS 3274 : 2019"
+    ],
+    "issuing_ministry": "Ministry of Petroleum and Natural Gas (MoPNG)",
+    "mandatory": true,
+    "enforcement_date": "2021-10-01",
+    "amendments": [
+      "MoPNG S.O. 3389(E) dated 2021-08-10 - ISI mark mandatory for all domestic LPG stoves sold in India"
+    ],
+    "source_url": "https://mopng.gov.in/en/regulation/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-EXTENSION-CORD-2024",
+    "qco_name": "Extension Cords and Multi-Plug Boards (Quality Control) Order, 2024",
+    "product": "Domestic Extension Cords and Multi-Plug Socket Boards",
+    "is_numbers": [
+      "IS 13369 : 2023"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2025-06-01",
+    "amendments": [
+      "DPIIT S.O. 789(E) dated 2024-02-28 - Mandatory BIS certification to address fire hazard risk from substandard extension cords"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-EV-CHARGER-2023",
+    "qco_name": "Electric Vehicle AC Charging Systems (Quality Control) Order, 2023",
+    "product": "AC EV Charging Stations and On-Board Chargers for Electric Vehicles",
+    "is_numbers": [
+      "IS 17017 (Part 1) : 2018"
+    ],
+    "issuing_ministry": "Ministry of Road Transport and Highways (MoRTH)",
+    "mandatory": true,
+    "enforcement_date": "2023-10-01",
+    "amendments": [
+      "MoRTH notification aligning with FAME-II infrastructure guidelines and AIS standards"
+    ],
+    "source_url": "https://morth.nic.in/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-STEEL-TUBES-2021",
+    "qco_name": "Mild Steel Tubes (Quality Control) Order, 2021",
+    "product": "Mild Steel Tubes for General Purposes including Water, Gas, and Air",
+    "is_numbers": [
+      "IS 1239 (Part 1) : 2004"
+    ],
+    "issuing_ministry": "Ministry of Steel",
+    "mandatory": true,
+    "enforcement_date": "2021-10-01",
+    "amendments": [
+      "Ministry of Steel S.O. 2876(E) dated 2021-07-12 - Expansion of steel QCO to include MS tubes"
+    ],
+    "source_url": "https://steel.gov.in/quality-control-orders",
     "retrieved_at": "2026-09-06T00:00:00Z"
   }
 ]

@@ -11,7 +11,7 @@ class BISIntentService:
     # Regex patterns for Indian Standards
     IS_PATTERN = re.compile(r"\bIS(?:\s*/\s*IEC)?\s*\d+(?:\s*\(.*?\))?", re.IGNORECASE)
 
-    # Keywords for intent classification
+    # Keywords for BIS-specific intent classification
     QCO_KEYWORDS = [
         "mandatory", "compulsory", "qco", "quality control order", "enforce",
         "enforcement", "gazette", "order", "deadline", "penalty", "illegal without"
@@ -37,7 +37,57 @@ class BISIntentService:
         "what does bis do", "role of bis", "manakonline", "standards portal"
     ]
 
-    # Common underspecified query patterns requiring clarification
+    # Casual conversation phrases — short social exchanges that need no BIS retrieval
+    CASUAL_CONVERSATION_PATTERNS = re.compile(
+        r"^("
+        r"how are you|how're you|how do you do|how r u|"
+        r"thank(?:s| you)(?: so much| a lot| very much)?|"
+        r"thank(?:s| you)|"
+        r"great(?: job| work| answer)?|"
+        r"awesome|amazing|perfect|"
+        r"ok(?:ay)?|got it|understood|"
+        r"nice|cool|good|"
+        r"bye(?:bye)?|goodbye|see you|"
+        r"you(?:'re| are) (?:helpful|great|good|amazing|awesome)|"
+        r"that(?:'s| is) (?:helpful|great|good|clear|perfect|awesome)"
+        r")[!.?]*$",
+        re.IGNORECASE,
+    )
+
+    # General information queries — answerable from Gemini's knowledge, not BIS DB
+    GENERAL_INFORMATION_PATTERNS = re.compile(
+        r"^("
+        r"what (?:is|are|was|were|does|do) (?!bis\b|isi\b|is\s*\d).*|"
+        r"(?:who|when|where|why|how) (?:is|are|was|were|does|do) (?!bis\b|isi\b).*|"
+        r"(?:tell me|explain|describe|define) (?:what |about )?(?!bis\b|isi\b|is\s*\d).*|"
+        r"what(?:'s| is) (?:the )?(?:meaning|definition|difference|purpose) of (?!bis\b|isi\b).*"
+        r")$",
+        re.IGNORECASE,
+    )
+
+    # "What can you do" / capability questions
+    CAPABILITY_PATTERNS = re.compile(
+        r"^("
+        r"what can you (?:do|help with|assist with)[?!.]*|"
+        r"what (?:do you|are you able to) (?:do|know|help with)[?!.]*|"
+        r"how can you help(?:\s+me)?[?!.]*|"
+        r"what(?:'s| is) your (?:purpose|function|capability|role)[?!.]*|"
+        r"tell me (?:about yourself|what you can do)[?!.]*|"
+        r"(?:help|assist) (?:me )?with what[?!.]*"
+        r")$",
+        re.IGNORECASE,
+    )
+
+    # Greeting / conversational opener patterns
+    GREETING_PATTERNS = re.compile(
+        r"^(hi|hello|hey|hii|hiii|namaste|namaskar|"
+        r"good\s*(?:morning|afternoon|evening|day|night)|"
+        r"howdy|greetings|yo|hola|"
+        r"(?:hey|hi|hello)\s+there)[\s!?.]*$",
+        re.IGNORECASE,
+    )
+
+    # Common underspecified BIS query patterns requiring clarification
     UNDERSPECIFIED_PATTERNS = [
         r"^(?:which|what)\s+standard\s+applies\s+to\s+my\s+product\??$",
         r"^(?:does|is)\s+(?:my|this)?\s*product\s+(?:need|require|mandatory)\s+(?:bis|certification)\??$",
@@ -75,19 +125,14 @@ class BISIntentService:
         "PROD-STAINLESS-SINK": ["stainless steel sink", "kitchen sink", "steel sink"],
     }
 
-    # Greeting / conversational opener patterns
-    GREETING_PATTERNS = re.compile(
-        r"^(hi|hello|hey|hii|hiii|namaste|good\s*(morning|afternoon|evening|day)|"
-        r"howdy|greetings|sup|what'?s\s*up|yo|hola)[\s!?.]*$",
-        re.IGNORECASE,
-    )
-
     def detect_intent(self, query: str) -> IntentResult:
         """Analyze query, extract entities, detect intent and check for underspecification."""
         clean_query = query.strip()
         query_lower = clean_query.lower()
 
-        # 0. Greeting / conversational opener — respond warmly, skip retrieval
+        # ── 0. Pure conversational openers (no retrieval needed) ──────────────
+
+        # 0a. Greeting
         if self.GREETING_PATTERNS.match(clean_query):
             return IntentResult(
                 intent="GREETING",
@@ -96,7 +141,25 @@ class BISIntentService:
                 clarification_required=False,
             )
 
-        # 1. Check for underspecified query triggering clarification
+        # 0b. Casual social exchange ("thanks", "how are you", "great!", etc.)
+        if self.CASUAL_CONVERSATION_PATTERNS.match(clean_query):
+            return IntentResult(
+                intent="CASUAL_CONVERSATION",
+                confidence=0.95,
+                entities={},
+                clarification_required=False,
+            )
+
+        # 0c. Capability question ("what can you do?")
+        if self.CAPABILITY_PATTERNS.match(clean_query):
+            return IntentResult(
+                intent="CASUAL_CONVERSATION",
+                confidence=0.92,
+                entities={"capability_query": True},
+                clarification_required=False,
+            )
+
+        # ── 1. Underspecified BIS queries requiring clarification ─────────────
         for pattern in self.UNDERSPECIFIED_PATTERNS:
             if re.search(pattern, query_lower):
                 return IntentResult(
@@ -105,13 +168,13 @@ class BISIntentService:
                     entities={},
                     clarification_required=True,
                     clarifying_question=(
-                        "Please specify the product name, intended use, or material (for example: "
-                        "electric food mixer, domestic pressure cooker, LED luminaire, or toys) "
-                        "so I can identify the relevant Indian Standard and mandatory certification status."
+                        "Sure — could you tell me the product name or material? "
+                        "For example: domestic pressure cooker, LED lamp, motorcycle helmet, or toys. "
+                        "That will let me find the applicable Indian Standard and certification status."
                     ),
                 )
 
-        # 2. Extract Entities
+        # ── 2. Entity Extraction ──────────────────────────────────────────────
         entities: Dict[str, Any] = {}
 
         # 2a. IS Numbers
@@ -124,7 +187,6 @@ class BISIntentService:
         matched_prod_name = None
         for prod_id, aliases in self.KNOWN_PRODUCTS.items():
             for alias in aliases:
-                # Support singular or plural forms (e.g., mixer/mixers, cooker/cookers)
                 pattern = rf"\b{re.escape(alias)}s?\b"
                 if re.search(pattern, query_lower):
                     matched_prod_id = prod_id
@@ -154,11 +216,13 @@ class BISIntentService:
                     entities["laboratory"] = lab_hint.upper()
                     break
 
-        # 2e. Check for bare / vague product query without intent context (e.g. "cooker", "toys")
+        # ── 2e. Bare product with no intent context → natural clarification ───
         intent_signals = (
             self.QCO_KEYWORDS + self.LAB_KEYWORDS + self.SCHEME_KEYWORDS +
             self.CONSUMER_KEYWORDS + self.GENERAL_BIS_KEYWORDS +
-            ["standard", "specification", "is number", "applies to", "apply", "rule", "how", "what", "which", "where", "why", "who", "tell", "explain", "require", "need", "mandatory"]
+            ["standard", "specification", "is number", "applies to", "apply", "rule",
+             "how", "what", "which", "where", "why", "who", "tell", "explain",
+             "require", "need", "mandatory", "test", "certif"]
         )
         has_intent_signals = any(sig in query_lower for sig in intent_signals)
         if matched_prod_name and not has_intent_signals and not entities.get("is_number"):
@@ -168,14 +232,15 @@ class BISIntentService:
                 entities=entities,
                 clarification_required=True,
                 clarifying_question=(
-                    f"You asked about '{matched_prod_name}'. Are you looking for its applicable Indian Standard, "
-                    f"mandatory certification status under Quality Control Orders (QCOs), or recognized testing laboratories?"
+                    f"Sure — I can help with that. Are you looking for the applicable Indian Standard "
+                    f"for a {matched_prod_name}, its mandatory certification status under a Quality Control Order, "
+                    f"or recognised testing laboratories?"
                 ),
             )
 
-        # 3. Categorize Intent (ordered from most specific to general)
+        # ── 3. BIS-specific intent classification (first-match wins) ─────────
 
-        # Rule 3a: Consumer grievances & verification (e.g. BIS care, report fake ISI)
+        # 3a. Consumer grievances & ISI mark verification
         if any(w in query_lower for w in self.CONSUMER_KEYWORDS):
             return IntentResult(
                 intent="CONSUMER_SERVICE_QUERY",
@@ -184,7 +249,7 @@ class BISIntentService:
                 clarification_required=False,
             )
 
-        # Rule 3b: General BIS organizational overview
+        # 3b. General BIS organisational overview
         if any(w in query_lower for w in self.GENERAL_BIS_KEYWORDS):
             return IntentResult(
                 intent="GENERAL_BIS_QUERY",
@@ -193,7 +258,7 @@ class BISIntentService:
                 clarification_required=False,
             )
 
-        # Rule 3c: Hallmarking
+        # 3c. Hallmarking
         if any(w in query_lower for w in self.HALLMARKING_KEYWORDS):
             return IntentResult(
                 intent="HALLMARKING_QUERY",
@@ -202,7 +267,7 @@ class BISIntentService:
                 clarification_required=False,
             )
 
-        # Rule 3d: Direct standard lookup (e.g. "What is IS 1293?", "Scope of IS 302")
+        # 3d. Direct standard lookup (e.g. "Tell me about IS 1293")
         if entities.get("is_number") and not any(w in query_lower for w in self.QCO_KEYWORDS + self.LAB_KEYWORDS):
             return IntentResult(
                 intent="STANDARD_LOOKUP",
@@ -211,7 +276,7 @@ class BISIntentService:
                 clarification_required=False,
             )
 
-        # Rule 3e: Laboratory query
+        # 3e. Laboratory query
         if any(w in query_lower for w in self.LAB_KEYWORDS):
             return IntentResult(
                 intent="LABORATORY_QUERY",
@@ -220,7 +285,7 @@ class BISIntentService:
                 clarification_required=False,
             )
 
-        # Rule 3f: QCO / Mandatory Compliance query
+        # 3f. QCO / Mandatory Compliance query
         has_qco_keyword = any(
             w in query_lower
             for w in [
@@ -237,7 +302,7 @@ class BISIntentService:
                 clarification_required=False,
             )
 
-        # Rule 3g: Certification scheme query (e.g. Scheme 1 ISI, Scheme 2 CRS, licensing, process)
+        # 3g. Certification scheme query
         if entities.get("certification_scheme") or any(w in query_lower for w in self.SCHEME_KEYWORDS):
             return IntentResult(
                 intent="CERTIFICATION_QUERY",
@@ -246,7 +311,7 @@ class BISIntentService:
                 clarification_required=False,
             )
 
-        # Rule 3h: Product standard query
+        # 3h. Product standard query (has product name or standard keywords)
         if entities.get("product_name") or any(w in query_lower for w in ["standard", "specification", "is number", "applies to"]):
             return IntentResult(
                 intent="PRODUCT_STANDARD_QUERY",
@@ -255,7 +320,18 @@ class BISIntentService:
                 clarification_required=False,
             )
 
-        # Fallback
+        # ── 4. General information query (answerable from Gemini general knowledge) ──
+        # Only reached if no BIS-specific signal was found above.
+        # Matches "What is ISO?", "What is certification?", "What is a QCO?", etc.
+        if self.GENERAL_INFORMATION_PATTERNS.match(clean_query) or len(clean_query.split()) >= 4:
+            return IntentResult(
+                intent="GENERAL_INFORMATION",
+                confidence=0.70,
+                entities=entities,
+                clarification_required=False,
+            )
+
+        # ── Fallback ──────────────────────────────────────────────────────────
         return IntentResult(
             intent="UNKNOWN_QUERY",
             confidence=0.50,

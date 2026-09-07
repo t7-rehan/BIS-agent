@@ -52,6 +52,7 @@ def test_database_initialization(test_engine):
         "certification_schemes",
         "laboratories",
         "general_knowledge",
+        "bis_services",
         "product_standards",
         "product_qcos",
         "product_certification_schemes",
@@ -93,7 +94,7 @@ def test_model_creation_and_repr(test_engine):
 # ====================================================================
 
 def test_seeding_counts(test_db):
-    """Verify exact counts of records imported from Phase 2 datasets."""
+    """Verify counts of records imported from datasets are within expected ranges."""
     from sqlalchemy import func
 
     standards_count = test_db.scalar(select(func.count(Standard.id)))
@@ -103,12 +104,13 @@ def test_seeding_counts(test_db):
     labs_count = test_db.scalar(select(func.count(Laboratory.id)))
     gk_count = test_db.scalar(select(func.count(GeneralKnowledge.id)))
 
-    assert standards_count == 26
-    assert products_count == 23
-    assert qcos_count == 16
-    assert schemes_count == 20
-    assert labs_count == 20
-    assert gk_count == 12
+    # Ranges accommodate knowledge base growth while catching catastrophic data loss
+    assert 26 <= standards_count <= 200, f"Unexpected standards count: {standards_count}"
+    assert 23 <= products_count <= 200, f"Unexpected products count: {products_count}"
+    assert 16 <= qcos_count <= 200, f"Unexpected QCOs count: {qcos_count}"
+    assert 20 <= schemes_count <= 200, f"Unexpected schemes count: {schemes_count}"
+    assert 20 <= labs_count <= 200, f"Unexpected labs count: {labs_count}"
+    assert 12 <= gk_count <= 200, f"Unexpected GK count: {gk_count}"
 
 
 def test_seed_idempotency(test_db):
@@ -118,17 +120,21 @@ def test_seed_idempotency(test_db):
     # Re-run seeding on already-seeded session
     summary2 = seed_database(test_db, init_tables=False)
 
-    assert summary2["standards"] == 26
-    assert summary2["products"] == 23
-    assert summary2["qcos"] == 16
+    # Counts should match the expanded dataset (not the original hardcoded values)
+    assert summary2["standards"] >= 26
+    assert summary2["products"] >= 23
+    assert summary2["qcos"] >= 16
 
-    # Verify counts remain identical
-    assert test_db.scalar(select(func.count(Standard.id))) == 26
-    assert test_db.scalar(select(func.count(Product.id))) == 23
-    assert test_db.scalar(select(func.count(QCO.id))) == 16
-    assert test_db.scalar(select(func.count(CertificationScheme.id))) == 20
-    assert test_db.scalar(select(func.count(Laboratory.id))) == 20
-    assert test_db.scalar(select(func.count(GeneralKnowledge.id))) == 12
+    # Verify counts remain identical after second seed (idempotency check)
+    count_after = test_db.scalar(select(func.count(Standard.id)))
+    assert count_after == summary2["standards"], (
+        f"Idempotency violated: DB has {count_after} standards but summary says {summary2['standards']}"
+    )
+    assert test_db.scalar(select(func.count(Product.id))) == summary2["products"]
+    assert test_db.scalar(select(func.count(QCO.id))) == summary2["qcos"]
+    assert test_db.scalar(select(func.count(CertificationScheme.id))) == summary2["certification_schemes"]
+    assert test_db.scalar(select(func.count(Laboratory.id))) == summary2["laboratories"]
+    assert test_db.scalar(select(func.count(GeneralKnowledge.id))) == summary2["general_knowledge"]
 
 
 # ====================================================================
@@ -247,10 +253,13 @@ def test_qco_and_scheme_direct_lookups(test_db):
 
 def test_general_knowledge_lookup(test_db):
     """Verify general knowledge querying by topic and keywords."""
+    # Default limit=10 should return exactly 10 records (there are 22+ in expanded KB)
     all_gk = BISQueryService.get_general_knowledge(test_db)
     assert len(all_gk) == 10  # default limit 10
-    total_gk = BISQueryService.get_general_knowledge(test_db, limit=20)
-    assert len(total_gk) == 12
+
+    # Fetch all articles with a high limit — should return at least the original 12
+    total_gk = BISQueryService.get_general_knowledge(test_db, limit=100)
+    assert len(total_gk) >= 12, f"Expected at least 12 GK articles, got {len(total_gk)}"
 
     hallmarking_articles = BISQueryService.get_general_knowledge(test_db, "HUID")
     assert len(hallmarking_articles) > 0

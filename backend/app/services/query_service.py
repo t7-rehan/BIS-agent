@@ -6,6 +6,7 @@ from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session, joinedload
 
 from app.db.models import (
+    BISService,
     CertificationScheme,
     GeneralKnowledge,
     Laboratory,
@@ -255,6 +256,34 @@ class BISQueryService:
             )
         stmt = stmt.limit(limit)
         return list(db.scalars(stmt).all())
+
+    # ----------------------------------------------------------------
+    # BIS Services Queries
+    # ----------------------------------------------------------------
+
+    @staticmethod
+    def search_bis_services(
+        db: Session, query: Optional[str] = None, limit: int = 5
+    ) -> List[BISService]:
+        """Search BIS digital services by name, purpose, or process keyword."""
+        stmt = select(BISService)
+        if query:
+            term = f"%{query.strip().lower()}%"
+            stmt = stmt.where(
+                or_(
+                    func.lower(BISService.service_name).like(term),
+                    func.lower(BISService.purpose).like(term),
+                    func.lower(BISService.who_uses).like(term),
+                    func.lower(BISService.process_summary).like(term),
+                )
+            )
+        stmt = stmt.limit(limit)
+        return list(db.scalars(stmt).all())
+
+    @staticmethod
+    def get_bis_service_by_id(db: Session, service_id: str) -> Optional[BISService]:
+        """Fetch a BIS service record by its primary key ID."""
+        return db.get(BISService, service_id)
 
 
 query_service = BISQueryService()

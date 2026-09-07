@@ -32,13 +32,13 @@ def test_rag_datasets_relational_integrity():
     laboratories = load_json(DATA_DIR / "laboratories.json")
     general_knowledge = load_json(DATA_DIR / "general_knowledge.json")
 
-    # Verify counts meet MVP threshold
-    assert 20 <= len(standards) <= 50, f"Expected 20-50 standards, got {len(standards)}"
-    assert 20 <= len(products) <= 30, f"Expected 20-30 products, got {len(products)}"
-    assert 15 <= len(qcos) <= 30, f"Expected 15-30 QCOs, got {len(qcos)}"
-    assert 15 <= len(schemes) <= 30, f"Expected 15-30 schemes, got {len(schemes)}"
+    # Verify counts meet minimum thresholds (upper bounds grow as KB expands)
+    assert 20 <= len(standards), f"Expected at least 20 standards, got {len(standards)}"
+    assert 20 <= len(products), f"Expected at least 20 products, got {len(products)}"
+    assert 15 <= len(qcos), f"Expected at least 15 QCOs, got {len(qcos)}"
+    assert 15 <= len(schemes), f"Expected at least 15 schemes, got {len(schemes)}"
     assert 20 <= len(laboratories) <= 50, f"Expected 20-50 laboratories, got {len(laboratories)}"
-    assert 10 <= len(general_knowledge) <= 20, f"Expected 10-20 articles, got {len(general_knowledge)}"
+    assert 10 <= len(general_knowledge), f"Expected at least 10 articles, got {len(general_knowledge)}"
 
     # Run full schema and referential integrity validations
     validate_sources(sources)

@@ -15,6 +15,7 @@ from sqlalchemy.orm import Session
 
 from app.db.database import SessionLocal, engine, init_db
 from app.db.models import (
+    BISService,
     CertificationScheme,
     GeneralKnowledge,
     Laboratory,
@@ -262,8 +263,32 @@ def seed_database(
         gk.source_type = item["source_type"]
         gk.retrieved_at = item.get("retrieved_at")
 
-    db.commit()
+    db.flush()
     logger.info("  Seeded %d general knowledge articles.", len(raw_gk))
+
+    # 8. Seed BIS Services (optional — file may not exist in older deployments)
+    services_path = target_dir / "bis_services.json"
+    raw_services: List[Dict[str, Any]] = []
+    if services_path.exists():
+        raw_services = load_json(services_path)
+        for item in raw_services:
+            svc = db.get(BISService, item["id"])
+            if not svc:
+                svc = BISService(id=item["id"])
+                db.add(svc)
+
+            svc.service_name = item["service_name"]
+            svc.purpose = item["purpose"]
+            svc.who_uses = item["who_uses"]
+            svc.process_summary = item["process_summary"]
+            svc.source_url = item["source_url"]
+            svc.retrieved_at = item.get("retrieved_at")
+
+        db.flush()
+        logger.info("  Seeded %d BIS service records.", len(raw_services))
+
+    db.commit()
+    logger.info("  Database commit complete.")
 
     summary = {
         "standards": len(raw_standards),
@@ -272,6 +297,7 @@ def seed_database(
         "certification_schemes": len(raw_schemes),
         "laboratories": len(raw_labs),
         "general_knowledge": len(raw_gk),
+        "bis_services": len(raw_services),
     }
     logger.info("Database seeding successfully completed with counts: %s", summary)
     return summary

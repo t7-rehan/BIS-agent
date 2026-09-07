@@ -1,0 +1,92 @@
+[
+  {
+    "id": "SVC-KNOW-YOUR-STANDARD",
+    "service_name": "Know Your Standard (KYS) Portal",
+    "purpose": "Free public portal to search and browse Indian Standards by number, keyword, product category, ITC-HS code, or technical committee. Provides IS title, scope, status, year, price group, and links to related standards.",
+    "who_uses": "Manufacturers, importers, MSMEs, students, researchers, quality professionals, trade lawyers, and consumers needing to identify applicable Indian Standards for a product.",
+    "process_summary": "Visit https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails. Enter the IS number (e.g. IS 2347) or product keyword in the search bar. The portal returns matching standards with full title, technical division, active/withdrawn status, scope description, applicable amendment notes, and whether the standard is covered under a mandatory QCO. Standards can also be browsed by ITC-HS tariff code for import classification purposes.",
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "SVC-MANAKONLINE",
+    "service_name": "Manakonline Portal",
+    "purpose": "Centralised digital platform for applying for BIS product certification licences (Scheme I ISI Mark), tracking application status, uploading factory documents, paying fees, and managing existing licences.",
+    "who_uses": "Domestic manufacturers seeking ISI Mark (Scheme I) licences, existing licence holders managing renewals, BIS officers processing and approving applications.",
+    "process_summary": "Register on manakonline.in with a valid email and GSTIN. Select the applicable Indian Standard and product sub-type. Upload required documents: factory layout, list of testing equipment with calibration certificates, manufacturing process flowchart, raw material test certificates, and Scheme of Inspection and Testing (SIT). Pay application fees online. Await allocation of a BIS Technical Officer for factory inspection. After successful inspection and sample testing, receive the CML licence. Track all stages and communications through the portal dashboard.",
+    "source_url": "https://www.manakonline.in/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "SVC-CRS-PORTAL",
+    "service_name": "CRS (Compulsory Registration Scheme) Portal",
+    "purpose": "Portal for electronic product manufacturers (domestic and foreign) to register products under Scheme II (CRS) by submitting type-test reports and obtaining a BIS R-number for electronics and IT hardware.",
+    "who_uses": "Manufacturers and importers of electronic products covered under MeitY QCOs: LED lamps, laptops, mobile phone adapters, power banks, set-top boxes, tablets, and 60+ other electronics categories.",
+    "process_summary": "Access crsbis.in. Create an account and select the applicable product category from the CRS product list. Upload the test report from a BIS-recognised NABL-accredited laboratory, along with product details, brand name, model number, and manufacturer information. Pay the registration fee. Upon verification by BIS, receive the R-number. The R-number and CRS mark must be displayed on the product and packaging. Registrations are valid for two years and must be renewed. Foreign manufacturers register under the FMCS-CRS pathway.",
+    "source_url": "https://www.crsbis.in/BIS/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "SVC-HALLMARKING-PORTAL",
+    "service_name": "BIS Hallmarking Portal and HUID System",
+    "purpose": "Digital infrastructure for Assaying and Hallmarking Centres (AHCs) to register with BIS, upload hallmarking data in real time, and generate HUID codes for hallmarked gold and silver jewellery.",
+    "who_uses": "BIS-recognised Assaying and Hallmarking Centres (AHCs), registered jewellers submitting gold and silver articles for hallmarking, consumers verifying HUID codes.",
+    "process_summary": "AHCs access the BIS HUID portal to log hallmarking operations. For each article hallmarked, the AHC uploads: article weight, purity tested, karat designation, jeweller's registration number, and AHC code. The portal generates a unique 6-character alphanumeric HUID that the AHC laser-engraves onto the article. Hallmarking data is permanently stored and publicly verifiable. Consumers verify any HUID using the 'Verify HUID' function in the BIS Care app to confirm authenticity and exact tested purity.",
+    "source_url": "https://www.bis.gov.in/hallmarking-overview/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "SVC-BIS-CARE-APP",
+    "service_name": "BIS Care Mobile App",
+    "purpose": "Consumer-facing mobile application for verifying product certifications (ISI Mark CML, CRS R-number, HUID hallmark) and lodging complaints about substandard or uncertified products.",
+    "who_uses": "Consumers, traders, retailers, enforcement officers, and the general public in India.",
+    "process_summary": "Download BIS Care from Google Play Store (Android) or Apple App Store (iOS). Use 'Verify Licence (CML)' to check ISI mark authenticity by entering the CML number printed on the product. Use 'Verify R-Number' for CRS-registered electronics. Use 'Verify HUID' for hallmarked gold/silver jewellery by entering the 6-character HUID code. Use 'Grievance' to report suspected counterfeit ISI marks, uncertified mandatory products, or quality issues — the complaint is registered with BIS enforcement officers.",
+    "source_url": "https://www.bis.gov.in/consumer-affairs/bis-care-mobile-app/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "SVC-FMCS",
+    "service_name": "Foreign Manufacturers Certification Scheme (FMCS)",
+    "purpose": "BIS certification pathway for foreign manufacturers to obtain ISI Mark (Scheme I) or CRS registration for products they export to India that are covered under mandatory QCOs.",
+    "who_uses": "Foreign manufacturers in any country who export to India products covered by mandatory Quality Control Orders — such as electronic goods, electrical appliances, steel products, pressure cookers, helmets, and other compulsory certification items.",
+    "process_summary": "Appoint an Authorized Indian Representative (AIR) who is a resident Indian citizen. Submit application via the BIS portal with factory details, quality manuals, and product technical file. Pay audit fees and performance bank guarantee. BIS technical officers travel to the foreign manufacturing plant for a physical factory audit and sample sealing. Sealed samples are tested at BIS laboratories in India. Upon successful compliance, the licence is granted for one to two years. Renewals require annual compliance reports and periodic re-audits.",
+    "source_url": "https://www.bis.gov.in/product-certification/foreign-manufacturers-certification-scheme-fmcs/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "SVC-LIMS",
+    "service_name": "BIS Laboratory Information Management System (LIMS)",
+    "purpose": "Digital system for managing laboratory testing requests, sample tracking, test report generation, and laboratory recognition status for BIS central and regional laboratories and BIS-recognised external labs.",
+    "who_uses": "BIS technical officers, BIS central and regional laboratories, BIS-recognised external laboratories (NABL-accredited), manufacturers undergoing certification testing, enforcement officers.",
+    "process_summary": "Manufacturers or BIS officers submit test samples through the LIMS portal. Samples are tracked with a unique LIMS ID from receipt to test completion. Accredited labs upload test reports digitally, which are then reviewed by BIS. LIMS maintains a registry of all BIS-recognised laboratories including their recognition scope (which IS standards they are authorised to test), validity dates, and status (active, suspended, cancelled). The public-facing lab search at lims.bis.gov.in allows manufacturers to identify eligible testing laboratories for their product's applicable IS standard.",
+    "source_url": "https://www.lims.bis.gov.in/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "SVC-EBIS-STANDARDS",
+    "service_name": "e-BIS: Online Purchase of Indian Standards",
+    "purpose": "Official platform to purchase and download the full text of published Indian Standards in PDF format.",
+    "who_uses": "Manufacturers, engineers, quality professionals, researchers, importers, consultants, and testing laboratories requiring the complete technical text of Indian Standards.",
+    "process_summary": "Visit shop.bis.gov.in or access via the BIS website. Search for the required IS number or title. Add to cart and pay online. After payment, the PDF is available for download (typically single-user licence). Prices vary by standard size and price group. Some basic summary information is available free via the KYS portal. Full standard text including test methods, material specifications, and dimensional requirements requires purchase. Standards purchased through e-BIS are legally authoritative for certification compliance purposes.",
+    "source_url": "https://www.bis.gov.in/standards/buy-standards/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "SVC-MANAGEMENT-SYSTEM-CERT",
+    "service_name": "BIS Management System Certification (Scheme X)",
+    "purpose": "Third-party certification for organisations seeking ISO management system certification (ISO 9001, ISO 14001, ISO 22000, ISO 45001, ISO/IEC 27001) from BIS as an accredited certification body.",
+    "who_uses": "Companies, factories, food businesses, healthcare providers, and IT organisations needing ISO management system certification for business, regulatory, or procurement purposes.",
+    "process_summary": "Submit an application to BIS through the BIS portal. BIS conducts a Stage 1 documentation review audit followed by a Stage 2 on-site audit by BIS-accredited lead auditors. Upon satisfactory completion, the management system certificate is issued, valid for three years. Annual surveillance audits are conducted in Year 1 and Year 2. Re-certification audit at Year 3. All certificates are NABCB-accredited, internationally recognised, and accepted in government procurement.",
+    "source_url": "https://www.bis.gov.in/management-systems/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "SVC-STANDARDS-CLUBS",
+    "service_name": "BIS Standards Clubs and NITS (National Institute of Training for Standardisation)",
+    "purpose": "Educational and outreach programmes promoting standards awareness in schools, colleges, and training institutions across India. NITS offers professional training courses on standards, conformity assessment, and quality management.",
+    "who_uses": "Students, faculty, quality professionals, industry executives, government officials, and exporters seeking formal training in standardisation and conformity assessment.",
+    "process_summary": "Schools and colleges join the BIS Standards Club programme through their local BIS branch office. The club conducts seminars, competitions, and quality awareness activities. NITS, located in Delhi, offers short-term certified courses on: Indian Standards formulation, ISO auditing, quality management systems, laboratory testing fundamentals, product certification procedures, and BIS Act compliance. Training calendars are published on the BIS NITS portal. Corporate in-house training programmes can also be arranged through NITS.",
+    "source_url": "https://www.bis.gov.in/training/nits/",
+    "retrieved_at": "2026-09-06T00:00:00Z"
+  }
+]

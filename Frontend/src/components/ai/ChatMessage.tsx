@@ -55,7 +55,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, onAskFollowUp
             <span className="text-[10px] text-slate-400 font-mono">{message.timestamp}</span>
           </div>
 
-          {chatResponse?.confidence_level && (
+          {chatResponse?.confidence_level && chatResponse?.generation_mode === 'bis_rag' && (
             <ConfidenceBadge
               level={chatResponse.confidence_level}
               score={chatResponse.confidence}
@@ -96,8 +96,8 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, onAskFollowUp
         ) : chatResponse ? (
           /* Real Backend ChatResponse */
           <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-card text-left space-y-4 transition-all">
-            {/* Extracted Domain Entities */}
-            {chatResponse.entities && Object.keys(chatResponse.entities).length > 0 && (
+            {/* Extracted Domain Entities — only for BIS RAG responses */}
+            {chatResponse.generation_mode === 'bis_rag' && chatResponse.entities && Object.keys(chatResponse.entities).length > 0 && (
               <EntityBadges entities={chatResponse.entities} />
             )}
 
@@ -114,8 +114,8 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, onAskFollowUp
               />
             )}
 
-            {/* Evidence Points Used */}
-            {chatResponse.evidence_used && chatResponse.evidence_used.length > 0 && (
+            {/* Evidence Points Used — only for BIS RAG responses */}
+            {chatResponse.generation_mode === 'bis_rag' && chatResponse.evidence_used && chatResponse.evidence_used.length > 0 && (
               <div className="p-3 bg-slate-50/80 border border-slate-200 rounded-xl space-y-1.5">
                 <div className="text-[11px] font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
                   <FileCheck className="w-3.5 h-3.5 text-blue-600" />
@@ -131,18 +131,18 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, onAskFollowUp
               </div>
             )}
 
-            {/* Authoritative Sources */}
-            {chatResponse.sources && chatResponse.sources.length > 0 && (
+            {/* Authoritative Sources — only for BIS RAG responses */}
+            {chatResponse.generation_mode === 'bis_rag' && chatResponse.sources && chatResponse.sources.length > 0 && (
               <SourceList sources={chatResponse.sources} />
             )}
 
-            {/* Warnings and Statutory Disclaimers */}
-            {chatResponse.warnings && chatResponse.warnings.length > 0 && (
+            {/* Warnings — only for BIS RAG responses */}
+            {chatResponse.generation_mode === 'bis_rag' && chatResponse.warnings && chatResponse.warnings.length > 0 && (
               <WarningBanner warnings={chatResponse.warnings} />
             )}
 
             {/* Bottom Actions Bar */}
-            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <div className={`flex items-center text-xs text-slate-400 ${chatResponse.generation_mode === 'bis_rag' ? 'pt-3 border-t border-slate-100 justify-between' : 'justify-end'}`}>
               <button
                 onClick={() => handleCopyText(chatResponse.answer)}
                 className="inline-flex items-center gap-1.5 text-slate-600 hover:text-blue-600 font-medium py-1 px-2 rounded-md hover:bg-slate-50 transition-colors"
@@ -156,14 +156,16 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message, onAskFollowUp
                 ) : (
                   <>
                     <Copy className="w-3.5 h-3.5" />
-                    <span>Copy Answer</span>
+                    <span>Copy</span>
                   </>
                 )}
               </button>
 
-              <span className="text-[11px] italic">
-                Official BIS guidance • Not legal advice
-              </span>
+              {chatResponse.generation_mode === 'bis_rag' && (
+                <span className="text-[11px] italic">
+                  Official BIS guidance • Not legal advice
+                </span>
+              )}
             </div>
           </div>
         ) : message.structuredResponse ? (

@@ -138,7 +138,7 @@
     "product": "Packaged Drinking Water & Natural Mineral Water",
     "is_numbers": [
       "IS 14543 : 2024",
-      "IS 13428 : 2005"
+      "IS 13428 : 2023"
     ],
     "certification_type": "Scheme I (ISI Mark)",
     "mandatory": true,
@@ -218,6 +218,127 @@
     "product": "Polyethylene for Contact with Foodstuffs, Pharma, and Water",
     "is_numbers": [
       "IS 10146 : 1982"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-FANS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Domestic Ceiling, Pedestal, Table, and Wall Fans",
+    "is_numbers": [
+      "IS 1058 : 2018"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-PVC-CABLE",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "PVC Insulated Electric Cables and House Wiring Cables up to 1100V",
+    "is_numbers": [
+      "IS 694 : 2010"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-MCB",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Miniature Circuit Breakers (MCBs) for Household and Similar Installations",
+    "is_numbers": [
+      "IS 8828 : 2018"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-WATER-HEATER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Domestic Electric Instantaneous and Storage Water Heaters (Geysers)",
+    "is_numbers": [
+      "IS 9667 : 2022"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-GAS-STOVE",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Domestic LPG Gas Cooking Ranges and Gas Stoves",
+    "is_numbers": [
+      "IS 3274 : 2019"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-LPG-CYLINDER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Transportable Refillable Metallic LPG Cylinders for Domestic Use",
+    "is_numbers": [
+      "IS 3601 : 2023"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-LPG-REGULATOR",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "LPG Pressure Regulators for Domestic Cylinders",
+    "is_numbers": [
+      "IS 8749 : 2012"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-WATER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Packaged Drinking Water",
+    "is_numbers": [
+      "IS 14543 : 2024"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-MINERAL-WATER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Packaged Natural Mineral Water",
+    "is_numbers": [
+      "IS 13428 : 2023"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-MS-TUBE",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Mild Steel Tubes for General Purposes",
+    "is_numbers": [
+      "IS 1239 (Part 1) : 2004"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-EV-CHARGER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "AC Electric Vehicle Charging Systems",
+    "is_numbers": [
+      "IS 17017 (Part 1) : 2018"
     ],
     "certification_type": "Scheme I (ISI Mark)",
     "mandatory": true,

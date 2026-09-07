@@ -1,14 +1,4 @@
-"""Chat Service handling query orchestration.
-
-In Phase 1, this service acts as the clean abstraction layer providing a placeholder
-response to establish end-to-end connectivity. In subsequent phases, this service
-will orchestrate:
-  - Intent detection
-  - Query classification
-  - Hybrid RAG retrieval
-  - LLM response synthesis
-  - Evidence & citation validation
-"""
+"""Chat Service — thin delegation layer between the API and the Orchestrator."""
 
 import logging
 from app.models.schemas import ChatRequest, ChatResponse
@@ -17,20 +7,23 @@ logger = logging.getLogger(__name__)
 
 
 class ChatService:
-    """Service to process user chat queries via the AI Orchestrator."""
+    """Process user chat queries via the AI Orchestrator."""
 
     async def process_chat(self, request: ChatRequest) -> ChatResponse:
-        """Process a chat query through the evidence-grounded AI pipeline.
+        """Delegate to the central orchestrator, forwarding any conversation context.
 
         Args:
-            request: The validated user query.
+            request: Validated ChatRequest (message + optional context turns).
 
         Returns:
-            ChatResponse: Structured response with answer, intent, sources, and confidence.
+            ChatResponse: Fully populated response from the orchestrator pipeline.
         """
-        logger.info("Processing chat query: %s", request.message[:80])
+        logger.info("[ChatService] Processing: %s", request.message[:80])
         from app.services.orchestrator import orchestrator
-        return orchestrator.orchestrate(request.message)
+        return orchestrator.orchestrate(
+            message=request.message,
+            context=request.context,
+        )
 
 
 chat_service = ChatService()

@@ -139,6 +139,14 @@ class BISHybridRetriever:
                 prod_id = meta.get("product_id", "")
                 qco_id = meta.get("qco_id", "")
                 scheme_id = meta.get("certification_scheme_id", "")
+                service_id = meta.get("service_id", "")
+
+                # BIS Service chunks — just add their source, no cascade needed
+                if doc_type == "bis_service" or service_id:
+                    target_svc_id = service_id or doc_id
+                    svc = BISQueryService.get_bis_service_by_id(db, target_svc_id)
+                    if svc:
+                        add_source(svc.service_name, svc.source_url or "", "BIS_SERVICE")
 
                 if doc_type == "standard" or is_no:
                     target_std_id = doc_id or is_no

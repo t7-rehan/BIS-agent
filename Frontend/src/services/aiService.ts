@@ -1,7 +1,6 @@
-import { ChatResponse } from '../types/ai';
+import { ChatMessage, ChatResponse, ConversationTurn } from '../types/ai';
 
 const RAW_API_URL = (import.meta.env.VITE_API_URL as string) || 'http://localhost:8000';
-// Remove trailing slashes for clean endpoint concatenation
 const API_BASE_URL = RAW_API_URL.replace(/\/+$/, '');
 
 export interface HealthCheckResult {
@@ -21,13 +20,36 @@ export class AssistantApiError extends Error {
 }
 
 /**
+ * Build a ConversationTurn array from the last N completed message pairs.
+ * Only includes fully resolved messages (no streaming, no errors).
+ * Caps at 6 turns (3 user + 3 assistant) to stay within the backend limit.
+ */
+export function buildContext(
+  messages: ChatMessage[],
+  maxTurns: number = 6
+): ConversationTurn[] {
+  const completed = messages.filter(
+    (m) => !m.isStreaming && !m.error && m.text !== undefined || m.chatResponse !== undefined
+  );
+
+  const turns: ConversationTurn[] = [];
+  for (const m of completed) {
+    if (m.sender === 'user' && m.text) {
+      turns.push({ role: 'user', content: m.text });
+    } else if (m.sender === 'assistant' && m.chatResponse?.answer) {
+      turns.push({ role: 'assistant', content: m.chatResponse.answer });
+    }
+  }
+
+  // Return the most recent turns, capped at maxTurns
+  return turns.slice(-maxTurns);
+}
+
+/**
  * AI Service communicating with the FastAPI /api/chat endpoint.
- * Implements strict zero-mock policy per Phase 6 requirements.
  */
 export const aiService = {
-  /**
-   * Health check for backend service liveness.
-   */
+  /** Health check for backend service liveness. */
   async checkHealth(): Promise<HealthCheckResult | null> {
     try {
       const response = await fetch(`${API_BASE_URL}/api/health`, {
@@ -44,14 +66,16 @@ export const aiService = {
   },
 
   /**
-   * Send user prompt to POST /api/chat and return validated ChatResponse.
+   * Send user prompt to POST /api/chat, optionally with conversation context
+   * for follow-up resolution.
    *
-   * @param message User question or prompt
-   * @param timeoutMs Request timeout (default: 35000ms)
-   * @returns Validated ChatResponse from Phase 5 Orchestrator
+   * @param message      User question or prompt
+   * @param priorMessages Prior ChatMessage array for building context turns
+   * @param timeoutMs    Request timeout (default 35 s; conversational calls are fast)
    */
   async queryAssistant(
     message: string,
+    priorMessages: ChatMessage[] = [],
     timeoutMs: number = 35000
   ): Promise<ChatResponse> {
     const cleanMessage = message.trim();
@@ -60,6 +84,14 @@ export const aiService = {
     }
     if (cleanMessage.length > 2000) {
       throw new AssistantApiError('Message is too long. Please keep queries under 2000 characters.');
+    }
+
+    // Build conversation context from prior completed messages (max 6 turns)
+    const context = buildContext(priorMessages, 6);
+
+    const requestBody: Record<string, unknown> = { message: cleanMessage };
+    if (context.length > 0) {
+      requestBody.context = context;
     }
 
     const controller = new AbortController();
@@ -72,7 +104,7 @@ export const aiService = {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify({ message: cleanMessage }),
+        body: JSON.stringify(requestBody),
         signal: controller.signal,
       });
 
@@ -101,13 +133,10 @@ export const aiService = {
         throw new AssistantApiError('Received an empty or malformed response from the assistant.');
       }
 
-      // Normalize into strongly typed ChatResponse
       const chatResponse: ChatResponse = {
         answer: data.answer,
         intent: data.intent || 'GENERAL_QUERY',
         confidence: data.confidence ?? null,
-        // Use the backend's confidence_level directly — never infer HIGH from a numeric score
-        // because the score reflects retrieval quality, which can be high even when LLM fails.
         confidence_level: data.confidence_level || null,
         needs_clarification: Boolean(data.needs_clarification),
         clarifying_question: data.clarifying_question || null,
@@ -115,15 +144,14 @@ export const aiService = {
         evidence_used: Array.isArray(data.evidence_used) ? data.evidence_used : [],
         warnings: Array.isArray(data.warnings) ? data.warnings : [],
         entities: data.entities && typeof data.entities === 'object' ? data.entities : {},
+        generation_mode: data.generation_mode || 'bis_rag',
       };
 
       return chatResponse;
     } catch (err: unknown) {
       clearTimeout(timeoutId);
 
-      if (err instanceof AssistantApiError) {
-        throw err;
-      }
+      if (err instanceof AssistantApiError) throw err;
 
       if (err instanceof DOMException && err.name === 'AbortError') {
         throw new AssistantApiError(
@@ -131,7 +159,6 @@ export const aiService = {
         );
       }
 
-      // Network / connection failure
       throw new AssistantApiError(
         'Unable to connect to the BIS assistant right now. Please check that the backend is running and try again.'
       );

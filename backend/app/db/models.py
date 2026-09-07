@@ -405,3 +405,32 @@ class GeneralKnowledge(Base):
 
     def __repr__(self) -> str:
         return f"<GeneralKnowledge id={self.id} topic='{self.topic}'>"
+
+
+class BISService(Base):
+    """BIS digital service or programme (e.g. Manakonline, CRS portal, BIS Care app, LIMS)."""
+
+    __tablename__ = "bis_services"
+
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    service_name: Mapped[str] = mapped_column(String(256), nullable=False, index=True)
+    purpose: Mapped[str] = mapped_column(Text, nullable=False)
+    who_uses: Mapped[str] = mapped_column(Text, nullable=False)
+    process_summary: Mapped[str] = mapped_column(Text, nullable=False)
+    source_url: Mapped[str] = mapped_column(String(1024), nullable=False)
+    retrieved_at: Mapped[Optional[str]] = mapped_column(String(64), nullable=True)
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert BIS service model to dictionary."""
+        return {
+            "id": self.id,
+            "service_name": self.service_name,
+            "purpose": self.purpose,
+            "who_uses": self.who_uses,
+            "process_summary": self.process_summary,
+            "source_url": self.source_url,
+            "retrieved_at": self.retrieved_at,
+        }
+
+    def __repr__(self) -> str:
+        return f"<BISService id={self.id} name='{self.service_name}'>"
