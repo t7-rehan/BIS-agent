@@ -23,7 +23,7 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onCloseMobile }) => {
   const navItems = [
     { to: '/', label: 'Home', icon: Home },
-    { to: '/assistant', label: 'AI Assistant', icon: Sparkles, badge: 'AI' },
+    { to: '/assistant', label: 'BIS Agent', icon: Sparkles, badge: 'AI' },
     { to: '/standards', label: 'Standards', icon: BookOpen },
     { to: '/compliance', label: 'Compliance', icon: CheckSquare },
     { to: '/laboratories', label: 'Laboratories', icon: FlaskConical },
@@ -89,15 +89,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onCloseMobile })
         })}
       </nav>
 
-      {/* Footer info & demo disclaimer badge */}
+      {/* Footer info */}
       <div className="p-4 border-t border-slate-100 bg-slate-50/50">
         <div className="rounded-lg p-2.5 bg-white border border-slate-200 text-[11px] text-slate-600 space-y-1">
           <div className="flex items-center gap-1.5 font-semibold text-slate-800">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span>SIH 26107 Prototype</span>
+            <span>BIS Agent Online</span>
           </div>
           <p className="text-[10px] text-slate-500 leading-snug">
-            India’s Standards, Simplified. Built for SIH demonstration.
+            India’s Standards, Simplified. Official BIS Data.
           </p>
         </div>
       </div>

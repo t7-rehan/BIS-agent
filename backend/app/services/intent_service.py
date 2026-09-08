@@ -2,7 +2,7 @@
 
 import re
 from typing import Any, Dict, List, Optional
-from app.models.schemas import IntentResult
+from app.models.schemas import ConversationTurn, IntentResult
 
 
 class BISIntentService:
@@ -17,7 +17,7 @@ class BISIntentService:
         "enforcement", "gazette", "order", "deadline", "penalty", "illegal without"
     ]
     LAB_KEYWORDS = [
-        "lab", "laboratory", "testing", "test facility", "test report", "where to test",
+        "lab", "laboratory", "test", "testing", "tested", "test facility", "test report", "where to test",
         "accredited lab", "testing center", "nth", "cipet", "lims"
     ]
     SCHEME_KEYWORDS = [
@@ -40,27 +40,27 @@ class BISIntentService:
     # Casual conversation phrases — short social exchanges that need no BIS retrieval
     CASUAL_CONVERSATION_PATTERNS = re.compile(
         r"^("
-        r"how are you|how're you|how do you do|how r u|"
-        r"thank(?:s| you)(?: so much| a lot| very much)?|"
-        r"thank(?:s| you)|"
+        r"how are you(?: doing)?|how're you(?: doing)?|how do you do|how r u|how are things|"
+        r"thank(?:s| you).*|"
+        r"thx|ty|"
         r"great(?: job| work| answer)?|"
-        r"awesome|amazing|perfect|"
-        r"ok(?:ay)?|got it|understood|"
+        r"awesome|amazing|perfect|wonderful|excellent|"
+        r"ok(?:ay)?|got it|understood|sure|all right|alright|"
         r"nice|cool|good|"
-        r"bye(?:bye)?|goodbye|see you|"
-        r"you(?:'re| are) (?:helpful|great|good|amazing|awesome)|"
+        r"bye(?:bye)?|goodbye|see you(?: soon| later)?|"
+        r"you(?:'re| are) (?:helpful|great|good|amazing|awesome|the best)|"
         r"that(?:'s| is) (?:helpful|great|good|clear|perfect|awesome)"
-        r")[!.?]*$",
+        r")[!\s.?]*$",
         re.IGNORECASE,
     )
 
     # General information queries — answerable from Gemini's knowledge, not BIS DB
     GENERAL_INFORMATION_PATTERNS = re.compile(
-        r"^("
-        r"what (?:is|are|was|were|does|do) (?!bis\b|isi\b|is\s*\d).*|"
-        r"(?:who|when|where|why|how) (?:is|are|was|were|does|do) (?!bis\b|isi\b).*|"
-        r"(?:tell me|explain|describe|define) (?:what |about )?(?!bis\b|isi\b|is\s*\d).*|"
-        r"what(?:'s| is) (?:the )?(?:meaning|definition|difference|purpose) of (?!bis\b|isi\b).*"
+        r"^(?!.*\bbis\b)("
+        r"what (?:is|are|was|were|does|do) (?!isi\b|is\s*\d).+|"
+        r"(?:who|when|where|why|how) (?:is|are|was|were|does|do) (?!isi\b).+|"
+        r"(?:tell me|explain|describe|define) (?:what |about )?(?!isi\b|is\s*\d).+|"
+        r"what(?:'s| is) (?:the )?(?:meaning|definition|difference|purpose) of (?!isi\b).+"
         r")$",
         re.IGNORECASE,
     )
@@ -71,19 +71,23 @@ class BISIntentService:
         r"what can you (?:do|help with|assist with)[?!.]*|"
         r"what (?:do you|are you able to) (?:do|know|help with)[?!.]*|"
         r"how can you help(?:\s+me)?[?!.]*|"
+        r"can you help(?:\s+me)?[?!.]*|"
         r"what(?:'s| is) your (?:purpose|function|capability|role)[?!.]*|"
         r"tell me (?:about yourself|what you can do)[?!.]*|"
-        r"(?:help|assist) (?:me )?with what[?!.]*"
+        r"(?:help|assist) (?:me )?with what[?!.]*|"
+        r"who are you[?!.]*"
         r")$",
         re.IGNORECASE,
     )
 
     # Greeting / conversational opener patterns
     GREETING_PATTERNS = re.compile(
-        r"^(hi|hello|hey|hii|hiii|namaste|namaskar|"
-        r"good\s*(?:morning|afternoon|evening|day|night)|"
-        r"howdy|greetings|yo|hola|"
-        r"(?:hey|hi|hello)\s+there)[\s!?.]*$",
+        r"^(?:"
+        r"hi|hello|hey|hii|hiii|namaste|namaskar|howdy|greetings|yo|hola|"
+        r"good\s*(?:morning|afternoon|evening|day|night)"
+        r")"
+        r"(?:[,\s]+(?:there|all|team|bis\s*agent|agent|friend|assistant|good\s*(?:morning|afternoon|evening|day)))*"
+        r"[\s!?.]*$",
         re.IGNORECASE,
     )
 
@@ -125,7 +129,48 @@ class BISIntentService:
         "PROD-STAINLESS-SINK": ["stainless steel sink", "kitchen sink", "steel sink"],
     }
 
-    def detect_intent(self, query: str) -> IntentResult:
+    def _extract_entities_from_context(self, context: List[ConversationTurn]) -> Dict[str, Any]:
+        """Scan recent conversation context turns in reverse to extract active entities."""
+        inherited: Dict[str, Any] = {}
+        for turn in reversed(context):
+            content = turn.content
+            content_lower = content.lower()
+
+            # Inherit IS number if not yet found
+            if "is_number" not in inherited:
+                is_matches = self.IS_PATTERN.findall(content)
+                if is_matches:
+                    inherited["is_number"] = re.sub(r"\s+", " ", is_matches[0]).strip()
+
+            # Inherit product if not yet found
+            if "product_id" not in inherited:
+                for prod_id, aliases in self.KNOWN_PRODUCTS.items():
+                    for alias in aliases:
+                        pattern = rf"\b{re.escape(alias)}s?\b"
+                        if re.search(pattern, content_lower):
+                            inherited["product_id"] = prod_id
+                            inherited["product_name"] = alias
+                            break
+                    if "product_id" in inherited:
+                        break
+
+            # Inherit certification scheme if found in context
+            if "certification_scheme" not in inherited:
+                if "scheme 1" in content_lower or "scheme i" in content_lower or "isi mark" in content_lower:
+                    inherited["certification_scheme"] = "Scheme I (ISI Mark)"
+                elif "scheme 2" in content_lower or "scheme ii" in content_lower or "crs" in content_lower:
+                    inherited["certification_scheme"] = "Scheme II (Compulsory Registration Scheme - CRS)"
+
+            if "is_number" in inherited and "product_id" in inherited:
+                break
+
+        return inherited
+
+    def detect_intent(
+        self,
+        query: str,
+        context: Optional[List[ConversationTurn]] = None,
+    ) -> IntentResult:
         """Analyze query, extract entities, detect intent and check for underspecification."""
         clean_query = query.strip()
         query_lower = clean_query.lower()
@@ -159,30 +204,15 @@ class BISIntentService:
                 clarification_required=False,
             )
 
-        # ── 1. Underspecified BIS queries requiring clarification ─────────────
-        for pattern in self.UNDERSPECIFIED_PATTERNS:
-            if re.search(pattern, query_lower):
-                return IntentResult(
-                    intent="PRODUCT_STANDARD_QUERY",
-                    confidence=0.85,
-                    entities={},
-                    clarification_required=True,
-                    clarifying_question=(
-                        "Sure — could you tell me the product name or material? "
-                        "For example: domestic pressure cooker, LED lamp, motorcycle helmet, or toys. "
-                        "That will let me find the applicable Indian Standard and certification status."
-                    ),
-                )
-
-        # ── 2. Entity Extraction ──────────────────────────────────────────────
+        # ── 1. Entity Extraction from Current Query ───────────────────────────
         entities: Dict[str, Any] = {}
 
-        # 2a. IS Numbers
+        # 1a. IS Numbers
         is_matches = self.IS_PATTERN.findall(clean_query)
         if is_matches:
             entities["is_number"] = re.sub(r"\s+", " ", is_matches[0]).strip()
 
-        # 2b. Product matching
+        # 1b. Product matching
         matched_prod_id = None
         matched_prod_name = None
         for prod_id, aliases in self.KNOWN_PRODUCTS.items():
@@ -199,7 +229,40 @@ class BISIntentService:
             entities["product_id"] = matched_prod_id
             entities["product_name"] = matched_prod_name
 
-        # 2c. Certification Scheme
+        # 1c. Multi-Turn Context Resolution ────────────────────────────────────
+        # If user asks a follow-up ("Is it mandatory?", "Where can I test it?"),
+        # inherit missing product and standard entities from prior context turns.
+        if context:
+            context_entities = self._extract_entities_from_context(context)
+            if not entities.get("product_id") and "product_id" in context_entities:
+                entities["product_id"] = context_entities["product_id"]
+                entities["product_name"] = context_entities["product_name"]
+                entities["inherited_from_context"] = True
+                matched_prod_id = context_entities["product_id"]
+                matched_prod_name = context_entities["product_name"]
+            if not entities.get("is_number") and "is_number" in context_entities:
+                entities["is_number"] = context_entities["is_number"]
+                entities["inherited_from_context"] = True
+            elif not entities.get("is_number") and entities.get("product_id"):
+                prod_to_std = {
+                    "PROD-PRESSURE-COOKER": "IS 2347",
+                    "PROD-ELECTRIC-MIXER": "IS 4250",
+                    "PROD-PLUG-SOCKET": "IS 1293",
+                    "PROD-LED-LAMP": "IS 16102 (Part 1)",
+                    "PROD-TWO-WHEELER-HELMET": "IS 4151",
+                    "PROD-CEMENT-OPC": "IS 269",
+                    "PROD-PACKAGED-WATER": "IS 14543",
+                    "PROD-STRUCTURAL-STEEL": "IS 2062",
+                    "PROD-TMT-REBAR": "IS 1786",
+                }
+                active_prod = entities.get("product_id")
+                if active_prod and active_prod in prod_to_std:
+                    entities["is_number"] = prod_to_std[active_prod]
+                    entities["inherited_from_context"] = True
+            if not entities.get("certification_scheme") and "certification_scheme" in context_entities:
+                entities["certification_scheme"] = context_entities["certification_scheme"]
+
+        # 1d. Certification Scheme
         if "scheme 1" in query_lower or "scheme i" in query_lower or "isi mark" in query_lower:
             entities["certification_scheme"] = "Scheme I (ISI Mark)"
         elif "scheme 2" in query_lower or "scheme ii" in query_lower or "crs" in query_lower:
@@ -209,12 +272,39 @@ class BISIntentService:
         elif "hallmark" in query_lower:
             entities["certification_scheme"] = "Hallmarking Scheme"
 
-        # 2d. Laboratory indicators
+        # 1e. Laboratory indicators
         if any(w in query_lower for w in ["lab", "laboratory", "testing"]):
             for lab_hint in ["cipet", "nth", "national test house", "central lab", "mumbai", "kolkata", "chennai"]:
                 if lab_hint in query_lower:
                     entities["laboratory"] = lab_hint.upper()
                     break
+
+        # Check if user is answering a prior clarification question
+        is_answering_clarification = False
+        if context:
+            last_assistant_turn = next((t for t in reversed(context) if t.role == "assistant"), None)
+            if last_assistant_turn and any(
+                phrase in last_assistant_turn.content.lower()
+                for phrase in ["what type", "tell me the product", "which product", "could you tell me", "are you looking for"]
+            ):
+                is_answering_clarification = True
+
+        # ── 2. Underspecified BIS queries requiring clarification ─────────────
+        # Only require clarification if product is NOT already known from query or context
+        if not entities.get("product_id") and not is_answering_clarification:
+            for pattern in self.UNDERSPECIFIED_PATTERNS:
+                if re.search(pattern, query_lower):
+                    return IntentResult(
+                        intent="PRODUCT_STANDARD_QUERY",
+                        confidence=0.85,
+                        entities={},
+                        clarification_required=True,
+                        clarifying_question=(
+                            "Sure — could you tell me the product name or material? "
+                            "For example: domestic pressure cooker, LED lamp, motorcycle helmet, or toys. "
+                            "That will let me find the applicable Indian Standard and certification status."
+                        ),
+                    )
 
         # ── 2e. Bare product with no intent context → natural clarification ───
         intent_signals = (
@@ -225,7 +315,15 @@ class BISIntentService:
              "require", "need", "mandatory", "test", "certif"]
         )
         has_intent_signals = any(sig in query_lower for sig in intent_signals)
-        if matched_prod_name and not has_intent_signals and not entities.get("is_number"):
+        if matched_prod_name and not has_intent_signals and not entities.get("is_number") and not is_answering_clarification:
+            if matched_prod_name == "cooker" or clean_query.lower().strip("?!. ") in ["cooker", "cookers"]:
+                return IntentResult(
+                    intent="PRODUCT_STANDARD_QUERY",
+                    confidence=0.75,
+                    entities={**entities, "clarification_options": ["Domestic pressure cooker", "Electric cooker", "Other"]},
+                    clarification_required=True,
+                    clarifying_question="Sure — I can help with that. What type of cooker do you mean?",
+                )
             return IntentResult(
                 intent="PRODUCT_STANDARD_QUERY",
                 confidence=0.75,
@@ -323,7 +421,7 @@ class BISIntentService:
         # ── 4. General information query (answerable from Gemini general knowledge) ──
         # Only reached if no BIS-specific signal was found above.
         # Matches "What is ISO?", "What is certification?", "What is a QCO?", etc.
-        if self.GENERAL_INFORMATION_PATTERNS.match(clean_query) or len(clean_query.split()) >= 4:
+        if self.GENERAL_INFORMATION_PATTERNS.match(clean_query):
             return IntentResult(
                 intent="GENERAL_INFORMATION",
                 confidence=0.70,

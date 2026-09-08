@@ -402,5 +402,113 @@
     ],
     "validity": "Valid till 2029-03-31",
     "source_url": "https://nise.res.in/"
+  },
+  {
+    "id": "LAB-CFTRI-MYS",
+    "laboratory_name": "CSIR - Central Food Technological Research Institute (CFTRI)",
+    "lab_code": "CFTRI-MYS-01",
+    "location": "Cheluvamba Mansion, Mysuru",
+    "state": "Karnataka",
+    "applicable_is_numbers": [
+      "IS 14433 : 2007",
+      "IS 11536 : 2007",
+      "IS 1165 : 2002",
+      "IS 13334 (Part 1) : 2014",
+      "IS 1166 : 1986",
+      "IS 14543 : 2024"
+    ],
+    "testing_scope": [
+      "Nutritional composition, amino acid profiling, and vitamin assay of infant foods and milk formulas",
+      "Microbiological pathogens, aflatoxins, and heavy metal contaminants in dairy products",
+      "Pesticide residue testing by GC-MS/MS and LC-MS/MS for food safety conformance"
+    ],
+    "validity": "Apex National CSIR Food Testing Laboratory",
+    "source_url": "https://www.cftri.res.in/"
+  },
+  {
+    "id": "LAB-NTH-KOLKATA",
+    "laboratory_name": "National Test House (Eastern Region) - Kolkata",
+    "lab_code": "NTH-KOL-01",
+    "location": "Block-CP, Sector-V, Salt Lake, Kolkata",
+    "state": "West Bengal",
+    "applicable_is_numbers": [
+      "IS 252 : 2013",
+      "IS 251 : 1998",
+      "IS 695 : 2020",
+      "IS 517 : 2020",
+      "IS 14756 : 2017",
+      "IS 1660 (Part 1) : 2009",
+      "IS 17526 : 2021",
+      "IS 15392 : 2003"
+    ],
+    "testing_scope": [
+      "Assay and heavy metal trace impurity determinations for heavy industrial chemicals",
+      "Leachable chemical elements and migration testing for food-grade stainless steel & aluminium cookware",
+      "Thermal insulation endurance and leak testing of double-wall stainless steel vacuum flasks",
+      "Tensile strength and pinhole porosity evaluation for aluminium food packaging foil"
+    ],
+    "validity": "Government of India Central Testing Laboratory",
+    "source_url": "https://nth.gov.in/"
+  },
+  {
+    "id": "LAB-CIPET-CHENNAI",
+    "laboratory_name": "Central Institute of Petrochemicals Engineering & Technology (CIPET) - Chennai",
+    "lab_code": "CIPET-CHN-01",
+    "location": "TVK Industrial Estate, Guindy, Chennai",
+    "state": "Tamil Nadu",
+    "applicable_is_numbers": [
+      "IS 4985 : 2021",
+      "IS 4984 : 2016",
+      "IS 16391 : 2015",
+      "IS 16240 : 2015"
+    ],
+    "testing_scope": [
+      "Hydrostatic pressure burst test, impact strength, and opacity tests for UPVC and HDPE pipes",
+      "Wide width tensile strength, puncture resistance, and permeability for civil geotextiles",
+      "Total dissolved solids (TDS) reduction and recovery efficiency of domestic RO purifiers"
+    ],
+    "validity": "National Institute under Ministry of Chemicals and Fertilizers",
+    "source_url": "https://www.cipet.gov.in/"
+  },
+  {
+    "id": "LAB-NML-JAMSHEDPUR",
+    "laboratory_name": "CSIR - National Metallurgical Laboratory (NML)",
+    "lab_code": "NML-JAM-01",
+    "location": "Burmamines, Jamshedpur",
+    "state": "Jharkhand",
+    "applicable_is_numbers": [
+      "IS 1993 : 2018",
+      "IS 277 : 2018",
+      "IS 1161 : 2014",
+      "IS 280 : 2006",
+      "IS 1786 : 2008",
+      "IS 2062 : 2011"
+    ],
+    "testing_scope": [
+      "Coating mass, adhesion, and salt spray corrosion resistance for galvanized steel sheets and tinplate",
+      "Tensile, flattening, and drift expansion tests for structural steel tubes",
+      "Spectrometric compositional validation for construction steel and engineering wires"
+    ],
+    "validity": "Apex National CSIR Metallurgical Testing Laboratory",
+    "source_url": "https://www.nmlindia.org/"
+  },
+  {
+    "id": "LAB-SASMIRA-MUMBAI",
+    "laboratory_name": "Synthetic & Art Silk Mills Research Association (SASMIRA)",
+    "lab_code": "SAS-MUM-01",
+    "location": "Sasmira Marg, Worli, Mumbai",
+    "state": "Maharashtra",
+    "applicable_is_numbers": [
+      "IS 16391 : 2015",
+      "IS 5405 : 2019",
+      "IS 17423 : 2020"
+    ],
+    "testing_scope": [
+      "Fluid absorbency, rate of absorption, and biocompatibility on sanitary napkins",
+      "Synthetic blood penetration resistance and hydrostatic pressure testing for medical coveralls",
+      "Trap tear, grab tensile, and UV weathering resistance on polypropylene geotextiles"
+    ],
+    "validity": "Centre of Excellence for Agro-textiles and Technical Textiles (Ministry of Textiles)",
+    "source_url": "https://www.sasmira.org/"
   }
 ]

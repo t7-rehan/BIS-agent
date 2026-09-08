@@ -46,7 +46,7 @@ describe('Assistant Conversational UI (Phase 6)', () => {
 
     // User message should appear immediately
     expect(screen.getByText('What is IS 2347?')).toBeInTheDocument();
-    expect(mockQuery).toHaveBeenCalledWith('What is IS 2347?');
+    expect(mockQuery).toHaveBeenCalledWith('What is IS 2347?', expect.anything());
 
     await waitFor(() => {
       expect(screen.getByText('Response for user')).toBeInTheDocument();
@@ -92,7 +92,7 @@ describe('Assistant Conversational UI (Phase 6)', () => {
     fireEvent.change(input, { target: { value: '   helmet safety standard   ' } });
     fireEvent.submit(input.closest('form')!);
 
-    expect(querySpy).toHaveBeenCalledWith('helmet safety standard');
+    expect(querySpy).toHaveBeenCalledWith('helmet safety standard', expect.anything());
   });
 
   // 4. Loading state / typing indicator
@@ -336,11 +336,11 @@ describe('Assistant Conversational UI (Phase 6)', () => {
 
     renderAssistant();
 
-    // Find and click the "Product → Standard Lookup" demo card
-    const starterButton = screen.getByText('Product → Standard Lookup');
+    // Find and click the "Find a standard" demo card
+    const starterButton = screen.getByText('Find a standard');
     fireEvent.click(starterButton);
 
-    expect(querySpy).toHaveBeenCalledWith('Which Indian Standard applies to pressure cookers?');
+    expect(querySpy).toHaveBeenCalledWith('Which Indian Standard applies to pressure cookers?', expect.anything());
 
     await waitFor(() => {
       expect(screen.getByText('IS 2347 applies to domestic pressure cookers.')).toBeInTheDocument();

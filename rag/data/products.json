@@ -781,5 +781,1512 @@
     "qco_ids": [],
     "certification_scheme_ids": [],
     "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=15644"
+  },
+  {
+    "id": "PROD-ELECTRIC-IRON",
+    "product_name": "Electric Iron (Dry and Steam)",
+    "aliases": [
+      "Dry iron",
+      "Steam iron",
+      "Clothes iron",
+      "Electric pressing iron",
+      "Press"
+    ],
+    "category": "Electrical & Electronics",
+    "applicable_is_numbers": [
+      "IS 302 (Part 2/Sec 3) : 2007"
+    ],
+    "qco_ids": [
+      "QCO-ELECTRIC-IRONS-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-ELECTRIC-IRONS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=302-2-3"
+  },
+  {
+    "id": "PROD-SMART-METER",
+    "product_name": "Smart Electricity Meter (A.C. Static Direct Connected)",
+    "aliases": [
+      "Smart meter",
+      "Prepaid electricity meter",
+      "Digital energy meter",
+      "AMI smart meter",
+      "Kilowatt hour meter"
+    ],
+    "category": "Electrical & Electronics",
+    "applicable_is_numbers": [
+      "IS 16444 (Part 1) : 2015"
+    ],
+    "qco_ids": [
+      "QCO-SMART-METERS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SMART-METERS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=16444-1"
+  },
+  {
+    "id": "PROD-DIST-TRANSFORMER",
+    "product_name": "Distribution Transformer (Oil Immersed)",
+    "aliases": [
+      "Distribution transformer",
+      "Power transformer",
+      "Pole mounted transformer",
+      "Step-down transformer",
+      "DT"
+    ],
+    "category": "Electrical & Electronics",
+    "applicable_is_numbers": [
+      "IS 2026 (Part 1) : 2011",
+      "IS 1180 (Part 1) : 2014"
+    ],
+    "qco_ids": [
+      "QCO-TRANSFORMERS-2014"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-DIST-TRANSFORMERS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1180-1"
+  },
+  {
+    "id": "PROD-RCCB-DEVICE",
+    "product_name": "Residual Current Circuit Breaker (RCCB / ELCB)",
+    "aliases": [
+      "RCCB",
+      "ELCB",
+      "Earth leakage circuit breaker",
+      "Residual current device",
+      "RCD"
+    ],
+    "category": "Electrical & Electronics",
+    "applicable_is_numbers": [
+      "IS 12640 (Part 1) : 2016"
+    ],
+    "qco_ids": [
+      "QCO-RCCB-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-RCCB"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=12640-1"
+  },
+  {
+    "id": "PROD-SMALL-AC-MOTOR",
+    "product_name": "Small AC Electric Motor (Single-Phase)",
+    "aliases": [
+      "Electric motor",
+      "Single-phase motor",
+      "Induction motor",
+      "Fractional horsepower motor",
+      "Cooler motor"
+    ],
+    "category": "Electrical & Electronics",
+    "applicable_is_numbers": [
+      "IS 996 : 2009"
+    ],
+    "qco_ids": [
+      "QCO-ELECTRIC-MOTORS-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-ELECTRIC-MOTORS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=996"
+  },
+  {
+    "id": "PROD-TELEVISION-SET",
+    "product_name": "Television Set (LED / LCD / Smart TV)",
+    "aliases": [
+      "Television",
+      "TV",
+      "Smart TV",
+      "LED TV",
+      "LCD TV",
+      "Flat panel display"
+    ],
+    "category": "Consumer Electronics & IT",
+    "applicable_is_numbers": [
+      "IS 616 : 2017"
+    ],
+    "qco_ids": [
+      "QCO-MEITY-CRO-PHASE2"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-TELEVISIONS"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/products-covered.do"
+  },
+  {
+    "id": "PROD-UPS-INVERTER",
+    "product_name": "Uninterruptible Power Supply (UPS / Inverter)",
+    "aliases": [
+      "UPS",
+      "Inverter",
+      "Home inverter",
+      "Online UPS",
+      "Backup power supply"
+    ],
+    "category": "Consumer Electronics & IT",
+    "applicable_is_numbers": [
+      "IS 16242 (Part 1) : 2014"
+    ],
+    "qco_ids": [
+      "QCO-MEITY-CRO-PHASE2"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-UPS-INVERTERS"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/products-covered.do"
+  },
+  {
+    "id": "PROD-MOBILE-LANGUAGE-HANDSET",
+    "product_name": "Mobile Handset with Indian Language Support",
+    "aliases": [
+      "Mobile phone",
+      "Smartphone",
+      "Feature phone",
+      "Cell phone",
+      "Language mobile"
+    ],
+    "category": "Consumer Electronics & IT",
+    "applicable_is_numbers": [
+      "IS 16333 (Part 3) : 2022"
+    ],
+    "qco_ids": [
+      "QCO-MEITY-CRO-PHASE2"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-MOBILE-LANGUAGE"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/products-covered.do"
+  },
+  {
+    "id": "PROD-SMART-SPEAKER",
+    "product_name": "Smart Wireless Speaker",
+    "aliases": [
+      "Smart speaker",
+      "Bluetooth speaker",
+      "Voice assistant speaker",
+      "Wi-Fi speaker",
+      "Soundbar"
+    ],
+    "category": "Consumer Electronics & IT",
+    "applicable_is_numbers": [
+      "IS 616 : 2017"
+    ],
+    "qco_ids": [
+      "QCO-MEITY-CRO-PHASE2"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-SMART-SPEAKERS"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/products-covered.do"
+  },
+  {
+    "id": "PROD-BIOMETRIC-READER",
+    "product_name": "Biometric Access Control & Attendance Reader",
+    "aliases": [
+      "Biometric scanner",
+      "Fingerprint scanner",
+      "Aadhaar authentication scanner",
+      "Iris scanner",
+      "Attendance terminal"
+    ],
+    "category": "Consumer Electronics & IT",
+    "applicable_is_numbers": [
+      "IS 16860 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-MEITY-CRO-PHASE2"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-BIOMETRIC-READERS"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/products-covered.do"
+  },
+  {
+    "id": "PROD-DOMESTIC-GAS-STOVE",
+    "product_name": "Domestic Gas Stove for LPG (Gas Chulha)",
+    "aliases": [
+      "Gas stove",
+      "LPG chulha",
+      "Gas burner",
+      "Gas hob",
+      "Domestic cooking gas stove"
+    ],
+    "category": "Mechanical Engineering & Appliances",
+    "applicable_is_numbers": [
+      "IS 4246 : 2002"
+    ],
+    "qco_ids": [
+      "QCO-DOMESTIC-GAS-STOVE-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-GAS-STOVES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=4246"
+  },
+  {
+    "id": "PROD-LPG-CYLINDER-STEEL",
+    "product_name": "Welded Steel LPG Cylinder (Domestic Gas Cylinder)",
+    "aliases": [
+      "LPG cylinder",
+      "Gas bottle",
+      "14.2 kg gas cylinder",
+      "Cooking gas cylinder",
+      "Domestic cylinder"
+    ],
+    "category": "Mechanical Engineering & Pressure Vessels",
+    "applicable_is_numbers": [
+      "IS 3196 (Part 1) : 2013"
+    ],
+    "qco_ids": [
+      "QCO-LPG-CYLINDERS-VALVES-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-LPG-CYLINDERS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=3196-1"
+  },
+  {
+    "id": "PROD-LPG-VALVE-SELF-CLOSING",
+    "product_name": "Self-Closing Valve for LPG Cylinders",
+    "aliases": [
+      "LPG valve",
+      "Cylinder valve",
+      "SC valve",
+      "Gas cylinder regulator valve"
+    ],
+    "category": "Mechanical Engineering & Pressure Vessels",
+    "applicable_is_numbers": [
+      "IS 8737 : 1995"
+    ],
+    "qco_ids": [
+      "QCO-LPG-CYLINDERS-VALVES-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-LPG-VALVES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=8737"
+  },
+  {
+    "id": "PROD-SAFETY-FOOTWEAR-PPE",
+    "product_name": "Safety Shoes / Protective Industrial Footwear",
+    "aliases": [
+      "Safety shoes",
+      "Safety boots",
+      "Steel-toe shoes",
+      "Industrial safety footwear",
+      "Work boots"
+    ],
+    "category": "Personal Protective Equipment (PPE)",
+    "applicable_is_numbers": [
+      "IS 15298 (Part 2) : 2016"
+    ],
+    "qco_ids": [
+      "QCO-SAFETY-FOOTWEAR-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SAFETY-FOOTWEAR"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=15298-2"
+  },
+  {
+    "id": "PROD-INDUSTRIAL-SAFETY-HELMET",
+    "product_name": "Industrial Safety Helmet (Hard Hat)",
+    "aliases": [
+      "Safety helmet",
+      "Hard hat",
+      "Construction helmet",
+      "Mining helmet",
+      "Industrial head protection"
+    ],
+    "category": "Personal Protective Equipment (PPE)",
+    "applicable_is_numbers": [
+      "IS 2925 : 1984"
+    ],
+    "qco_ids": [
+      "QCO-INDUSTRIAL-HELMETS-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-INDUSTRIAL-HELMETS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=2925"
+  },
+  {
+    "id": "PROD-OPC-53-CEMENT",
+    "product_name": "Ordinary Portland Cement, 53 Grade",
+    "aliases": [
+      "53 Grade cement",
+      "OPC 53",
+      "High strength cement",
+      "Structural cement"
+    ],
+    "category": "Civil Engineering & Building Materials",
+    "applicable_is_numbers": [
+      "IS 12269 : 2015"
+    ],
+    "qco_ids": [
+      "QCO-CEMENT-BLENDED-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CEMENT-OPC53"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=12269"
+  },
+  {
+    "id": "PROD-PORTLAND-SLAG-CEMENT",
+    "product_name": "Portland Slag Cement (PSC)",
+    "aliases": [
+      "PSC cement",
+      "Slag cement",
+      "Blended cement",
+      "Marine cement"
+    ],
+    "category": "Civil Engineering & Building Materials",
+    "applicable_is_numbers": [
+      "IS 455 : 2015"
+    ],
+    "qco_ids": [
+      "QCO-CEMENT-BLENDED-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CEMENT-SLAG"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=455"
+  },
+  {
+    "id": "PROD-COMMERCIAL-PLYWOOD",
+    "product_name": "Plywood for General Purposes (Commercial Plywood)",
+    "aliases": [
+      "Plywood",
+      "Commercial ply",
+      "MR grade plywood",
+      "BWP grade plywood",
+      "Marine plywood"
+    ],
+    "category": "Civil Engineering & Building Materials",
+    "applicable_is_numbers": [
+      "IS 303 : 1989"
+    ],
+    "qco_ids": [
+      "QCO-WOOD-PLYWOOD-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-PLYWOOD-MR-BWP"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=303"
+  },
+  {
+    "id": "PROD-WOODEN-FLUSH-DOOR",
+    "product_name": "Wooden Flush Door Shutter (Solid Core Type)",
+    "aliases": [
+      "Flush door",
+      "Wooden door",
+      "Door shutter",
+      "Solid core door",
+      "Plywood door"
+    ],
+    "category": "Civil Engineering & Building Materials",
+    "applicable_is_numbers": [
+      "IS 2202 (Part 1) : 1999"
+    ],
+    "qco_ids": [
+      "QCO-WOOD-PLYWOOD-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-FLUSH-DOORS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=2202-1"
+  },
+  {
+    "id": "PROD-UPVC-WATER-PIPE",
+    "product_name": "Unplasticized PVC (UPVC) Pipe for Potable Water Supplies",
+    "aliases": [
+      "UPVC pipe",
+      "PVC pipe",
+      "Water pipe",
+      "Plumbing pipe",
+      "Plastic drinking water pipe"
+    ],
+    "category": "Civil Engineering & Piping",
+    "applicable_is_numbers": [
+      "IS 4985 : 2021"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-UPVC-PIPES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=4985"
+  },
+  {
+    "id": "PROD-INFANT-MILK-FOOD",
+    "product_name": "Infant Milk Food / Formula",
+    "aliases": [
+      "Baby milk powder",
+      "Infant formula",
+      "Baby food",
+      "Infant milk substitute",
+      "Formula milk"
+    ],
+    "category": "Food & Agricultural Products",
+    "applicable_is_numbers": [
+      "IS 14433 : 2007"
+    ],
+    "qco_ids": [
+      "QCO-INFANT-MILK-FOOD-REGULATION"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-INFANT-MILK-FOOD"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=14433"
+  },
+  {
+    "id": "PROD-INFANT-WEANING-FOOD",
+    "product_name": "Infant Cereal Weaning Food (Processed Cereal-Based)",
+    "aliases": [
+      "Infant cereal",
+      "Baby cereal",
+      "Weaning food",
+      "Baby porridge",
+      "Complementary infant food"
+    ],
+    "category": "Food & Agricultural Products",
+    "applicable_is_numbers": [
+      "IS 11536 : 2007"
+    ],
+    "qco_ids": [
+      "QCO-INFANT-MILK-FOOD-REGULATION"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-INFANT-MILK-FOOD"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=11536"
+  },
+  {
+    "id": "PROD-SKIMMED-MILK-POWDER",
+    "product_name": "Skimmed Milk Powder (Standard and Extra Grade)",
+    "aliases": [
+      "SMP",
+      "Skim milk powder",
+      "Non-fat dry milk",
+      "Dry milk powder"
+    ],
+    "category": "Food & Agricultural Products",
+    "applicable_is_numbers": [
+      "IS 13334 (Part 1) : 2014"
+    ],
+    "qco_ids": [
+      "QCO-DAIRY-PRODUCTS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-MILK-POWDER"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=13334-1"
+  },
+  {
+    "id": "PROD-WHOLE-MILK-POWDER",
+    "product_name": "Whole Milk Powder",
+    "aliases": [
+      "WMP",
+      "Full cream milk powder",
+      "Dried whole milk"
+    ],
+    "category": "Food & Agricultural Products",
+    "applicable_is_numbers": [
+      "IS 1165 : 2002"
+    ],
+    "qco_ids": [
+      "QCO-DAIRY-PRODUCTS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-MILK-POWDER"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1165"
+  },
+  {
+    "id": "PROD-CONDENSED-MILK",
+    "product_name": "Sweetened Condensed Milk",
+    "aliases": [
+      "Condensed milk",
+      "Mithaimate",
+      "Sweet condensed milk",
+      "Canned milk"
+    ],
+    "category": "Food & Agricultural Products",
+    "applicable_is_numbers": [
+      "IS 1166 : 1986"
+    ],
+    "qco_ids": [
+      "QCO-DAIRY-PRODUCTS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CONDENSED-MILK"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1166"
+  },
+  {
+    "id": "PROD-CATTLE-FEED",
+    "product_name": "Compounded Cattle Feed",
+    "aliases": [
+      "Cattle feed",
+      "Dairy cattle feed",
+      "Cow feed",
+      "Buffalo feed",
+      "Livestock feed"
+    ],
+    "category": "Food & Agricultural Products",
+    "applicable_is_numbers": [
+      "IS 2052 : 2009"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CATTLE-FEEDS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=2052"
+  },
+  {
+    "id": "PROD-CAUSTIC-SODA",
+    "product_name": "Caustic Soda (Sodium Hydroxide - Flakes / Lye)",
+    "aliases": [
+      "Caustic soda",
+      "Sodium hydroxide",
+      "NaOH",
+      "Caustic lye",
+      "Caustic flakes"
+    ],
+    "category": "Chemicals & Petrochemicals",
+    "applicable_is_numbers": [
+      "IS 252 : 2013"
+    ],
+    "qco_ids": [
+      "QCO-CAUSTIC-SODA-2018"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CAUSTIC-SODA"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=252"
+  },
+  {
+    "id": "PROD-SODA-ASH",
+    "product_name": "Soda Ash (Sodium Carbonate Technical)",
+    "aliases": [
+      "Soda ash",
+      "Sodium carbonate",
+      "Washing soda raw material",
+      "Na2CO3",
+      "Dense soda ash"
+    ],
+    "category": "Chemicals & Petrochemicals",
+    "applicable_is_numbers": [
+      "IS 251 : 1998"
+    ],
+    "qco_ids": [
+      "QCO-SODA-ASH-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SODA-ASH"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=251"
+  },
+  {
+    "id": "PROD-ACETIC-ACID",
+    "product_name": "Acetic Acid (Glacial and Technical)",
+    "aliases": [
+      "Acetic acid",
+      "Glacial acetic acid",
+      "Ethanoic acid",
+      "GAA"
+    ],
+    "category": "Chemicals & Petrochemicals",
+    "applicable_is_numbers": [
+      "IS 695 : 2020"
+    ],
+    "qco_ids": [
+      "QCO-ACETIC-ACID-2019"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-ACETIC-ACID"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=695"
+  },
+  {
+    "id": "PROD-METHANOL-CHEMICAL",
+    "product_name": "Methanol (Methyl Alcohol)",
+    "aliases": [
+      "Methanol",
+      "Methyl alcohol",
+      "Wood spirit",
+      "CH3OH"
+    ],
+    "category": "Chemicals & Petrochemicals",
+    "applicable_is_numbers": [
+      "IS 517 : 2020"
+    ],
+    "qco_ids": [
+      "QCO-METHANOL-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-METHANOL"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=517"
+  },
+  {
+    "id": "PROD-TOLUENE-SOLVENT",
+    "product_name": "Toluene Industrial Grade",
+    "aliases": [
+      "Toluene",
+      "Methylbenzene",
+      "Aromatic solvent",
+      "Toluol"
+    ],
+    "category": "Chemicals & Petrochemicals",
+    "applicable_is_numbers": [
+      "IS 537 : 2011"
+    ],
+    "qco_ids": [
+      "QCO-TOLUENE-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-TOLUENE"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=537"
+  },
+  {
+    "id": "PROD-GEOTEXTILE-FABRIC",
+    "product_name": "Geotextile Fabric (Polypropylene and Polyester)",
+    "aliases": [
+      "Geotextile",
+      "Drainage fabric",
+      "Road geotextile",
+      "Filtration geotextile",
+      "Nonwoven geotextile"
+    ],
+    "category": "Textiles & Technical Textiles",
+    "applicable_is_numbers": [
+      "IS 16391 : 2015"
+    ],
+    "qco_ids": [
+      "QCO-GEOTEXTILES-2022"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-GEOTEXTILES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=16391"
+  },
+  {
+    "id": "PROD-SANITARY-PAD",
+    "product_name": "Sanitary Napkin / Menstrual Hygiene Pad",
+    "aliases": [
+      "Sanitary napkin",
+      "Sanitary pad",
+      "Menstrual pad",
+      "Feminine hygiene pad"
+    ],
+    "category": "Textiles & Medical Hygiene",
+    "applicable_is_numbers": [
+      "IS 5405 : 2019"
+    ],
+    "qco_ids": [
+      "QCO-MEDICAL-TEXTILES-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SANITARY-NAPKINS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=5405"
+  },
+  {
+    "id": "PROD-MEDICAL-PPE-COVERALL",
+    "product_name": "Medical PPE Coverall and Surgical Gown",
+    "aliases": [
+      "PPE coverall",
+      "Medical coverall",
+      "Surgical gown",
+      "Infection protection suit",
+      "Hazmat suit"
+    ],
+    "category": "Textiles & Medical Hygiene",
+    "applicable_is_numbers": [
+      "IS 17423 : 2020"
+    ],
+    "qco_ids": [
+      "QCO-MEDICAL-TEXTILES-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-PPE-COVERALLS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=17423"
+  },
+  {
+    "id": "PROD-CLINICAL-THERMOMETER",
+    "product_name": "Clinical Thermometer (Solid Stem / Enclosed Scale)",
+    "aliases": [
+      "Clinical thermometer",
+      "Mercury thermometer",
+      "Doctor thermometer",
+      "Fever thermometer",
+      "Body temperature gauge"
+    ],
+    "category": "Medical Equipment & Clinical Instruments",
+    "applicable_is_numbers": [
+      "IS 3055 (Part 1) : 2004"
+    ],
+    "qco_ids": [
+      "QCO-MEDICAL-DEVICES-MANDATORY"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CLINICAL-THERMOMETERS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=3055-1"
+  },
+  {
+    "id": "PROD-DISPOSABLE-SYRINGE",
+    "product_name": "Sterile Hypodermic Syringe for Single Use",
+    "aliases": [
+      "Disposable syringe",
+      "Injection syringe",
+      "Sterile syringe",
+      "Luer lock syringe",
+      "Plastic syringe"
+    ],
+    "category": "Medical Equipment & Clinical Instruments",
+    "applicable_is_numbers": [
+      "IS 10258 : 2002"
+    ],
+    "qco_ids": [
+      "QCO-MEDICAL-DEVICES-MANDATORY"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-STERILE-SYRINGES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=10258"
+  },
+  {
+    "id": "PROD-HYPODERMIC-NEEDLE",
+    "product_name": "Sterile Hypodermic Needle for Single Use",
+    "aliases": [
+      "Hypodermic needle",
+      "Injection needle",
+      "Disposable needle",
+      "Medical needle"
+    ],
+    "category": "Medical Equipment & Clinical Instruments",
+    "applicable_is_numbers": [
+      "IS 13422 : 1992"
+    ],
+    "qco_ids": [
+      "QCO-MEDICAL-DEVICES-MANDATORY"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-HYPODERMIC-NEEDLES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=13422"
+  },
+  {
+    "id": "PROD-ELECTROLYTIC-TINPLATE",
+    "product_name": "Electrolytic Tinplate for Food Cans and Packaging",
+    "aliases": [
+      "Tinplate",
+      "Tin sheet",
+      "Canning steel",
+      "Food can sheet",
+      "Electrolytic tinplate"
+    ],
+    "category": "Metallurgical & Steel Products",
+    "applicable_is_numbers": [
+      "IS 1993 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-STEEL-PRODUCTS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-TINPLATE"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1993"
+  },
+  {
+    "id": "PROD-GALVANIZED-STEEL-SHEET",
+    "product_name": "Continuous Galvanized Plain and Corrugated Steel Sheet (GI Sheet)",
+    "aliases": [
+      "GI sheet",
+      "Galvanized sheet",
+      "Corrugated iron sheet",
+      "Roofing sheet",
+      "Zinc coated sheet"
+    ],
+    "category": "Metallurgical & Steel Products",
+    "applicable_is_numbers": [
+      "IS 277 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-STEEL-PRODUCTS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-GALVANIZED-SHEETS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=277"
+  },
+  {
+    "id": "PROD-STRUCTURAL-STEEL-TUBE",
+    "product_name": "Steel Tube for Structural Purposes (Hollow Section)",
+    "aliases": [
+      "Steel tube",
+      "Structural pipe",
+      "Square hollow section",
+      "Rectangular hollow section",
+      "SHS",
+      "RHS"
+    ],
+    "category": "Metallurgical & Steel Products",
+    "applicable_is_numbers": [
+      "IS 1161 : 2014"
+    ],
+    "qco_ids": [
+      "QCO-STEEL-PRODUCTS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-STEEL-TUBES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1161"
+  },
+  {
+    "id": "PROD-MILD-STEEL-WIRE",
+    "product_name": "Mild Steel Wire for General Engineering",
+    "aliases": [
+      "MS wire",
+      "Binding wire",
+      "Steel wire",
+      "Mild steel wire",
+      "Galvanized wire"
+    ],
+    "category": "Metallurgical & Steel Products",
+    "applicable_is_numbers": [
+      "IS 280 : 2006"
+    ],
+    "qco_ids": [
+      "QCO-STEEL-PRODUCTS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-MILD-STEEL-WIRE"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=280"
+  },
+  {
+    "id": "PROD-PASSENGER-CAR-TYRE",
+    "product_name": "Passenger Car Radial / Diagonal Pneumatic Tyre",
+    "aliases": [
+      "Car tyre",
+      "Passenger vehicle tyre",
+      "Radial tyre",
+      "Automotive tyre",
+      "Tubeless tyre"
+    ],
+    "category": "Automotive & Transport",
+    "applicable_is_numbers": [
+      "IS 15633 : 2005"
+    ],
+    "qco_ids": [
+      "QCO-TYRES-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CAR-TYRES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=15633"
+  },
+  {
+    "id": "PROD-COMMERCIAL-VEHICLE-TYRE",
+    "product_name": "Commercial Vehicle Pneumatic Tyre (Truck / Bus)",
+    "aliases": [
+      "Truck tyre",
+      "Bus tyre",
+      "Commercial tyre",
+      "Heavy vehicle tyre"
+    ],
+    "category": "Automotive & Transport",
+    "applicable_is_numbers": [
+      "IS 15636 : 2012"
+    ],
+    "qco_ids": [
+      "QCO-TYRES-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-COMMERCIAL-TYRES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=15636"
+  },
+  {
+    "id": "PROD-AUTOMOTIVE-SAFETY-GLASS",
+    "product_name": "Automotive Safety Glass (Windshield / Windows)",
+    "aliases": [
+      "Windshield glass",
+      "Automotive glass",
+      "Laminated windscreen",
+      "Toughened side window",
+      "Car window glass"
+    ],
+    "category": "Automotive & Transport",
+    "applicable_is_numbers": [
+      "IS 2553 (Part 2) : 2019"
+    ],
+    "qco_ids": [
+      "QCO-AUTOMOTIVE-SAFETY-GLASS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-AUTO-SAFETY-GLASS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=2553-2"
+  },
+  {
+    "id": "PROD-PETROL-BS6-FUEL",
+    "product_name": "Motor Gasoline (BS-VI Petrol)",
+    "aliases": [
+      "BS-VI petrol",
+      "Gasoline",
+      "Motor spirit",
+      "Petrol",
+      "Euro VI petrol",
+      "91 RON petrol"
+    ],
+    "category": "Petroleum & Fuels",
+    "applicable_is_numbers": [
+      "IS 2796 : 2017"
+    ],
+    "qco_ids": [
+      "QCO-PETROLEUM-BS6-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-PETROL-BS6"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=2796"
+  },
+  {
+    "id": "PROD-DIESEL-BS6-FUEL",
+    "product_name": "High Speed Diesel (BS-VI Diesel)",
+    "aliases": [
+      "BS-VI diesel",
+      "HSD",
+      "Automotive diesel",
+      "Euro VI diesel",
+      "Clean diesel"
+    ],
+    "category": "Petroleum & Fuels",
+    "applicable_is_numbers": [
+      "IS 1460 : 2017"
+    ],
+    "qco_ids": [
+      "QCO-PETROLEUM-BS6-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-DIESEL-BS6"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1460"
+  },
+  {
+    "id": "PROD-AVIATION-TURBINE-FUEL",
+    "product_name": "Aviation Turbine Fuel (Jet A-1 / ATF)",
+    "aliases": [
+      "ATF",
+      "Jet fuel",
+      "Aviation turbine fuel",
+      "Jet A-1",
+      "Aero fuel"
+    ],
+    "category": "Petroleum & Fuels",
+    "applicable_is_numbers": [
+      "IS 1571 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-PETROLEUM-BS6-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-ATF-FUEL"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1571"
+  },
+  {
+    "id": "PROD-LPG-COMMERCIAL-GAS",
+    "product_name": "Liquefied Petroleum Gas (Commercial / Domestic LPG)",
+    "aliases": [
+      "LPG",
+      "Bottled gas",
+      "Liquefied petroleum gas",
+      "Propane butane mix",
+      "Cooking gas"
+    ],
+    "category": "Petroleum & Fuels",
+    "applicable_is_numbers": [
+      "IS 4576 : 1999"
+    ],
+    "qco_ids": [
+      "QCO-PETROLEUM-BS6-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-LPG-COMPOSITION"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=4576"
+  },
+  {
+    "id": "PROD-SS-COOKWARE-UTENSIL",
+    "product_name": "Stainless Steel Cookware",
+    "aliases": [
+      "Stainless steel utensil",
+      "SS patila",
+      "Steel saucepan",
+      "Stainless steel pot",
+      "SS kadhai"
+    ],
+    "category": "Consumer Goods & Kitchenware",
+    "applicable_is_numbers": [
+      "IS 14756 : 2017"
+    ],
+    "qco_ids": [
+      "QCO-COOKWARE-UTENSILS-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SS-COOKWARE"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=14756"
+  },
+  {
+    "id": "PROD-ALUMINIUM-UTENSIL",
+    "product_name": "Wrought Aluminium Cookware and Utensils",
+    "aliases": [
+      "Aluminium utensil",
+      "Aluminium kadhai",
+      "Aluminium pan",
+      "Aluminium dekchi"
+    ],
+    "category": "Consumer Goods & Kitchenware",
+    "applicable_is_numbers": [
+      "IS 1660 (Part 1) : 2009"
+    ],
+    "qco_ids": [
+      "QCO-COOKWARE-UTENSILS-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-ALUM-UTENSILS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=1660-1"
+  },
+  {
+    "id": "PROD-SS-VACUUM-FLASK",
+    "product_name": "Stainless Steel Vacuum Flask (Thermos Flask)",
+    "aliases": [
+      "Vacuum flask",
+      "Thermos",
+      "Insulated water bottle",
+      "Hot and cold bottle",
+      "Steel flask"
+    ],
+    "category": "Consumer Goods & Kitchenware",
+    "applicable_is_numbers": [
+      "IS 17526 : 2021"
+    ],
+    "qco_ids": [
+      "QCO-COOKWARE-UTENSILS-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-VACUUM-FLASKS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=17526"
+  },
+  {
+    "id": "PROD-ALUMINIUM-FOOD-FOIL",
+    "product_name": "Aluminium Foil for Food Packaging",
+    "aliases": [
+      "Aluminium foil",
+      "Silver foil for food",
+      "Kitchen foil",
+      "Food packaging foil",
+      "Roti wrap foil"
+    ],
+    "category": "Consumer Goods & Packaging",
+    "applicable_is_numbers": [
+      "IS 15392 : 2003"
+    ],
+    "qco_ids": [
+      "QCO-ALUMINIUM-FOIL-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-ALUMINIUM-FOIL"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=15392"
+  },
+  {
+    "id": "PROD-RO-WATER-PURIFIER",
+    "product_name": "Reverse Osmosis (RO) Water Purifier",
+    "aliases": [
+      "RO purifier",
+      "Water purifier",
+      "Point-of-use RO system",
+      "Home RO water filter",
+      "RO plant domestic"
+    ],
+    "category": "Water Purification & Fluid Handling",
+    "applicable_is_numbers": [
+      "IS 16240 : 2015"
+    ],
+    "qco_ids": [
+      "QCO-WATER-PURIFIERS-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-RO-PURIFIERS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=16240"
+  },
+  {
+    "id": "PROD-SUBMERSIBLE-WATER-PUMP",
+    "product_name": "Submersible Pumpset for Clear Water",
+    "aliases": [
+      "Submersible pump",
+      "Borewell pump",
+      "Tube well pump",
+      "Underground water pump",
+      "Agri pump"
+    ],
+    "category": "Water Purification & Fluid Handling",
+    "applicable_is_numbers": [
+      "IS 8034 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-PUMPSETS-2022"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SUBMERSIBLE-PUMPS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=8034"
+  },
+  {
+    "id": "PROD-MONOBLOC-WATER-PUMP",
+    "product_name": "Centrifugal Monobloc Pumpset for Domestic / Agri Use",
+    "aliases": [
+      "Monobloc pump",
+      "Centrifugal pump",
+      "Domestic water pump",
+      "Water motor",
+      "Tulu pump"
+    ],
+    "category": "Water Purification & Fluid Handling",
+    "applicable_is_numbers": [
+      "IS 9079 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-PUMPSETS-2022"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-MONOBLOC-PUMPS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=9079"
+  },
+  {
+    "id": "PROD-ELECTRIC-GEYSER",
+    "product_name": "Electric Storage Water Heater (Geyser)",
+    "aliases": [
+      "Geyser",
+      "Water heater",
+      "Electric geyser",
+      "Storage water heater",
+      "Hot water geyser"
+    ],
+    "category": "Electrical & Electronics",
+    "applicable_is_numbers": [
+      "IS 2082 : 1993"
+    ],
+    "qco_ids": [
+      "QCO-WATER-HEATERS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-GEYSER"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=2082"
+  },
+  {
+    "id": "PROD-ELECTRIC-ROOM-HEATER",
+    "product_name": "Electric Room Heater (Radiator / Blower / Halogen Heater)",
+    "aliases": [
+      "Room heater",
+      "Halogen heater",
+      "Oil filled radiator",
+      "OFR",
+      "Fan heater",
+      "Blower heater"
+    ],
+    "category": "Electrical & Electronics",
+    "applicable_is_numbers": [
+      "IS 302 (Part 2/Sec 30) : 2007"
+    ],
+    "qco_ids": [
+      "QCO-ROOM-HEATERS-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-ROOM-HEATER"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=302-2-30"
+  },
+  {
+    "id": "PROD-LAPTOP-COMPUTER",
+    "product_name": "Laptop / Notebook Computer",
+    "aliases": [
+      "Laptop",
+      "Notebook",
+      "Personal computer",
+      "Ultrabook",
+      "Portable computer"
+    ],
+    "category": "Consumer Electronics & IT",
+    "applicable_is_numbers": [
+      "IS 13252 (Part 1) : 2010"
+    ],
+    "qco_ids": [
+      "QCO-MEITY-CRO-PHASE2"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-LAPTOPS"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/products-covered.do"
+  },
+  {
+    "id": "PROD-POWER-ADAPTER-CHARGER",
+    "product_name": "Power Adapter / Battery Charger for Electronics",
+    "aliases": [
+      "Power adapter",
+      "Charger",
+      "Laptop adapter",
+      "Mobile adapter",
+      "SMPS adapter"
+    ],
+    "category": "Consumer Electronics & IT",
+    "applicable_is_numbers": [
+      "IS 13252 (Part 1) : 2010"
+    ],
+    "qco_ids": [
+      "QCO-MEITY-CRO-PHASE2"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-POWER-ADAPTERS"
+    ],
+    "source_url": "https://www.crsbis.in/BIS/products-covered.do"
+  },
+  {
+    "id": "PROD-PORTABLE-FIRE-EXTINGUISHER",
+    "product_name": "Portable Fire Extinguisher (ABC Dry Powder / CO2 / Foam)",
+    "aliases": [
+      "Fire extinguisher",
+      "ABC fire extinguisher",
+      "CO2 extinguisher",
+      "Fire safety cylinder"
+    ],
+    "category": "Mechanical Engineering & Fire Safety",
+    "applicable_is_numbers": [
+      "IS 15683 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-FIRE-EXTINGUISHERS-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-FIRE-EXTINGUISHER"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=15683"
+  },
+  {
+    "id": "PROD-FALL-PROTECTION-HARNESS",
+    "product_name": "Industrial Full Body Fall Arrest Safety Harness",
+    "aliases": [
+      "Safety harness",
+      "Full body harness",
+      "Fall protection harness",
+      "Construction safety belt"
+    ],
+    "category": "Personal Protective Equipment (PPE)",
+    "applicable_is_numbers": [
+      "IS 3521 (Part 1) : 2021"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SAFETY-HARNESS"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=3521-1"
+  },
+  {
+    "id": "PROD-READY-MIX-CONCRETE",
+    "product_name": "Ready-Mixed Concrete (RMC)",
+    "aliases": [
+      "RMC",
+      "Ready mix concrete",
+      "Transit mixer concrete",
+      "Commercial concrete mix"
+    ],
+    "category": "Civil Engineering & Building Materials",
+    "applicable_is_numbers": [
+      "IS 4926 : 2003"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-RMC"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=4926"
+  },
+  {
+    "id": "PROD-CERAMIC-FLOOR-TILE",
+    "product_name": "Ceramic Glazed and Vitrified Floor / Wall Tiles",
+    "aliases": [
+      "Ceramic tiles",
+      "Vitrified tiles",
+      "Floor tiles",
+      "Wall tiles",
+      "Glazed ceramic tiles"
+    ],
+    "category": "Civil Engineering & Building Materials",
+    "applicable_is_numbers": [
+      "IS 15622 : 2017"
+    ],
+    "qco_ids": [
+      "QCO-CERAMIC-TILES-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CERAMIC-TILES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=15622"
+  },
+  {
+    "id": "PROD-DOMESTIC-ELECTRIC-WIRE",
+    "product_name": "PVC Insulated Copper House Wires and Flexible Cables",
+    "aliases": [
+      "House wire",
+      "Copper wire",
+      "PVC electric wire",
+      "Building wire",
+      "Wiring cable"
+    ],
+    "category": "Electrical & Electrotechnical",
+    "applicable_is_numbers": [
+      "IS 694 : 2010"
+    ],
+    "qco_ids": [
+      "QCO-CABLES-WIRES-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CABLES-WIRES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=694"
+  },
+  {
+    "id": "PROD-FORTIFIED-RICE-KERNELS",
+    "product_name": "Fortified Rice Kernels (FRK)",
+    "aliases": [
+      "FRK",
+      "Fortified rice",
+      "Iron fortified rice kernels",
+      "Nutritional rice"
+    ],
+    "category": "Food & Agricultural Products",
+    "applicable_is_numbers": [
+      "IS 17782 : 2021"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-FRK"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=17782"
+  },
+  {
+    "id": "PROD-IODIZED-TABLE-SALT",
+    "product_name": "Iodized Common Salt and Vacuum Evaporated Salt",
+    "aliases": [
+      "Iodized salt",
+      "Table salt",
+      "Edible salt",
+      "Cooking salt",
+      "Tata salt grade"
+    ],
+    "category": "Food & Agricultural Products",
+    "applicable_is_numbers": [
+      "IS 7224 : 2006"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-IODIZED-SALT"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=7224"
+  },
+  {
+    "id": "PROD-SYNTHETIC-ENAMEL-PAINT",
+    "product_name": "Synthetic Enamel Paint (Exterior and Metal Surfaces)",
+    "aliases": [
+      "Enamel paint",
+      "Synthetic enamel",
+      "Gloss paint",
+      "Oil paint for doors and gates"
+    ],
+    "category": "Chemicals & Petrochemicals",
+    "applicable_is_numbers": [
+      "IS 2932 : 2003"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SYNTHETIC-ENAMEL"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=2932"
+  },
+  {
+    "id": "PROD-CLINICAL-DIGITAL-THERMOMETER",
+    "product_name": "Clinical Digital Electronic Thermometer",
+    "aliases": [
+      "Digital thermometer",
+      "Electronic thermometer",
+      "Oral thermometer",
+      "Fever digital meter"
+    ],
+    "category": "Medical Equipment & Clinical Instruments",
+    "applicable_is_numbers": [
+      "IS 16447 : 2016"
+    ],
+    "qco_ids": [
+      "QCO-MEDICAL-DEVICES-MANDATORY"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-DIGITAL-THERMOMETER"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=16447"
+  },
+  {
+    "id": "PROD-SURGICAL-RUBBER-GLOVES",
+    "product_name": "Sterile Surgical Rubber Gloves",
+    "aliases": [
+      "Surgical gloves",
+      "Operation gloves",
+      "Sterile latex gloves",
+      "Medical gloves"
+    ],
+    "category": "Medical Equipment & Clinical Instruments",
+    "applicable_is_numbers": [
+      "IS 4148 : 1989"
+    ],
+    "qco_ids": [
+      "QCO-MEDICAL-DEVICES-MANDATORY"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SURGICAL-GLOVES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=4148"
+  },
+  {
+    "id": "PROD-HDPE-WATER-PIPE",
+    "product_name": "High Density Polyethylene (HDPE) Pipe for Water Supply",
+    "aliases": [
+      "HDPE pipe",
+      "Polyethylene pipe",
+      "Black plastic water pipe",
+      "Drip irrigation main pipe"
+    ],
+    "category": "Civil Engineering & Piping",
+    "applicable_is_numbers": [
+      "IS 4984 : 2016"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-HDPE-PIPES"
+    ],
+    "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=4984"
   }
 ]

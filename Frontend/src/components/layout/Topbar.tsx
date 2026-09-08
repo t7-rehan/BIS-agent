@@ -32,7 +32,7 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
 
   return (
     <header className="sticky top-0 z-30 h-16 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 md:px-6 flex items-center justify-between">
-      {/* Left brand & mobile toggle */}
+      {/* Left: mobile toggle + brand */}
       <div className="flex items-center gap-3">
         <button
           onClick={onToggleMobileSidebar}
@@ -47,30 +47,26 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
             <Shield className="w-5 h-5 text-blue-400" />
           </div>
           <div>
-            <div className="flex items-center gap-1.5">
-              <span className="font-bold text-slate-900 text-lg tracking-tight font-heading">
-                BIS Sahayak
-              </span>
-              <span className="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-medium bg-slate-100 text-slate-700 border border-slate-300 rounded font-mono">
-                SIH 26107
-              </span>
-            </div>
-            <p className="text-[11px] text-slate-500 font-medium hidden md:block">
-              India’s Standards, Simplified
+            <span className="font-bold text-slate-900 text-base tracking-tight font-heading block leading-tight">
+              BIS Agent
+            </span>
+            <p className="text-[11px] text-slate-400 font-medium hidden md:block leading-tight">
+              Indian Standards &amp; BIS Services
             </p>
           </div>
         </Link>
       </div>
 
-      {/* Global Search trigger bar */}
+      {/* Center: search trigger */}
       <div className="hidden md:flex flex-1 max-w-md mx-6">
         <button
           onClick={() => setIsSearchModalOpen(true)}
-          className="w-full flex items-center justify-between px-3.5 py-1.5 text-sm text-slate-500 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+          className="w-full flex items-center justify-between px-3.5 py-1.5 text-sm text-slate-400 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+          aria-label="Open search"
         >
           <div className="flex items-center gap-2">
             <Search className="w-4 h-4 text-slate-400" />
-            <span>Search standards, labs, services or guides...</span>
+            <span>Search standards, labs, services…</span>
           </div>
           <kbd className="hidden lg:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white border border-slate-200 rounded">
             Ctrl K
@@ -78,21 +74,18 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
         </button>
       </div>
 
-      {/* Right controls: Demo badge, Language, Alerts, Profile, CTA */}
+      {/* Right: status dot, language, alerts, profile, CTA */}
       <div className="flex items-center gap-2 sm:gap-3">
-        {/* Prototype Pill */}
-        <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-full">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Prototype • Demo Data</span>
+        {/* Backend status — kept small and clean */}
+        <div className="hidden sm:flex items-center gap-1.5 px-2 py-1 text-[11px] font-medium text-emerald-700 rounded-full">
+          <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span className="hidden lg:inline">Online</span>
         </div>
 
-        {/* Language selector dropdown */}
+        {/* Language selector */}
         <div className="relative">
           <button
-            onClick={() => {
-              setIsLangMenuOpen(!isLangMenuOpen);
-              setIsNotificationsOpen(false);
-            }}
+            onClick={() => { setIsLangMenuOpen(!isLangMenuOpen); setIsNotificationsOpen(false); }}
             className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-100 rounded-lg border border-slate-200 transition-colors"
             title="Switch language"
           >
@@ -109,10 +102,7 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
               {languages.map((lang) => (
                 <button
                   key={lang.code}
-                  onClick={() => {
-                    setLanguage(lang.code);
-                    setIsLangMenuOpen(false);
-                  }}
+                  onClick={() => { setLanguage(lang.code); setIsLangMenuOpen(false); }}
                   className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left hover:bg-slate-50 transition-colors ${
                     selectedLanguage === lang.code ? 'font-semibold text-blue-600 bg-blue-50/50' : 'text-slate-700'
                   }`}
@@ -125,13 +115,10 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
           )}
         </div>
 
-        {/* Notification Alerts Popover */}
+        {/* Alerts bell */}
         <div className="relative">
           <button
-            onClick={() => {
-              setIsNotificationsOpen(!isNotificationsOpen);
-              setIsLangMenuOpen(false);
-            }}
+            onClick={() => { setIsNotificationsOpen(!isNotificationsOpen); setIsLangMenuOpen(false); }}
             className="relative p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors"
             title="Regulatory Alerts"
           >
@@ -159,19 +146,14 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
                 {MOCK_ALERTS.slice(0, 3).map((alert) => (
                   <div
                     key={alert.id}
-                    onClick={() => {
-                      setIsNotificationsOpen(false);
-                      navigate('/alerts');
-                    }}
+                    onClick={() => { setIsNotificationsOpen(false); navigate('/alerts'); }}
                     className="p-3 hover:bg-slate-50 cursor-pointer transition-colors"
                   >
                     <div className="flex items-center justify-between text-[11px] mb-1">
                       <span className="font-semibold text-slate-900">{alert.affectedStandardCode}</span>
                       <span className="text-slate-400">{alert.datePublished}</span>
                     </div>
-                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                      {alert.summary}
-                    </p>
+                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">{alert.summary}</p>
                   </div>
                 ))}
               </div>
@@ -179,11 +161,11 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
           )}
         </div>
 
-        {/* Profile / Role Badge */}
+        {/* Profile */}
         <Link
           to="/settings"
           className="hidden sm:flex items-center gap-2 pl-2 pr-2.5 py-1 text-xs text-slate-700 hover:bg-slate-100 rounded-lg border border-slate-200 transition-colors"
-          title="User Settings & Profile"
+          title="User Settings"
         >
           <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-slate-700 font-semibold text-[11px]">
             <User className="w-3.5 h-3.5" />
@@ -191,12 +173,12 @@ export const Topbar: React.FC<TopbarProps> = ({ onToggleMobileSidebar }) => {
           <span className="font-medium">{userRole}</span>
         </Link>
 
-        {/* Primary CTA: Ask BIS AI */}
+        {/* CTA */}
         <Link
           to="/assistant"
           className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-[#0B192C] hover:bg-[#1E3E62] rounded-lg shadow-sm transition-all focus:ring-2 focus:ring-blue-500/20 active:scale-[0.98]"
         >
-          <Sparkles className="w-3.5 h-3.5 text-blue-300 animate-spin-slow" />
+          <Sparkles className="w-3.5 h-3.5 text-blue-300" />
           <span>Ask BIS AI</span>
         </Link>
       </div>

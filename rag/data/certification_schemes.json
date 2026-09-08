@@ -343,5 +343,767 @@
     "certification_type": "Scheme I (ISI Mark)",
     "mandatory": true,
     "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-ELECTRIC-IRONS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Electric Dry and Steam Irons",
+    "is_numbers": [
+      "IS 302 (Part 2/Sec 3) : 2007"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CEILING-FANS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Electric Ceiling Fans and Regulators",
+    "is_numbers": [
+      "IS 374 : 2019"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-SMART-METERS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "A.C. Static Direct Connected Watt-Hour Smart Meters",
+    "is_numbers": [
+      "IS 16444 (Part 1) : 2015"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-DIST-TRANSFORMERS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Power and Distribution Transformers",
+    "is_numbers": [
+      "IS 2026 (Part 1) : 2011",
+      "IS 1180 (Part 1) : 2014"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-RCCB",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Residual Current Operated Circuit Breakers (RCCBs)",
+    "is_numbers": [
+      "IS 12640 (Part 1) : 2016"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-ELECTRIC-MOTORS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Single-Phase Small AC Electric Motors",
+    "is_numbers": [
+      "IS 996 : 2009"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-CRS-TELEVISIONS",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Television Sets (LED/LCD Panels)",
+    "is_numbers": [
+      "IS 616 : 2017"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-CRS-UPS-INVERTERS",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Uninterruptible Power Supply (UPS) and Inverters",
+    "is_numbers": [
+      "IS 16242 (Part 1) : 2014"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-CRS-MOBILE-LANGUAGE",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Mobile Phones with Indian Language Support",
+    "is_numbers": [
+      "IS 16333 (Part 3) : 2022"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-CRS-SMART-SPEAKERS",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Smart Speakers and Audio Streaming Devices",
+    "is_numbers": [
+      "IS 616 : 2017"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-CRS-BIOMETRIC-READERS",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Biometric Access and Time Attendance Readers",
+    "is_numbers": [
+      "IS 16860 : 2018"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-ISI-GAS-STOVES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Domestic Gas Stoves for Use with LPG",
+    "is_numbers": [
+      "IS 4246 : 2002"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-LPG-CYLINDERS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Welded Low Carbon Steel Gas Cylinders for LPG",
+    "is_numbers": [
+      "IS 3196 (Part 1) : 2013"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-LPG-VALVES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Self-Closing Valves for LPG Cylinders",
+    "is_numbers": [
+      "IS 8737 : 1995"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-SAFETY-FOOTWEAR",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Personal Protective Equipment - Safety Footwear",
+    "is_numbers": [
+      "IS 15298 (Part 2) : 2016"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-INDUSTRIAL-HELMETS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Industrial Safety Helmets",
+    "is_numbers": [
+      "IS 2925 : 1984"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CEMENT-OPC53",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Ordinary Portland Cement, 53 Grade",
+    "is_numbers": [
+      "IS 12269 : 2015"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CEMENT-SLAG",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Portland Slag Cement",
+    "is_numbers": [
+      "IS 455 : 2015"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-PLYWOOD-MR-BWP",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "General Purpose Plywood (MR and BWR/BWP Grades)",
+    "is_numbers": [
+      "IS 303 : 1989"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-FLUSH-DOORS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Wooden Flush Door Shutters (Solid Core Type)",
+    "is_numbers": [
+      "IS 2202 (Part 1) : 1999"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-UPVC-PIPES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Unplasticized PVC Pipes for Potable Water Supplies",
+    "is_numbers": [
+      "IS 4985 : 2021"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-INFANT-MILK-FOOD",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Infant Milk Substitutes and Follow-Up Formula",
+    "is_numbers": [
+      "IS 14433 : 2007",
+      "IS 11536 : 2007"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-MILK-POWDER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Whole and Skimmed Milk Powder",
+    "is_numbers": [
+      "IS 1165 : 2002",
+      "IS 13334 (Part 1) : 2014"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CONDENSED-MILK",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Sweetened Condensed Milk",
+    "is_numbers": [
+      "IS 1166 : 1986"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CATTLE-FEEDS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Compounded Feeds for Cattle",
+    "is_numbers": [
+      "IS 2052 : 2009"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": false,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CAUSTIC-SODA",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Caustic Soda, Pure and Technical",
+    "is_numbers": [
+      "IS 252 : 2013"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-SODA-ASH",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Soda Ash, Technical",
+    "is_numbers": [
+      "IS 251 : 1998"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-ACETIC-ACID",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Acetic Acid Technical and Glacial",
+    "is_numbers": [
+      "IS 695 : 2020"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-METHANOL",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Methanol (Methyl Alcohol)",
+    "is_numbers": [
+      "IS 517 : 2020"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-TOLUENE",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Toluene Industrial Grade",
+    "is_numbers": [
+      "IS 537 : 2011"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-GEOTEXTILES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Polypropylene and Polyester Geotextiles",
+    "is_numbers": [
+      "IS 16391 : 2015"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-SANITARY-NAPKINS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Sanitary Napkins / Menstrual Pads",
+    "is_numbers": [
+      "IS 5405 : 2019"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-PPE-COVERALLS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Medical Coveralls and Surgical Gowns",
+    "is_numbers": [
+      "IS 17423 : 2020"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CLINICAL-THERMOMETERS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Clinical Thermometers (Mercury-in-Glass)",
+    "is_numbers": [
+      "IS 3055 (Part 1) : 2004"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-STERILE-SYRINGES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Sterile Hypodermic Syringes for Single Use",
+    "is_numbers": [
+      "IS 10258 : 2002"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-HYPODERMIC-NEEDLES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Sterile Hypodermic Needles for Single Use",
+    "is_numbers": [
+      "IS 13422 : 1992"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-TINPLATE",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Cold Reduced Electrolytic Tinplate",
+    "is_numbers": [
+      "IS 1993 : 2018"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-GALVANIZED-SHEETS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Continuous Galvanized Plain and Corrugated Steel Sheets",
+    "is_numbers": [
+      "IS 277 : 2018"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-STEEL-TUBES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Steel Tubes for Structural Purposes",
+    "is_numbers": [
+      "IS 1161 : 2014"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-MILD-STEEL-WIRE",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Mild Steel Wire for General Engineering Purposes",
+    "is_numbers": [
+      "IS 280 : 2006"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CAR-TYRES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Automotive Pneumatic Tyres for Passenger Cars",
+    "is_numbers": [
+      "IS 15633 : 2005"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-COMMERCIAL-TYRES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Automotive Pneumatic Tyres for Commercial Vehicles",
+    "is_numbers": [
+      "IS 15636 : 2012"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-AUTO-SAFETY-GLASS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Safety Glass for Road Transport Vehicles",
+    "is_numbers": [
+      "IS 2553 (Part 2) : 2019"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-PETROL-BS6",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Motor Gasoline (BS-VI Petrol)",
+    "is_numbers": [
+      "IS 2796 : 2017"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-DIESEL-BS6",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "High Speed Diesel (BS-VI Diesel)",
+    "is_numbers": [
+      "IS 1460 : 2017"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-ATF-FUEL",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Aviation Turbine Fuel (Jet A-1)",
+    "is_numbers": [
+      "IS 1571 : 2018"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-LPG-COMPOSITION",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Liquefied Petroleum Gas (Commercial LPG)",
+    "is_numbers": [
+      "IS 4576 : 1999"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-SS-COOKWARE",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Stainless Steel Cookware",
+    "is_numbers": [
+      "IS 14756 : 2017"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-ALUM-UTENSILS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Wrought Aluminium and Aluminium Alloy Utensils",
+    "is_numbers": [
+      "IS 1660 (Part 1) : 2009"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-VACUUM-FLASKS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Stainless Steel Vacuum Flasks and Insulated Flasks",
+    "is_numbers": [
+      "IS 17526 : 2021"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-ALUMINIUM-FOIL",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Aluminium and Aluminium Alloy Foil for Food Packaging",
+    "is_numbers": [
+      "IS 15392 : 2003"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-RO-PURIFIERS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Reverse Osmosis (RO) Based Point-of-Use Water Treatment Systems",
+    "is_numbers": [
+      "IS 16240 : 2015"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-SUBMERSIBLE-PUMPS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Submersible Pumpsets for Clear, Cold Water",
+    "is_numbers": [
+      "IS 8034 : 2018"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-MONOBLOC-PUMPS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Centrifugal Monobloc Pumpsets for Clean, Cold Water",
+    "is_numbers": [
+      "IS 9079 : 2018"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-GEYSER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Stationary Storage Electric Water Heaters",
+    "is_numbers": [
+      "IS 2082 : 1993"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-ROOM-HEATER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Electric Room Heaters",
+    "is_numbers": [
+      "IS 302 (Part 2/Sec 30) : 2007"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-CRS-LAPTOPS",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Laptops and Notebook Computers",
+    "is_numbers": [
+      "IS 13252 (Part 1) : 2010"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-CRS-POWER-ADAPTERS",
+    "scheme_name": "Scheme II - Compulsory Registration Scheme (CRS)",
+    "product": "Power Adapters for IT and Electronic Equipment",
+    "is_numbers": [
+      "IS 13252 (Part 1) : 2010"
+    ],
+    "certification_type": "Scheme II (CRS)",
+    "mandatory": true,
+    "source_url": "https://www.crsbis.in/BIS/"
+  },
+  {
+    "id": "SCHEME-ISI-FIRE-EXTINGUISHER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Portable Fire Extinguishers",
+    "is_numbers": [
+      "IS 15683 : 2018"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-SAFETY-HARNESS",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Full Body Fall Arrest Safety Harness",
+    "is_numbers": [
+      "IS 3521 (Part 1) : 2021"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-RMC",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Ready-Mixed Concrete (RMC)",
+    "is_numbers": [
+      "IS 4926 : 2003"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": false,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CERAMIC-TILES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Pressed Ceramic Floor and Wall Tiles",
+    "is_numbers": [
+      "IS 15622 : 2017"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-CABLES-WIRES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "PVC Insulated Domestic Electric Wires & Cables",
+    "is_numbers": [
+      "IS 694 : 2010"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-FRK",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Fortified Rice Kernels (FRK)",
+    "is_numbers": [
+      "IS 17782 : 2021"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": false,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-IODIZED-SALT",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Iodized Salt and Refined Iodized Salt",
+    "is_numbers": [
+      "IS 7224 : 2006"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": false,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-SYNTHETIC-ENAMEL",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Synthetic Enamel Paint (Exterior)",
+    "is_numbers": [
+      "IS 2932 : 2003"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": false,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-DIGITAL-THERMOMETER",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Clinical Digital Thermometers",
+    "is_numbers": [
+      "IS 16447 : 2016"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-SURGICAL-GLOVES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "Sterile Surgical Rubber Gloves",
+    "is_numbers": [
+      "IS 4148 : 1989"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": true,
+    "source_url": "https://www.manakonline.in/"
+  },
+  {
+    "id": "SCHEME-ISI-HDPE-PIPES",
+    "scheme_name": "Scheme I - Product Certification (ISI Mark)",
+    "product": "High Density Polyethylene (HDPE) Pipes for Water Supply",
+    "is_numbers": [
+      "IS 4984 : 2016"
+    ],
+    "certification_type": "Scheme I (ISI Mark)",
+    "mandatory": false,
+    "source_url": "https://www.manakonline.in/"
   }
 ]

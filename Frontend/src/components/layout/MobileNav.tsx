@@ -31,7 +31,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ onOpenMore }) => {
         }
       >
         <Sparkles className="w-5 h-5 mb-0.5 text-blue-600" />
-        <span>BIS AI</span>
+        <span>BIS Agent</span>
       </NavLink>
 
       <NavLink

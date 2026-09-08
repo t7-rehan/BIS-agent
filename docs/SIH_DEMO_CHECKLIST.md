@@ -10,12 +10,12 @@ This playbook is designed for live demonstrations, hackathon judging rounds, and
 ### Step A: Start FastAPI Backend
 Open a terminal in the project root:
 ```bash
-# Activate virtualenv
+# Activate virtualenv (e.g., .venv311 or .venv)
 cd backend
-.\.venv\Scripts\activate
+.\.venv311\Scripts\activate
 
 # Start Uvicorn server on port 8000
-uvicorn app.main:app --host 127.0.0.1 --port 8000
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 - Expected Terminal Output:
   - `Starting BIS Intelligent Assistant Backend v0.1.0 in [development] mode`

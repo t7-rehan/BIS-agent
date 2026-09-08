@@ -94,9 +94,9 @@ export const Home: React.FC = () => {
       {/* 1. HERO SECTION */}
       <section className="relative pt-6 pb-12 sm:pt-10 sm:pb-16 text-center max-w-4xl mx-auto space-y-6">
         {/* Top Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs font-semibold shadow-xs">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs font-semibold shadow-xs">
           <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-          <span>AI-Powered BIS Intelligence Platform • SIH 26107</span>
+          <span>AI-Powered Indian Standards & Conformity Assistant</span>
         </div>
 
         {/* Headline & Taglines */}
@@ -132,7 +132,7 @@ export const Home: React.FC = () => {
               type="submit"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-white bg-[#0B192C] hover:bg-[#1E3E62] rounded-xl shadow-md transition-all active:scale-[0.98] shrink-0"
             >
-              <span>Ask BIS AI</span>
+              <span>Ask BIS Agent</span>
               <ArrowRight className="w-4 h-4 text-blue-400" />
             </button>
           </form>

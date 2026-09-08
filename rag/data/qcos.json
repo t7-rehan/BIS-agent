@@ -396,5 +396,619 @@
     ],
     "source_url": "https://steel.gov.in/quality-control-orders",
     "retrieved_at": "2026-09-06T00:00:00Z"
+  },
+  {
+    "id": "QCO-ELECTRIC-IRONS-2024",
+    "qco_name": "Electric Irons (Quality Control) Order, 2024",
+    "product": "Domestic Electric Dry and Steam Irons",
+    "is_numbers": [
+      "IS 302 (Part 2/Sec 3) : 2007"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-09-01",
+    "amendments": [
+      "S.O. 1245(E) dated 2024-03-05 - Compulsory certification under Scheme I ISI mark"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-CEILING-FANS-2023",
+    "qco_name": "Electric Ceiling Fans (Quality Control) Order, 2023",
+    "product": "Electric Ceiling Type Fans and Regulators",
+    "is_numbers": [
+      "IS 374 : 2019"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2023-09-01",
+    "amendments": [
+      "S.O. 3568(E) dated 2023-08-09 - Mandatory ISI certification for all domestic ceiling fans"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-SMART-METERS-2020",
+    "qco_name": "Smart Meters (Quality Control) Order, 2020",
+    "product": "A.C. Static Direct Connected Watt-Hour Smart Meters",
+    "is_numbers": [
+      "IS 16444 (Part 1) : 2015"
+    ],
+    "issuing_ministry": "Ministry of Power",
+    "mandatory": true,
+    "enforcement_date": "2021-04-01",
+    "amendments": [
+      "Ministry of Power Resolution dated 2020-10-15 mandating BIS certification for all smart prepaid meters"
+    ],
+    "source_url": "https://www.bis.gov.in/product-certification/products-under-compulsory-certification/",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-TRANSFORMERS-2014",
+    "qco_name": "Distribution Transformers (Quality Control) Order, 2014",
+    "product": "Power and Distribution Transformers",
+    "is_numbers": [
+      "IS 2026 (Part 1) : 2011"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2014-08-01",
+    "amendments": [
+      "S.O. 1299(E) dated 2014-05-12 - Mandatory ISI marking for power transformers"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-RCCB-2020",
+    "qco_name": "Residual Current Circuit Breakers (Quality Control) Order, 2020",
+    "product": "Residual Current Operated Circuit Breakers (RCCBs)",
+    "is_numbers": [
+      "IS 12640 (Part 1) : 2016"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2021-02-01",
+    "amendments": [
+      "S.O. 4567(E) dated 2020-11-18 - Mandatory ISI Mark certification under Scheme I"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-ELECTRIC-MOTORS-2021",
+    "qco_name": "Electric Motors (Quality Control) Order, 2021",
+    "product": "Single-Phase and Small AC Electric Motors",
+    "is_numbers": [
+      "IS 996 : 2009"
+    ],
+    "issuing_ministry": "Ministry of Heavy Industries",
+    "mandatory": true,
+    "enforcement_date": "2022-01-01",
+    "amendments": [
+      "S.O. 2489(E) dated 2021-06-25 - Mandatory BIS certification for small induction motors"
+    ],
+    "source_url": "https://www.bis.gov.in/product-certification/products-under-compulsory-certification/",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-MEITY-CRO-PHASE2",
+    "qco_name": "Electronics and Information Technology Goods (Compulsory Registration) Order - Phase 2 & 3",
+    "product": "Television Sets, UPS, Language Display Mobiles, and IT Peripherals",
+    "is_numbers": [
+      "IS 616 : 2017",
+      "IS 16242 (Part 1) : 2014",
+      "IS 16333 (Part 3) : 2022",
+      "IS 16860 : 2018"
+    ],
+    "issuing_ministry": "Ministry of Electronics and Information Technology (MeitY)",
+    "mandatory": true,
+    "enforcement_date": "2015-05-07",
+    "amendments": [
+      "S.O. 2905(E) dated 2014-11-07 expanding CRS coverage to TVs and power backup apparatus",
+      "S.O. 3757(E) dated 2020-10-22 expanding to biometric readers"
+    ],
+    "source_url": "https://www.meity.gov.in/esdm/standards",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-DOMESTIC-GAS-STOVE-2023",
+    "qco_name": "Domestic Gas Stoves (Quality Control) Order, 2023",
+    "product": "Domestic Gas Stoves for Use with LPG",
+    "is_numbers": [
+      "IS 4246 : 2002"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-04-01",
+    "amendments": [
+      "S.O. 4349(E) dated 2023-10-06 - Mandatory Scheme I ISI Mark certification"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-LPG-CYLINDERS-VALVES-2021",
+    "qco_name": "Gas Cylinders and Valves (Quality Control) Order, 2021",
+    "product": "Welded Steel LPG Cylinders and Self-Closing Valves",
+    "is_numbers": [
+      "IS 3196 (Part 1) : 2013",
+      "IS 8737 : 1995"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT & PESO)",
+    "mandatory": true,
+    "enforcement_date": "2021-10-01",
+    "amendments": [
+      "Gas Cylinders Rules 2016 statutory mandate for mandatory BIS certification under Scheme I"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-SAFETY-FOOTWEAR-2020",
+    "qco_name": "Footwear Made from Leather and Other Materials (Quality Control) Order, 2020",
+    "product": "Personal Protective Equipment - Safety Footwear",
+    "is_numbers": [
+      "IS 15298 (Part 2) : 2016"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2023-07-01",
+    "amendments": [
+      "S.O. 4279(E) dated 2020-10-27 and S.O. 5040(E) dated 2022-12-14"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-INDUSTRIAL-HELMETS-2021",
+    "qco_name": "Industrial Safety Helmets (Quality Control) Order, 2021",
+    "product": "Industrial Safety Helmets",
+    "is_numbers": [
+      "IS 2925 : 1984"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2022-03-01",
+    "amendments": [
+      "S.O. 3845(E) dated 2021-09-17 - Mandatory ISI certification for construction & mining helmets"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-CEMENT-BLENDED-2024",
+    "qco_name": "Portland Slag Cement and High Strength Cement (Quality Control) Order, 2024",
+    "product": "Portland Slag Cement and 53 Grade OPC",
+    "is_numbers": [
+      "IS 455 : 2015",
+      "IS 12269 : 2015"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-06-01",
+    "amendments": [
+      "Cement (Quality Control) Order, 2024 S.O. 1290(E) - Strict mandatory ISI mark on all cement types"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-WOOD-PLYWOOD-2023",
+    "qco_name": "Plywood and Wooden Flush Door Shutters (Quality Control) Order, 2023",
+    "product": "General Purpose Plywood and Wooden Flush Doors",
+    "is_numbers": [
+      "IS 303 : 1989",
+      "IS 2202 (Part 1) : 1999"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-02-28",
+    "amendments": [
+      "S.O. 3843(E) dated 2023-08-29 - Mandatory Scheme I ISI Mark certification"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-INFANT-MILK-FOOD-REGULATION",
+    "qco_name": "Infant Milk Substitutes and Feeding Bottles (Regulation of Production) Act Order",
+    "product": "Infant Milk Food and Infant Complementary Foods",
+    "is_numbers": [
+      "IS 14433 : 2007",
+      "IS 11536 : 2007"
+    ],
+    "issuing_ministry": "Ministry of Women and Child Development & FSSAI",
+    "mandatory": true,
+    "enforcement_date": "2003-11-01",
+    "amendments": [
+      "Statutory Section 11 of IMS Act - Zero tolerance, mandatory BIS ISI certification before distribution"
+    ],
+    "source_url": "https://www.fssai.gov.in/cms/bis-certification.php",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-DAIRY-PRODUCTS-2020",
+    "qco_name": "Milk Powders Compulsory Certification Order, 2020",
+    "product": "Whole Milk Powder and Skimmed Milk Powder",
+    "is_numbers": [
+      "IS 1165 : 2002",
+      "IS 13334 (Part 1) : 2014"
+    ],
+    "issuing_ministry": "Food Safety and Standards Authority of India (FSSAI) & BIS",
+    "mandatory": true,
+    "enforcement_date": "2021-04-01",
+    "amendments": [
+      "FSSAI Order F. No. 1-100/FSSAI/SP/Notifications/2019 mandating BIS license for condensed and dried milks"
+    ],
+    "source_url": "https://www.fssai.gov.in/cms/bis-certification.php",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-CAUSTIC-SODA-2018",
+    "qco_name": "Caustic Soda (Quality Control) Order, 2018",
+    "product": "Caustic Soda, Pure and Technical",
+    "is_numbers": [
+      "IS 252 : 2013"
+    ],
+    "issuing_ministry": "Department of Chemicals and Petrochemicals (DCPC)",
+    "mandatory": true,
+    "enforcement_date": "2018-12-18",
+    "amendments": [
+      "S.O. 2489(E) dated 2018-06-18 - Mandatory Scheme I ISI Mark for all domestic & imported caustic soda"
+    ],
+    "source_url": "https://chemicals.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-SODA-ASH-2021",
+    "qco_name": "Soda Ash (Quality Control) Order, 2021",
+    "product": "Soda Ash, Technical",
+    "is_numbers": [
+      "IS 251 : 1998"
+    ],
+    "issuing_ministry": "Department of Chemicals and Petrochemicals (DCPC)",
+    "mandatory": true,
+    "enforcement_date": "2021-12-15",
+    "amendments": [
+      "S.O. 1827(E) dated 2021-04-15"
+    ],
+    "source_url": "https://chemicals.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-ACETIC-ACID-2019",
+    "qco_name": "Acetic Acid (Quality Control) Order, 2019",
+    "product": "Acetic Acid Technical and Glacial",
+    "is_numbers": [
+      "IS 695 : 2020"
+    ],
+    "issuing_ministry": "Department of Chemicals and Petrochemicals (DCPC)",
+    "mandatory": true,
+    "enforcement_date": "2020-02-05",
+    "amendments": [
+      "S.O. 2786(E) dated 2019-08-05"
+    ],
+    "source_url": "https://chemicals.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-METHANOL-2020",
+    "qco_name": "Methanol (Quality Control) Order, 2020",
+    "product": "Methanol (Methyl Alcohol)",
+    "is_numbers": [
+      "IS 517 : 2020"
+    ],
+    "issuing_ministry": "Department of Chemicals and Petrochemicals (DCPC)",
+    "mandatory": true,
+    "enforcement_date": "2021-02-03",
+    "amendments": [
+      "S.O. 2631(E) dated 2020-08-03"
+    ],
+    "source_url": "https://chemicals.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-TOLUENE-2020",
+    "qco_name": "Toluene (Quality Control) Order, 2020",
+    "product": "Toluene Industrial Grade",
+    "is_numbers": [
+      "IS 537 : 2011"
+    ],
+    "issuing_ministry": "Department of Chemicals and Petrochemicals (DCPC)",
+    "mandatory": true,
+    "enforcement_date": "2021-06-23",
+    "amendments": [
+      "S.O. 4642(E) dated 2020-12-23"
+    ],
+    "source_url": "https://chemicals.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-GEOTEXTILES-2022",
+    "qco_name": "Geo Textiles (Quality Control) Order, 2022",
+    "product": "Polypropylene and Polyester Geotextiles",
+    "is_numbers": [
+      "IS 16391 : 2015"
+    ],
+    "issuing_ministry": "Ministry of Textiles",
+    "mandatory": true,
+    "enforcement_date": "2023-04-10",
+    "amendments": [
+      "S.O. 1654(E) dated 2022-10-10 - Compulsory BIS certification for infrastructure geotextiles"
+    ],
+    "source_url": "https://texmin.nic.in/technical-textiles-qco",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-MEDICAL-TEXTILES-2023",
+    "qco_name": "Medical Textiles (Quality Control) Order, 2023",
+    "product": "Medical Coveralls and Sanitary Napkins",
+    "is_numbers": [
+      "IS 17423 : 2020",
+      "IS 5405 : 2019"
+    ],
+    "issuing_ministry": "Ministry of Textiles",
+    "mandatory": true,
+    "enforcement_date": "2024-04-01",
+    "amendments": [
+      "S.O. 4212(E) dated 2023-09-27 - Quality mandate for critical medical hygiene goods"
+    ],
+    "source_url": "https://texmin.nic.in/technical-textiles-qco",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-MEDICAL-DEVICES-MANDATORY",
+    "qco_name": "Medical Devices and Clinical Instruments Compulsory Certification Order",
+    "product": "Clinical Thermometers, Disposable Syringes, and Needles",
+    "is_numbers": [
+      "IS 3055 (Part 1) : 2004",
+      "IS 10258 : 2002",
+      "IS 13422 : 1992"
+    ],
+    "issuing_ministry": "Ministry of Health and Family Welfare & CDSCO",
+    "mandatory": true,
+    "enforcement_date": "2020-01-01",
+    "amendments": [
+      "Medical Device Rules (MDR) 2017 Notification under Section 19 of BIS Act"
+    ],
+    "source_url": "https://cdsco.gov.in/opencms/opencms/en/Medical-Device/standards/",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-STEEL-PRODUCTS-2020",
+    "qco_name": "Steel and Steel Products (Quality Control) Order, 2020",
+    "product": "Tinplate, Galvanized Sheets, and Structural Steel Tubes",
+    "is_numbers": [
+      "IS 1993 : 2018",
+      "IS 277 : 2018",
+      "IS 1161 : 2014",
+      "IS 280 : 2006"
+    ],
+    "issuing_ministry": "Ministry of Steel",
+    "mandatory": true,
+    "enforcement_date": "2020-12-22",
+    "amendments": [
+      "S.O. 4637(E) dated 2020-12-22 - Comprehensive mandatory BIS licensing for domestic & imported steel"
+    ],
+    "source_url": "https://steel.gov.in/en/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-TYRES-2020",
+    "qco_name": "Pneumatic Tyres and Tubes for Automotive Vehicles (Quality Control) Order, 2020",
+    "product": "Pneumatic Tyres for Passenger Cars and Commercial Vehicles",
+    "is_numbers": [
+      "IS 15633 : 2005",
+      "IS 15636 : 2012"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT & MoRTH)",
+    "mandatory": true,
+    "enforcement_date": "2021-04-01",
+    "amendments": [
+      "S.O. 884(E) dated 2020-02-25 - Compulsory Scheme I ISI Mark certification"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-AUTOMOTIVE-SAFETY-GLASS-2020",
+    "qco_name": "Safety Glass for Road Transport (Quality Control) Order, 2020",
+    "product": "Toughened and Laminated Safety Glass for Automobiles",
+    "is_numbers": [
+      "IS 2553 (Part 2) : 2019"
+    ],
+    "issuing_ministry": "Ministry of Heavy Industries & MoRTH",
+    "mandatory": true,
+    "enforcement_date": "2021-04-01",
+    "amendments": [
+      "S.O. 1022(E) dated 2020-03-12"
+    ],
+    "source_url": "https://morth.nic.in/cmvr-technical-standards",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-PETROLEUM-BS6-2020",
+    "qco_name": "Motor Fuels and Aviation Turbine Fuel (Quality Control) Order, 2020",
+    "product": "BS-VI Diesel, BS-VI Petrol, Aviation Turbine Fuel, and LPG",
+    "is_numbers": [
+      "IS 1460 : 2017",
+      "IS 2796 : 2017",
+      "IS 1571 : 2018",
+      "IS 4576 : 1999"
+    ],
+    "issuing_ministry": "Ministry of Petroleum and Natural Gas (MoPNG)",
+    "mandatory": true,
+    "enforcement_date": "2020-04-01",
+    "amendments": [
+      "Gazette Notification mandating nationwide BS-VI ultra-low sulfur fuels and statutory BIS conformance"
+    ],
+    "source_url": "https://mopng.gov.in/en/petroleum-specifications",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-COOKWARE-UTENSILS-2023",
+    "qco_name": "Cookware and Utensils (Quality Control) Order, 2023",
+    "product": "Stainless Steel Cookware, Aluminium Utensils, and Vacuum Flasks",
+    "is_numbers": [
+      "IS 14756 : 2017",
+      "IS 1660 (Part 1) : 2009",
+      "IS 17526 : 2021"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-03-01",
+    "amendments": [
+      "S.O. 3632(E) dated 2023-08-10 - Mandatory Scheme I ISI Mark certification"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-ALUMINIUM-FOIL-2023",
+    "qco_name": "Aluminium Foil (Quality Control) Order, 2023",
+    "product": "Aluminium and Aluminium Alloy Foil for Food Packaging",
+    "is_numbers": [
+      "IS 15392 : 2003"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-03-20",
+    "amendments": [
+      "S.O. 4118(E) dated 2023-09-20 - Compulsory ISI mark for food contact foil"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-WATER-PURIFIERS-2024",
+    "qco_name": "Reverse Osmosis (RO) Based Water Treatment Systems (Quality Control) Order, 2024",
+    "product": "Point-of-Use RO Based Water Treatment Systems",
+    "is_numbers": [
+      "IS 16240 : 2015"
+    ],
+    "issuing_ministry": "Ministry of Environment, Forest and Climate Change (MoEFCC)",
+    "mandatory": true,
+    "enforcement_date": "2024-11-10",
+    "amendments": [
+      "National Green Tribunal (NGT) Compliance Notification S.O. 522(E) requiring BIS certification"
+    ],
+    "source_url": "https://moef.gov.in/en/ro-water-treatment-regulations/",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-PUMPSETS-2022",
+    "qco_name": "Agricultural and Domestic Water Pumpsets (Quality Control) Order, 2022",
+    "product": "Submersible and Centrifugal Monobloc Pumpsets",
+    "is_numbers": [
+      "IS 8034 : 2018",
+      "IS 9079 : 2018"
+    ],
+    "issuing_ministry": "Ministry of Heavy Industries & DPIIT",
+    "mandatory": true,
+    "enforcement_date": "2023-05-01",
+    "amendments": [
+      "S.O. 2108(E) dated 2022-05-06"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-WATER-HEATERS-2020",
+    "qco_name": "Stationary Electric Water Heaters (Quality Control) Order, 2020",
+    "product": "Stationary Storage Electric Water Heaters (Geysers)",
+    "is_numbers": [
+      "IS 2082 : 1993"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2021-06-01",
+    "amendments": [
+      "S.O. 4567(E) dated 2020-11-18"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-ROOM-HEATERS-2020",
+    "qco_name": "Electrical Appliances (Room Heaters) Quality Control Order, 2020",
+    "product": "Electric Room Heaters",
+    "is_numbers": [
+      "IS 302 (Part 2/Sec 30) : 2007"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2021-06-01",
+    "amendments": [
+      "S.O. 4567(E) dated 2020-11-18"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-SOLAR-PV-MODULES-2017",
+    "qco_name": "Solar Photovoltaics, Systems, Devices and Components Goods (Requirements for Compulsory Registration) Order, 2017",
+    "product": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules",
+    "is_numbers": [
+      "IS 14286 : 2010"
+    ],
+    "issuing_ministry": "Ministry of New and Renewable Energy (MNRE)",
+    "mandatory": true,
+    "enforcement_date": "2018-04-16",
+    "amendments": [
+      "MNRE Order No. 283/54/2018-GRID SOLAR"
+    ],
+    "source_url": "https://mnre.gov.in/solar-quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-FIRE-EXTINGUISHERS-2023",
+    "qco_name": "Fire Fighting Equipment (Quality Control) Order, 2023",
+    "product": "Portable Fire Extinguishers",
+    "is_numbers": [
+      "IS 15683 : 2018"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-03-01",
+    "amendments": [
+      "S.O. 3912(E) dated 2023-09-05"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-CERAMIC-TILES-2024",
+    "qco_name": "Ceramic Tiles (Quality Control) Order, 2024",
+    "product": "Pressed Ceramic Tiles",
+    "is_numbers": [
+      "IS 15622 : 2017"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-09-01",
+    "amendments": [
+      "S.O. 1102(E) dated 2024-02-28"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-CABLES-WIRES-2023",
+    "qco_name": "Electrical Wires and Cables (Quality Control) Order, 2023",
+    "product": "PVC Insulated Electric Cables and House Wires",
+    "is_numbers": [
+      "IS 694 : 2010"
+    ],
+    "issuing_ministry": "Ministry of Commerce and Industry (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-01-01",
+    "amendments": [
+      "S.O. 3844(E) dated 2023-08-28"
+    ],
+    "source_url": "https://dpiit.gov.in/quality-control-orders",
+    "retrieved_at": "2026-09-08T00:00:00Z"
   }
 ]

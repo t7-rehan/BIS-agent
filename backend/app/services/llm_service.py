@@ -1,4 +1,4 @@
-﻿"""Google Gemini LLM Service utilizing the official google-genai SDK."""
+"""Google Gemini LLM Service utilizing the official google-genai SDK."""
 
 import json
 import logging
@@ -206,16 +206,45 @@ class GeminiLLMService:
         response_schema: Optional[Type[BaseModel]] = None,
     ) -> str:
         """Synthesize a safe, deterministic mock answer grounded strictly in prompt evidence."""
-        answer_text = (
-            "According to official BIS records, certification requirements and applicable standards "
-            "are established by the Bureau of Indian Standards and governing ministry notifications. "
-            "Please refer to the verified citations below for exact specifications."
-        )
+        prompt_lower = prompt.lower()
+
+        # Handle conversational / general information queries without response schema
+        if response_schema is None:
+            if "iso" in prompt_lower:
+                return (
+                    "ISO (International Organization for Standardization) develops international standards worldwide. "
+                    "In India, the Bureau of Indian Standards (BIS) represents India as a founder member of ISO and harmonizes "
+                    "Indian Standards (IS) with international benchmarks."
+                )
+            if any(w in prompt_lower for w in ["thank", "thx", "ty"]):
+                return "You're very welcome! Let me know if you need anything else regarding Indian Standards or BIS certification."
+            if any(w in prompt_lower for w in ["what can you", "help with", "capabilities"]):
+                return (
+                    "I am BIS Agent, an assistant for Indian Standards and BIS services. "
+                    "I can help you check applicable standards, mandatory QCOs, testing laboratories, and certification schemes."
+                )
+
+        import re
+        is_nums = re.findall(r"\bIS(?:\s*/\s*IEC)?\s+\d+(?:\s*\(.*?\))?(?:\s*:\s*\d+)?", prompt)
+        if is_nums:
+            stds_str = ", ".join(dict.fromkeys(is_nums[:3]))
+            answer_text = (
+                f"According to official BIS records, the applicable standard is {stds_str}. "
+                "Certification requirements and quality parameters are established by the Bureau of Indian Standards and governing ministry notifications."
+            )
+            applicable = list(dict.fromkeys(is_nums[:3]))
+        else:
+            answer_text = (
+                "According to official BIS records, certification requirements and applicable standards "
+                "are established by the Bureau of Indian Standards and governing ministry notifications. "
+                "Please refer to the verified citations below for exact specifications."
+            )
+            applicable = []
 
         mock_obj = LLMStructuredAnswer(
             answer=answer_text,
             summary="BIS compliance status derived from curated records.",
-            applicable_standards=[],
+            applicable_standards=applicable,
             mandatory_status="Refer to official Gazette notification",
             qco_details=None,
             testing_laboratories=[],

@@ -101,15 +101,15 @@ class BISOrchestrator:
         clean_query = message.strip()
         logger.info("[Orchestrator] Query: '%s'", clean_query[:80])
 
-        # ── Step 1: Intent + entity detection ────────────────────────────────
-        intent_result = intent_service.detect_intent(clean_query)
+        # ── Step 1: Intent + entity detection (with conversation context) ───
+        intent_result = intent_service.detect_intent(clean_query, context=context)
         logger.info("[Orchestrator] Intent='%s' confidence=%.2f", intent_result.intent, intent_result.confidence)
 
         # ── Step 2: Route by intent ───────────────────────────────────────────
 
         # 2a. Simple greeting — instant static response, no LLM call needed
         if intent_result.intent == "GREETING":
-            return self._greeting_response()
+            return self._greeting_response(clean_query)
 
         # 2b. Casual conversation / capability / general info — conversational LLM
         if intent_result.intent in ("CASUAL_CONVERSATION", "GENERAL_INFORMATION"):
@@ -150,14 +150,22 @@ class BISOrchestrator:
 
     # ── Static response helpers ───────────────────────────────────────────────
 
-    def _greeting_response(self) -> ChatResponse:
+    def _greeting_response(self, query: str = "") -> ChatResponse:
         """Return an instant, friendly greeting without calling Gemini or retrieval."""
+        ql = query.lower()
+        if "morning" in ql:
+            answer = "Good morning! I'm BIS Agent. What can I help you with today?"
+        elif "afternoon" in ql:
+            answer = "Good afternoon! I'm BIS Agent. What can I help you with today?"
+        elif "evening" in ql:
+            answer = "Good evening! I'm BIS Agent. What can I help you with today?"
+        elif "namaste" in ql or "namaskar" in ql:
+            answer = "Namaste! I'm BIS Agent, your assistant for Indian Standards and BIS services. How can I help you today?"
+        else:
+            answer = "Hello! I'm BIS Agent. How can I help you today with Indian Standards or BIS services?"
+
         return ChatResponse(
-            answer=(
-                "Hello! I'm BIS Agent, your assistant for Indian Standards and BIS services. "
-                "I can help you with product standards, mandatory certification, QCOs, testing laboratories, "
-                "hallmarking, and other BIS topics. What would you like to know?"
-            ),
+            answer=answer,
             intent="GREETING",
             confidence=None,
             confidence_level=None,
@@ -180,7 +188,8 @@ class BISOrchestrator:
                 "For example, you can ask:\n"
                 "• \"Which Indian Standard applies to pressure cookers?\"\n"
                 "• \"Is BIS certification mandatory for LED lamps?\"\n"
-                "• \"Which labs can test cement?\""
+                "• \"Which labs can test cement?\"\n\n"
+                "For inquiries outside these areas, please verify directly on bis.gov.in."
             ),
             intent="UNKNOWN_QUERY",
             confidence=None,
@@ -250,19 +259,38 @@ class BISOrchestrator:
     def _fallback_conversational(self, query: str) -> str:
         """Deterministic fallback when Gemini is unavailable for a conversational reply."""
         q = query.lower()
-        if any(w in q for w in ["thank", "great", "awesome", "perfect", "good", "nice"]):
-            return "You're welcome! Let me know if you need anything else about BIS standards or services."
+        if any(w in q for w in ["thank", "thx", "ty"]):
+            return "You're very welcome! Let me know if you need anything else regarding Indian Standards or BIS certification."
+        if any(w in q for w in ["great", "awesome", "perfect", "good", "nice", "excellent", "wonderful"]):
+            return "Glad I could help! Feel free to ask if you have any questions about standards, testing labs, or compliance."
         if any(w in q for w in ["bye", "goodbye", "see you"]):
-            return "Goodbye! Feel free to come back anytime you have questions about Indian Standards or BIS services."
-        if any(w in q for w in ["how are you", "how're you"]):
-            return "I'm doing well, thank you! Ready to help with any BIS standards or certification questions you have."
-        if any(w in q for w in ["what can you", "help with", "capability", "purpose"]):
+            return "Goodbye! Feel free to return anytime you have questions about Indian Standards or BIS services."
+        if any(w in q for w in ["how are you", "how're you", "how do you do", "how r u", "how are things"]):
+            return "I'm doing well, thank you! I'm ready to help you with Indian Standards, BIS certification, QCO compliance, and testing laboratories. What can I look up for you?"
+        if any(w in q for w in ["what can you", "help with", "capability", "purpose", "who are you", "can you help"]):
             return (
-                "I can help you with Indian Standards (IS numbers), BIS certification, "
-                "Quality Control Orders (QCOs), testing laboratories, hallmarking, and "
-                "other BIS-related topics. Just ask your question!"
+                "I'm BIS Agent, an AI-powered assistant for Indian Standards and BIS services. I can help you:\n"
+                "• Find applicable Indian Standards (IS) for products\n"
+                "• Check mandatory certification and Quality Control Orders (QCOs)\n"
+                "• Locate recognized testing laboratories across India\n"
+                "• Understand BIS certification schemes (ISI Mark, CRS, FMCS, Hallmarking)\n"
+                "• Provide guidance on consumer rights and reporting substandard goods\n\n"
+                "How can I help you today?"
             )
-        return "I'm here to help with Indian Standards, BIS certification, and related topics. What would you like to know?"
+        if any(w in q for w in ["what is iso", "about iso", "iso"]):
+            return (
+                "ISO (International Organization for Standardization) develops international standards globally. "
+                "In India, the Bureau of Indian Standards (BIS) is the National Standards Body and represents India at ISO. "
+                "Many Indian Standards (IS) are aligned with ISO/IEC standards.\n\n"
+                "Is there a specific product or standard you'd like to check?"
+            )
+        if any(w in q for w in ["what is certification", "about certification", "why certify"]):
+            return (
+                "Certification is the process where an accredited body verifies that a product conforms to specified quality and safety standards. "
+                "BIS operates certification schemes like the ISI Mark (Scheme I) and Compulsory Registration Scheme (CRS) to protect consumers and ensure product reliability in India.\n\n"
+                "Would you like to know if certification is mandatory for a specific product?"
+            )
+        return "I'm here to help with Indian Standards, BIS certification, and compliance in India. What product or standard would you like to know about?"
 
     # ── Full BIS RAG + Gemini pipeline ────────────────────────────────────────
 
@@ -276,8 +304,15 @@ class BISOrchestrator:
         """Run the full hybrid retrieval → evidence validation → Gemini pipeline."""
 
         # Step 3: Hybrid Knowledge Retrieval
+        search_query = query
+        if intent_result.entities.get("inherited_from_context"):
+            prod = intent_result.entities.get("product_name") or ""
+            is_num = intent_result.entities.get("is_number") or ""
+            search_query = f"{prod} {is_num} {query}".strip()
+            logger.info("[Orchestrator] Context-augmented retrieval query: '%s'", search_query)
+
         search_result = self.retriever.search(
-            query=query,
+            query=search_query,
             top_k=settings.RETRIEVAL_TOP_K,
             db_session=db_session,
         )

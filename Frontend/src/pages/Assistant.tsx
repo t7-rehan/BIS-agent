@@ -1,15 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import {
-  Sparkles,
+  Bot,
   Plus,
   Send,
-  ShieldCheck,
-  History,
-  Bookmark,
   Trash2,
-  CheckCircle2,
-  AlertCircle
+  Bookmark,
+  MessageSquare,
 } from 'lucide-react';
 import { ChatMessage as ChatMessageType, ChatResponse } from '../types/ai';
 import { ChatMessage } from '../components/ai/ChatMessage';
@@ -17,6 +14,15 @@ import { SuggestedQueries } from '../components/ai/SuggestedQueries';
 import { DisclaimerBanner } from '../components/common/DisclaimerBanner';
 import { aiService, AssistantApiError } from '../services/aiService';
 import { useApp } from '../context/AppContext';
+
+/** Sidebar conversation history items */
+const SIDEBAR_QUERIES = [
+  { title: 'Pressure cooker standard', query: 'Which Indian Standard applies to pressure cookers?' },
+  { title: 'Cement testing labs', query: 'Which recognized laboratory can test cement under IS 1489?' },
+  { title: 'IS 2347 details', query: 'Tell me about IS 2347.' },
+  { title: 'Gold hallmarking rules', query: 'What are the rules for 6-digit HUID gold jewellery hallmarking?' },
+  { title: 'ISI Mark vs CRS', query: 'What is the difference between ISI Mark (Scheme I) and CRS (Scheme II)?' },
+];
 
 export const Assistant: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -30,94 +36,64 @@ export const Assistant: React.FC = () => {
   const chatBottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const recentChats = [
-    { title: 'Pressure cooker standard & QCO', query: 'Which Indian Standard applies to pressure cookers and is ISI mandatory?' },
-    { title: 'Testing laboratories for cement', query: 'Which recognized laboratory can test cement under IS 1489?' },
-    { title: 'Standard details for IS 2347', query: 'Tell me about IS 2347.' },
-    { title: 'Clarification flow (vague query)', query: 'Which standard applies to my product?' },
-    { title: 'Gold Hallmarking HUID check', query: 'What are the rules for 6-digit HUID gold jewellery hallmarking?' },
-    { title: 'Scheme-I vs Scheme-II (CRS)', query: 'What is the difference between Scheme-I (ISI Mark) and Scheme-II (CRS)?' }
-  ];
-
-  // Check backend health on initial mount
+  /* ── Backend health check ─────────────────────────────────────── */
   useEffect(() => {
-    let isMounted = true;
+    let mounted = true;
     aiService.checkHealth().then((res) => {
-      if (isMounted) {
-        setBackendOnline(Boolean(res && res.status === 'ok'));
-      }
+      if (mounted) setBackendOnline(Boolean(res?.status === 'ok'));
     });
-    return () => {
-      isMounted = false;
-    };
+    return () => { mounted = false; };
   }, []);
 
-  // Handle URL query parameter `?q=...`
+  /* ── URL param auto-send ──────────────────────────────────────── */
   useEffect(() => {
     const q = searchParams.get('q');
-    if (q && q.trim()) {
-      handleSendMessage(q);
-    }
+    if (q?.trim()) handleSendMessage(q);
   }, [searchParams]);
 
-  // Scroll to bottom whenever messages update
+  /* ── Auto-scroll ──────────────────────────────────────────────── */
   useEffect(() => {
     chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
+  /* ── Send ─────────────────────────────────────────────────────── */
   const handleSendMessage = async (textToSend?: string) => {
-    if (isTyping) return; // Prevent duplicate submissions
-
-    const prompt = (textToSend || inputRef.current?.value || inputPrompt).trim();
+    if (isTyping) return;
+    const prompt = (textToSend ?? inputPrompt).trim();
     if (!prompt) return;
 
-    const userMessage: ChatMessageType = {
+    const userMsg: ChatMessageType = {
       id: `usr-${Date.now()}`,
       sender: 'user',
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      text: prompt
+      text: prompt,
     };
-
-    const streamingMessage: ChatMessageType = {
+    const thinkingMsg: ChatMessageType = {
       id: `ast-${Date.now()}`,
       sender: 'assistant',
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      isStreaming: true
+      isStreaming: true,
     };
 
-    setMessages((prev) => [...prev, userMessage, streamingMessage]);
+    setMessages((prev) => [...prev, userMsg, thinkingMsg]);
     setInputPrompt('');
     setIsTyping(true);
 
     try {
       const response: ChatResponse = await aiService.queryAssistant(prompt, messages);
-
       setMessages((prev) =>
-        prev.map((msg) => {
-          if (msg.id !== streamingMessage.id) return msg;
-
-          return {
-            ...msg,
-            isStreaming: false,
-            chatResponse: response,
-          };
-        })
+        prev.map((m) => m.id === thinkingMsg.id ? { ...m, isStreaming: false, chatResponse: response } : m)
       );
       setBackendOnline(true);
-    } catch (err: unknown) {
-      let errorMessage = 'Unable to connect to the BIS assistant right now. Please check that the backend is running and try again.';
-      if (err instanceof AssistantApiError) {
-        errorMessage = err.message;
-      } else if (err instanceof Error) {
-        errorMessage = err.message;
-      }
-
+    } catch (err) {
+      const msg =
+        err instanceof AssistantApiError
+          ? err.message
+          : err instanceof Error
+          ? err.message
+          : "I'm having trouble reaching the service right now. Please try again in a moment.";
       setMessages((prev) =>
-        prev.map((msg) =>
-          msg.id === streamingMessage.id
-            ? { ...msg, isStreaming: false, error: true, text: errorMessage }
-            : msg
-        )
+        prev.map((m) => m.id === thinkingMsg.id ? { ...m, isStreaming: false, error: true, text: msg } : m)
       );
     } finally {
       setIsTyping(false);
@@ -131,207 +107,219 @@ export const Assistant: React.FC = () => {
     inputRef.current?.focus();
   };
 
+  /* ── Input key handler (Enter to send, Shift+Enter for newline) ─ */
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  const canSend = !isTyping && Boolean(inputPrompt.trim());
+
+  /* ── Render ───────────────────────────────────────────────────── */
   return (
-    <div className="flex-1 flex flex-col lg:flex-row h-[calc(100vh-4rem)] overflow-hidden bg-slate-50">
-      {/* 1. LEFT CONVERSATION & SAVED SIDEBAR (Desktop) */}
-      <aside className="hidden md:flex flex-col w-72 bg-white border-r border-slate-200 shrink-0 h-full p-4 space-y-4">
-        {/* + New Conversation Button */}
-        <button
-          onClick={handleNewConversation}
-          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-300 hover:border-blue-500 bg-white hover:bg-blue-50/50 text-xs font-bold text-slate-800 transition-all shadow-2xs cursor-pointer"
-        >
-          <Plus className="w-4 h-4 text-blue-600" />
-          <span>New Conversation</span>
-        </button>
+    <div
+      className="flex flex-col lg:flex-row bg-white"
+      style={{ height: 'calc(100vh - 4rem)' }}
+    >
+      {/* ── Left sidebar (desktop) ─────────────────────────────── */}
+      <aside className="hidden lg:flex flex-col w-60 xl:w-64 border-r border-slate-100 shrink-0 h-full bg-slate-50/60">
+        {/* New conversation */}
+        <div className="p-3 border-b border-slate-100">
+          <button
+            onClick={handleNewConversation}
+            className="w-full flex items-center gap-2 py-2 px-3 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-white border border-slate-200 hover:border-slate-300 transition-all"
+          >
+            <Plus className="w-3.5 h-3.5 text-blue-600" aria-hidden="true" />
+            <span>New conversation</span>
+          </button>
+        </div>
 
-        {/* Recent Queries */}
-        <div className="flex-1 overflow-y-auto space-y-1 text-left">
-          <div className="flex items-center justify-between px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-            <span className="flex items-center gap-1">
-              <History className="w-3 h-3" />
-              <span>Suggested BIS Queries</span>
-            </span>
-          </div>
-
-          {recentChats.map((item, idx) => (
+        {/* Recent queries */}
+        <nav className="flex-1 overflow-y-auto p-2 space-y-0.5" aria-label="Suggested queries">
+          <p className="px-2 py-1.5 text-[10px] font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+            <MessageSquare className="w-3 h-3" aria-hidden="true" />
+            <span>Example queries</span>
+          </p>
+          {SIDEBAR_QUERIES.map((item, idx) => (
             <button
               key={idx}
               onClick={() => handleSendMessage(item.query)}
               disabled={isTyping}
-              className="w-full p-2 text-left text-xs font-medium text-slate-700 hover:bg-slate-100 hover:text-blue-700 rounded-lg transition-colors truncate block disabled:opacity-50 cursor-pointer"
               title={item.query}
+              className="w-full px-2 py-2 text-left text-xs text-slate-600 hover:text-slate-900 hover:bg-white rounded-lg transition-colors truncate block disabled:opacity-40 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500/20"
             >
               {item.title}
             </button>
           ))}
+        </nav>
 
-          {/* Saved Standards Watchlist */}
-          <div className="pt-4 border-t border-slate-100">
-            <div className="flex items-center justify-between px-2 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-              <span className="flex items-center gap-1">
-                <Bookmark className="w-3 h-3" />
-                <span>Saved Standards</span>
-              </span>
-            </div>
-            {savedStandards && savedStandards.length > 0 ? (
-              savedStandards.map((stdId) => (
-                <button
-                  key={stdId}
-                  onClick={() => navigate(`/standards/${stdId}`)}
-                  className="w-full p-2 text-left text-xs font-mono font-semibold text-blue-800 hover:bg-blue-50 rounded-lg transition-colors truncate block cursor-pointer"
-                >
-                  {stdId.replace(/-/g, ' ')}
-                </button>
-              ))
-            ) : (
-              <div className="px-2 py-2 text-[11px] text-slate-400 italic">
-                No standards bookmarked yet
-              </div>
-            )}
+        {/* Saved standards */}
+        {savedStandards && savedStandards.length > 0 && (
+          <div className="p-2 border-t border-slate-100">
+            <p className="px-2 py-1.5 text-[10px] font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+              <Bookmark className="w-3 h-3" aria-hidden="true" />
+              <span>Saved standards</span>
+            </p>
+            {savedStandards.slice(0, 4).map((stdId) => (
+              <button
+                key={stdId}
+                onClick={() => navigate(`/standards/${stdId}`)}
+                className="w-full px-2 py-1.5 text-left text-[11px] font-mono font-medium text-blue-700 hover:bg-white rounded-lg transition-colors truncate block cursor-pointer"
+              >
+                {stdId.replace(/-/g, ' ')}
+              </button>
+            ))}
           </div>
-        </div>
+        )}
 
-        {/* Backend & Evidence Status Card */}
-        <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-left space-y-1.5">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-800">Statutory Grounding</span>
-            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-              <ShieldCheck className="w-3 h-3 text-emerald-600" />
-              <span>ACTIVE</span>
-            </span>
-          </div>
-          <p className="text-[10px] text-slate-500 leading-snug">
-            All answers are synthesized from Indian Standards, DPIIT/MeitY gazettes, and official BIS registries.
-          </p>
+        {/* Footer disclaimer */}
+        <div className="p-3 border-t border-slate-100">
+          <DisclaimerBanner variant="compact" />
         </div>
       </aside>
 
-      {/* 2. MAIN CHAT WORKSPACE */}
-      <div className="flex-1 flex flex-col h-full min-w-0 bg-slate-50">
-        {/* Workspace Top Bar */}
-        <div className="px-4 sm:px-6 py-3 bg-white border-b border-slate-200 flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#0B192C] text-white flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-blue-400" />
+      {/* ── Main chat area ─────────────────────────────────────── */}
+      <div className="flex-1 flex flex-col min-w-0 h-full">
+
+        {/* Chat header bar */}
+        <div className="px-4 sm:px-5 py-3 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white">
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-full bg-[#0B192C] flex items-center justify-center shrink-0">
+              <Bot className="w-3.5 h-3.5 text-blue-400" aria-hidden="true" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-sm font-bold text-slate-900">BIS Intelligent Assistant</h1>
-                <span className="text-[10px] font-mono px-1.5 py-0.2 bg-blue-50 text-blue-700 rounded border border-blue-200">
-                  Phases 1–6 Live
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-500 hidden sm:block">
-                Powered by FastAPI, ChromaDB Hybrid Retrieval & Google Gemini
+              <h1 className="text-sm font-semibold text-slate-900 leading-tight">BIS Agent</h1>
+              <p className="text-[11px] text-slate-400 leading-tight hidden sm:block">
+                AI-powered assistant for Indian Standards &amp; BIS Services
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
+            {/* Backend status */}
             {backendOnline !== null && (
               <div
-                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-full border ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-medium rounded-full border ${
                   backendOnline
                     ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                     : 'bg-amber-50 text-amber-700 border-amber-200'
                 }`}
-                title={backendOnline ? 'FastAPI Backend Online' : 'Checking Backend Connection'}
+                role="status"
+                aria-label={backendOnline ? 'Backend online' : 'Connecting to backend'}
               >
-                <span className={`w-2 h-2 rounded-full ${backendOnline ? 'bg-emerald-500' : 'bg-amber-500 animate-pulse'}`}></span>
-                <span>{backendOnline ? 'Backend Online' : 'Connecting...'}</span>
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${
+                    backendOnline ? 'bg-emerald-500' : 'bg-amber-500 animate-pulse'
+                  }`}
+                  aria-hidden="true"
+                />
+                <span className="hidden sm:inline">
+                  {backendOnline ? 'Online' : 'Connecting…'}
+                </span>
               </div>
             )}
 
+            {/* Clear conversation */}
             {messages.length > 0 && (
               <button
                 onClick={handleNewConversation}
-                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                 title="Clear conversation"
+                aria-label="Clear conversation"
               >
-                <Trash2 className="w-4 h-4" />
+                <Trash2 className="w-4 h-4" aria-hidden="true" />
               </button>
             )}
           </div>
         </div>
 
-        {/* Message Feed Container */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
-          <DisclaimerBanner variant="subtle" />
-
+        {/* ── Message feed ─────────────────────────────────────── */}
+        <div
+          className="flex-1 overflow-y-auto"
+          role="log"
+          aria-label="Conversation"
+          aria-live="polite"
+        >
           {messages.length === 0 ? (
-            <div className="max-w-3xl mx-auto py-10 text-center space-y-6">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center mx-auto shadow-subtle">
-                <Sparkles className="w-8 h-8" />
-              </div>
-              <div className="space-y-2">
-                <h2 className="text-xl font-bold text-slate-900">
-                  How can the BIS Assistant guide your compliance journey today?
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto">
-                  Ask about specific products, applicable Indian Standards, mandatory QCO gazette orders, certification schemes, or accredited laboratories.
-                </p>
+            /* ── Welcome / empty state ──────────────────────── */
+            <div className="flex flex-col items-center justify-center h-full px-4 py-8 text-center">
+              <div
+                className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#0B192C] to-[#1E3E62] flex items-center justify-center mb-4 shadow-md ring-4 ring-blue-50"
+                aria-hidden="true"
+              >
+                <Bot className="w-7 h-7 text-blue-400" />
               </div>
 
-              <div className="pt-2 text-left">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 tracking-tight">
+                BIS Agent
+              </h2>
+              <p className="text-sm text-slate-500 mb-1 max-w-md leading-relaxed">
+                Your intelligent assistant for Indian Standards, certification, and BIS compliance.
+              </p>
+              <p className="text-xs text-slate-400 mb-6 max-w-md">
+                Ask about standards, mandatory QCOs, testing laboratories, hallmarking, or start with an example below.
+              </p>
+
+              {/* Suggestion cards */}
+              <div className="w-full max-w-2xl">
                 <SuggestedQueries onSelectQuery={handleSendMessage} />
               </div>
+
+              <p className="mt-6 text-[11px] text-slate-400">
+                AI-guided assistance · Grounded in official Gazette notifications and BIS databases
+              </p>
             </div>
           ) : (
-            <div className="max-w-4xl mx-auto space-y-6 pb-4">
+            /* ── Conversation ───────────────────────────────── */
+            <div className="max-w-3xl lg:max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 space-y-6">
               {messages.map((msg) => (
                 <ChatMessage
                   key={msg.id}
                   message={msg}
-                  onAskFollowUp={(followUp) => handleSendMessage(followUp)}
+                  onAskFollowUp={(q) => handleSendMessage(q)}
                 />
               ))}
-              <div ref={chatBottomRef} />
+              <div ref={chatBottomRef} aria-hidden="true" />
             </div>
           )}
         </div>
 
-        {/* Bottom Input Area */}
-        <div className="p-4 bg-white border-t border-slate-200 shrink-0">
+        {/* ── Input area ────────────────────────────────────── */}
+        <div className="border-t border-slate-100 bg-white px-4 sm:px-6 lg:px-8 py-4 shrink-0">
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSendMessage();
-            }}
-            className="max-w-4xl mx-auto flex items-center gap-2"
+            onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }}
+            className="max-w-3xl lg:max-w-4xl mx-auto"
           >
-            <div className="flex-1 relative">
+            <div className="flex items-center gap-2.5 p-1.5 bg-slate-50/90 border border-slate-200 rounded-2xl focus-within:border-blue-500 focus-within:bg-white focus-within:ring-4 focus-within:ring-blue-500/10 transition-all shadow-xs">
               <input
                 ref={inputRef}
+                id="chat-input"
                 type="text"
                 value={inputPrompt}
                 onChange={(e) => setInputPrompt(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    handleSendMessage();
-                  }
-                }}
-                placeholder="Ask about a product, standard, testing laboratory or BIS service…"
+                onKeyDown={handleKeyDown}
+                placeholder="Ask about a product, standard, certification, QCO, or laboratory…"
                 disabled={isTyping}
                 maxLength={2000}
-                aria-label="Ask about a product or standard"
-                className="w-full py-3 pl-4 pr-10 text-sm text-slate-900 bg-slate-50 hover:bg-slate-100 focus:bg-white border border-slate-200 focus:border-blue-500 rounded-xl focus:outline-none shadow-2xs transition-all disabled:opacity-50"
+                aria-label="Ask BIS Agent a question"
+                autoComplete="off"
+                className="flex-1 py-2 px-3 bg-transparent text-sm sm:text-base text-slate-900 placeholder-slate-400 focus:outline-none disabled:opacity-50"
               />
+              <button
+                type="submit"
+                disabled={!canSend}
+                aria-label="Send message"
+                className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-[#0B192C] hover:bg-[#1E3E62] disabled:bg-slate-200 disabled:text-slate-400 text-white transition-all shrink-0 mr-0.5 cursor-pointer disabled:cursor-not-allowed active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/30 shadow-xs"
+              >
+                <Send className="w-4 h-4" aria-hidden="true" />
+              </button>
             </div>
-            <button
-              type="submit"
-              disabled={isTyping || !inputPrompt.trim()}
-              aria-label="Send message"
-              className="px-4 py-3 bg-[#0B192C] hover:bg-[#1E3E62] disabled:bg-slate-300 text-white rounded-xl font-semibold text-xs flex items-center gap-1.5 shadow-sm transition-all shrink-0 cursor-pointer disabled:cursor-not-allowed active:scale-[0.98]"
-            >
-              <span>Send</span>
-              <Send className="w-3.5 h-3.5" />
-            </button>
+            <p className="text-[11px] text-slate-400 text-center mt-2">
+              Press Enter to send · Shift+Enter for new line
+            </p>
           </form>
-
-          <div className="max-w-4xl mx-auto mt-2 text-[11px] text-slate-400 text-center flex items-center justify-center gap-1">
-            <span>Evidence-grounded assistant • Official gazette verification recommended for statutory deadlines</span>
-          </div>
         </div>
       </div>
     </div>
