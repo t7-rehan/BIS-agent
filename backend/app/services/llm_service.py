@@ -225,29 +225,72 @@ class GeminiLLMService:
                 )
 
         import re
-        is_nums = re.findall(r"\bIS(?:\s*/\s*IEC)?\s+\d+(?:\s*\(.*?\))?(?:\s*:\s*\d+)?", prompt)
-        if is_nums:
-            stds_str = ", ".join(dict.fromkeys(is_nums[:3]))
-            answer_text = (
-                f"According to official BIS records, the applicable standard is {stds_str}. "
-                "Certification requirements and quality parameters are established by the Bureau of Indian Standards and governing ministry notifications."
-            )
-            applicable = list(dict.fromkeys(is_nums[:3]))
+        structured_standards = []
+        if "--- STRUCTURED OFFICIAL BIS FACTS ---" in prompt:
+            facts_block = prompt.split("--- STRUCTURED OFFICIAL BIS FACTS ---")[1].split("--- SEMANTIC EVIDENCE CHUNKS ---")[0]
+            try:
+                facts_data = json.loads(facts_block.strip())
+                for s in facts_data.get("standards", []):
+                    is_num = s.get("is_number")
+                    if is_num:
+                        structured_standards.append(is_num)
+            except Exception:
+                pass
+
+        if structured_standards:
+            applicable = list(dict.fromkeys(structured_standards[:5]))
         else:
-            answer_text = (
-                "According to official BIS records, certification requirements and applicable standards "
-                "are established by the Bureau of Indian Standards and governing ministry notifications. "
-                "Please refer to the verified citations below for exact specifications."
-            )
-            applicable = []
+            is_nums = re.findall(r"\bIS(?:\s*/\s*IEC)?\s+\d+(?:\s*\(.*?\))?", prompt)
+            applicable = list(dict.fromkeys(is_nums[:5])) if is_nums else []
+
+        # Check for mandatory QCO mentions
+        is_mandatory = bool(
+            re.search(r'"mandatory":\s*true', prompt, re.IGNORECASE)
+            or re.search(r'\bmandatory\b', prompt, re.IGNORECASE)
+        )
+        qco_match = re.search(r'"(?:qco_name|name)":\s*"([^"]+)"', prompt)
+        qco_name = qco_match.group(1) if qco_match else None
+
+        # Check for scheme mentions
+        scheme_match = re.search(r'"(?:scheme_name)":\s*"([^"]+)"', prompt)
+        scheme_name = scheme_match.group(1) if scheme_match else None
+
+        # Check for lab names
+        lab_matches = re.findall(r'"(?:laboratory_name)":\s*"([^"]+)"', prompt)
+        labs = [l for l in dict.fromkeys(lab_matches) if "QCO" not in l and "Standard" not in l and "Scheme" not in l][:3]
+
+        # Formulate grounded answer text
+        sentences = []
+        if applicable:
+            stds_str = ", ".join(applicable)
+            sentences.append(f"According to official BIS records, the applicable standard is {stds_str}.")
+        else:
+            sentences.append("According to official BIS records, specifications and certification schemes are established by the Bureau of Indian Standards.")
+
+        if is_mandatory:
+            mand_str = f"BIS certification is mandatory under the {qco_name}." if qco_name else "BIS certification is mandatory under the applicable Quality Control Order (QCO)."
+            sentences.append(mand_str)
+            mandatory_status = "Mandatory under Quality Control Order"
+        else:
+            sentences.append("Certification may be obtained under relevant BIS conformity assessment schemes.")
+            mandatory_status = "Voluntary unless notified under specific QCO"
+
+        if scheme_name:
+            sentences.append(f"Applicable certification scheme: {scheme_name}.")
+
+        if labs:
+            labs_str = ", ".join(labs)
+            sentences.append(f"Recognized testing laboratories equipped for conformity testing include: {labs_str}.")
+
+        answer_text = " ".join(sentences)
 
         mock_obj = LLMStructuredAnswer(
             answer=answer_text,
             summary="BIS compliance status derived from curated records.",
             applicable_standards=applicable,
-            mandatory_status="Refer to official Gazette notification",
-            qco_details=None,
-            testing_laboratories=[],
+            mandatory_status=mandatory_status,
+            qco_details=f"Covered under {qco_name}" if qco_name else None,
+            testing_laboratories=labs,
             cited_sources=[],
             warnings=["Operating in offline demonstration mode."],
         )

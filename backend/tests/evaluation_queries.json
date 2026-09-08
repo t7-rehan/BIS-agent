@@ -231,5 +231,75 @@
     "requires_clarification": false,
     "risk_level": "MEDIUM",
     "notes": "Tests robust sanitization of leading/trailing whitespace and punctuation."
+  },
+  {
+    "id": "TC-21-SECTOR-SOLAR-INVERTER",
+    "query": "Which Indian Standard applies to solar inverters?",
+    "category": "PRODUCT_STANDARD",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Identifies IS 16221 (Part 2) for grid and standalone solar photovoltaic power inverters.",
+    "expected_entities": {
+      "product_id": "PROD-SOLAR-INVERTER"
+    },
+    "expected_standards": ["IS 16221"],
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Tests Renewable Energy & Solar sector standard resolution."
+  },
+  {
+    "id": "TC-22-SECTOR-FIRE-EXTINGUISHER",
+    "query": "Is BIS certification mandatory for portable fire extinguishers?",
+    "category": "QCO_COMPLIANCE",
+    "expected_intent": "QCO_COMPLIANCE_QUERY",
+    "expected_behavior": "Confirms mandatory certification under Fire Extinguishers QCO with reference to IS 15683.",
+    "expected_entities": {
+      "product_id": "PROD-FIRE-EXTINGUISHER"
+    },
+    "expected_standards": ["IS 15683"],
+    "requires_clarification": false,
+    "risk_level": "CRITICAL",
+    "notes": "Tests Fire Safety sector QCO mandatory status."
+  },
+  {
+    "id": "TC-23-SECTOR-LPG-STOVE",
+    "query": "Which Indian Standard applies to domestic LPG stoves?",
+    "category": "PRODUCT_STANDARD",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Identifies IS 4246 for domestic LPG gas stoves and cooktops.",
+    "expected_entities": {
+      "product_id": "PROD-DOMESTIC-LPG-STOVE"
+    },
+    "expected_standards": ["IS 4246"],
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Tests LPG/Gas Appliances sector product standard mapping."
+  },
+  {
+    "id": "TC-24-SECTOR-CERAMIC-TILES",
+    "query": "What Indian standard applies to ceramic tiles?",
+    "category": "PRODUCT_STANDARD",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Identifies IS 15622 for ceramic pressed and extruded floor and wall tiles.",
+    "expected_entities": {
+      "product_id": "PROD-CERAMIC-TILES"
+    },
+    "expected_standards": ["IS 15622"],
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Tests Glass & Ceramics sector resolution."
+  },
+  {
+    "id": "TC-25-SECTOR-AAC-BLOCKS",
+    "query": "Which standard applies to autoclaved aerated concrete blocks?",
+    "category": "PRODUCT_STANDARD",
+    "expected_intent": "PRODUCT_STANDARD_QUERY",
+    "expected_behavior": "Identifies IS 2185 (Part 3) for autoclaved aerated concrete masonry blocks.",
+    "expected_entities": {
+      "product_id": "PROD-AAC-BLOCKS"
+    },
+    "expected_standards": ["IS 2185"],
+    "requires_clarification": false,
+    "risk_level": "HIGH",
+    "notes": "Tests Building Materials & Cement sector resolution."
   }
 ]

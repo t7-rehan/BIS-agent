@@ -18,11 +18,13 @@ class BISIntentService:
     ]
     LAB_KEYWORDS = [
         "lab", "laboratory", "test", "testing", "tested", "test facility", "test report", "where to test",
-        "accredited lab", "testing center", "nth", "cipet", "lims"
+        "accredited lab", "testing center", "nth", "cipet", "lims", "what tests are required",
+        "tests required", "testing requirements", "what tests", "parameters", "testing scope"
     ]
     SCHEME_KEYWORDS = [
         "scheme", "scheme 1", "scheme i", "scheme 2", "scheme ii", "crs", "fmcs",
         "isi mark", "licence", "license", "how to apply", "certification process",
+        "certification procedure", "how to get certified", "apply for certification",
         "factory audit", "surveillance"
     ]
     HALLMARKING_KEYWORDS = [
@@ -103,7 +105,7 @@ class BISIntentService:
     ]
 
     # Curated product catalog vocabulary for deterministic matching
-    KNOWN_PRODUCTS = {
+    KNOWN_PRODUCTS: Dict[str, List[str]] = {
         "PROD-ELECTRIC-MIXER": ["electric food mixer", "electric mixer", "food mixer", "mixer grinder", "kitchen grinder", "mixie", "food processor", "juicer mixer"],
         "PROD-PLUG-SOCKET": ["plug", "socket", "socket-outlet", "plugs and socket-outlets", "3-pin plug", "wall plug", "power socket"],
         "PROD-PRESSURE-COOKER": ["pressure cooker", "cooker", "domestic pressure cooker"],
@@ -127,7 +129,82 @@ class BISIntentService:
         "PROD-SILVER-JEWELLERY": ["silver jewellery", "silver jewelry", "silver artefact"],
         "PROD-FOOD-POLYETHYLENE": ["food contact polyethylene", "polyethylene film", "food packaging plastic"],
         "PROD-STAINLESS-SINK": ["stainless steel sink", "kitchen sink", "steel sink"],
+        "PROD-SOLAR-INVERTER": ["solar inverter", "pv inverter", "grid-tied inverter", "solar power conditioner"],
+        "PROD-FIRE-EXTINGUISHER": ["fire extinguisher", "portable fire extinguisher", "abc extinguisher", "co2 fire extinguisher"],
+        "PROD-AAC-BLOCKS": ["aac block", "aac blocks", "aerated concrete block", "cellular concrete block"],
+        "PROD-DOMESTIC-LPG-STOVE": ["lpg stove", "gas stove", "gas cooktop", "lpg chulha", "domestic gas stove"],
+        "PROD-UREA-FERTILIZER": ["urea", "urea fertilizer", "agricultural urea"],
+        "PROD-SAFETY-SHOES": ["safety shoes", "safety boots", "steel toe shoes", "industrial safety footwear"],
+        "PROD-CERAMIC-TILES": ["ceramic tiles", "vitrified tiles", "floor tiles", "wall tiles"],
+        "PROD-SPLIT-AC": ["split ac", "split air conditioner", "inverter split ac", "air conditioner"],
+        "PROD-SUBMERSIBLE-PUMP": ["submersible pump", "borewell pump", "agricultural pump"],
+        "PROD-CORRUGATED-BOX": ["corrugated box", "cardboard box", "shipping carton"],
+        "PROD-WRITING-PRINTING-PAPER": ["copier paper", "a4 paper", "printing paper", "photocopy paper"],
+        "PROD-TOUGHENED-SAFETY-GLASS": ["toughened glass", "tempered glass", "safety glass", "architectural glass"],
+        "PROD-SPORTS-FOOTWEAR": ["sports shoes", "running shoes", "athletic shoes", "sports footwear"],
     }
+
+    PROD_TO_STD: Dict[str, str] = {
+        "PROD-PRESSURE-COOKER": "IS 2347",
+        "PROD-ELECTRIC-MIXER": "IS 4250",
+        "PROD-PLUG-SOCKET": "IS 1293",
+        "PROD-LED-LAMP": "IS 16102 (Part 1)",
+        "PROD-TWO-WHEELER-HELMET": "IS 4151",
+        "PROD-CEMENT-OPC": "IS 269",
+        "PROD-PACKAGED-WATER": "IS 14543",
+        "PROD-STRUCTURAL-STEEL": "IS 2062",
+        "PROD-TMT-REBAR": "IS 1786",
+        "PROD-SOLAR-INVERTER": "IS 16221 (Part 2)",
+        "PROD-FIRE-EXTINGUISHER": "IS 15683",
+        "PROD-AAC-BLOCKS": "IS 2185 (Part 3)",
+        "PROD-DOMESTIC-LPG-STOVE": "IS 4246",
+        "PROD-UREA-FERTILIZER": "IS 540",
+        "PROD-SAFETY-SHOES": "IS 15298 (Part 2)",
+        "PROD-CERAMIC-TILES": "IS 15622",
+        "PROD-SPLIT-AC": "IS 1391 (Part 2)",
+        "PROD-SUBMERSIBLE-PUMP": "IS 14220",
+        "PROD-CORRUGATED-BOX": "IS 2771 (Part 1)",
+        "PROD-WRITING-PRINTING-PAPER": "IS 1848",
+        "PROD-TOUGHENED-SAFETY-GLASS": "IS 2553 (Part 1)",
+        "PROD-SPORTS-FOOTWEAR": "IS 15844 (Part 1)",
+    }
+
+    def __init__(self):
+        """Initialize catalog and load all products and standards dynamically."""
+        self._load_full_catalog()
+
+    def _load_full_catalog(self) -> None:
+        """Dynamically load products from JSON datasets into catalog."""
+        try:
+            from pathlib import Path
+            import json
+            for candidate in [
+                Path(__file__).resolve().parent.parent.parent.parent / "rag" / "data" / "products.json",
+                Path.cwd() / "rag" / "data" / "products.json",
+                Path.cwd().parent / "rag" / "data" / "products.json",
+            ]:
+                if candidate.exists():
+                    with open(candidate, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                        for item in data:
+                            p_id = item["id"]
+                            aliases = list(item.get("aliases", []))
+                            p_name = item.get("product_name", "")
+                            if p_name and p_name.lower() not in [a.lower() for a in aliases]:
+                                aliases.append(p_name.lower())
+                            if p_id not in self.KNOWN_PRODUCTS:
+                                self.KNOWN_PRODUCTS[p_id] = aliases
+                            else:
+                                for a in aliases:
+                                    if a.lower() not in [x.lower() for x in self.KNOWN_PRODUCTS[p_id]]:
+                                        self.KNOWN_PRODUCTS[p_id].append(a)
+                            app_stds = item.get("applicable_is_numbers", [])
+                            if app_stds and p_id not in self.PROD_TO_STD:
+                                is_clean = re.sub(r"\s*:\s*\d{4}", "", app_stds[0]).strip()
+                                self.PROD_TO_STD[p_id] = is_clean
+                    break
+        except Exception:
+            pass
 
     def _extract_entities_from_context(self, context: List[ConversationTurn]) -> Dict[str, Any]:
         """Scan recent conversation context turns in reverse to extract active entities."""
@@ -240,24 +317,14 @@ class BISIntentService:
                 entities["inherited_from_context"] = True
                 matched_prod_id = context_entities["product_id"]
                 matched_prod_name = context_entities["product_name"]
-            if not entities.get("is_number") and "is_number" in context_entities:
-                entities["is_number"] = context_entities["is_number"]
-                entities["inherited_from_context"] = True
-            elif not entities.get("is_number") and entities.get("product_id"):
-                prod_to_std = {
-                    "PROD-PRESSURE-COOKER": "IS 2347",
-                    "PROD-ELECTRIC-MIXER": "IS 4250",
-                    "PROD-PLUG-SOCKET": "IS 1293",
-                    "PROD-LED-LAMP": "IS 16102 (Part 1)",
-                    "PROD-TWO-WHEELER-HELMET": "IS 4151",
-                    "PROD-CEMENT-OPC": "IS 269",
-                    "PROD-PACKAGED-WATER": "IS 14543",
-                    "PROD-STRUCTURAL-STEEL": "IS 2062",
-                    "PROD-TMT-REBAR": "IS 1786",
-                }
-                active_prod = entities.get("product_id")
-                if active_prod and active_prod in prod_to_std:
-                    entities["is_number"] = prod_to_std[active_prod]
+
+            active_prod = entities.get("product_id")
+            if not entities.get("is_number"):
+                if active_prod and active_prod in self.PROD_TO_STD:
+                    entities["is_number"] = self.PROD_TO_STD[active_prod]
+                    entities["inherited_from_context"] = True
+                elif "is_number" in context_entities:
+                    entities["is_number"] = context_entities["is_number"]
                     entities["inherited_from_context"] = True
             if not entities.get("certification_scheme") and "certification_scheme" in context_entities:
                 entities["certification_scheme"] = context_entities["certification_scheme"]

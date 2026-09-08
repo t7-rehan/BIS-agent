@@ -284,6 +284,7 @@ class QCO(Base):
         """Convert QCO model to dictionary."""
         return {
             "id": self.id,
+            "name": self.qco_name,
             "qco_name": self.qco_name,
             "product": self.product,
             "issuing_ministry": self.issuing_ministry,
@@ -327,6 +328,7 @@ class CertificationScheme(Base):
         """Convert scheme model to dictionary."""
         return {
             "id": self.id,
+            "name": self.scheme_name,
             "scheme_name": self.scheme_name,
             "product": self.product,
             "certification_type": self.certification_type,
@@ -364,6 +366,7 @@ class Laboratory(Base):
         """Convert laboratory model to dictionary."""
         return {
             "id": self.id,
+            "name": self.laboratory_name,
             "laboratory_name": self.laboratory_name,
             "lab_code": self.lab_code,
             "location": self.location,

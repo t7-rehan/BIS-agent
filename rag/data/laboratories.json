@@ -510,5 +510,96 @@
     ],
     "validity": "Centre of Excellence for Agro-textiles and Technical Textiles (Ministry of Textiles)",
     "source_url": "https://www.sasmira.org/"
+  },
+  {
+    "id": "LAB-CPRI-BENGALURU",
+    "laboratory_name": "Central Power Research Institute (CPRI)",
+    "lab_code": "CPRI-BLR",
+    "location": "Prof. Sir C.V. Raman Road, Sadashivanagar, Bengaluru",
+    "state": "Karnataka",
+    "applicable_is_numbers": [
+      "IS 16221 (Part 2) : 2015",
+      "IS 17017 (Part 23) : 2021",
+      "IS 1651 : 2013",
+      "IS 15549 : 2005",
+      "IS 12615 : 2018"
+    ],
+    "testing_scope": "High-voltage testing, electrical safety, energy efficiency, and endurance testing for solar inverters, EV chargers, stationary batteries, and industrial induction motors.",
+    "validity": "2027-12-31",
+    "source_url": "https://lims.bis.gov.in"
+  },
+  {
+    "id": "LAB-IIP-MUMBAI",
+    "laboratory_name": "Indian Institute of Packaging (IIP)",
+    "lab_code": "IIP-MUM",
+    "location": "E-2, MIDC Area, Chakala, Andheri East, Mumbai",
+    "state": "Maharashtra",
+    "applicable_is_numbers": [
+      "IS 2771 (Part 1) : 1990",
+      "IS 12650 : 2018",
+      "IS 1397 : 1990"
+    ],
+    "testing_scope": "Edge crush test (ECT), bursting strength, and durability for corrugated boxes, kraft paper, and jute sacks.",
+    "validity": "2027-12-31",
+    "source_url": "https://lims.bis.gov.in"
+  },
+  {
+    "id": "LAB-FDDI-NOIDA",
+    "laboratory_name": "Footwear Design & Development Institute (FDDI)",
+    "lab_code": "FDDI-NOI",
+    "location": "A-10/A, Sector 24, Noida",
+    "state": "Uttar Pradesh",
+    "applicable_is_numbers": [
+      "IS 1989 (Part 1) : 1986",
+      "IS 15844 (Part 1) : 2023",
+      "IS 5557 : 2004"
+    ],
+    "testing_scope": "Impact toe cap testing (200 J), slip resistance, upper tear strength, and flex resistance for safety boots, athletic footwear, and rubber knee boots.",
+    "validity": "2027-12-31",
+    "source_url": "https://lims.bis.gov.in"
+  },
+  {
+    "id": "LAB-CGCRI-KOLKATA",
+    "laboratory_name": "CSIR - Central Glass and Ceramic Research Institute",
+    "lab_code": "CGCRI-KOL",
+    "location": "196, Raja S.C. Mullick Road, Jadavpur, Kolkata",
+    "state": "West Bengal",
+    "applicable_is_numbers": [
+      "IS 2553 (Part 1) : 1990",
+      "IS 1961 : 1968"
+    ],
+    "testing_scope": "Impact resistance, thermal shock endurance, and fragmentation count for safety glass and glass tableware.",
+    "validity": "2027-12-31",
+    "source_url": "https://lims.bis.gov.in"
+  },
+  {
+    "id": "LAB-CBRI-ROORKEE",
+    "laboratory_name": "CSIR - Central Building Research Institute",
+    "lab_code": "CBRI-ROO",
+    "location": "Roorkee",
+    "state": "Uttarakhand",
+    "applicable_is_numbers": [
+      "IS 3614 : 2021",
+      "IS 2185 (Part 3) : 1984"
+    ],
+    "testing_scope": "Fire door integrity and insulation tests (30 min to 120 min), compressive strength, and thermal conductivity for AAC blocks.",
+    "validity": "2027-12-31",
+    "source_url": "https://lims.bis.gov.in"
+  },
+  {
+    "id": "LAB-BIS-NORTHERN-REGULATORS",
+    "laboratory_name": "BIS Northern Regional Laboratory (NROL - Appliances Division)",
+    "lab_code": "BIS-NROL-APP",
+    "location": "Plot No. 4-A, Sector 27-B, Madhya Marg, Chandigarh",
+    "state": "Punjab",
+    "applicable_is_numbers": [
+      "IS 9798 : 1995",
+      "IS 1391 (Part 1) : 2017",
+      "IS 1391 (Part 2) : 2018",
+      "IS 15750 : 2006"
+    ],
+    "testing_scope": "Performance testing for domestic LPG regulators, room air conditioners, and household refrigerators.",
+    "validity": "2027-12-31",
+    "source_url": "https://lims.bis.gov.in"
   }
 ]

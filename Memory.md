@@ -574,7 +574,7 @@ Or from project root:
 
 ## 10. Known Limitations
 
-1. **Curated MVP Dataset Size:** The database contains 148 Indian Standards, 108 products, 61 QCOs, 56 certification schemes, 25 testing laboratories, and 511 vector chunks spanning 13 key technical domains (electrical, electronics & IT, mechanical, civil, chemical, textile, medical, metallurgy, automotive, petroleum, consumer, water, and food & agriculture). Full national coverage would continue scaling to thousands of standards.
+1. **Curated Knowledge Base Size:** The database contains 188 Indian Standards, 146 products, 82 QCOs, 139 certification schemes, 31 testing laboratories, and 658 vector chunks spanning 20+ key technical domains (Renewable Energy & Solar, Batteries & Storage, EVs & Charging, Building Materials & Cement, Steel & Iron, Plastics & Polymers, Packaging, Fertilizers, Paints & Adhesives, Fire Safety, LPG/Gas Appliances, Refrigeration & HVAC, Pumps & Industrial Machinery, PPE & Industrial Safety, Toys, Precious Metals & Hallmarking, Footwear & Leather, Paper & Pulp, Glass & Ceramics, Medical Equipment, Food & Agriculture). Full national coverage would continue scaling to thousands of standards.
 2. **SQLite Write Concurrency:** SQLite is optimal for local development, fast read access, and demo evaluations. In high-concurrency production deployments with simultaneous multi-user writes, migration to PostgreSQL will be recommended.
 3. **Gemini API Key Required For Real-Time LLM Synthesis:** Without `GEMINI_API_KEY`, the orchestrator defaults to high-precision offline factual synthesis. When an API key is provided, full Gemini generation is active.
 
@@ -583,8 +583,8 @@ Or from project root:
 ## 11. Final MVP State & Handoff
 
 ### Project Completion Status
-- **ALL PHASES ARE COMPLETE, HARDENED, AND 100% VERIFIED.**
-- **181 automated tests pass** (169 backend pytest + 12 frontend Vitest) with zero failures.
+- **ALL PHASES & EXPANSIONS ARE COMPLETE, HARDENED, AND 100% VERIFIED.**
+- **186 automated tests pass** (174 backend pytest + 12 frontend Vitest) with zero failures.
 - **Frontend production build passes** cleanly with zero TypeScript errors (`npm run build`).
 - **Conversational AI Experience:** Natural human-like dialogue, multi-turn context retention, and zero internal error leakage combined with rigorous statutory BIS grounding.
 - **Security Audit:** 0 API keys or secrets committed; `.env` is strictly git-ignored.

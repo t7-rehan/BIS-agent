@@ -2288,5 +2288,805 @@
       "SCHEME-ISI-HDPE-PIPES"
     ],
     "source_url": "https://www.services.bis.gov.in/php/BIS_2.0/bisconnect/knowyourstandards/indian_standards/isdetails?is_no=4984"
+  },
+  {
+    "id": "PROD-SOLAR-INVERTER",
+    "product_name": "Solar Photovoltaic Inverter",
+    "aliases": [
+      "solar inverter",
+      "pv inverter",
+      "grid-tied inverter",
+      "solar power conditioner",
+      "solar pcu"
+    ],
+    "category": "Renewable Energy & Solar",
+    "applicable_is_numbers": [
+      "IS 16221 (Part 2) : 2015"
+    ],
+    "qco_ids": [
+      "QCO-SOLAR-INVERTERS-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-CRS-SOLAR-INVERTER"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-SOLAR-PUMP",
+    "product_name": "Solar Photovoltaic Water Pumping System",
+    "aliases": [
+      "solar pump",
+      "solar water pump",
+      "solar irrigation pump",
+      "solar submersible pump"
+    ],
+    "category": "Renewable Energy & Solar",
+    "applicable_is_numbers": [
+      "IS 17018 : 2018"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SOLAR-PUMP"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-TUBULAR-LEAD-BATTERY",
+    "product_name": "Stationary Tubular Lead-Acid Battery",
+    "aliases": [
+      "tubular battery",
+      "inverter battery",
+      "lead acid battery",
+      "solar battery",
+      "tubular cell"
+    ],
+    "category": "Batteries & Energy Storage",
+    "applicable_is_numbers": [
+      "IS 1651 : 2013"
+    ],
+    "qco_ids": [
+      "QCO-BATTERIES-LEAD-ACID-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-TUBULAR-BATTERY"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-VRLA-BATTERY",
+    "product_name": "Valve Regulated Lead-Acid (VRLA) Battery",
+    "aliases": [
+      "vrla battery",
+      "smf battery",
+      "sealed lead acid battery",
+      "ups battery"
+    ],
+    "category": "Batteries & Energy Storage",
+    "applicable_is_numbers": [
+      "IS 15549 : 2005"
+    ],
+    "qco_ids": [
+      "QCO-BATTERIES-LEAD-ACID-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-VRLA-BATTERY"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-EV-DC-FAST-CHARGER",
+    "product_name": "Electric Vehicle DC Fast Charging Station",
+    "aliases": [
+      "dc fast charger",
+      "ev fast charger",
+      "ccs2 charger",
+      "chademo charger",
+      "public ev charger"
+    ],
+    "category": "EVs & Charging",
+    "applicable_is_numbers": [
+      "IS 17017 (Part 23) : 2021"
+    ],
+    "qco_ids": [
+      "QCO-EV-CHARGERS-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-EV-CHARGER-DC"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-EV-TRACTION-MOTOR",
+    "product_name": "Electric Vehicle Traction Motor and Drive Controller",
+    "aliases": [
+      "ev motor",
+      "traction motor",
+      "bldc ev motor",
+      "pmsm ev motor",
+      "ev motor controller"
+    ],
+    "category": "EVs & Charging",
+    "applicable_is_numbers": [
+      "IS 17387 : 2020"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-EV-MOTOR"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-WHITE-CEMENT",
+    "product_name": "White Portland Cement",
+    "aliases": [
+      "white cement",
+      "white portland cement",
+      "jk white cement",
+      "birla white cement"
+    ],
+    "category": "Building Materials & Cement",
+    "applicable_is_numbers": [
+      "IS 8042 : 2015"
+    ],
+    "qco_ids": [
+      "QCO-WHITE-CEMENT-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-WHITE-CEMENT"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-AAC-BLOCKS",
+    "product_name": "Autoclaved Aerated Concrete (AAC) Blocks",
+    "aliases": [
+      "aac block",
+      "aac blocks",
+      "aerated concrete block",
+      "cellular concrete block",
+      "lightweight block"
+    ],
+    "category": "Building Materials & Cement",
+    "applicable_is_numbers": [
+      "IS 2185 (Part 3) : 1984"
+    ],
+    "qco_ids": [
+      "QCO-AAC-BLOCKS-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-AAC-BLOCKS"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-CR-SHEET",
+    "product_name": "Cold Reduced Carbon Steel Sheet (CRCA)",
+    "aliases": [
+      "cold rolled sheet",
+      "crca sheet",
+      "cold reduced strip",
+      "cr coil",
+      "cr sheet"
+    ],
+    "category": "Steel & Iron",
+    "applicable_is_numbers": [
+      "IS 513 (Part 1) : 2016"
+    ],
+    "qco_ids": [
+      "QCO-COLD-ROLLED-STEEL-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CR-SHEET"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-STAINLESS-STEEL-PLATE",
+    "product_name": "Stainless Steel Plate, Sheet and Strip",
+    "aliases": [
+      "stainless steel plate",
+      "ss sheet",
+      "ss 304",
+      "ss 316",
+      "stainless steel strip"
+    ],
+    "category": "Steel & Iron",
+    "applicable_is_numbers": [
+      "IS 6911 : 2017"
+    ],
+    "qco_ids": [
+      "QCO-STAINLESS-STEEL-2020"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-STAINLESS-STEEL"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-LPG-RUBBER-HOSE",
+    "product_name": "Reinforced Rubber Hose for LPG (Suraksha Hose)",
+    "aliases": [
+      "lpg hose",
+      "suraksha hose",
+      "gas pipe hose",
+      "lpg rubber tube",
+      "gas stove hose"
+    ],
+    "category": "Plastics, Rubber & Polymers",
+    "applicable_is_numbers": [
+      "IS 9573 : 2017"
+    ],
+    "qco_ids": [
+      "QCO-LPG-HOSES-2022"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-LPG-HOSE"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-CORRUGATED-BOX",
+    "product_name": "Corrugated Fibreboard Carton Box",
+    "aliases": [
+      "corrugated box",
+      "cardboard box",
+      "shipping carton",
+      "packaging box",
+      "carton"
+    ],
+    "category": "Packaging",
+    "applicable_is_numbers": [
+      "IS 2771 (Part 1) : 1990"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CORRUGATED-BOX"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-JUTE-SACK-GRAIN",
+    "product_name": "Jute Sacks for Food Grains (50 kg)",
+    "aliases": [
+      "jute bag",
+      "burlap sack",
+      "gunny bag",
+      "foodgrain sack",
+      "jute sack"
+    ],
+    "category": "Packaging",
+    "applicable_is_numbers": [
+      "IS 12650 : 2018"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-JUTE-BAG"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-UREA-FERTILIZER",
+    "product_name": "Urea (Fertilizer Grade 46% N)",
+    "aliases": [
+      "urea",
+      "urea fertilizer",
+      "agricultural urea",
+      "neem coated urea",
+      "nitrogen fertilizer"
+    ],
+    "category": "Fertilizers & Agricultural Inputs",
+    "applicable_is_numbers": [
+      "IS 540 : 2019"
+    ],
+    "qco_ids": [
+      "QCO-FERTILIZERS-MANDATORY-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-UREA"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-DAP-FERTILIZER",
+    "product_name": "Di-ammonium Phosphate (DAP Fertilizer)",
+    "aliases": [
+      "dap",
+      "dap fertilizer",
+      "diammonium phosphate",
+      "phosphate fertilizer",
+      "18-46-0"
+    ],
+    "category": "Fertilizers & Agricultural Inputs",
+    "applicable_is_numbers": [
+      "IS 8358 : 2019"
+    ],
+    "qco_ids": [
+      "QCO-FERTILIZERS-MANDATORY-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-DAP"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-SSP-FERTILIZER",
+    "product_name": "Single Superphosphate (SSP Fertilizer)",
+    "aliases": [
+      "ssp",
+      "ssp fertilizer",
+      "single superphosphate",
+      "superphosphate"
+    ],
+    "category": "Fertilizers & Agricultural Inputs",
+    "applicable_is_numbers": [
+      "IS 294 : 2019"
+    ],
+    "qco_ids": [
+      "QCO-FERTILIZERS-MANDATORY-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SSP"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-BIOFERTILIZER-RHIZOBIUM",
+    "product_name": "Rhizobium Biofertilizer Inoculant",
+    "aliases": [
+      "biofertilizer",
+      "rhizobium",
+      "organic inoculant",
+      "soil bacteria inoculant"
+    ],
+    "category": "Fertilizers & Agricultural Inputs",
+    "applicable_is_numbers": [
+      "IS 8268 : 2001"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-BIOFERTILIZER"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-CEMENT-PAINT",
+    "product_name": "Powder Cement Paint for Exterior Walls",
+    "aliases": [
+      "cement paint",
+      "exterior wall paint",
+      "supercem",
+      "exterior masonry coating"
+    ],
+    "category": "Paints, Coatings & Adhesives",
+    "applicable_is_numbers": [
+      "IS 5410 : 2013"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-CEMENT-PAINT"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-PLYWOOD-ADHESIVE",
+    "product_name": "Synthetic Resin Adhesive for Plywood & Woodwork",
+    "aliases": [
+      "wood adhesive",
+      "fevicol adhesive",
+      "plywood glue",
+      "resin adhesive",
+      "wood glue"
+    ],
+    "category": "Paints, Coatings & Adhesives",
+    "applicable_is_numbers": [
+      "IS 851 : 1978"
+    ],
+    "qco_ids": [
+      "QCO-WOOD-ADHESIVES-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-WOOD-ADHESIVE"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-RED-OXIDE-PRIMER",
+    "product_name": "Red Oxide Zinc Chrome Metal Primer",
+    "aliases": [
+      "red oxide primer",
+      "metal primer",
+      "anti-rust primer",
+      "zinc chrome primer"
+    ],
+    "category": "Paints, Coatings & Adhesives",
+    "applicable_is_numbers": [
+      "IS 2074 : 2015"
+    ],
+    "qco_ids": [
+      "QCO-RED-OXIDE-PAINTS-2021"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-RED-OXIDE-PRIMER"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-FIRE-RATED-DOOR",
+    "product_name": "Fire Rated Door and Frame Assembly",
+    "aliases": [
+      "fire door",
+      "fire rated door",
+      "fire exit door",
+      "emergency exit door",
+      "smoke door"
+    ],
+    "category": "Fire Safety",
+    "applicable_is_numbers": [
+      "IS 3614 : 2021"
+    ],
+    "qco_ids": [
+      "QCO-FIRE-DOORS-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-FIRE-DOOR"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-FIRE-SPRINKLER",
+    "product_name": "Automatic Fire Sprinkler System and Head",
+    "aliases": [
+      "fire sprinkler",
+      "sprinkler head",
+      "automatic fire sprinkler",
+      "fire water sprinkler"
+    ],
+    "category": "Fire Safety",
+    "applicable_is_numbers": [
+      "IS 15105 : 2021"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-FIRE-SPRINKLER"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-SMOKE-DETECTOR",
+    "product_name": "Optical Fire and Smoke Detector",
+    "aliases": [
+      "smoke detector",
+      "fire alarm detector",
+      "smoke alarm",
+      "optical smoke sensor"
+    ],
+    "category": "Fire Safety",
+    "applicable_is_numbers": [
+      "IS 11360 : 1985"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SMOKE-DETECTOR"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-WINDOW-AC",
+    "product_name": "Unitary Window Room Air Conditioner",
+    "aliases": [
+      "window ac",
+      "window air conditioner",
+      "unitary ac",
+      "room air conditioner"
+    ],
+    "category": "Refrigeration & Air Conditioning",
+    "applicable_is_numbers": [
+      "IS 1391 (Part 1) : 2017"
+    ],
+    "qco_ids": [
+      "QCO-AIR-CONDITIONERS-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-WINDOW-AC"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-SPLIT-AC",
+    "product_name": "Split Room Air Conditioner (Inverter / Fixed Speed)",
+    "aliases": [
+      "split ac",
+      "split air conditioner",
+      "inverter split ac",
+      "wall mounted ac"
+    ],
+    "category": "Refrigeration & Air Conditioning",
+    "applicable_is_numbers": [
+      "IS 1391 (Part 2) : 2018"
+    ],
+    "qco_ids": [
+      "QCO-AIR-CONDITIONERS-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SPLIT-AC"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-FROST-FREE-REFRIGERATOR",
+    "product_name": "Domestic Frost-Free Refrigerator",
+    "aliases": [
+      "refrigerator",
+      "fridge",
+      "frost free refrigerator",
+      "double door fridge",
+      "household refrigerator"
+    ],
+    "category": "Refrigeration & Air Conditioning",
+    "applicable_is_numbers": [
+      "IS 15750 : 2006"
+    ],
+    "qco_ids": [
+      "QCO-REFRIGERATORS-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-FROST-FREE-FRIDGE"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-SUBMERSIBLE-PUMP",
+    "product_name": "Agricultural Submersible Pumpset",
+    "aliases": [
+      "submersible pump",
+      "borewell pump",
+      "submersible motor",
+      "agricultural pump",
+      "water pump"
+    ],
+    "category": "Pumps & Industrial Equipment",
+    "applicable_is_numbers": [
+      "IS 14220 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-MOTORS-PUMPS-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SUBMERSIBLE-PUMP"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-THREE-PHASE-MOTOR",
+    "product_name": "Three-Phase Energy Efficient Induction Motor (IE2/IE3)",
+    "aliases": [
+      "induction motor",
+      "electric motor",
+      "three phase motor",
+      "ie3 motor",
+      "industrial motor"
+    ],
+    "category": "Pumps & Industrial Equipment",
+    "applicable_is_numbers": [
+      "IS 12615 : 2018"
+    ],
+    "qco_ids": [
+      "QCO-MOTORS-PUMPS-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-INDUCTION-MOTOR"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-SAFETY-GOGGLES",
+    "product_name": "Industrial Safety Goggles / Eye Protectors",
+    "aliases": [
+      "safety goggles",
+      "protective glasses",
+      "safety spectacles",
+      "eye protector"
+    ],
+    "category": "PPE & Safety Equipment",
+    "applicable_is_numbers": [
+      "IS 5983 : 1980"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SAFETY-GOGGLES"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-SILVER-ASSAYING",
+    "product_name": "Silver Bullion Purity and Assaying",
+    "aliases": [
+      "silver assaying",
+      "silver bullion",
+      "silver bar purity"
+    ],
+    "category": "Jewellery & Precious Metals",
+    "applicable_is_numbers": [
+      "IS 2113 : 2014"
+    ],
+    "qco_ids": [
+      "QCO-SILVER-HALLMARKING-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-HALLMARK-SILVER-ASSAY"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-LEATHER-SAFETY-BOOT",
+    "product_name": "Heavy Industry Leather Safety Boot",
+    "aliases": [
+      "leather safety boot",
+      "leather work boot",
+      "foundry boot",
+      "safety shoe leather",
+      "miner boot"
+    ],
+    "category": "Footwear & Leather",
+    "applicable_is_numbers": [
+      "IS 1989 (Part 1) : 1986"
+    ],
+    "qco_ids": [
+      "QCO-FOOTWEAR-LEATHER-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-LEATHER-BOOT"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-SPORTS-FOOTWEAR",
+    "product_name": "General Purpose Sports Footwear",
+    "aliases": [
+      "sports shoes",
+      "running shoes",
+      "athletic shoes",
+      "sneakers",
+      "sports footwear"
+    ],
+    "category": "Footwear & Leather",
+    "applicable_is_numbers": [
+      "IS 15844 (Part 1) : 2023"
+    ],
+    "qco_ids": [
+      "QCO-FOOTWEAR-LEATHER-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-SPORTS-SHOES"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-RUBBER-GUMBOOT",
+    "product_name": "Industrial Safety Rubber Knee Boots (Gumboots)",
+    "aliases": [
+      "gumboot",
+      "gumboots",
+      "rubber boots",
+      "knee boots",
+      "safety gumboot"
+    ],
+    "category": "Footwear & Leather",
+    "applicable_is_numbers": [
+      "IS 5557 : 2004"
+    ],
+    "qco_ids": [
+      "QCO-FOOTWEAR-LEATHER-2023"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-RUBBER-GUMBOOT"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-WRITING-PRINTING-PAPER",
+    "product_name": "Writing and Printing Paper (A4 / Copier Paper)",
+    "aliases": [
+      "copier paper",
+      "a4 paper",
+      "printing paper",
+      "photocopy paper",
+      "writing paper",
+      "bond paper"
+    ],
+    "category": "Paper & Pulp",
+    "applicable_is_numbers": [
+      "IS 1848 : 2007"
+    ],
+    "qco_ids": [
+      "QCO-PAPER-PULP-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-PRINTING-PAPER"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-KRAFT-PAPER",
+    "product_name": "Packaging Kraft Paper (High Burst)",
+    "aliases": [
+      "kraft paper",
+      "brown packaging paper",
+      "kraft liner",
+      "bag kraft paper"
+    ],
+    "category": "Paper & Pulp",
+    "applicable_is_numbers": [
+      "IS 1397 : 1990"
+    ],
+    "qco_ids": [
+      "QCO-PAPER-PULP-2024"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-KRAFT-PAPER"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-PAPER-TISSUE-NAPKIN",
+    "product_name": "Hygiene Paper Napkins and Facial Tissues",
+    "aliases": [
+      "tissue paper",
+      "paper napkin",
+      "facial tissue",
+      "paper towel",
+      "toilet tissue"
+    ],
+    "category": "Paper & Pulp",
+    "applicable_is_numbers": [
+      "IS 14890 : 2001"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-TISSUE-PAPER"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-TOUGHENED-SAFETY-GLASS",
+    "product_name": "Architectural Toughened Safety Glass",
+    "aliases": [
+      "toughened glass",
+      "tempered glass",
+      "safety glass",
+      "architectural glass",
+      "facade glass"
+    ],
+    "category": "Glass & Ceramics",
+    "applicable_is_numbers": [
+      "IS 2553 (Part 1) : 1990"
+    ],
+    "qco_ids": [
+      "QCO-SAFETY-GLASS-2022"
+    ],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-TOUGHENED-GLASS"
+    ],
+    "source_url": "https://bis.gov.in/products"
+  },
+  {
+    "id": "PROD-GLASS-TABLEWARE",
+    "product_name": "Consumer Glass Tableware & Tumblers",
+    "aliases": [
+      "glassware",
+      "glass tumbler",
+      "glass tableware",
+      "drinking glass",
+      "glass bowl"
+    ],
+    "category": "Glass & Ceramics",
+    "applicable_is_numbers": [
+      "IS 1961 : 1968"
+    ],
+    "qco_ids": [],
+    "certification_scheme_ids": [
+      "SCHEME-ISI-GLASS-TABLEWARE"
+    ],
+    "source_url": "https://bis.gov.in/products"
   }
 ]

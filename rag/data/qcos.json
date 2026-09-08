@@ -1010,5 +1010,308 @@
     ],
     "source_url": "https://dpiit.gov.in/quality-control-orders",
     "retrieved_at": "2026-09-08T00:00:00Z"
+  },
+  {
+    "id": "QCO-SOLAR-INVERTERS-2023",
+    "qco_name": "Solar Photovoltaics Systems (Compulsory Registration) Order",
+    "product": "Solar Inverters",
+    "is_numbers": [
+      "IS 16221 (Part 2) : 2015"
+    ],
+    "issuing_ministry": "Ministry of New and Renewable Energy (MNRE)",
+    "mandatory": true,
+    "enforcement_date": "2023-06-30",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-SOLAR-THERMAL-2022",
+    "qco_name": "Solar Thermal Devices and Systems (Quality Control) Order",
+    "product": "Solar Water Heaters and Flat Plate Collectors",
+    "is_numbers": [
+      "IS 12933 (Part 1) : 2003",
+      "IS 13129 : 1991"
+    ],
+    "issuing_ministry": "Ministry of New and Renewable Energy (MNRE)",
+    "mandatory": true,
+    "enforcement_date": "2022-10-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-BATTERIES-LEAD-ACID-2024",
+    "qco_name": "Lead-Acid Batteries (Quality Control) Order",
+    "product": "Lead-Acid Batteries",
+    "is_numbers": [
+      "IS 1651 : 2013",
+      "IS 15549 : 2005"
+    ],
+    "issuing_ministry": "Ministry of Heavy Industries (MHI)",
+    "mandatory": true,
+    "enforcement_date": "2024-03-31",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-EV-CHARGERS-2024",
+    "qco_name": "Electrical Equipment for Electric Vehicle Charging (Quality Control) Order",
+    "product": "Electric Vehicle DC Fast Charging Stations",
+    "is_numbers": [
+      "IS 17017 (Part 23) : 2021"
+    ],
+    "issuing_ministry": "Ministry of Heavy Industries (MHI)",
+    "mandatory": true,
+    "enforcement_date": "2024-09-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-AAC-BLOCKS-2024",
+    "qco_name": "Precast Concrete Products (Quality Control) Order",
+    "product": "Autoclaved Aerated Concrete (AAC) Blocks",
+    "is_numbers": [
+      "IS 2185 (Part 3) : 1984"
+    ],
+    "issuing_ministry": "Ministry of Housing and Urban Affairs (MoHUA)",
+    "mandatory": true,
+    "enforcement_date": "2024-08-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-WHITE-CEMENT-2024",
+    "qco_name": "Cement (Quality Control) Order - White Portland Cement",
+    "product": "White Portland Cement",
+    "is_numbers": [
+      "IS 8042 : 2015"
+    ],
+    "issuing_ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-01-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-COLD-ROLLED-STEEL-2020",
+    "qco_name": "Steel and Steel Products (Quality Control) Order - Cold Rolled",
+    "product": "Cold Reduced Carbon Steel Sheet",
+    "is_numbers": [
+      "IS 513 (Part 1) : 2016"
+    ],
+    "issuing_ministry": "Ministry of Steel",
+    "mandatory": true,
+    "enforcement_date": "2020-05-12",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-STAINLESS-STEEL-2020",
+    "qco_name": "Stainless Steel Products (Quality Control) Order",
+    "product": "Stainless Steel Plates and Sheets",
+    "is_numbers": [
+      "IS 6911 : 2017"
+    ],
+    "issuing_ministry": "Ministry of Steel",
+    "mandatory": true,
+    "enforcement_date": "2020-05-12",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-LPG-HOSES-2022",
+    "qco_name": "LPG Hoses (Quality Control) Order",
+    "product": "Rubber Hoses for LPG",
+    "is_numbers": [
+      "IS 9573 : 2017"
+    ],
+    "issuing_ministry": "Ministry of Petroleum and Natural Gas (MoPNG)",
+    "mandatory": true,
+    "enforcement_date": "2022-06-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-FERTILIZERS-MANDATORY-2023",
+    "qco_name": "Fertilizer Control Order - Chemical Fertilizers",
+    "product": "Chemical Fertilizers (Urea, DAP, SSP)",
+    "is_numbers": [
+      "IS 540 : 2019",
+      "IS 8358 : 2019",
+      "IS 294 : 2019"
+    ],
+    "issuing_ministry": "Ministry of Chemicals and Fertilizers",
+    "mandatory": true,
+    "enforcement_date": "2023-04-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-WOOD-ADHESIVES-2023",
+    "qco_name": "Wood Based Boards and Adhesives (Quality Control) Order",
+    "product": "Resin Adhesives for Plywood",
+    "is_numbers": [
+      "IS 851 : 1978"
+    ],
+    "issuing_ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2023-08-10",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-RED-OXIDE-PAINTS-2021",
+    "qco_name": "Lead Safe Priming Paints (Quality Control) Order",
+    "product": "Red Oxide Primer",
+    "is_numbers": [
+      "IS 2074 : 2015"
+    ],
+    "issuing_ministry": "Ministry of Environment, Forest and Climate Change (MoEFCC)",
+    "mandatory": true,
+    "enforcement_date": "2021-11-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-FIRE-DOORS-2024",
+    "qco_name": "Fire Rated Door Assemblies (Quality Control) Order",
+    "product": "Fire Rated Doors",
+    "is_numbers": [
+      "IS 3614 : 2021"
+    ],
+    "issuing_ministry": "Ministry of Housing and Urban Affairs (MoHUA)",
+    "mandatory": true,
+    "enforcement_date": "2024-06-30",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-LPG-REGULATORS-2021",
+    "qco_name": "LPG Regulators (Quality Control) Order",
+    "product": "LPG Pressure Regulators",
+    "is_numbers": [
+      "IS 9798 : 1995"
+    ],
+    "issuing_ministry": "Ministry of Petroleum and Natural Gas (MoPNG)",
+    "mandatory": true,
+    "enforcement_date": "2021-03-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-AIR-CONDITIONERS-2023",
+    "qco_name": "Air Conditioner and Related Parts (Quality Control) Order",
+    "product": "Unitary and Split Air Conditioners",
+    "is_numbers": [
+      "IS 1391 (Part 1) : 2017",
+      "IS 1391 (Part 2) : 2018"
+    ],
+    "issuing_ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2023-10-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-REFRIGERATORS-2023",
+    "qco_name": "Household Refrigeration Appliances (Quality Control) Order",
+    "product": "Frost-Free Domestic Refrigerators",
+    "is_numbers": [
+      "IS 15750 : 2006"
+    ],
+    "issuing_ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-01-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-MOTORS-PUMPS-2024",
+    "qco_name": "Electric Motors and Pumps (Quality Control) Order",
+    "product": "Induction Motors and Submersible Pumps",
+    "is_numbers": [
+      "IS 12615 : 2018",
+      "IS 14220 : 2018"
+    ],
+    "issuing_ministry": "Ministry of Heavy Industries (MHI)",
+    "mandatory": true,
+    "enforcement_date": "2024-07-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-SILVER-HALLMARKING-2023",
+    "qco_name": "Silver Artefacts and Jewellery Hallmarking Order",
+    "product": "Silver Jewellery & Artefacts",
+    "is_numbers": [
+      "IS 2113 : 2014"
+    ],
+    "issuing_ministry": "Department of Consumer Affairs (DCA)",
+    "mandatory": false,
+    "enforcement_date": "2023-09-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-FOOTWEAR-LEATHER-2023",
+    "qco_name": "Footwear Made from Leather (Quality Control) Order",
+    "product": "Leather Boots, Sports Shoes, and Rubber Knee Boots",
+    "is_numbers": [
+      "IS 1989 (Part 1) : 1986",
+      "IS 15844 (Part 1) : 2023",
+      "IS 5557 : 2004"
+    ],
+    "issuing_ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2023-07-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-PAPER-PULP-2024",
+    "qco_name": "Paper and Paperboard Products (Quality Control) Order",
+    "product": "Writing and Printing Papers",
+    "is_numbers": [
+      "IS 1848 : 2007",
+      "IS 1397 : 1990"
+    ],
+    "issuing_ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2024-04-01",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
+  },
+  {
+    "id": "QCO-SAFETY-GLASS-2022",
+    "qco_name": "Safety Glass (Quality Control) Order",
+    "product": "Architectural Toughened Safety Glass",
+    "is_numbers": [
+      "IS 2553 (Part 1) : 1990"
+    ],
+    "issuing_ministry": "Department for Promotion of Industry and Internal Trade (DPIIT)",
+    "mandatory": true,
+    "enforcement_date": "2022-09-15",
+    "amendments": [],
+    "source_url": "https://bis.gov.in/qco",
+    "retrieved_at": "2026-09-08"
   }
 ]

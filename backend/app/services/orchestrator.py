@@ -2,6 +2,7 @@
 
 import json
 import logging
+import re
 from typing import Any, Dict, List, Optional
 from sqlalchemy.orm import Session
 
@@ -329,21 +330,47 @@ class BISOrchestrator:
         )
 
         # Step 5: Insufficient evidence check
+        has_structured_evidence = bool(
+            search_result.structured_entities.get("standards")
+            or search_result.structured_entities.get("products")
+            or search_result.structured_entities.get("qcos")
+            or search_result.structured_entities.get("laboratories")
+            or search_result.structured_entities.get("schemes")
+        )
         has_direct_entity = bool(
             intent_result.entities.get("product_id")
             or intent_result.entities.get("is_number")
             or intent_result.entities.get("certification_scheme")
-            or intent_result.intent in {"GENERAL_BIS_QUERY", "CONSUMER_SERVICE_QUERY", "LABORATORY_QUERY"}
         )
         top_semantic_score = search_result.semantic_chunks[0]["score"] if search_result.semantic_chunks else 0.0
-        has_strong_semantic = top_semantic_score >= 0.58
 
-        if not has_direct_entity and not has_strong_semantic:
+        # Verify whether semantic chunks actually have topical overlap with user query
+        query_content_words = [
+            w for w in re.findall(r"\b[a-zA-Z]{3,}\b", query.lower())
+            if w not in {
+                "what", "which", "where", "when", "why", "how", "does", "do", "is", "are", "can",
+                "the", "a", "an", "and", "or", "for", "to", "in", "of", "on", "at", "by", "from",
+                "with", "about", "tell", "me", "give", "show", "detail", "details", "information",
+                "standard", "standards", "indian", "bis", "applies", "applicable", "apply",
+                "certification", "certificate", "order", "quality", "control", "qco", "mandatory",
+                "compulsory", "test", "testing", "tested", "lab", "laboratory", "laboratories",
+                "rule", "rules", "requirement", "requirements", "specification", "specifications",
+                "product", "products", "item", "items", "commercial", "domestic", "industrial"
+            }
+        ]
+        has_word_overlap = bool(query_content_words and any(
+            any(w in (c.get("text", "") + " " + c.get("source_title", "")).lower() for w in query_content_words)
+            for c in search_result.semantic_chunks[:2]
+        ))
+        has_strong_semantic = top_semantic_score >= 0.75 or (top_semantic_score >= 0.60 and has_word_overlap)
+
+        if not (has_structured_evidence or has_direct_entity or has_strong_semantic) or search_result.confidence_score <= 0.0:
             return ChatResponse(
                 answer=(
                     "I couldn't find enough official BIS information for that query in the current database. "
-                    "You can search directly on the BIS portal at https://www.bis.gov.in, "
-                    "or try rephrasing with a specific product name or IS number."
+                    "Bureau of Indian Standards specifications and Quality Control Orders require verification "
+                    "on the official BIS portal (https://www.bis.gov.in). You can also search Manakonline "
+                    "(https://www.manakonline.in) or the CRS portal (https://www.crsbis.in)."
                 ),
                 intent=intent_result.intent,
                 confidence=0.0,
@@ -371,7 +398,9 @@ class BISOrchestrator:
 
         # Step 9: Confidence scoring
         conf_score = search_result.confidence_score
-        if llm_failed:
+        if not (has_structured_evidence or has_direct_entity or has_strong_semantic) or conf_score <= 0.0:
+            conf_level = "INSUFFICIENT_EVIDENCE"
+        elif llm_failed:
             conf_level = "LOW"
             conf_score = min(conf_score, 0.35)
         elif conf_score >= 0.70:

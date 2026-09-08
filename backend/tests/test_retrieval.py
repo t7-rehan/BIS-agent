@@ -225,3 +225,76 @@ def test_benchmark_evaluation_suite(hybrid_retriever):
         passed_count += 1
 
     assert passed_count == len(eval_queries)
+
+
+# ====================================================================
+# 4. Cross-Entity Chain & RAG Reliability Tests
+# ====================================================================
+
+def test_cross_entity_product_full_chain(hybrid_retriever):
+    """Verify that a product query retrieves the entire cross-entity graph:
+    Product -> Standard -> QCO -> Scheme -> Laboratory.
+    """
+    res = hybrid_retriever.search("pressure cooker", top_k=5)
+    se = res.structured_entities
+
+    # Product check
+    assert len(se.get("products", [])) > 0, "No products retrieved for pressure cooker!"
+    prod_names = [p["product_name"].lower() for p in se["products"]]
+    assert any("pressure cooker" in pn for pn in prod_names)
+
+    # Standard check (cross-linked from product)
+    assert len(se.get("standards", [])) > 0, "No standards retrieved via product relation!"
+    is_numbers = [s["is_number"] for s in se["standards"]]
+    assert any("2347" in num for num in is_numbers), f"IS 2347 not found in {is_numbers}"
+
+    # QCO check (cross-linked from product)
+    assert len(se.get("qcos", [])) > 0, "No QCOs retrieved for pressure cooker!"
+
+    # Scheme check (cross-linked from product)
+    assert len(se.get("schemes", [])) > 0, "No certification schemes retrieved!"
+
+    # Laboratory check (cross-linked from standard)
+    assert len(se.get("laboratories", [])) > 0, "No testing laboratories retrieved!"
+    lab_names = [l.get("laboratory_name") or l.get("name", "") for l in se["laboratories"]]
+    assert any("Sahibabad" in ln or "Laboratory" in ln for ln in lab_names)
+
+
+def test_cross_entity_standard_full_chain(hybrid_retriever):
+    """Verify that an IS number query retrieves: Standard -> Labs -> Products -> QCOs -> Schemes."""
+    res = hybrid_retriever.search("IS 2347", top_k=5)
+    se = res.structured_entities
+
+    assert len(se.get("standards", [])) > 0, "IS 2347 standard not found!"
+    assert len(se.get("laboratories", [])) > 0, "Laboratories for IS 2347 not found!"
+    assert len(se.get("products", [])) > 0, "Products for IS 2347 not found!"
+    assert len(se.get("qcos", [])) > 0, "QCOs for IS 2347 products not found!"
+    assert len(se.get("schemes", [])) > 0, "Schemes for IS 2347 products not found!"
+
+
+def test_sector_retrieval_expansion(hybrid_retriever):
+    """Verify that sector keywords like 'solar' or 'fire safety' pull standards and products."""
+    solar_res = hybrid_retriever.search("solar energy standards", top_k=5)
+    solar_se = solar_res.structured_entities
+    has_solar_content = bool(solar_se.get("standards") or solar_se.get("products") or solar_res.semantic_chunks)
+    assert has_solar_content, "No solar content retrieved for solar query!"
+
+    fire_res = hybrid_retriever.search("fire safety products", top_k=5)
+    fire_se = fire_res.structured_entities
+    has_fire_content = bool(fire_se.get("standards") or fire_se.get("products") or fire_res.semantic_chunks)
+    assert has_fire_content, "No fire safety content retrieved!"
+
+
+def test_unsupported_query_insufficient_evidence(hybrid_retriever, seeded_db_session):
+    """Verify that completely unsupported products result in INSUFFICIENT_EVIDENCE."""
+    from app.services.orchestrator import BISOrchestrator
+    orchestrator = BISOrchestrator(retriever=hybrid_retriever)
+
+    response = orchestrator.orchestrate(
+        message="Which Indian Standard applies to quantum teleportation flux capacitors?",
+        db_session=seeded_db_session,
+    )
+
+    assert response.confidence_level == "INSUFFICIENT_EVIDENCE"
+    assert response.confidence == 0.0
+    assert "couldn't find enough official bis information" in response.answer.lower()
